@@ -43,52 +43,26 @@
 	            <div class="col-lg-12 col-md-12 col-sm-12">
 	                <div class="table-responsive">
 	                    <table class="table table-striped table-hover">
-	                        <thead>
-	                        <tr>
-	                            <th>Rank</th>
-	                            <th>Name</th>
-	                            <th>Year</th>
-	                            <th>Rating</th>
-	                            <th>Votes</th>
-	                        </tr>
-	                        </thead>
-	                        <tbody>
-	                        <tr>
-	                            <td>1</td>
-	                            <td>The Shawshank Redemption</td>
-	                            <td>1994</td>
-	                            <td>9.2</td>
-	                            <td>923,629</td>
-	                        </tr>
-	                        <tr>
-	                            <td>2</td>
-	                            <td>The Godfather</td>
-	                            <td>1972</td>
-	                            <td>9.2</td>
-	                            <td>663,133</td>
-	                        </tr>
-	                        <tr>
-	                            <td>3</td>
-	                            <td>The Godfather: Part II</td>
-	                            <td>1974</td>
-	                            <td>9.0</td>
-	                            <td>427,132</td>
-	                        </tr>
-	                        <tr>
-	                            <td>4</td>
-	                            <td>Pulp Fiction</td>
-	                            <td>1994</td>
-	                            <td>8.9</td>
-	                            <td>719,280</td>
-	                        </tr>
-	                        <tr>
-	                            <td>5</td>
-	                            <td>The Good, the Bad and the Ugly</td>
-	                            <td>1966</td>
-	                            <td>8.9</td>
-	                            <td>218,887</td>
-	                        </tr>
-	                        </tbody>
+	                    <thead>
+					    <tr>
+					      <th scope="col">글번호</th>
+					      <th scope="col">카테고리</th>
+					      <th scope="col">제목</th>
+					      <th scope="col">작성자</th>
+					      <th scope="col">작성일</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <c:forEach items="${qa}" var="qa">
+					    <tr class="" data-toggle="modal" data-target="">
+					      <th scope="row">${qa.qa_num}</th>
+					      <td>${qa.qc_code}</td>
+					      <td>${qa.qa_title}</td>
+					      <td>${qa.m_code}</td>
+					      <td>${qa.qa_date}</td>
+					    </tr>
+					   </c:forEach>
+					  </tbody>
 	                    </table>
 	                </div>
 	                        <div class="row">
