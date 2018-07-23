@@ -5,7 +5,7 @@
 	</resultMap>
 	
 	<select id="selectTemplate" parameterType="template" resultMap="templateMap">
-		 
+		SELECT * FROM TEMPLATE
 	</select>
 	
 	

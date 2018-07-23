@@ -40,7 +40,7 @@ import com.kh.TAT.common.model.vo.Email;
 import com.kh.TAT.common.model.vo.EmailSender;
 
 @Controller
-@SessionAttributes(value={"m", "f", "g", "qa", "p"})
+@SessionAttributes(value={"m", "f", "g", "qa", "p", "te"})
 public class MainController {
 
 	@Autowired
@@ -84,8 +84,8 @@ public class MainController {
 	
 	// 템플릿 페이지 이동
 	@RequestMapping("/main/Template.tat")
-	public String Template(){
-		/*
+	public ModelAndView Template(com.kh.TAT.common.model.vo.Template te){
+		
 		String msg = "";
 		String loc = "/";
 		
@@ -100,8 +100,8 @@ public class MainController {
 		mv.addObject("loc", loc);
 		
 		
-		mv.setViewName("mainPage/mainPage_Template");*/
-		return "mainPage/mainPage_Template";
+		mv.setViewName("mainPage/mainPage_Template");
+		return mv;
 	}
 	
 	// 템플릿 상세보기 페이지 이동

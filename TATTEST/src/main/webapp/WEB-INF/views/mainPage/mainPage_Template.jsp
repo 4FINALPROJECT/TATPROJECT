@@ -41,7 +41,7 @@
 	                            </div>
 	                        </figure>
 	                        <div class="metaInfo">
-	                            <span><i class="fa fa-calendar"></i> <a href="#">Nov 28, 2015</a> </span>
+	                            <span><i class="fa fa-calendar"></i> <a href="#">${te.t_date}</a> </span>
 	                            <span><i class="fa fa-tag"></i>  <a href="#">Design</a> </span>
 	                            <span><i class="fa fa-comments"></i> <a href="#">22 Comments</a></span>
 	                        </div>
