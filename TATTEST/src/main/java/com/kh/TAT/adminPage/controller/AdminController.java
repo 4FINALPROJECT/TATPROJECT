@@ -1,10 +1,15 @@
 package com.kh.TAT.adminPage.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.kh.TAT.common.model.vo.Member;
 
 import com.kh.TAT.adminPage.model.service.AdminService;
+import com.kh.TAT.adminPage.model.vo.PagingVo;
 
 @Controller
 public class AdminController {
@@ -19,8 +24,17 @@ public class AdminController {
 	}
 	// 회원정보 페이지 이동
 	@RequestMapping("/admin/Member.tat")
-	public String Member(){
-		return "adminPage/adminPage_Member";
+	public String Member(Model model, PagingVo paging){
+		// 게시판 페이지 이동
+			
+	    List<Member> memberList = adminS.selectMemberList(paging);
+	    paging.setTotal(adminS.selectTotalPaging());
+	    model.addAttribute("memberList", memberList);
+	    model.addAttribute("p", paging);
+	    
+	    System.out.println("p : "+paging);
+	    return "adminPage/adminPage_Member";
+
 	}
 	// 결제정보 페이지 이동
 	@RequestMapping("/admin/Payment.tat")

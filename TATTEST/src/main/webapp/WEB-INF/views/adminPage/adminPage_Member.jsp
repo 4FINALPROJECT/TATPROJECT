@@ -182,62 +182,43 @@
 				                    <table class="table table-striped table-hover">
 				                        <thead>
 				                        <tr>
-				                            <th>Rank</th>
-				                            <th>Name</th>
-				                            <th>Year</th>
-				                            <th>Rating</th>
-				                            <th>Votes</th>
+				                            <th>Member_Code</th>
+				                            <th>Member_EMAIL</th>
+				                            <th>Member_NAME</th>
+				                            <th>Member_Birth</th>
+				                            <th>Member_Gender</th>
+				                            <th>Member_Joindate</th>
+				                            <th>IS_USEABLE</th>
 				                        </tr>
 				                        </thead>
-				                        <tbody>
+				                        <tbody id="memberListTable">
+				                        <c:forEach var="m" items="${memberList}" >
 				                        <tr>
-				                            <td>1</td>
-				                            <td>The Shawshank Redemption</td>
-				                            <td>1994</td>
-				                            <td>9.2</td>
-				                            <td>923,629</td>
+				                            <td>${m.m_code}</td>
+				                            <td>${m.m_email}</td>
+				                            <td>${m.m_name}</td>
+				                            <td>${m.m_birth}</td>
+				                            <td>${m.m_gender}</td>
+				                            <td>${m.enroll_date}</td>
+				                            <td>${m.is_usable}</td>
 				                        </tr>
-				                        <tr>
-				                            <td>2</td>
-				                            <td>The Godfather</td>
-				                            <td>1972</td>
-				                            <td>9.2</td>
-				                            <td>663,133</td>
-				                        </tr>
-				                        <tr>
-				                            <td>3</td>
-				                            <td>The Godfather: Part II</td>
-				                            <td>1974</td>
-				                            <td>9.0</td>
-				                            <td>427,132</td>
-				                        </tr>
-				                        <tr>
-				                            <td>4</td>
-				                            <td>Pulp Fiction</td>
-				                            <td>1994</td>
-				                            <td>8.9</td>
-				                            <td>719,280</td>
-				                        </tr>
-				                        <tr>
-				                            <td>5</td>
-				                            <td>The Good, the Bad and the Ugly</td>
-				                            <td>1966</td>
-				                            <td>8.9</td>
-				                            <td>218,887</td>
-				                        </tr>
+				                        </c:forEach>
 				                        </tbody>
 				                    </table>
+
 				                </div>
 				                        
 				                <div class="col-sm-12 text-center">
 									<ul class="pagination">
-										<li><a href="#">&laquo;</a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
+									<c:if test="${p.pageStartNum ne 1}">
+										<li><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>&laquo;</a></li>
+									</c:if>
+									<c:forEach var='i' begin="${p.pageStartNum}" end="${p.pageLastNum}" step="1">
+                						<li class='pageIndex${i}'><a onclick='pageIndex(${i});'>${i}</a></li>
+            						</c:forEach>
+									<c:if test="${p.lastChk}">
+										<li><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>&raquo;</a></li>
+									</c:if>
 									</ul>
 								</div>
 				            </div>
@@ -294,9 +275,149 @@
 				</div>
 			
 		</section>
-		
-		
+
 	</section>
+	
+	<script>
+		function pageIndex(pageStartNum){
+			
+			alert("페이징 테스트");
+			
+		};
+		
+		function pageMemberListCreate(pageStartNum){
+			$.ajax({
+				url: '/admin/Member.tat',
+		        type: 'post',
+		        data: {"start":paging.p.pageStartNum,
+		        		"last" : paging.p.pageLastNum
+		        }
+		        
+		        }
+		        success : function(data){
+		            obj.
+			});
+		}
+			var paging = {
+			        // 기본값 셋팅
+			        p: {
+			            index : 0,
+			            pageStartNum : 1
+			        },
+			        // 페이징 생성
+			        create: function(){
+			            var htmlTag = '';
+			            for (var i = paging.p.pageStartNum; i <= paging.p.pageLastNum; i++) {
+			                htmlTag += '<li class="pageIndex"><span>'+i+'</span></li>';
+			            }
+			            $('.index').html(htmlTag);
+			            
+			            // 현재 번호 ui
+			            $('.pageIndex').each(function(){
+			                if(paging.p.index == $(this).text()-1) {
+			                    $(this).addClass('active');
+			                }else {
+			                    $(this).removeClass('active');
+			                }
+			            });
+			            
+			            // 이전 페이지 이동 버튼 생성여부
+			            if(paging.p.pageStartNum != 1) {
+			                $('.preBtn').html('<li id="pagePreFirst"><span>«</span></li><li id="pagePre"><span>‹</span></li>');
+			                // 맨 첫 페이지 index
+			                $('#pagePreFirst').click(function(){
+			                    var index = paging.p.pageCnt+1;
+			                    var pageCnt = paging.p.pageCnt;
+			                    if (0 < index - pageCnt) {
+			                        index -= pageCnt;
+			                        paging.p.pageStartNum = index;
+			                        paging.p.index = index-1;
+			                        paging.ajax();
+			                    }
+			                });
+			                
+			                // 이전 페이지 index
+			                $('#pagePre').click(function(){
+			                    var index = paging.p.pageStartNum;
+			                    var pageCnt = paging.p.pageCnt;
+			                    if (0 < index - pageCnt) {
+			                        index -= pageCnt;
+			                        paging.p.pageStartNum = index;
+			                        paging.p.index = index-1;
+			                        paging.ajax();
+			                    }
+			                });
+			            }else {
+			                $('.preBtn').children('li').remove();
+			            }
+			            
+			            // index 리스트 처리
+			            $('.pageIndex').click(function(){
+			                var index = Number($(this).find('span').text());
+			                paging.p.index = index - 1;
+			                paging.ajax();
+			            });
+			            
+			            // 다음 페이지 이동 버튼 생성여부
+			            if(paging.p.lastChk) {
+			                $('.nextBtn').html('<li id="pageNext"><span>›</span></li><li id="pageLast"><span>»</span></li>');
+			                // 다음 페이지 index
+			                $('#pageNext').click(function(){
+			                    var index = paging.p.pageStartNum;
+			                    var total = paging.p.total;
+			                    var listCnt = paging.p.listCnt;
+			                    var pageCnt = paging.p.pageCnt;
+			                    
+			                    var totalPageCnt = Math.ceil(total / listCnt);
+			                    var max = Math.ceil(totalPageCnt / pageCnt);
+			                    if (max * pageCnt > index + pageCnt) {
+			                        index += pageCnt;
+			                        paging.p.pageStartNum = index;
+			                        paging.p.index = index-1;
+			                        paging.ajax();
+			                    }
+			                });
+			                // 마지막 페이지 index
+			                $('#pageLast').click(function(){
+			                    var index = paging.p.pageStartNum;
+			                    var total = paging.p.total;
+			                    var listCnt = paging.p.listCnt;
+			                    var pageCnt = paging.p.pageCnt;
+			                    
+			                    var totalPageCnt = Math.ceil(total / listCnt);
+			                    var max = Math.ceil(totalPageCnt / pageCnt);
+			                    while (max * pageCnt > index + pageCnt) {
+			                        index += pageCnt;
+			                    }
+			                    var remainListCnt = total - listCnt * (index - 1);
+			                    var remainPageCnt = Math.floor(remainListCnt / listCnt);
+			                    if (remainListCnt % listCnt != 0) {
+			                        remainPageCnt++;
+			                    }
+			                    var pageLastNum = 0;
+			                    if (remainListCnt <= listCnt) {
+			                        pageLastNum = index;
+			                    } else if (remainPageCnt <= pageCnt) {
+			                        pageLastNum = remainPageCnt + index - 1;
+			                    } else {
+			                        pageLastNum = pageCnt + index - 1;
+			                    }
+			                    paging.p.pageStartNum = index;
+			                    paging.p.index = index-1;
+			                    paging.ajax();
+			                });
+			            }else {
+			                $('.nextBtn').children('li').remove();
+			            }
+			        },
+			        remove : function() {
+			            $('.preBtn').children('li').remove();
+			            $('.index').html('1');
+			            $('.nextBtn').children('li').remove();
+			        }
+			};
+
+	</script>
 
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
