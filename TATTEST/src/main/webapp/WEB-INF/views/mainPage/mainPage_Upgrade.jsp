@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +46,8 @@
 						<div class="col-lg-3 col-md-3 col-sm-3">
 							<div class="pricingTable"><!-- BODY BOX-->
 								<div class="pricingTable-header"><!-- HEADER BOX-->
-									<span class="heading">Standard</span>
-									<span class="price-value">$<span>14,50</span><span class="mo">/mo</span></span>
+									<span class="heading">1 Month</span>
+									<span class="price-value">$<span>26.44</span><span class="mo">/mo</span></span>
 								</div><!--/ BODY BOX-->
 
 								<div class="pricingContent">
@@ -59,18 +60,40 @@
 									</ul>
 								</div>
 
-								<div class="pricingTable-sign-up">
+								<!-- <div class="pricingTable-sign-up">
 									<a href="#" class="btn btn-block btn-default">BUY NOW!</a>
-								</div>
-
+								</div> -->
+								
+								<c:if test="${!empty m and m.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${m.m_code}',30000)">선택</button>
+								</c:if>
+								<c:if test="${!empty f and f.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${f.m_code}',30000)">선택(Facebook)</button>
+								</c:if>
+								<c:if test="${!empty g and g.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${g.m_code}',30000)">선택(Google)</button>
+								</c:if>
+								<c:if test="${empty m and empty f and empty g}">
+								<a href="#" class="btn btn-block btn-default" data-toggle="modal" data-target="#signin">불가(로그인 필요)</a>
+								</c:if>
+								<c:if test="${m.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${m.m_code}')">선택</a>
+								</c:if>
+								<c:if test="${f.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${f.m_code}')">선택(Facebook)</a>
+								</c:if>
+								<c:if test="${g.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${g.m_code}')">선택(Google)</a>
+								</c:if>
+								
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-3">
 							<div class="pricingTable">
 								<div class="pricingTable-header">
 
-									<span class="heading">Business</span>
-									<span class="price-value">$<span>24,50</span><span class="mo">/mo</span></span>
+									<span class="heading">3 Month</span>
+									<span class="price-value">$<span>70.52</span><span class="mo">/mo</span></span>
 
 								</div>
 
@@ -84,9 +107,27 @@
 									</ul>
 								</div>
 
-								<div class="pricingTable-sign-up">
-									<a href="#" class="btn btn-block btn-default">BUY NOW!</a>
-								</div>
+								<c:if test="${!empty m and m.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${m.m_code}',80000)">선택</button>
+								</c:if>
+								<c:if test="${!empty f and f.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${f.m_code}',80000)">선택(Facebook)</button>
+								</c:if>
+								<c:if test="${!empty g and g.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${g.m_code}',80000)">선택(Google)</button>
+								</c:if>
+								<c:if test="${empty m and empty f and empty g}">
+								<a href="#" class="btn btn-block btn-default" data-toggle="modal" data-target="#signin">불가(로그인 필요)</a>
+								</c:if>
+								<c:if test="${m.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${m.m_code}')">선택</a>
+								</c:if>
+								<c:if test="${f.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${f.m_code}')">선택(Facebook)</a>
+								</c:if>
+								<c:if test="${g.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${g.m_code}')">선택(Google)</a>
+								</c:if>
 
 							</div>
 						</div>
@@ -94,8 +135,8 @@
 							<div class="pricingTable">
 								<div class="pricingTable-header">
 
-									<span class="heading">Premium</span>
-									<span class="price-value">$<span>34,50</span><span class="mo">/mo</span></span>
+									<span class="heading">6 Month</span>
+									<span class="price-value">$<span>132.22</span><span class="mo">/mo</span></span>
 
 								</div>
 
@@ -109,9 +150,27 @@
 									</ul>
 								</div>
 
-								<div class="pricingTable-sign-up">
-									<a href="#" class="btn btn-block btn-default">BUY NOW!</a>
-								</div>
+								<c:if test="${!empty m and m.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${m.m_code}',150000)">선택</button>
+								</c:if>
+								<c:if test="${!empty f and f.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${f.m_code}',150000)">선택(Facebook)</button>
+								</c:if>
+								<c:if test="${!empty g and g.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${g.m_code}',150000)">선택(Google)</button>
+								</c:if>
+								<c:if test="${empty m and empty f and empty g}">
+								<a href="#" class="btn btn-block btn-default" data-toggle="modal" data-target="#signin">불가(로그인 필요)</a>
+								</c:if>
+								<c:if test="${m.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${m.m_code}')">선택</a>
+								</c:if>
+								<c:if test="${f.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${f.m_code}')">선택(Facebook)</a>
+								</c:if>
+								<c:if test="${g.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${g.m_code}')">선택(Google)</a>
+								</c:if>
 
 							</div>
 						</div>
@@ -119,8 +178,8 @@
 							<div class="pricingTable">
 								<div class="pricingTable-header">
 
-									<span class="heading">Extra</span>
-									<span class="price-value">$<span>44,50</span><span class="mo">/mo</span></span>
+									<span class="heading">12 Month</span>
+									<span class="price-value">$<span>255.62</span><span class="mo">/mo</span></span>
 
 								</div>
 
@@ -133,9 +192,27 @@
 										<li><strong>Unlimited</strong> Subdomains</li>
 									</ul>
 								</div>
-								<div class="pricingTable-sign-up">
-									<a href="#" class="btn btn-block btn-default">BUY NOW!</a>
-								</div>
+								<c:if test="${!empty m and m.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${m.m_code}',290000)">선택</button>
+								</c:if>
+								<c:if test="${!empty f and f.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${f.m_code}',290000)">선택(Facebook)</button>
+								</c:if>
+								<c:if test="${!empty g and g.is_usable eq 'N'}">
+								<button class="btn btn-block btn-default" type="button" id="premium2" onclick="premiumService('${g.m_code}',290000)">선택(Google)</button>
+								</c:if>
+								<c:if test="${empty m and empty f and empty g}">
+								<a href="#" class="btn btn-block btn-default" data-toggle="modal" data-target="#signin">불가(로그인 필요)</a>
+								</c:if>
+								<c:if test="${m.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${m.m_code}')">선택</a>
+								</c:if>
+								<c:if test="${f.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${f.m_code}')">선택(Facebook)</a>
+								</c:if>
+								<c:if test="${g.is_usable eq 'Y'}">
+								<a href="#" class="btn btn-block btn-default" onclick="useableBtn('${g.m_code}')">선택(Google)</a>
+								</c:if>
 
 							</div>
 						</div>
