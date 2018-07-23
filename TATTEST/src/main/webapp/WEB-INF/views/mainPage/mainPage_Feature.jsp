@@ -12,6 +12,7 @@
 	<c:import url="common/mainPage_Signup.jsp"></c:import>
 	
 	<section class="wrapper">
+	    
 		<section class="page_head">
 			<div class="container">
 				<div class="row">
@@ -30,8 +31,223 @@
 			</div>
 		</section>
 		
-		<section class="promo_box">
-			<div class="container">
+		<div class="super_sub_content grey_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 mrgt-70">
+                        <div class="serviceBox_7 right">
+                            <div class="service-icon">
+                                <i class="fa fa-headphones"></i>
+                            </div>
+                            <h3>SEO Ready</h3>
+                            <p>
+                                Drag more traffic to your website with our SEO Friendly theme: simply bank...
+                            </p>
+                        </div>
+
+                        <div class="serviceBox_7 right">
+                            <div class="service-icon">
+                                <i class="fa fa-tasks"></i>
+                            </div>
+                            <h3>Retina Ready</h3>
+                            <p>
+                                All our themes come with extensive HTML Documentation that teaches you how...
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img src="images/phones.png" class="img-responsive center-block">
+                    </div>
+
+                    <div class="col-sm-4 mrgt-70">
+                        <div class="serviceBox_7">
+                            <div class="service-icon">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <h3>easy customizable</h3>
+                            <p>
+                                All our themes include advanced options which makes them super flexible for...
+                            </p>
+                        </div>
+                        <div class="serviceBox_7">
+                            <div class="service-icon">
+                                <i class="fa fa-gears"></i>
+                            </div>
+                            <h3>global features</h3>
+                            <p>
+                                <!--Lorem ipsum dolor sit amet, elit.. consectetur adipisicing elit. Alias & molestiae nihil-->
+                                We made sure images on your website would look stunning on any device. Our...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	    
+	    <section class="content service">
+	    	
+	    	<div class="container">
+	    		<div class="row sub_content">
+					<div class="col-md-12 col-lg-12 col-sm-12 ">
+						<div class="dividerHeading">
+							<h4><span>Services Style 1</span></h4>
+						</div>
+					</div>
+                    <div class="col-sm-4">
+                        <div class="serviceBox_1">
+                            <div class="service-icon">
+                                <i class="fa fa-folder-open-o"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Clean &amp; Minimal</h3>
+                                <p>Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consec tetuer adipis elit, aliquam eget nibh etlibura.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="serviceBox_1">
+                            <div class="service-icon">
+                                <i class="fa fa-folder-o"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Branding Theme</h3>
+                                <p>Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consec tetuer adipis elit, aliquam eget nibh etlibura.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="serviceBox_1">
+                            <div class="service-icon">
+                                <i class="fa fa-heart-o"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Modern Design</h3>
+                                <p>Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consec tetuer adipis elit, aliquam eget nibh etlibura.</p>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				
+	    		<div class="row sub_content">
+					<div class="col-md-12 col-lg-12">
+						<div class="dividerHeading">
+							<h4><span>Services Style 2</span></h4>
+						</div>
+					</div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="serviceBox_2 green">
+                            <div class="service-icon">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Web Development</h3>
+                                <p> sit amet, consec tetuer adipis elit, aliquam eget nibh etlibura.</p>
+                                <div class="read">
+                                    <a href="">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="serviceBox_2 purple">
+                            <div class="service-icon">
+                                <i class="fa fa-rocket"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Brand Building</h3>
+                                <p> sit amet, consec tetuer adipis elit, aliquam eget nibh etlibura.</p>
+                                <div class="read">
+                                    <a href="">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="serviceBox_2 red">
+                            <div class="service-icon">
+                                <i class="fa fa-user-md"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Responsive Design</h3>
+                                <p> sit amet, consec tetuer adipis elit, aliquam eget nibh etlibura.</p>
+                                <div class="read">
+                                    <a href="">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="serviceBox_2 blue">
+                            <div class="service-icon">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Clean & Clear Design</h3>
+                                <p> sit amet, consec tetuer adipis elit, aliquam eget nibh etlibura.</p>
+                                <div class="read">
+                                    <a href="">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+                    <div class="row sub_content">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="dividerHeading">
+                                <h4><span>Services Style 7</span></h4>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="serviceBox_7 right">
+                                <div class="service-icon">
+                                    <i class="fa fa-headphones"></i>
+                                </div>
+                                <h3>SEO Ready</h3>
+                                <p>
+                                    Drag more traffic to your website with our SEO Friendly theme: simply bank...
+                                </p>
+                            </div>
+
+                            <div class="serviceBox_7 right">
+                                <div class="service-icon">
+                                    <i class="fa fa-tasks"></i>
+                                </div>
+                                <h3>Retina Ready</h3>
+                                <p>
+                                    All our themes come with extensive HTML Documentation that teaches you how...
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="serviceBox_7">
+                                <div class="service-icon">
+                                    <i class="fa fa-pencil"></i>
+                                </div>
+                                <h3>easy customizable</h3>
+                                <p>
+                                    All our themes include advanced options which makes them super flexible for...
+                                </p>
+                            </div>
+                            <div class="serviceBox_7">
+                                <div class="service-icon">
+                                    <i class="fa fa-gears"></i>
+                                </div>
+                                <h3>global features</h3>
+                                <p>
+                                    <!--Lorem ipsum dolor sit amet, elit.. consectetur adipisicing elit. Alias & molestiae nihil-->
+                                    We made sure images on your website would look stunning on any device. Our...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	    </section>
+		
+		<section class="promo_box wow bounce">
+            <div class="container">
                 <div class="row">
                     <div class="col-sm-9 col-md-9 col-lg-9">
                         <div class="promo_content">
@@ -48,8 +264,8 @@
                         </div>
                     </div>
                 </div>
-			</div>
-		</section>
+            </div>
+        </section>
 		
 	</section>
 

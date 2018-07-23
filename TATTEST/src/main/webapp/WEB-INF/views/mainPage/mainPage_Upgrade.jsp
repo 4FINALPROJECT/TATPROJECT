@@ -145,26 +145,51 @@
 				
 			</div>
 		</section>
-        <section class="promo_box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9 col-md-9 col-lg-9">
-                        <div class="promo_content">
-                            <h3>Electrify is awesome responsive template, with clean design.</h3>
-                            <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3">
-                        <div class="pb_action">
-                            <a class="btn btn-lg btn-default" href="#fakelink">
-                                <i class="fa fa-shopping-cart"></i>
-                                Download Now
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+		
+		<section class="clients">
+			<div class="container">
+				<div class="row sub_content">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="dividerHeading">
+							<h4><span>Our Clients</span></h4>
+						</div>
+						
+						<div class="our_clients">
+							<ul class="client_items clearfix">
+								<li class="col-sm-3 col-md-3 col-lg-3"><a href="services.html"  data-placement="bottom" data-toggle="tooltip" title="Client 1" ><img src="${pageContext.request.contextPath}/resources/images/clients/1.png" alt="" /></a></li>
+								<li class="col-sm-3 col-md-3 col-lg-3"><a href="services.html" data-placement="bottom" data-toggle="tooltip" title="Client 2" ><img src="${pageContext.request.contextPath}/resources/images/clients/2.png" alt="" /></a></li>
+								<li class="col-sm-3 col-md-3 col-lg-3"><a href="services.html" data-placement="bottom" data-toggle="tooltip" title="Client 3" ><img src="${pageContext.request.contextPath}/resources/images/clients/3.png" alt="" /></a></li>
+								<li class="col-sm-3 col-md-3 col-lg-3"><a href="services.html" data-placement="bottom" data-toggle="tooltip" title="Client 4" ><img src="${pageContext.request.contextPath}/resources/images/clients/4.png" alt="" /></a></li>
+							</ul><!--/ .client_items-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="parallax parallax-2">
+	        <div class="container">
+	            <!--<h2 class="center">Testimonials</h2>-->
+	            <div class="row">
+	                <div class="col-lg-12 col-sm-12 wow bounceIn ">
+	                    <div class="heading-item">
+	                        <h4>
+	                            Ullam Corporis Suscipit </h4>
+	                        <p>
+	                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur<br>
+	                            aut odit aut fugit, sed quia consequuntur
+	                        </p>
+	                        <a class="btn btn-default btn-lg" href="">Get a free Quote</a>
+	                        <em>or give us call
+	                            <strong>
+	                                +23-4321-12323
+	                            </strong>
+	                        </em>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
 	
 		
 	</section>
