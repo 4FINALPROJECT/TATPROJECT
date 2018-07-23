@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="payment">
+	<resultMap type="payment" id="paymentMap">	
+	</resultMap>
+	
+	<insert id="insertPayment" parameterType="payment">
+	
+		INSERT INTO PAYMENT
+		VALUES(#{m_code}, #{p_code}, sysdate, sysdate+(SELECT V_TERM FROM PAYMENT_CODE WHERE P_CODE=#{p_code}), NULL)
+		
+		<!-- INSERT INTO PAYMENT VALUES((SELECT #{m_code}, #{p_code} FROM MEMBER JOIN PAYMENT USING(M_CODE)
+        JOIN PAYMENT_CODE USING(P_CODE)), DEFAULT, DEFAULT); -->
+	
+	</insert>
+	
+	<select id="ddayQuery" parameterType="string" resultType="_int">
+		SELECT (TRUNC(V_DATE-sysdate)) DDAY FROM PAYMENT WHERE M_CODE = #{m_code}
+	</select>
+	
+</mapper>
