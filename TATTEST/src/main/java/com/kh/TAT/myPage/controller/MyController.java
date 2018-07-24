@@ -32,6 +32,11 @@ public class MyController {
 	public String Project(){
 		return "myPage/myPage_Project";
 	}
+	// 프로젝트 상세보기 페이지 이동
+	@RequestMapping("/my/ProjectDetail.tat")
+	public String ProjectDetail(){
+		return "myPage/myPage_ProjectDetail";
+	}
 	// 문의하기 페이지 이동
 	@RequestMapping("/my/Question.tat")
 	public String Question(){
