@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="templateReplyBoard">
+	<resultMap type="templateReplyBoard" id="templateReplyBoardMap">	
+	</resultMap>
+	
+	<select id="selectReplyBoard" parameterType="templateReplyBoard" resultMap="templateReplyBoardMap">
+		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, TR_REPLY, TR_DATE, TR_RATE FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code}
+		<!-- SELECT * FROM TEMPLATE_REPLY_BOARD TER WHERE T_CODE = #{t_code} -->
+	</select>
+	
+	<insert id="insertReplyBoard" parameterType="templateReplyBoard">
+		INSERT INTO TEMPLATE_REPLY_BOARD VALUES(
+		#{t_code, jdbcType=VARCHAR}, (SELECT M_CODE FROM MEMBER WHERE M_NAME = #{m_code}), #{tr_reply, jdbcType=VARCHAR}, sysdate, #{tr_rate})
+	</insert>
+	
+</mapper>
