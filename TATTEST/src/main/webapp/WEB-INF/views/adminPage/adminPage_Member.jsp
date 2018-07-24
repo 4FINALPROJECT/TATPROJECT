@@ -312,7 +312,7 @@
 			console.log("end 번호 확인 : "+ end);
 			$('#memberListTable').remove();
 			 $.ajax({
-				url : "${pageContext.request.contextPath}/admin/Member.tat",
+				url : "/admin/Member.tat",
 				type : "post",
 				/* dataType : "json", */
 				data : {"start" : start,
