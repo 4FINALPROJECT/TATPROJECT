@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.Template;
+import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 
 @Repository
 public class MainDaoImpl implements MainDao {
@@ -94,5 +96,29 @@ public class MainDaoImpl implements MainDao {
 	public List<Map<String, String>> selectTemplateBoard() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("template.selectTemplate");
+	}
+
+	@Override
+	public Template tempDetail(String t_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("template.selectDetail", t_code);
+	}
+
+	@Override
+	public List<Map<String, String>> replyBoard(String t_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("templateReplyBoard.selectReplyBoard", t_code);
+	}
+
+	@Override
+	public int insertReplyBoard(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("templateReplyBoard.insertReplyBoard", ter);
+	}
+
+	@Override
+	public Member selectOneMCode(String m_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.memberCode", m_code);
 	}	
 }
