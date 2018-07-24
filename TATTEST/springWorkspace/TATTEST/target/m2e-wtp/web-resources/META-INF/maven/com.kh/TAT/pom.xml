@@ -237,7 +237,7 @@
 		    <scope>provided</scope>
 		</dependency>
 		
-		<!-- #7. ?Š¤?”„ë§?  security ?”„? ˆ?ž„?›Œ?¬ ?˜ì¡? -->
+		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>

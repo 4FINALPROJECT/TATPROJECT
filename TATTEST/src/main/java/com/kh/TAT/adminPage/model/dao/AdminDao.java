@@ -12,4 +12,6 @@ public interface AdminDao {
 
 	int selectTotalPaging();
 
+	
+
 }
