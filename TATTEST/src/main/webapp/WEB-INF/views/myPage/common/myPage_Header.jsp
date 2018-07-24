@@ -43,7 +43,7 @@
 								<li><a href="#">프로젝트</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Template.tat">프로젝트 생성</a></li>
-										<li><a href="${pageContext.request.contextPath}/my/Template.tat">프로젝트 편집</a></li>
+										<li><a href="${pageContext.request.contextPath}/my/Project.tat">프로젝트 편집</a></li>
 									        
 									</ul>
 								</li>
