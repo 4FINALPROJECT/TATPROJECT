@@ -5,29 +5,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8 top-info hidden-xs">
-					<span><i class="fa fa-envelope"></i>The Awesome Template</span>
+					<span><i class="fa fa-forumbee"></i> The Awesome Template</span>
 				</div>
 				<div class="col-sm-4 top-info">
 					<ul>
 						<%-- <li><a href="${pageContext.request.contextPath}/edit/Main.tat" class="my-tweet">에</a></li> --%>
-						<li><a href="${pageContext.request.contextPath}/my/Main.tat" class="my-skype">마</a></li>
+						<li><a href="${pageContext.request.contextPath}/my/Main.tat" class="my-skype" data-toggle="tooltip" data-placement="bottom" title="마이페이지">마</a></li>
 						<c:if test="${m.m_code eq 'A001'}">
-						<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint">관</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint"data-toggle="tooltip" data-placement="bottom" title="관리자페이지">관</a></li>
 						</c:if>
 						<c:if test="${empty m and empty f and empty g}">
-						<li><a href="#" class="my-rss" data-toggle="modal" data-target="#signup">회</a></li>
+							<li><a href="#" class="my-rss" data-toggle="modal" data-target="#signup" data-toggle="tooltip" data-placement="bottom" title="회원가입">회</a></li>
 						</c:if>
 						<c:if test="${empty m and empty f and empty g}">
-						<li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">로</a></li>
+							<li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin" data-toggle="tooltip" data-placement="bottom" title="로그인">로</a></li>
 						</c:if>
 						<c:if test="${!empty m}">
-						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
-						</c:if>
-						<c:if test="${!empty f}">
-						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로(f)!</a></li>
-						</c:if>
-						<c:if test="${!empty g}">
-						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로(g)!</a></li>
+							<li><a class="my-google" href="${pageContext.request.contextPath}/main/memberLogout.tat" data-toggle="tooltip" data-placement="bottom" title="로그아웃">로</a></li>
 						</c:if>
 					</ul>
 				</div>
