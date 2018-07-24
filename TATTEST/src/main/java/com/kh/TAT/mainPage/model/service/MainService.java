@@ -1,12 +1,11 @@
 package com.kh.TAT.mainPage.model.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
-import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 
 public interface MainService {
 
