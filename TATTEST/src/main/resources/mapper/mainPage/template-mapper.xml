@@ -5,8 +5,11 @@
 	</resultMap>
 	
 	<select id="selectTemplate" parameterType="template" resultMap="templateMap">
-		 
+		SELECT T_CODE, T_CATEGORY, T_DATE, T_USE_COUNT, T_NAME, T_DETAIL FROM TEMPLATE
 	</select>
 	
+	<select id="selectDetail" parameterType="template" resultMap="templateMap">
+		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, T_CATEGORY, T_DATE, T_USE_COUNT, T_NAME, T_DETAIL FROM TEMPLATE TE WHERE T_CODE = #{t_code}
+	</select>
 	
 </mapper>

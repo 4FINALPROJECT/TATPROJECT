@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.Template;
+import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 import com.kh.TAT.mainPage.model.dao.MainDao;
 
 @Service
@@ -94,5 +96,41 @@ public class MainServiceImpl implements MainService {
 	public List<Map<String, String>> selectTemplateBoard() {
 		// TODO Auto-generated method stub
 		return mainD.selectTemplateBoard();
+	}
+
+	@Override
+	public Template tempDetail(String t_code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Map<String, String>> replyBoard(String t_code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insertReplyBoard(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Member selectOneMCode(String m_code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void DeleteReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void UpdateReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		
 	}
 }
