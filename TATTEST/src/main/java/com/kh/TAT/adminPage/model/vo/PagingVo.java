@@ -18,7 +18,7 @@ public class PagingVo {
 	    }
 	    public PagingVo() {}
 	    public int getStart() {
-	        return index * listCnt;
+	        return index * listCnt+1;
 	    }
 	    public int getLast() {
 	        return (index * listCnt) + listCnt;

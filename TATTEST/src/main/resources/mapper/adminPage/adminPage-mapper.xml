@@ -4,7 +4,7 @@
 	<select id="selectMemberList" resultType="Member" parameterType="pagingVo">
 		SELECT * FROM (    
 		SELECT ROWNUM RNUM, P.* FROM (    
-		SELECT *  FROM MEMBER ORDER BY ENROLL_DATE DESC ) P )
+		SELECT *  FROM MEMBER ORDER BY M_CODE ASC ) P )
 		WHERE RNUM BETWEEN #{start} AND #{last}
 	</select>
 	

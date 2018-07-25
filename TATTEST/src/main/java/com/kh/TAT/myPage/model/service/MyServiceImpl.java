@@ -17,4 +17,10 @@ public class MyServiceImpl implements MyService {
 		
 		return myD.selectOneMemberCode(m_code);
 	}
+
+	@Override
+	public int updateProfile(Member m) {
+		
+		return myD.updateProfile(m);
+	}
 }

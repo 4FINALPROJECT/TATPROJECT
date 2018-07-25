@@ -6,4 +6,8 @@ public interface MyService {
 
 	Member selectOneMemberCode(String m_code);
 
+	int updateProfile(Member m);
+
+	
+
 }

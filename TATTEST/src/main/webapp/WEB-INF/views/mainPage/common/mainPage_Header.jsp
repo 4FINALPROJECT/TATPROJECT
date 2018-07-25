@@ -23,12 +23,6 @@
 						<c:if test="${!empty m_code}">
 						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
 						</c:if>
-						<c:if test="${!empty f}">
-						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로(f)!</a></li>
-						</c:if>
-						<c:if test="${!empty g}">
-						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로(g)!</a></li>
-						</c:if>
 					</ul>
 				</div>
 			</div>

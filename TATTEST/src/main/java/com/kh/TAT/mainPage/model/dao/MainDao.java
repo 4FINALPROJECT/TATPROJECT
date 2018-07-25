@@ -46,4 +46,8 @@ public interface MainDao {
 
 	Member selectOneMCode(String m_code);
 
+	void DeleteReply(TemplateReplyBoard ter);
+
+	void UpdateReply(TemplateReplyBoard ter);
+
 }

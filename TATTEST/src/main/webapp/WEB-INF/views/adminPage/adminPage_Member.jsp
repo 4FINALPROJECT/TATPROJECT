@@ -5,6 +5,7 @@
 <head>
     <title>회원 조회 || TAT 관리자</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+
 </head>
 <body>
 	<c:import url="common/adminPage_Header.jsp"></c:import>
@@ -191,7 +192,7 @@
 				                            <th>IS_USEABLE</th>
 				                        </tr>
 				                        </thead>
-				                        <tbody id="memberListTable">
+				                        <tbody class="memberListTable">
 				                        <%-- <c:forEach var="m" items="${memberList}" >
 				                        <tr>
 				                            <td>${m.m_code}</td>
@@ -212,12 +213,16 @@
 									<ul class="pagination">
 									 <c:if test="${p.pageStartNum ne 1}">
 										<!--이전 페이지 이동 -->
-										<li class="pageFirst"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>‹</a></li>
+										<li class="pageFirst"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>‹‹</a></li>
 										<li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li>
 									</c:if>
-									<c:forEach var='i' begin="${p.pageStartNum}" end="${p.pageLastNum}" step="1">
-                						<li class='pageIndex${i}'><a onclick='pageIndex(${i});'>${i}</a></li>
-            						</c:forEach>
+									
+                						<%-- <li class='pageIndex${0}'><a onclick='pageIndex(${0});'>${1}</a></li>
+                						<li class='pageIndex${1}'><a onclick='pageIndex(${1});'>${2}</a></li>
+                						<li class='pageIndex${2}'><a onclick='pageIndex(${2});'>${3}</a></li>
+                						<li class='pageIndex${3}'><a onclick='pageIndex(${3});'>${4}</a></li>
+                						<li class='pageIndex${4}'><a onclick='pageIndex(${4});'>${5}</a></li> --%>
+            						
 									<c:if test="${p.lastChk}">
 										<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>
 										<li class="pageLast"><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>››</a></li>
@@ -284,6 +289,12 @@
 	</section>
 	
 	<script>
+	 window.onload = function(){
+		 var start = 0;
+		 pageIndex(start);
+		 pageBtn(); 
+		 
+	 }
 		var showCount = 5;
 		var btnCount = 5;
 		var showDoubleCount = 5.0;
@@ -291,67 +302,106 @@
 		function pageFirst(start, pageCnt){
 			alert("처음으로 가기 테스트");
 			pageIndex(start, pageCnt);
-		}
+		};
 	
-		function pagePre(start, pageCnt){
+		function pagePre(pageStartNum, pageCnt){
 			alert("이전으로 가기 테스트");
-		}	
-	
+		};
+		function pageBtnCreate(total){
+			console.log("게시글 총갯수total : "+total)
+			var num; 
+			if(total%showDoubleCount != 0){
+				num = Math.ceil((total/showCount))+1;
+			}else{
+				num = Math.ceil(total/showCount);
+			} 
+				console.log("버튼 갯수 : "+num);
+			if(num > 5){num = 5};
+				for(var i= 0 ; i<num;i++ ){ 
+				$('.pagination').append('<li class=pageIndex'+i+'><a onclick=pageIndex('+i+');>'+(i+1)+'</a></li>');
+				};
+				pageNext();
+				
+				
+		};
+		function pageBtn(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/MemberTotalAjax.tat",
+				type : "post",
+				dataType : 'json', 		
+				success : function(data){
+				console.log("데이터 확인123 : "+ data);
+					var total = data;
+					pageBtnCreate(total);
+					
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+		};
 		function pageIndex(pageStartNum){
-			var start
-			var end = 0;
+			
+			var start = pageStartNum;
+			
+			
 			// alert(pageStartNum+"페이지 이동테스트");
-			if(pageStartNum != 1){
-				start = ((pageStartNum*showCount)-showCount)+1;
-				end = pageStartNum*showCount;
+			 /* if(pageStartNum != 1){
+				start = 1;
+				end = 40;
+			}else if(pageStartNum == 0){
+				start = 1
+				end = 5;
 			}else{
 				start = 1
 				end = 5;
-			}
+			}  */
 			console.log("start 번호 확인 : "+ start);
-			console.log("end 번호 확인 : "+ end);
-			$('#memberListTable').remove();
+			
+			 $('.memberListTable').empty(); 
 			 $.ajax({
-				url : "/admin/Member.tat",
+				url : "${pageContext.request.contextPath}/admin/MemberAjax.tat",
 				type : "post",
-				/* dataType : "json", */
+				dataType : 'json', 
 				data : {"start" : start,
-						"end" : end
+						
 				},success : function(data){
 					
 					console.log("데이터 확인 : "+ data);
 				
-					pageVal = data.memberAjaxList;
-					//createPageList("페이징 Ajax 데이터 확인 : "+data);
+					
+					createPageList(data);
 				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
-		function createPageList(){
+		function createPageList(data){
 			
-			console.log("페이징 처리 Ajax 값 확인 : "+ pageVal);
+			console.log("페이징 처리 Ajax 값 확인 : "+ data.memberList);
 			
-			for(var idx in pageVal){
-			$('#memberListTable').html('<tr><td>'+data[idx].m_code+'</td>'+
+			for(var idx in data){
+				console.log(data[idx].m_code);
+			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].m_email+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+
 					'<td>'+data[idx].m_birth+'</td>'+
 					'<td>'+data[idx].enroll_date+'</td>'+
 					'<td>'+data[idx].is_usable+'</td></tr>');
-			}
+			};
 		};
 			
 			
 		function pageNext(start, total, listCnt, pageCnt){
-			alert("앞으로가기 테스트");
+			$.('.pagination').append(<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>);
 		};
 		function pageLast(start, total, listCnt, pageCnt){
 			alert("마지막으로 가기 테스트");
 			
 			pageIndex(start, total);
-		};
+		}
 		
+	
 		 
 		
 
