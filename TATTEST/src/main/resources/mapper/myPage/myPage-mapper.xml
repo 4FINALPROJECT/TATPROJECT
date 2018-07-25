@@ -6,4 +6,8 @@
 		SELECT * FROM MEMBER WHERE M_CODE = #{m_code} 
 	</select>
 		
+	<update id="updateProfile" parameterType="member">
+		UPDATE MEMBER SET M_NAME= #{m_name}, M_BIRTH= #{m_birth}, M_GENDER = #{m_gender} WHERE M_CODE = #{m_code}
+	</update>	
+		
 </mapper>
