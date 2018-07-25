@@ -48,11 +48,10 @@
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<div class="project_description">
 							<div class="widget_title">
-								<h4><span>Project Descriptions</span></h4>
+								<h4><span>템플릿 이름 부분입니다.</span></h4>
 							</div>
 
-							<p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut aut reiciendise voluptat maiores alias aut et perferendis doloribus asperiores ut labore. Donec earum rerum hic tenetur ans sapiente delectus, ut aut reiciendise voluptat maiores alias consequaturs aut perferendis doloribus asperiores.</p>
-							<p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>템플릿 설명 부분입니다.</p>
 						</div>
 					</div>
 					
@@ -62,10 +61,10 @@
 								<h4><span>Project Details</span></h4>
 							</div>
 							<ul class="details">
-								<li><span>Client :</span>Louis</li>
-								<li><span>Company :</span> Rain Technologies inc.</li>
-								<li><span>Category :</span> Web Design, Photography</li>
-								<li><span>Date :</span> 05 September 2015</li>
+								<li><span>Client :</span>${temp.m_code}</li>
+								<li><span>Company :</span> 회사이름 부분</li>
+								<li><span>Category :</span> ${temp.t_category}</li>
+								<li><span>Date :</span> ${temp.t_date}</li>
 								<li><span>Project URL :</span> <a href="#">www.bestjquery.com</a></li>
 							</ul>
 						</div>
@@ -74,68 +73,62 @@
                 
                 <div class="news_comments">
                             <div class="dividerHeading">
-                                <h4><span>Comments (6)</span></h4>
+                                <h4><span>Comments</span></h4>
                             </div>
                             <div id="comment">
                                 <ul id="comment-list">
+                                	<c:forEach items="${tempReply}" var="tempReply">
                                     <li class="comment">
                                         <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_1.png" class="avatar"></div>
                                         <div class="comment-container">
-                                            <h4 class="comment-author"><a href="#">John Smith</a></h4>
-                                            <div class="comment-meta"><a href="#" class="comment-date link-style1">February 22, 2015</a></div>
+                                            <h4 class="comment-author"><a href="#">${tempReply.m_code}</a></h4>
+                                            <div class="comment-meta"><a href="#" class="comment-date link-style1">${tempReply.tr_date}</a></div>
                                             <div class="comment-body">
-                                                <p>Ne omnis saperet docendi nec, eos ea alii molestiae aliquand. Latine fuisset mele, mandamus atrioque eu mea, wi forensib argumentum vim an. Te viderer conceptam sed, mea et delenit fabellas probat.</p>
+                                                <p>${tempReply.tr_reply}</p>
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="comment">
-                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_1.png" class="avatar"></div>
-                                        <div class="comment-container">
-                                            <h4 class="comment-author"><a href="#">John Smith</a></h4>
-                                            <div class="comment-meta"><a href="#" class="comment-date link-style1">February 07, 2015</a></div>
-                                            <div class="comment-body">
-                                                <p>Eu mea harum soleat albucius. At duo nihil saperet inimicus. Ne quo dicit offendit eloquenam. Ut intellegam inn theophras tus mea. Vide ceteros mediocritatem est in, utamur gubergren contentiones.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="comment">
-                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_3.png" class="avatar"></div>
-                                        <div class="comment-container">
-                                            <h4 class="comment-author"><a href="#">Thomas Smith</a></h4>
-                                            <div class="comment-meta"><a href="#" class="comment-date link-style1">February 02, 2015</a></div>
-                                            <div class="comment-body">
-                                                <p>Quodsi eirmod salutandi usu ei, ei mazim facete mel. Deleniti interesset at sed, sea ei malis expetenda. Ei efficiat integebat mel, vis alii insoles te. Vis ex bonorum contentiones. An cum possit reformidans. Est at eripuit theophrastus. Scripta imper diet ad nec, everti contentiones id eam, an eum causae officiis.</p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
+                           	<c:if test="${empty m_code and empty f and empty g}">
+                            <button data-toggle="modal" data-target="#signin">댓글 남기기</button>
+                            </c:if>
                             <div class="dividerHeading">
                                 <h4><span>Leave a comment</span></h4>
                                 </div>
-
+							<c:if test="${!empty m_code or !empty f or !empty g}">
+							<c:url value="/main/insertReply.tat" var="insertReply">
+								<%-- <c:param name="t_code" value="${temp.t_code}"/>
+								<c:param name="m_code" value=""/> --%>
+							</c:url>
+                            <form id="insertReplyForm" action="${insertReply}">
                             <div class="comment_form">
                                <div class="row">
-                                   <div class="col-sm-4">
-                                       <input class="col-lg-4 col-md-4 form-control" name="name" type="text" id="name" size="30"  onfocus="if(this.value == 'Name') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Name'; }" value="Name" placeholder="Name" >
+                               <input type="hidden" value="${temp.t_code}" name="t_code"/>
+                               <input type="hidden" value="${temp.m_code}" name="m_code"/>
+                                   <!-- <div class="col-sm-4">
+                                       <input class="col-lg-4 col-md-4 form-control" name="m_code" type="text" id="m_code" size="30"  onfocus="if(this.value == 'Name') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Name'; }" value="Name" placeholder="Name" >
                                    </div>
                                    <div class="col-sm-4">
                                        <input class="col-lg-4 col-md-4 form-control" name="email" type="text" id="email" size="30" onfocus="if(this.value == 'E-mail') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'E-mail'; }" value="E-mail" placeholder="E-mail">
-                                   </div>
+                                   </div> -->
                                    <div class="col-sm-4">
-                                       <input class="col-lg-4 col-md-4 form-control" name="url" type="text" id="url" size="30" onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" value="Url" placeholder="Url">
+                                       <input class="col-lg-4 col-md-4 form-control" name="tr_rate" type="number" id="tr_rate" size="30" onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" placeholder="Rate">
                                    </div>
                                </div>
                             </div>
                             <div class="comment-box row">
                                 <div class="col-sm-12">
                                     <p>
-                                        <textarea name="comments" class="form-control" rows="6" cols="40" id="comments" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="Message">Message</textarea>
+                                        <textarea name="tr_reply" class="form-control" rows="6" cols="40" id="tr_reply" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="Message">Message</textarea>
                                     </p>
                                 </div>
                             </div>
 
-                            <a class="btn btn-lg btn-default" href="#">Post Comment</a>
+                            <button id="insertReply" type="submit" class="btn btn-lg btn-default">Post Comment</button>
+                            </form>
+                            </c:if>
                         </div>
 				</div>
                 

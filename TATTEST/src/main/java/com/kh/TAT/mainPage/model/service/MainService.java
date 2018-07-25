@@ -7,6 +7,7 @@ import java.util.Map;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
 
+
 public interface MainService {
 
 	int insertMember(Member member);
@@ -34,5 +35,13 @@ public interface MainService {
 	int ddaySelect(String m_code);
 
 	List<Map<String, String>> selectTemplateBoard();
+
+	Template tempDetail(String t_code);
+
+	List<Map<String, String>> replyBoard(String t_code);
+
+	int insertReplyBoard(TemplateReplyBoard ter);
+
+	Member selectOneMCode(String m_code);
 
 }

@@ -36,4 +36,12 @@ public interface MainDao {
 
 	List<Map<String, String>> selectTemplateBoard();
 
+	Template tempDetail(String t_code);
+
+	List<Map<String, String>> replyBoard(String t_code);
+
+	int insertReplyBoard(TemplateReplyBoard ter);
+
+	Member selectOneMCode(String m_code);
+
 }

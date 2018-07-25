@@ -391,6 +391,10 @@ function premiumService(e, a){
 //////////////////////////결제 스트립트 끝 //////////////////////////////
 
 /* Sign up test */
+/*$('#insertReply').on('click', function(){
+	$('#insertReplyForm').submit();
+});*/
+
 
 // 회원가입 함수
 $('#insertBtn').on('click',function(){
