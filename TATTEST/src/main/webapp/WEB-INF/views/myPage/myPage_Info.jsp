@@ -8,13 +8,13 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 	<style>
 		#changeEmail{
-			display:none;
+			
 		}
 		#changePassword{
-			display:none;
+			
 		}
 		#changeProfile{
-			
+		
 		}
 	</style>
 </head>
@@ -59,15 +59,15 @@
 						</div>
 					</div>
 					
-					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="changeProfile">
+					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" >
 						<div class="row sub_content">
 				            <!-- 프로필 변경 -->
-				            <div class="col-lg-12 col-md-12 col-sm-12">
+				            <div class="col-lg-12 col-md-12 col-sm-12" id="changeProfile">
 			                    <div class="dividerHeading">
 			                        <h4><span>프로필 정보 변경</span></h4>
 			                    </div>
 			                    <p>회원의 이름, 성별, 생년월일 변경할 수 있습니다. </p>
-			                    <form id="contactForm" action="" novalidate="novalidate">
+			                    <form id="changeProfileForm" action="" novalidate="novalidate">
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-lg-6 ">
@@ -96,7 +96,7 @@
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-md-3">
-			                                    <input type="button" class="form-control" value="비밀번호변경완료" />
+			                                    <input type="button" class="form-control" onclick="changeProfile" value="프로필 변경완료" />
 			                                </div>
 			                            </div>     
 			                        </div>
@@ -106,63 +106,68 @@
 			                <!-- 이메일 변경 -->
 			                <div class="col-lg-12 col-md-12 col-sm-12" id="changeEmail">
 			                    <div class="dividerHeading">
-			                        <h4><span>상세정보</span></h4>
+			                        <h4><span>이메일 정보 변경</span></h4>
 			                    </div>
 			                    <p></p>
-			                    <form id="contactForm" action="" novalidate="novalidate">
+			                    <form id="changeEmailForm" action="" novalidate="novalidate">
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-lg-6 ">
-			                                    <input type="text" id="name" name="name" class="form-control" maxlength="100" data-msg-required="Please enter your name." value="" placeholder="Your Name" >
+			                                    <input type="text" id="name" name="name" class="form-control" maxlength="100" value="" placeholder="Your Name" >
 			                                </div>
 			                                <div class="col-lg-6 ">
-			                                    <input type="email" id="email" name="email" class="form-control" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="" placeholder="Your E-mail" >
+			                                    <input type="email" id="email" name="email" class="form-control" maxlength="100" value="" placeholder="Your E-mail" >
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-md-12">
-			                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
+			                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" value="" placeholder="Subject">
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-md-12">
-			                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
+			                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" maxlength="5000" placeholder="Message"></textarea>
 			
 			                                </div>
 			                            </div>
 			                        </div>
 			                    </form>
 			                </div>
+			                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			                <!-- 비밀번호 변경 -->
 			                <div class="col-lg-12 col-md-12 col-sm-12" id="changePassword">
 			                    <div class="dividerHeading">
 			                        <h4><span>비밀번호 변경 </span></h4>
 			                    </div>
 			                    <p></p>
-			                    <form id="contactForm" action="" novalidate="novalidate">
+			                    <form id="changePasswordForm" action="" novalidate="novalidate">
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-lg-6 ">
-			                                    <input type="password" id="password1" name="password1" class="form-control" maxlength="100" value="" placeholder="현재 비밀번호" >
-			                                </div>
+			                                    <input type="password" id="password1" name="password1" class="form-control" maxlength="100" placeholder="현재 비밀번호" >      
+			                                </div><br><br><br>
 			                                <div class="col-lg-6 ">
-			                                    <input type="email" id="password2" name="password2" class="form-control" maxlength="100" value="" placeholder="변경할 비밀번호" >
+			                                    <input type="password" id="password2" name="password2" class="form-control" maxlength="100" placeholder="변경할 비밀번호" >
+			                                </div><br><br><br>
+			                                <div class="col-lg-6 ">
+			                                    <input type="password" id="password3" name="password3" class="form-control" maxlength="100" placeholder="변경할 비밀번호 확인" >
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-md-12">
-			                                    <input type="text" id="password3" name="password3" class="form-control" maxlength="100" value="" placeholder="변경할 비밀번호 확인">
+			                                <div class="col-md-3">
+			                                    <input type="button" id="changePasswordBtn" class="form-control" maxlength="100" value="비밀번호 변경 완료">
 			                                </div>
 			                            </div>
 			                        </div>
 			                    </form>
 			                </div>
+			                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 				        </div>
 	                </div>
 				</div>
