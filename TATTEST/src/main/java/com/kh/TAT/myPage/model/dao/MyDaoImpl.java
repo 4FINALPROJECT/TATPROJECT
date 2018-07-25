@@ -14,13 +14,14 @@ public class MyDaoImpl implements MyDao {
 
 	@Override
 	public Member selectOneMemberCode(String m_code) {
-		// TODO Auto-generated method stub
-		return null;
+
+		
+		return sqlSession.selectOne("member.selectMember",m_code);
 	}
 
 	@Override
 	public int updateProfile(Member m) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return sqlSession.update("member.updateProfile",m);
 	}
 }

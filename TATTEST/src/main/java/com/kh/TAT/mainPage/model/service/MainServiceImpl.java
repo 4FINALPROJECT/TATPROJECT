@@ -101,36 +101,36 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public Template tempDetail(String t_code) {
 		// TODO Auto-generated method stub
-		return null;
+		return mainD.tempDetail(t_code);
 	}
 
 	@Override
 	public List<Map<String, String>> replyBoard(String t_code) {
 		// TODO Auto-generated method stub
-		return null;
+		return mainD.replyBoard(t_code);
 	}
 
 	@Override
 	public int insertReplyBoard(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
-		return 0;
+		return mainD.insertReplyBoard(ter);
 	}
 
 	@Override
 	public Member selectOneMCode(String m_code) {
 		// TODO Auto-generated method stub
-		return null;
+		return mainD.selectOneMCode(m_code);
 	}
 
 	@Override
 	public void DeleteReply(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
-		
+		mainD.DeleteReply(ter);
 	}
 
 	@Override
 	public void UpdateReply(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
-		
+		mainD.UpdateReply(ter);
 	}
 }

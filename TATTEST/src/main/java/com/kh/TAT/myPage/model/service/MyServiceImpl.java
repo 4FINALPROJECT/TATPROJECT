@@ -12,4 +12,15 @@ public class MyServiceImpl implements MyService {
 	@Autowired
 	MyDao myD;
 
+	@Override
+	public Member selectOneMemberCode(String m_code) {
+		
+		return myD.selectOneMemberCode(m_code);
+	}
+
+	@Override
+	public int updateProfile(Member m) {
+		
+		return myD.updateProfile(m);
+	}
 }

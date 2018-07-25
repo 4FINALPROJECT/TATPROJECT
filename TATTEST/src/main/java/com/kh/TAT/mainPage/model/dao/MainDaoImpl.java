@@ -101,36 +101,37 @@ public class MainDaoImpl implements MainDao {
 	@Override
 	public Template tempDetail(String t_code) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("template.selectDetail", t_code);
 	}
 
 	@Override
 	public List<Map<String, String>> replyBoard(String t_code) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("templateReplyBoard.selectReplyBoard", t_code);
 	}
 
 	@Override
 	public int insertReplyBoard(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("templateReplyBoard.insertReplyBoard", ter);
 	}
 
 	@Override
 	public Member selectOneMCode(String m_code) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("member.memberCode", m_code);
 	}
 
 	@Override
 	public void DeleteReply(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
+		sqlSession.delete("templateReplyBoard.deleteReplyBoard", ter);
 		
 	}
 
 	@Override
 	public void UpdateReply(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
-		
+		sqlSession.update("templateReplyBoard.updateReplyBoard", ter);
 	}	
 }
