@@ -28,16 +28,20 @@ public class AdminController {
 	}
 	// 회원정보 페이지 이동
 	@RequestMapping(value="/admin/Member.tat")
-	public String Member(Model model, PagingVo paging){
+	public String Member(){
+	    return "adminPage/adminPage_Member";
+	}
+	@RequestMapping(value="/admin/MemberAjax.tat")
+	public List<Member> Member(PagingVo paging ,int start, int end){
 		// 게시판 페이지 이동
-		
+		paging.setPageStartNum(start);
+		paging.setPageLastNum(end);
 	    List<Member> memberList = adminS.selectMemberList(paging);
 	    paging.setTotal(adminS.selectTotalPaging());
-	    model.addAttribute("memberList", memberList);
-	    model.addAttribute("p", paging);
 	    
-	    System.out.println("p : "+paging);
-	    return "adminPage/adminPage_Member";
+	    System.out.println("memberList :"+memberList);
+	    
+	    return memberList;
 
 	}
 	
