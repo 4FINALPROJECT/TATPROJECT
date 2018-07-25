@@ -77,17 +77,17 @@
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_1.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_1.png" alt="" /></a></span>
                                                     <a href="#">Publishing packag esanse web page editos</a>
                                                     <i>October 09, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_2.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_2.png" alt="" /></a></span>
                                                     <a href="#">Sublishing packag esanse web page editos</a>
                                                     <i>October 08, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_3.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_3.png" alt="" /></a></span>
                                                     <a href="#">Mublishing packag esanse web page editos</a>
                                                     <i>October 07, 2015</i>
                                                 </li>
@@ -96,17 +96,17 @@
                                         <div class="tab-pane fade" id="Recent">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_4.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_4.png" alt="" /></a></span>
                                                     <a href="#">Various versions has evolved over the years</a>
                                                     <i>October 18, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_5.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_5.png" alt="" /></a></span>
                                                     <a href="#">Rarious versions has evolve over the years</a>
                                                     <i>October 17, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_6.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_6.png" alt="" /></a></span>
                                                     <a href="#">Marious versions has evolven over the years</a>
                                                     <i>October 16, 2015</i>
                                                 </li>
@@ -115,15 +115,15 @@
                                         <div class="tab-pane fade" id="Comment">
                                             <ul class="comments">
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_3.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_3.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambose</a> <i>says: </i> </strong> Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_1.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_1.png" alt="#"></a>
                                                     <p><strong><a href="#">Makaroni</a> <i>says: </i> </strong> Tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_2.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_2.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambanan</a> <i>says: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
                                                 </li>
                                             </ul>
@@ -182,64 +182,50 @@
 				                    <table class="table table-striped table-hover">
 				                        <thead>
 				                        <tr>
-				                            <th>Rank</th>
-				                            <th>Name</th>
-				                            <th>Year</th>
-				                            <th>Rating</th>
-				                            <th>Votes</th>
+				                            <th>Member_Code</th>
+				                            <th>Member_EMAIL</th>
+				                            <th>Member_NAME</th>
+				                            <th>Member_Birth</th>
+				                            <th>Member_Gender</th>
+				                            <th>Member_Joindate</th>
+				                            <th>IS_USEABLE</th>
 				                        </tr>
 				                        </thead>
-				                        <tbody>
+				                        <tbody id="memberListTable">
+				                        <%-- <c:forEach var="m" items="${memberList}" >
 				                        <tr>
-				                            <td>1</td>
-				                            <td>The Shawshank Redemption</td>
-				                            <td>1994</td>
-				                            <td>9.2</td>
-				                            <td>923,629</td>
+				                            <td>${m.m_code}</td>
+				                            <td>${m.m_email}</td>
+				                            <td>${m.m_name}</td>
+				                            <td>${m.m_birth}</td>
+				                            <td>${m.m_gender}</td>
+				                            <td>${m.enroll_date}</td>
+				                            <td>${m.is_usable}</td>
 				                        </tr>
-				                        <tr>
-				                            <td>2</td>
-				                            <td>The Godfather</td>
-				                            <td>1972</td>
-				                            <td>9.2</td>
-				                            <td>663,133</td>
-				                        </tr>
-				                        <tr>
-				                            <td>3</td>
-				                            <td>The Godfather: Part II</td>
-				                            <td>1974</td>
-				                            <td>9.0</td>
-				                            <td>427,132</td>
-				                        </tr>
-				                        <tr>
-				                            <td>4</td>
-				                            <td>Pulp Fiction</td>
-				                            <td>1994</td>
-				                            <td>8.9</td>
-				                            <td>719,280</td>
-				                        </tr>
-				                        <tr>
-				                            <td>5</td>
-				                            <td>The Good, the Bad and the Ugly</td>
-				                            <td>1966</td>
-				                            <td>8.9</td>
-				                            <td>218,887</td>
-				                        </tr>
+				                        </c:forEach> --%>
 				                        </tbody>
 				                    </table>
+
 				                </div>
 				                        
 				                <div class="col-sm-12 text-center">
 									<ul class="pagination">
-										<li><a href="#">&laquo;</a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
+									 <c:if test="${p.pageStartNum ne 1}">
+										<!--이전 페이지 이동 -->
+										<li class="pageFirst"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>‹</a></li>
+										<li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li>
+									</c:if>
+									<c:forEach var='i' begin="${p.pageStartNum}" end="${p.pageLastNum}" step="1">
+                						<li class='pageIndex${i}'><a onclick='pageIndex(${i});'>${i}</a></li>
+            						</c:forEach>
+									<c:if test="${p.lastChk}">
+										<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>
+										<li class="pageLast"><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>››</a></li>
+									</c:if> 
 									</ul>
 								</div>
+								
+																
 				            </div>
 				            
 				            <div class="col-lg-12 col-md-12 col-sm-12">
@@ -294,9 +280,82 @@
 				</div>
 			
 		</section>
-		
-		
+
 	</section>
+	
+	<script>
+		var showCount = 5;
+		var btnCount = 5;
+		var showDoubleCount = 5.0;
+		var pageVal;
+		function pageFirst(start, pageCnt){
+			alert("처음으로 가기 테스트");
+			pageIndex(start, pageCnt);
+		}
+	
+		function pagePre(start, pageCnt){
+			alert("이전으로 가기 테스트");
+		}	
+	
+		function pageIndex(pageStartNum){
+			var start
+			var end = 0;
+			// alert(pageStartNum+"페이지 이동테스트");
+			if(pageStartNum != 1){
+				start = ((pageStartNum*showCount)-showCount)+1;
+				end = pageStartNum*showCount;
+			}else{
+				start = 1
+				end = 5;
+			}
+			console.log("start 번호 확인 : "+ start);
+			console.log("end 번호 확인 : "+ end);
+			$('#memberListTable').remove();
+			 $.ajax({
+				url : "/admin/Member.tat",
+				type : "post",
+				/* dataType : "json", */
+				data : {"start" : start,
+						"end" : end
+				},success : function(data){
+					
+					console.log("데이터 확인 : "+ data);
+				
+					pageVal = data.memberAjaxList;
+					//createPageList("페이징 Ajax 데이터 확인 : "+data);
+				},error: function(jqXHR, textStatus, errorThrown) {
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+		};
+		function createPageList(){
+			
+			console.log("페이징 처리 Ajax 값 확인 : "+ pageVal);
+			
+			for(var idx in pageVal){
+			$('#memberListTable').html('<tr><td>'+data[idx].m_code+'</td>'+
+					'<td>'+data[idx].m_email+'</td>'+
+					'<td>'+data[idx].m_name+'</td>'+
+					'<td>'+data[idx].m_name+'</td>'+
+					'<td>'+data[idx].m_birth+'</td>'+
+					'<td>'+data[idx].enroll_date+'</td>'+
+					'<td>'+data[idx].is_usable+'</td></tr>');
+			}
+		};
+			
+			
+		function pageNext(start, total, listCnt, pageCnt){
+			alert("앞으로가기 테스트");
+		};
+		function pageLast(start, total, listCnt, pageCnt){
+			alert("마지막으로 가기 테스트");
+			
+			pageIndex(start, total);
+		};
+		
+		 
+		
+
+	</script>
 
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
