@@ -121,4 +121,16 @@ public class MainServiceImpl implements MainService {
 		// TODO Auto-generated method stub
 		return mainD.selectOneMCode(m_code);
 	}
+
+	@Override
+	public void DeleteReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		mainD.DeleteReply(ter);
+	}
+
+	@Override
+	public void UpdateReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		mainD.UpdateReply(ter);
+	}
 }

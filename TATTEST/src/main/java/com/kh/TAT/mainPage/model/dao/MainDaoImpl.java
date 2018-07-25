@@ -120,5 +120,18 @@ public class MainDaoImpl implements MainDao {
 	public Member selectOneMCode(String m_code) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.memberCode", m_code);
+	}
+
+	@Override
+	public void DeleteReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("templateReplyBoard.deleteReplyBoard", ter);
+		
+	}
+
+	@Override
+	public void UpdateReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		sqlSession.update("templateReplyBoard.updateReplyBoard", ter);
 	}	
 }

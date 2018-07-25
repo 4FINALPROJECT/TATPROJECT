@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
+import com.kh.TAT.common.model.vo.Template;
+import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 
 
 public interface MainDao {
@@ -43,5 +45,9 @@ public interface MainDao {
 	int insertReplyBoard(TemplateReplyBoard ter);
 
 	Member selectOneMCode(String m_code);
+
+	void DeleteReply(TemplateReplyBoard ter);
+
+	void UpdateReply(TemplateReplyBoard ter);
 
 }
