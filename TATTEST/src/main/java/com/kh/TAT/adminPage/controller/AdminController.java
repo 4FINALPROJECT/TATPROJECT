@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.TAT.common.model.vo.Member;
 
@@ -28,18 +29,44 @@ public class AdminController {
 	}
 	// 회원정보 페이지 이동
 	@RequestMapping(value="/admin/Member.tat")
-	public String Member(Model model, PagingVo paging){
+	public String Member(){
+	    return "adminPage/adminPage_Member";
+	}
+	@ResponseBody
+	@RequestMapping(value="/admin/MemberAjax.tat")
+	public List<Member> Member(PagingVo paging,@RequestParam("start") int start){
 		// 게시판 페이지 이동
+		System.out.println("출력결과 start : "+start);
+		
+		paging.setIndex(start);
 		
 	    List<Member> memberList = adminS.selectMemberList(paging);
 	    paging.setTotal(adminS.selectTotalPaging());
-	    model.addAttribute("memberList", memberList);
-	    model.addAttribute("p", paging);
 	    
-	    System.out.println("p : "+paging);
-	    return "adminPage/adminPage_Member";
+	    System.out.println("memberList :"+memberList);
+	    
+	    /*return "adminPage/adminPage_Member";*/
+	    return memberList;
 
 	}
+	@ResponseBody
+	@RequestMapping(value="/admin/MemberTotalAjax.tat")
+	public int totalpageList(){
+		int totalpageList = adminS.selectTotalPaging();
+		System.out.println("게시글 갯수 : "+totalpageList);
+		return totalpageList;
+	}
+	/*@ResponseBody
+	@RequestMapping(value="/admin/MemberAjax.tat")
+	public String paging(Model model, PagingVo paging){
+        
+        List<Member> memberList = adminS.selectMemberList(paging);
+        System.out.println("memberList :"+memberList);
+        paging.setTotal(adminS.selectTotalPaging());
+        model.addAttribute("memberList", memberList);
+        model.addAttribute("p", paging);
+        return "paging";
+	}*/
 	
 	/*@ResponseBody
 	@RequestMapping(value="/admin/MemberAjax.tat", method=RequestMethod.POST)
