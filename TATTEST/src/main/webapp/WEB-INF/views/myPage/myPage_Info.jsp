@@ -51,7 +51,7 @@
 									<h4><span>Categories</span></h4>
 								</div>
 								<ul class="arrows_list list_style">
-									<li><a href="#"><i class="fas fa-user"></i> 프로필 변경</a></li>
+									<li><a id="categori"><i class="fas fa-user"></i> 프로필 변경</a></li>
 									<li><a href="#"><i class="fas fa-envelope"></i> E-mail 변경</a></li>
 									<li><a href="#"><i class="fas fa-unlock"></i> 비밀번호 변경</a></li>
 								</ul>
