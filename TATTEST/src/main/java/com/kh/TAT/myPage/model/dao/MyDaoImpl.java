@@ -17,4 +17,10 @@ public class MyDaoImpl implements MyDao {
 		
 		return sqlSession.selectOne("member.selectMember",m_code);
 	}
+
+	@Override
+	public int updateProfile(Member m) {
+		
+		return sqlSession.update("member.updateProfile",m);
+	}
 }
