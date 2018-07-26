@@ -212,7 +212,7 @@ public class MainController {
 		ter.setTr_reply(tr_reply);
 		ter.setM_code(m_code);
 		ter.setT_code(t_code);
-		ter.setTr_no(tr_no);
+		ter.setTr_num(tr_no);
 		
 		mainS.UpdateReply(ter);
 		
