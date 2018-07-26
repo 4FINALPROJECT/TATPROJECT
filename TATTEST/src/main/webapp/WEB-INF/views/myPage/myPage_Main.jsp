@@ -7,8 +7,10 @@
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
 </head>
 <body>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 	<c:import url="../common/JS.jsp"></c:import>
 	<c:import url="common/myPage_Header.jsp"></c:import>
+	
 	
 	<section class="wrapper">
 		<section class="page_head">
@@ -31,45 +33,47 @@
 		
 		<section class="content contact">
 	        <div class="container">
-	
 	            <div class="row sub_content">
 	                <div class="col-lg-8 col-md-8 col-sm-8">
 	                    <div class="dividerHeading">
 	                        <h4><span>회원 정보</span></h4>
 	                    </div>
-	                    <p>회원님 정보를 나타는 공간입니다.</p>
+		                <p>회원님 정보를 나타는 공간입니다.</p>
 	                   
-	                    <form id="contactForm" action="" novalidate="novalidate">
 	                         <div class="row">
-			                            <div class="form-group">
-			                                <div class="col-lg-6 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 성명</label><input type="text" id="name" name="m_name" class="form-control profile" value="${m.m_name}" placeholder="Your Name" >
-			                                </div>
-			                            </div>
+	                            <div class="form-group">
+	                                <div class="col-lg-6 ">
+	                                    <label><i class="fas fa-angle-double-right"></i> 이메일</label><input type="text" class="form-control" value="${m.m_email}" readonly>
+	                                </div>
+	                            </div>
+			                 </div>
+	                         <div class="row">
+	                            <div class="form-group">
+	                                <div class="col-lg-6 ">
+	                                    <label><i class="fas fa-angle-double-right"></i> 성명</label><input type="text" class="form-control profile" value="${m.m_name}" readonly>
+	                                </div>
+	                            </div>
+			                </div>
+			                <div class="row">
+	                            <div class="form-group">
+	                                <div class="col-md-6">
+	                                    <label><i class="fas fa-angle-double-right"></i> 생년 월일</label><input type="date" class="form-control profile" value="${m.m_birth}" readonly>
+	                                </div>
+	                            </div>
+			                </div>
+			                <div class="row">
+	                            <div class="form-group">
+	                                <div class="col-md-6">
+	                                    <label><i class="fas fa-angle-double-right"></i> 성별</label><input type="text" class="form-control profile" value="${m.m_gender}" readonly>
+	                                </div>
+	                            </div>     
 			                </div>
 	                        <div class="row">
-	                            <div class="form-group">
-	                                <div class="col-md-12">
-	                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
-	                                </div>
+	                            <div class="col-md-6">
+	                               <label><i class="fas fa-angle-double-right"></i> 가입 일자</label><input type="date" class="form-control profile" value="${m.enroll_date}" readonly>
 	                            </div>
 	                        </div>
-	                        <div class="row">
-	                            <div class="form-group">
-	                                <div class="col-md-12">
-	                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
-	
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="row">
-	                            <div class="col-md-12">
-	                               
-	                               
-	                            </div>
-	                        </div>
-	                    </form>
-	                </div>
+	                   </div>
 	
 	                <div class="col-lg-4 col-md-4 col-sm-4">
 	                    <div class="sidebar">
@@ -98,7 +102,6 @@
 	                        </div>
 	                    </div>
 	                </div>
-	
 	            </div>
 	        </div>
 	    </section>

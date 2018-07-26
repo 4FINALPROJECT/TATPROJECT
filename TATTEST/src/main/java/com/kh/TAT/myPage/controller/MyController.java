@@ -76,7 +76,7 @@ public class MyController {
 		
 		request.setAttribute("m", m);
 		
-		return "myPage/myPage_Info";
+		return "myPage/myPage_Main";
 	}
 
 }

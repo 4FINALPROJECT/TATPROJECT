@@ -27,12 +27,7 @@ public class Member {
 		this.enroll_date = enroll_date;
 		this.is_usable = is_usable;
 	}
-	@Override
-	public String toString() {
-		return "Member [m_code=" + m_code + ", m_email=" + m_email + ", m_pwd=" + m_pwd + ", m_name=" + m_name
-				+ ", m_birth=" + m_birth + ", m_gender=" + m_gender + ", enroll_date=" + enroll_date + ", is_usable="
-				+ is_usable + "]";
-	}
+	
 	public String getM_code() {
 		return m_code;
 	}
