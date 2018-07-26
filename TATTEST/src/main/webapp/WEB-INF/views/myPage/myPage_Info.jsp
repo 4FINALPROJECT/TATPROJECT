@@ -119,7 +119,7 @@
 			                                    <label><i class="fas fa-angle-double-right"></i> 변경할 이메일</label><input type="email" id="email" name="email" class="form-control" maxlength="100" value="" placeholder="Change Email" >
 			                                </div><br><br><br><br><br>
 			                                 <div class="col-lg-6 ">
-			                                    <input type="text" id="verifyNum" name="verifyNum" class="form-control" value="" placeholder="인증번호를 입력해주세요">
+			                                    <input type="text" id="verifyNum" name="verifyNum" class="form-control" value="" placeholder="인증번호를 입력 해 주세요">
 			                                </div>
 			                            </div>
 			                        </div>

@@ -48,10 +48,10 @@
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<div class="project_description">
 							<div class="widget_title">
-								<h4><span>제목 : ${temp.t_name}</span></h4>
+								<h4><span>제목 : ${temp.t_title}</span></h4>
 							</div>
 
-							<p>설명 : ${temp.t_detail}.</p>
+							<p>설명 : ${temp.t_comment}.</p>
 						</div>
 					</div>
 					

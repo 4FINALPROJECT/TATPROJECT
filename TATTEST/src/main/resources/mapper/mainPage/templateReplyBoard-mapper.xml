@@ -5,7 +5,7 @@
 	</resultMap>
 	
 	<select id="selectReplyBoard" parameterType="templateReplyBoard" resultMap="templateReplyBoardMap">
-		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, TR_REPLY, TR_DATE, TR_RATE, TR_NO FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code} ORDER BY TR_DATE DESC
+		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, TR_REPLY, TR_DATE, TR_RATE, TR_NUM FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code} ORDER BY TR_DATE DESC
 		<!-- SELECT * FROM TEMPLATE_REPLY_BOARD TER WHERE T_CODE = #{t_code} -->
 	</select>
 	
@@ -19,6 +19,6 @@
 	</delete>
 	
 	<update id="updateReplyBoard" parameterType="templateReplyBoard">
-		UPDATE TEMPLATE_REPLY_BOARD SET TR_REPLY = #{tr_reply} WHERE TR_NO = #{tr_no}
+		UPDATE TEMPLATE_REPLY_BOARD SET TR_REPLY = #{tr_reply} WHERE TR_NUM = #{tr_num}
 	</update>
 </mapper>
