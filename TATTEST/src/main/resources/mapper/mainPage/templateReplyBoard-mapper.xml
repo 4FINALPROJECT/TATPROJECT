@@ -5,13 +5,20 @@
 	</resultMap>
 	
 	<select id="selectReplyBoard" parameterType="templateReplyBoard" resultMap="templateReplyBoardMap">
-		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, TR_REPLY, TR_DATE, TR_RATE FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code}
+		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, TR_REPLY, TR_DATE, TR_RATE, TR_NO FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code} ORDER BY TR_DATE DESC
 		<!-- SELECT * FROM TEMPLATE_REPLY_BOARD TER WHERE T_CODE = #{t_code} -->
 	</select>
 	
 	<insert id="insertReplyBoard" parameterType="templateReplyBoard">
 		INSERT INTO TEMPLATE_REPLY_BOARD VALUES(
-		#{t_code, jdbcType=VARCHAR}, (SELECT M_CODE FROM MEMBER WHERE M_NAME = #{m_code}), #{tr_reply, jdbcType=VARCHAR}, sysdate, #{tr_rate})
+		#{t_code}, (SELECT M_CODE FROM MEMBER WHERE M_NAME = #{m_code}), #{tr_reply}, sysdate, #{tr_rate}, SEQ_REPLY.NEXTVAL)
 	</insert>
 	
+	<delete id="deleteReplyBoard" parameterType="templateReplyBoard">
+		DELETE FROM TEMPLATE_REPLY_BOARD WHERE TR_REPLY = #{tr_reply}
+	</delete>
+	
+	<update id="updateReplyBoard" parameterType="templateReplyBoard">
+		UPDATE TEMPLATE_REPLY_BOARD SET TR_REPLY = #{tr_reply} WHERE TR_NO = #{tr_no}
+	</update>
 </mapper>
