@@ -6,27 +6,27 @@ public class Template {
 	private String t_code;
 	private String m_code;
 	private String t_category;
+	private String t_title;
+	private String t_comment;
 	private String file_name;
 	private Date t_date;
 	private int t_use_count;
-	private String t_name;
-	private String t_detail;
 	
 	public Template() {
 		super();
 	}
 
-	public Template(String t_code, String m_code, String t_category, String file_name, Date t_date, int t_use_count,
-			String t_name, String t_detail) {
+	public Template(String t_code, String m_code, String t_category, String t_title, String t_comment, String file_name,
+			Date t_date, int t_use_count) {
 		super();
 		this.t_code = t_code;
 		this.m_code = m_code;
 		this.t_category = t_category;
+		this.t_title = t_title;
+		this.t_comment = t_comment;
 		this.file_name = file_name;
 		this.t_date = t_date;
 		this.t_use_count = t_use_count;
-		this.t_name = t_name;
-		this.t_detail = t_detail;
 	}
 
 	public String getT_code() {
@@ -53,6 +53,22 @@ public class Template {
 		this.t_category = t_category;
 	}
 
+	public String getT_title() {
+		return t_title;
+	}
+
+	public void setT_title(String t_title) {
+		this.t_title = t_title;
+	}
+
+	public String getT_comment() {
+		return t_comment;
+	}
+
+	public void setT_comment(String t_comment) {
+		this.t_comment = t_comment;
+	}
+
 	public String getFile_name() {
 		return file_name;
 	}
@@ -77,20 +93,4 @@ public class Template {
 		this.t_use_count = t_use_count;
 	}
 
-	public String getT_name() {
-		return t_name;
-	}
-
-	public void setT_name(String t_name) {
-		this.t_name = t_name;
-	}
-
-	public String getT_detail() {
-		return t_detail;
-	}
-
-	public void setT_detail(String t_detail) {
-		this.t_detail = t_detail;
-	}
-	
 }

@@ -3,25 +3,33 @@ package com.kh.TAT.common.model.vo;
 import java.sql.Date;
 
 public class TemplateReplyBoard {
+	private int tr_num;
 	private String t_code;
 	private String m_code;
 	private String tr_reply;
 	private Date tr_date;
 	private int tr_rate;
-	private int tr_no;
 	
 	public TemplateReplyBoard() {
 		super();
 	}
 
-	public TemplateReplyBoard(String t_code, String m_code, String tr_reply, Date tr_date, int tr_rate, int tr_no) {
+	public TemplateReplyBoard(int tr_num, String t_code, String m_code, String tr_reply, Date tr_date, int tr_rate) {
 		super();
+		this.tr_num = tr_num;
 		this.t_code = t_code;
 		this.m_code = m_code;
 		this.tr_reply = tr_reply;
 		this.tr_date = tr_date;
 		this.tr_rate = tr_rate;
-		this.tr_no = tr_no;
+	}
+
+	public int getTr_num() {
+		return tr_num;
+	}
+
+	public void setTr_num(int tr_num) {
+		this.tr_num = tr_num;
 	}
 
 	public String getT_code() {
@@ -64,20 +72,5 @@ public class TemplateReplyBoard {
 		this.tr_rate = tr_rate;
 	}
 
-	public int getTr_no() {
-		return tr_no;
-	}
-
-	public void setTr_no(int tr_no) {
-		this.tr_no = tr_no;
-	}
-
-	@Override
-	public String toString() {
-		return "TemplateReplyBoard [t_code=" + t_code + ", m_code=" + m_code + ", tr_reply=" + tr_reply + ", tr_date="
-				+ tr_date + ", tr_rate=" + tr_rate + ", tr_no=" + tr_no + "]";
-	}
-	
-	
 	
 }

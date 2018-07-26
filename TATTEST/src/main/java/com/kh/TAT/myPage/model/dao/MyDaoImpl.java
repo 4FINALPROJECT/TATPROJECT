@@ -14,6 +14,7 @@ public class MyDaoImpl implements MyDao {
 
 	@Override
 	public Member selectOneMemberCode(String m_code) {
+
 		
 		return sqlSession.selectOne("member.selectMember",m_code);
 	}
