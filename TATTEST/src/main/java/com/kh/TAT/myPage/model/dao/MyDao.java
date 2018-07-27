@@ -13,4 +13,12 @@ public interface MyDao {
 
 	List<MyProject> selectAllProject(String m_code);
 
+	int updatePassword(Member m);
+
+	String checkPwd(String m_code);
+
+	int checkEmailDuplicate(String chk);
+
+	int updateEmail(Member m);
+
 }

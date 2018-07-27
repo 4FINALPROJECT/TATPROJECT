@@ -32,4 +32,28 @@ public class MyServiceImpl implements MyService {
 		
 		return myD.selectAllProject(m_code);
 	}
+
+	@Override
+	public int updatePassword(Member m) {
+		
+		return myD.updatePassword(m);
+	}
+
+	@Override
+	public String checkPwd(String m_code) {
+		
+		return myD.checkPwd(m_code);
+	}
+
+	@Override
+	public int checkEmailDuplicate(String chk) {
+		
+		return myD.checkEmailDuplicate(chk);
+	}
+
+	@Override
+	public int updateEmail(Member m) {
+		
+		return myD.updateEmail(m);
+	}
 }

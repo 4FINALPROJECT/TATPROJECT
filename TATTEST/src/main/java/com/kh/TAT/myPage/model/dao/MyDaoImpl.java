@@ -33,4 +33,28 @@ public class MyDaoImpl implements MyDao {
 		
 		return sqlSession.selectList("member.selectAllProject",m_code);
 	}
+
+	@Override
+	public int updatePassword(Member m) {
+		
+		return sqlSession.update("member.updatePassword",m);
+	}
+
+	@Override
+	public String checkPwd(String m_code) {
+		
+		return sqlSession.selectOne("member.checkPwd",m_code);
+	}
+
+	@Override
+	public int checkEmailDuplicate(String chk) {
+		
+		return sqlSession.selectOne("member.checkIdDuplicate",chk);
+	}
+
+	@Override
+	public int updateEmail(Member m) {
+		
+		return sqlSession.update("member.updateEmail",m);
+	}
 }
