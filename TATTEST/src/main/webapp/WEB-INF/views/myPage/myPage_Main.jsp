@@ -64,7 +64,12 @@
 			                <div class="row">
 	                            <div class="form-group">
 	                                <div class="col-md-6">
-	                                    <label><i class="fas fa-angle-double-right"></i> 성별</label><input type="text" class="form-control profile" value="${m.m_gender}" readonly>
+	                                	<c:if test="${m.m_gender eq 'M'}">
+	                                    <label><i class="fas fa-angle-double-right"></i> 성별</label><input type="text" class="form-control profile" value="남자" readonly>
+	                                    </c:if>
+	                                    <c:if test="${m.m_gender eq 'F'}">
+	                                    <label><i class="fas fa-angle-double-right"></i> 성별</label><input type="text" class="form-control profile" value="여자" readonly>
+	                                    </c:if>
 	                                </div>
 	                            </div>     
 			                </div>
