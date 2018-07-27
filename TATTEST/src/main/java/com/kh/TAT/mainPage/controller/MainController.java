@@ -276,6 +276,8 @@ public class MainController {
 			
 			int result = mainS.insertMember(member);
 			
+			System.out.println("비밀번호 : "+member.getM_pwd());
+			
 			String loc = "/";
 			String msg = "";
 			

@@ -19,7 +19,6 @@
 	</style>
 </head>
 <body>
-	<c:import url="../common/JS.jsp"></c:import>
 	<c:import url="common/myPage_Header.jsp"></c:import>
 	<section class="wrapper">
 		<section class="page_head">
@@ -168,7 +167,8 @@
 				</div>
 			</div>
 		
-	
+	<c:import url="common/myPage_Footer.jsp"></c:import>
+	<c:import url="../common/JS.jsp"></c:import>
 	<script> 
 		// 프로필 ON
 		function firstCategory(){
@@ -239,16 +239,23 @@
 			var regExp = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|\*]+$/;
 			
 			if($('#name').val().match(regExp) != null){
-				$('#changeProfileForm').submit();
+				
+				var submit = confirm("회원님의 정보를 변경하시겠습니까?");
+				
+				if(submit == true){
+					$('#changeProfileForm').submit();
+				}else if(submit == false){
+					alert("정보 변경이 취소되었습니다.");
+				}
+				
 			}else{
 				alert("이름은 한글과 영문자만 가능합니다.");
-			}
-			
+			}	
 		}
 			
 	
 		
 	</script>
-	<c:import url="common/myPage_Footer.jsp"></c:import>
+	
 </body>
 </html>
