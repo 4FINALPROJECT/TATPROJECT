@@ -5,16 +5,32 @@
 <head>
 	<title>TAT 계정 정보 || 마이페이지</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
 	<style>
 		#changeEmail{
-			display:none;
+			/* display:none; */
 		}
 		#changePassword{
-			display:none;
+			
 		}
 		#changeProfile{
 		  
+		}
+		a{
+			cursor:pointer;
+		}
+		.second{
+			padding:0;
+		}
+		.information{
+			margin-bottom: 200px;
+		}
+		#emailSpan{
+			 height:20px;
+			 width:230px;
+			 background:;
+			 color:red;
+			 display:none;
 		}
 	</style>
 </head>
@@ -61,29 +77,29 @@
 					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" >
 						<div class="row sub_content">
 				            <!-- 프로필 변경 -->
-				            <div class="col-lg-12 col-md-12 col-sm-12" id="changeProfile">
+				            <div class="col-lg-12 col-md-12 col-sm-12 information" id="changeProfile">
 			                    <div class="dividerHeading">
 			                        <h4><span>프로필 정보 변경</span></h4>
 			                    </div>
 			                    <p>회원님의 이름, 성별, 생년월일 변경할 수 있습니다. </p>
-			                    <form id="changeProfileForm" action="${pageContext.request.contextPath}/my/updateProfile.tat" novalidate="novalidate">
+			                    <form id="changeProfileForm" action="${pageContext.request.contextPath}/my/updateProfile.tat">
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-lg-6 ">
+			                                <div class="col-lg-12 ">
 			                                    <label><i class="fas fa-angle-double-right"></i> 성명</label><input type="text" id="name" name="m_name" class="form-control profile" value="${m.m_name}" placeholder="Your Name" >
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-md-6">
+			                                <div class="col-md-12">
 			                                    <label><i class="fas fa-angle-double-right"></i> 생년 월일</label><input type="date" id="birth" name="m_birth" class="form-control profile" value="${m.m_birth}">
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-md-6">
+			                                <div class="col-md-12">
 			                                    <label><i class="fas fa-angle-double-right"></i> 성별</label><select id="gender" name="m_gender" class="form-control profile">
 			                                    	<option value="성별" disabled="disabled">성별</option>
 					                                <option value="M">남자</option>
@@ -99,26 +115,34 @@
 			                                </div>
 			                            </div>     
 			                        </div>
-			                    </form> 
-			                    <br><br><br><br><br><br><br><br><br><br><br>
+			                    </form>
 			                </div>
 			                <!-- 이메일 변경 -->
-			                <div class="col-lg-12 col-md-12 col-sm-12" id="changeEmail">
+			                <div class="col-lg-12 col-md-12 col-sm-12 information" id="changeEmail">
 			                    <div class="dividerHeading">
 			                        <h4><span>이메일 정보 변경</span></h4>
 			                    </div>
 			                    <p>회원님의 이메일을 변경할 수 있습니다. <b><u>인증 가능한</u></b> 이메일로 변경하시기 바랍니다.</p>
-			                    <form id="changeEmailForm" action="" novalidate="novalidate">
+			                    <form id="changeEmailForm" action="${pageContext.request.contextPath}/my/updateEmail.tat" method="post">
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-lg-6 ">
+			                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			                                    <label><i class="fas fa-angle-double-right"></i> 현재 이메일</label><input type="text" class="form-control" maxlength="100" value="${m.m_email}" readonly>
-			                                </div><br><br><br><br><br>
-			                                <div class="col-lg-6 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 변경할 이메일</label><input type="email" id="email" name="email" class="form-control" maxlength="100" value="" placeholder="Change Email" >
-			                                </div><br><br><br><br><br>
-			                                 <div class="col-lg-6 ">
-			                                    <input type="text" id="verifyNum" name="verifyNum" class="form-control" value="" placeholder="인증번호를 입력 해 주세요">
+			                                </div>
+			                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+			                                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 second">
+			                                    	<label><i class="fas fa-angle-double-right"></i> 변경할 이메일</label>
+			                                    </div>
+			                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 second" style="padding-right:10px;">
+			                                    	<input type="email" id="email" name="email" class="form-control" value="" placeholder="Change Email" >
+			                                    	<span id="emailSpan">올바른 이메일 형식이 아닙니다. </span><br>
+			                                    </div>
+			                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 second" style="padding-left:10px;">
+			                                    	<button type="button" class="form-control" onclick="sendNumber();" >인증번호 전송</button>
+			                                    </div>
+			                                </div>
+			                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+			                                    <input type="text" id="verifyNum" name="verifyNum" class="form-control" placeholder="인증번호를 입력 해 주세요">
 			                                </div>
 			                            </div>
 			                        </div>
@@ -130,43 +154,43 @@
 			                            </div>
 			                        </div>
 			                    </form>
-			                    <br><br><br><br><br><br><br><br><br><br><br>
 			                </div>
 			                <!-- 비밀번호 변경 -->
-			                <div class="col-lg-12 col-md-12 col-sm-12" id="changePassword">
+			                <div class="col-lg-12 col-md-12 col-sm-12 information" id="changePassword">
 			                    <div class="dividerHeading">
 			                        <h4><span>비밀번호 변경 </span></h4>
 			                    </div>
 			                    <p>회원님의 비밀번호를 변경 할 수 있습니다.</p>
-			                    <form id="changePasswordForm" action="" novalidate="novalidate">
+			                    <form id="changePasswordForm" action="${pageContext.request.contextPath}/my/updatePassword.tat" method="post">
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-lg-6 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 현재 비밀번호</label><input type="password" id="password1" name="password1" class="form-control" maxlength="100" placeholder="현재 비밀번호" >      
-			                                </div><br><br><br><br><br>
-			                                <div class="col-lg-6 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 변경할 비밀번호</label><input type="password" id="password2" name="password2" class="form-control" maxlength="100" placeholder="변경할 비밀번호" >
-			                                </div><br><br><br><br><br>
-			                                <div class="col-lg-6 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 변경할  비밀번호 확인</label><input type="password" id="password3" name="password3" class="form-control" maxlength="100" placeholder="변경할 비밀번호 확인" >
+			                                <div class="col-lg-12 ">
+			                                    <label><i class="fas fa-angle-double-right"></i> 현재 비밀번호</label><input type="password" id="password1" name="password1" class="form-control" placeholder="현재 비밀번호" >      
+			                                </div>
+			                                <div class="col-lg-12 ">
+			                                    <label><i class="fas fa-angle-double-right"></i> 변경할 비밀번호</label><input type="password" id="password2" name="password2" class="form-control" placeholder="변경할 비밀번호" >
+			                                </div>
+			                                <div class="col-lg-12 ">
+			                                    <label><i class="fas fa-angle-double-right"></i> 변경할  비밀번호 확인</label><input type="password" id="password3" name="password3" class="form-control" placeholder="변경할 비밀번호 확인" >
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-md-3">
-			                                    <input type="button" id="changePasswordBtn" class="form-control" onclick ="changePassword()" value="비밀번호 변경 완료">
+			                                    <input type="button" id="changePasswordBtn" class="form-control" onclick ="changePassword();" value="비밀번호 변경 완료">
 			                                </div>
 			                            </div>
 			                        </div>
 			                    </form>
-			                    <br><br><br><br><br><br><br><br><br><br><br>
+			                    
 			                </div>
 				        </div>
 	                </div>
 				</div>
 			</div>
-		
+		</section>
+	</section>
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 	<script> 
@@ -236,6 +260,7 @@
 		// 프로필 변경 
 		function changeProfile(){
 			
+			// name의 유효성검사
 			var regExp = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|\*]+$/;
 			
 			if($('#name').val().match(regExp) != null){
@@ -252,8 +277,117 @@
 				alert("이름은 한글과 영문자만 가능합니다.");
 			}	
 		}
+		// 비밀번호 변경
+		function changePassword(){
 			
-	
+			// password의 유효성검사
+			var regExp =/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,}$/;
+			
+			// 현재 비밀번호 값 가져오기
+			var password1 = $('#password1').val();
+			
+			var change_pwd = $('#password2').val();
+			
+			$.ajax({
+				url:"${pageContext.request.contextPath}/my/validPwd.tat",
+				data: {password1 : password1},
+				type: "post",
+				success:function(data){
+					console.log(data.chk);
+					console.log(data);
+					console.log(password1);
+					if(data){
+						
+						if(change_pwd.match(regExp) != null){
+							
+							if($('#password2').val() == $('#password3').val()){
+								alert("변경할 비밀번호가 일치합니다.");
+								console.log($('#password2').val());
+								console.log($('#password3').val());
+								$('#changePasswordForm').submit();
+							}else{
+								alert("변경할 비밀번호가 일치하지 않습니다. 다시 작성해 주세요");
+								console.log($('#password2').val());
+								console.log($('#password3').val());
+							}
+							
+						}else{
+							alert("비밀번호는 영문+숫자(기호)조합으로 8자 이상 입력해야합니다. ");
+						}
+					}else{
+						alert("현재 비밀번호가 일치하지 않습니다.");	
+					}
+				},
+				error:function(){
+					
+				}
+			});
+		}
+		// 이메일 인증번호 전송
+		var keyValue;
+		function sendNumber(){
+			
+			
+			// 변경할 이메일 값 
+			var chk = $('#email').val();
+			
+			// 이메일 정규식 표현
+			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+			
+			$.ajax({
+				url:"${pageContext.request.contextPath}/my/validEmail.tat",
+				data:{chk : chk},
+				type: "post",
+				dataType:"json",
+				success : function(data){
+			         if(data.isUsable == 0){ // 겹치는 것이 0개라면
+			        	 
+			        	 console.log(data.isUsable);
+			         
+			         	if(chk.match(regExp) != null){
+			         		
+			         		$.ajax({
+			         			url:"${pageContext.request.contextPath}/my/sendNumber.tat",
+			         			data :{email : chk},
+			         			type:"post",
+			         			success : function(data){
+			         					console.log("가져온 인증키 값 : "+data);
+			         				alert("됐다??");
+			         				keyValue=data;
+								
+			         				
+			         			},error : function(){
+			         				
+			         			}
+			         		});
+			         	}else{
+			        
+			         		$('#emailSpan').fadeIn();
+			         		setInterval(function(){ $('#emailSpan').fadeOut(); },1500);
+			     
+			         	} 
+			         }else { // 그밖은 중복된 것이다.
+			        	 alert("중복된 아이디 입니다.");
+			        	 console.log(data.isUsable);
+			         }
+			         
+			      }, error : function(error, msg){
+			         
+			      }
+			});
+			
+		}
+		function changeEmail(){
+				
+				if(keyValue == $('#verifyNum').val()){
+					
+					$('#changeEmailForm').submit();
+					
+				}else{
+					alert("인증키 값이 다릅니다.");
+				}
+				
+			}
 		
 	</script>
 	

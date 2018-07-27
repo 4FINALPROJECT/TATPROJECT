@@ -413,7 +413,7 @@ $('#searchPW').on('click',function(){
 // 비밀번호(정규식) 유효성 검사
 $(function(){	
 	$('#m_pwd').blur(function(){
-		var regexp =/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,}$/;;
+		var regexp =/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,}$/;
 		v = $(this).val();
 		
 		if(regexp.test(v)) {
