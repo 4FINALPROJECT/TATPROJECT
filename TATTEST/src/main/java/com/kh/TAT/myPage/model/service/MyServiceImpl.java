@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.myPage.model.dao.MyDao;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
@@ -15,6 +16,7 @@ public class MyServiceImpl implements MyService {
 	@Autowired
 	MyDao myD;
 
+	// 회원 정보 관련
 	@Override
 	public Member selectOneMemberCode(String m_code) {
 		
@@ -55,5 +57,13 @@ public class MyServiceImpl implements MyService {
 	public int updateEmail(Member m) {
 		
 		return myD.updateEmail(m);
+	}
+
+	
+	// 결제 정보 관련
+	@Override
+	public Payment selectOnePayment(String m_code) {
+		
+		return myD.selectOnePayment(m_code);
 	}
 }

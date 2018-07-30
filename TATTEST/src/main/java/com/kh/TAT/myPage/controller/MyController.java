@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.myPage.model.service.MyService;
-import com.kh.TAT.myPage.model.vo.MyProject;
 import com.kh.TAT.myPage.model.service.mail.MailService;
+import com.kh.TAT.myPage.model.vo.MyProject;
 
 @Controller
 public class MyController {
@@ -47,7 +47,7 @@ public class MyController {
 		
 		Member m = myS.selectOneMemberCode(m_code);
 		request.setAttribute("m", m);
-		System.out.println("m이 뭘까요? : "+m);
+		
 		
 		return "myPage/myPage_Main";
 	}
@@ -60,15 +60,23 @@ public class MyController {
 		
 		Member m = myS.selectOneMemberCode(m_code);
 		request.setAttribute("m", m);
-		System.out.println("m이 뭘까요? : "+m);
 		
 		return "myPage/myPage_Info";
 	}
+	
 	// 결제정보 페이지 이동
 	@RequestMapping("/my/Payment.tat")
-	public String Payment(){
+	public String Payment(HttpServletRequest request){
+
+		HttpSession session = request.getSession(false);
+		String m_code = (String)session.getAttribute("m_code");
+		
+		Payment p = myS.selectOnePayment(m_code);
+		request.setAttribute("p", p);
+		
 		return "myPage/myPage_Payment";
 	}
+	
 	// 프로젝트 페이지 이동
 	@RequestMapping("/my/Project.tat")
 	public String Project(HttpServletRequest request){
@@ -95,16 +103,19 @@ public class MyController {
 		
 		return "myPage/myPage_Project";
 	}
+	
 	// 프로젝트 상세보기 페이지 이동
 	@RequestMapping("/my/ProjectDetail.tat")
 	public String ProjectDetail(){
 		return "myPage/myPage_ProjectDetail";
 	}
+	
 	// 문의하기 페이지 이동
 	@RequestMapping("/my/Question.tat")
 	public String Question(){
 		return "myPage/myPage_Question";
 	}
+	
 	// 프로필 변경
 	@RequestMapping("/my/updateProfile.tat")
 	public String updateProfile(HttpServletRequest request, Member m){
