@@ -440,7 +440,8 @@
 			  var nextBtn = num+1;
 			  if(nextFlag){
 				  
-			  
+			   
+				  
 			  
 			 $('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 			  }
