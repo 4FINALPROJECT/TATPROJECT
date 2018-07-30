@@ -72,10 +72,5 @@ public class TemplateReplyBoard {
 		this.tr_rate = tr_rate;
 	}
 
-	@Override
-	public String toString() {
-		return "TemplateReplyBoard [tr_num=" + tr_num + ", t_code=" + t_code + ", m_code=" + m_code + ", tr_reply="
-				+ tr_reply + ", tr_date=" + tr_date + ", tr_rate=" + tr_rate + "]";
-	}
 
 }

@@ -6,4 +6,29 @@
 		SELECT * FROM MEMBER WHERE M_CODE = #{m_code} 
 	</select>
 		
+	<update id="updateProfile" parameterType="member">
+		UPDATE MEMBER SET M_NAME= #{m_name}, M_BIRTH= #{m_birth}, M_GENDER = #{m_gender} WHERE M_CODE = #{m_code}
+	</update>	
+	
+	<select id="selectAllProject" parameterType="String" resultType="MyProject">
+		SELECT E_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, ER.COMMENT_COUNT FROM EDIT LEFT JOIN (SELECT E_CODE, COUNT(*) AS COMMENT_COUNT FROM EDIT_REPLY_BOARD  GROUP BY E_CODE) ER  USING(E_CODE) WHERE M_CODE= #{m_code} ORDER BY SAVE_DATE ASC
+	</select>	
+		
+	<select id="checkPwd" parameterType="String" resultType="String" >
+		SELECT M_PWD FROM MEMBER WHERE M_CODE = #{m_code}
+	</select>	
+		
+	<update id="updatePassword" parameterType="member">
+		UPDATE MEMBER SET M_PWD =#{m_pwd} WHERE M_CODE = #{m_code}
+	</update>
+	
+	<select id="checkIdDuplicate" parameterType="String" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE M_EMAIL = #{chk}
+	</select>
+	
+	<update id="updateEmail" parameterType="member">
+		UPDATE MEMBER SET M_EMAIL=#{m_email} WHERE M_CODE = #{m_code}
+	</update>
+	
+		
 </mapper>

@@ -211,7 +211,7 @@ public class MainController {
 		ter.setTr_reply(tr_reply);
 		ter.setT_code(t_code);
 		ter.setTr_num(tr_num);
-		
+	
 		mainS.UpdateReply(ter);
 		
 		List<Map<String, String>> tempReplylist = mainS.replyBoard(t_code);
@@ -273,6 +273,8 @@ public class MainController {
 			member.setM_pwd(bcryptPasswordEncoder.encode(rawPassword));
 			
 			int result = mainS.insertMember(member);
+			
+			System.out.println("비밀번호 : "+member.getM_pwd());
 			
 			String loc = "/";
 			String msg = "";

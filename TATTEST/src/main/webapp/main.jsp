@@ -16,44 +16,43 @@
             <div class="slider">
                 <div class="fs_loader"></div>
                 <div class="slide">
-                    <img src="images/fraction-slider/base.jpg" width="1920" height="auto" data-in="fade" data-out="fade" />
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/base.jpg" width="1920" height="auto" data-in="fade" data-out="fade" />
 
-                    <img src="images/fraction-slider/slider-boy.png" width="600" height="600" data-position="30,1100" data-in="left" data-out="right" data-delay="700"/>
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/slider-boy.png" width="600" height="600" data-position="30,1100" data-in="left" data-out="right" data-delay="700"/>
 
-                    <p class="slide-1" data-position="50,610" data-in="fade" data-out="fade" data-delay="800">fully responsive</p>
-                    <p class="slide-1" data-position="100,560" data-in="fade" data-out="fade" data-delay="1200">Our latest designs </p>
-                    <p class="slide-1" data-position="150,500" data-in="fade" data-out="fade" data-delay="1600">Simply & Clear Design</p>
+                    <p class="slide-1" data-position="50,610" data-in="fade" data-out="fade" data-delay="800">걱정 없이 시작해볼까요?</p>
+                    <p class="slide-1" data-position="100,560" data-in="fade" data-out="fade" data-delay="1200">홈페이지 무료 제작의 모든 것! </p>
 
-                    <p class="slide-1a" data-position="220,770" data-in="bottom" data-out="bottom" data-delay="2000" data-ease-in="easeOutBounce">SEO Friendly Website</p>
-                    <p class="slide-1a" data-position="267,698" data-in="bottom" data-out="bottom" data-delay="3200"  data-ease-in="easeOutBounce">7 combination color option</p>
-                    <p class="slide-1a" data-position="314,760" data-in="bottom" data-out="bottom" data-delay="4200"  data-ease-in="easeOutBounce">Animated layer slider</p>
-                    <p class="slide-1a" data-position="361,753" data-in="bottom" data-out="bottom" data-delay="5200"  data-ease-in="easeOutBounce">Much More Featured...</p>
+                    <p class="slide-1a" data-position="220,770" data-in="bottom" data-out="bottom" data-delay="2000" data-ease-in="easeOutBounce">세련된 디자인의 템플릿</p>
+                    <p class="slide-1a" data-position="267,698" data-in="bottom" data-out="bottom" data-delay="3200"  data-ease-in="easeOutBounce">드래그-앤-드롭 방식의 에디터</p>
+                    <p class="slide-1a" data-position="314,760" data-in="bottom" data-out="bottom" data-delay="4200"  data-ease-in="easeOutBounce">모바일 최적화 기능</p>
+                    <p class="slide-1a" data-position="361,753" data-in="bottom" data-out="bottom" data-delay="5200"  data-ease-in="easeOutBounce">맞춤형 도메인 등록</p>
                 </div>
 
                 <div class="slide">
-                    <img src="images/fraction-slider/base_2.jpg" width="1920" height="auto" data-in="fade" data-out="fade" />
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/base_2.jpg" width="1920" height="auto" data-in="fade" data-out="fade" />
 
-                    <img src="images/fraction-slider/slider-girl.png" width="600" height="545" data-position="20,400" data-in="right" data-0ut="bottom" data-delay="500"/>
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/slider-girl.png" width="600" height="545" data-position="20,400" data-in="right" data-0ut="bottom" data-delay="500"/>
 
-                    <p class="slide-2 " data-position="120,900" data-in="bottom" data-out="top" data-delay="2000">Your-Business</p>
-                    <p class="slide-2a " data-position="210,900" data-in="left" data-out="right" data-delay="3000">A responsive multipurpose Theme</p>
-                    <p class="slide-2b " data-position="270,900" data-in="top" data-out="bottom" data-delay="4000" data-ease-in="easeOutBounce">For Your Prestigious World !</p>
+                    <p class="slide-2 " data-position="120,900" data-in="bottom" data-out="top" data-delay="2000">마우스 하나로 홈페이지를 완성하세요!</p>
+                    <p class="slide-2a " data-position="210,900" data-in="left" data-out="right" data-delay="3000">내가 꿈꾸는 홈페이지를 직접 제작하세요.</p>
+                    <p class="slide-2b " data-position="270,900" data-in="top" data-out="bottom" data-delay="4000" data-ease-in="easeOutBounce">코딩 전문가도 웹디자이너도 필요 없습니다.</p>
                 </div>
 
                 <div class="slide">
-                    <img src="images/fraction-slider/base_3.jpg"  width="1920" height="auto" data-in="fade" data-out="fade" />
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/base_3.jpg"  width="1920" height="auto" data-in="fade" data-out="fade" />
 
-                    <p class="slide-heading" data-position="130,370" data-in="top" data-out="top" data-ease-in="easeOutBounce" data-delay="1500">Electrify theme</p>
+                    <p class="slide-heading" data-position="130,370" data-in="top" data-out="top" data-ease-in="easeOutBounce" data-delay="1500">날마다 새로워요!</p>
 
-                    <p class="sub-line" data-position="230,370" data-in="right" data-out="left" data-delay="2500">grid system and responsive design</p>
+                    <p class="sub-line" data-position="230,370" data-in="right" data-out="left" data-delay="2500">TAT의 앱 마켓 서비스를 만나보세요.</p>
 
-                    <img src="images/fraction-slider/gadgets/laptop.png" width="456" height="272" data-position="115,1180" data-in="bottom" data-out="bottom" data-delay="400">
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/gadgets/laptop.png" width="456" height="272" data-position="115,1180" data-in="bottom" data-out="bottom" data-delay="400">
 
-                    <img src="images/fraction-slider/gadgets/mack.png" width="357" height="313" data-position="90,1040" data-in="top" data-out="bottom" data-delay="200">
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/gadgets/mack.png" width="357" height="313" data-position="90,1040" data-in="top" data-out="bottom" data-delay="200">
 
-                    <img src="images/fraction-slider/gadgets/ipad.png" width="120" height="170" data-position="230,1030" data-in="left" data-out="left" data-delay="300">
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/gadgets/ipad.png" width="120" height="170" data-position="230,1030" data-in="left" data-out="left" data-delay="300">
 
-                    <img src="images/fraction-slider/gadgets/smartphone.png" width="70" height="140" data-position="270,1320" data-in="right" data-out="right" data-delay="300">
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/gadgets/smartphone.png" width="70" height="140" data-position="270,1320" data-in="right" data-out="right" data-delay="300">
 
                     <a href=""	class="btn btn-lg btn-default" data-position="320,370" data-in="bottom"  data-out="bottom" data-delay="3700" data-ease-in="easeOutBounce">Free Download</a>
                 </div>

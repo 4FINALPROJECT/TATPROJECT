@@ -5,9 +5,9 @@
 			
 	</resultMap>
 	
+
 	<select id="selectReplyBoard" parameterType="templateReplyBoard" resultType="replyName">
 		SELECT TR_NUM, T_CODE, M_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_NAME, TR_REPLY, TR_DATE, TR_RATE FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code} ORDER BY TR_DATE DESC
-		<!-- SELECT * FROM TEMPLATE_REPLY_BOARD TER WHERE T_CODE = #{t_code} -->
 	</select>
 	
 	<insert id="insertReplyBoard" parameterType="templateReplyBoard">

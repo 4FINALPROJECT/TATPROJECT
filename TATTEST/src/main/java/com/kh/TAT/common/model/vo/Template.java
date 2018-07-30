@@ -93,5 +93,5 @@ public class Template {
 		this.t_use_count = t_use_count;
 	}
 
-	
+
 }
