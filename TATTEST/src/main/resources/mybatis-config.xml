@@ -12,6 +12,10 @@
 		<typeAlias type="com.kh.TAT.common.model.vo.QuestionAnswerBoard" alias="questionAnswerBoard"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.Template" alias="template"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.TemplateReplyBoard" alias="templateReplyBoard"/>
+
+		<typeAlias type="com.kh.TAT.mainPage.model.vo.ReplyName" alias="replyName"/>
+
 		<typeAlias type="com.kh.TAT.myPage.model.vo.MyProject" alias="myProject"/>
+
 	</typeAliases>
 </configuration>
