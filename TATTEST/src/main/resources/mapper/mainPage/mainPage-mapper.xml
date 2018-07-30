@@ -6,7 +6,7 @@
 	
 	<insert id="insertMember" parameterType="member">
 		INSERT INTO MEMBER
-		VALUES('M' || SEQ_MEMBER.NEXTVAL, #{m_email,  jdbcType=VARCHAR}, #{m_pwd,  jdbcType=VARCHAR}, 
+		VALUES('M'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, #{m_pwd,  jdbcType=VARCHAR}, 
 		#{m_name,  jdbcType=VARCHAR}, #{m_birth}, #{m_gender, jdbcType=VARCHAR}, sysdate, DEFAULT)
 	</insert>
 	
@@ -32,13 +32,13 @@
 	
 	<insert id="insertFmember" parameterType="member">
 	INSERT INTO MEMBER
-		VALUES('F' || SEQ_MEMBER.NEXTVAL, #{m_email,  jdbcType=VARCHAR}, '############', 
-		#{m_name,  jdbcType=VARCHAR}, null, #{m_gender, jdbcType=VARCHAR}, sysdate, DEFAULT)
+		VALUES('F'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, '############', 
+		#{m_name,  jdbcType=VARCHAR}, null, null, sysdate, DEFAULT)
 	</insert>
 	
 	<insert id="insertGmember" parameterType="member">
 	INSERT INTO MEMBER
-		VALUES('G' || SEQ_MEMBER.NEXTVAL, #{m_email,  jdbcType=VARCHAR}, '############', 
+		VALUES('G'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, '############', 
 		#{m_name,  jdbcType=VARCHAR}, null, null, sysdate, DEFAULT)
 	</insert>
 

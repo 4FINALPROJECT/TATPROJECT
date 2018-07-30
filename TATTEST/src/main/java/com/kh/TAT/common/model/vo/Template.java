@@ -11,7 +11,7 @@ public class Template {
 	private String file_name;
 	private Date t_date;
 	private int t_use_count;
-	
+
 	public Template() {
 		super();
 	}
@@ -92,5 +92,6 @@ public class Template {
 	public void setT_use_count(int t_use_count) {
 		this.t_use_count = t_use_count;
 	}
+
 
 }
