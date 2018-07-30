@@ -296,9 +296,9 @@
 		 /* pageNextFirstBtn(); */
 		 
 	 }
-		var showCount = 1;
+		var showCount = 5;
 		var btnCount = 5;
-		var showDoubleCount = 1.0;
+		var showDoubleCount = 5.0;
 		var pageVal;
 		function pageFirst(start, pageCnt){
 			alert("처음으로 가기 테스트");
@@ -420,31 +420,32 @@
 			
 			
 		 function pageNextBtnCreate(num,total){
-			  console.log("현재 버튼위치 값,토탈 :"+num,total);
-			  $('.pagination').empty();
+			 $.ajax({
+					url : "${pageContext.request.contextPath}/admin/MemberTotalCountAjax.tat",
+					type : "post",
+					dataType : 'json', 		
+					success : function(data){
+						  $('.pagination').empty();
+						  var nextFlag = false;
+						  if(total > btnCount){total = btnCount; nextFlag = true;}
+						  var prevBtn = num-1;
+						  if(prevBtn >= 0){
+							  $('pagination').append('<li class="pagePreBtn"><a onclick="pagePreBtn('+prevBtn+')";>‹‹</a></li>');
+						  }
+						  var start = num*btnCount;
+						  for(var i = 1 ;i<=total ;i++){
+							var btnIndex = start+i;
+							$('.pagination').append('<li class="pageIndex'+btnIndex+'"><a onclick="pageIndex('+btnIndex+')";>'+btnIndex+'</a></li>');
+						  }  
+						  var nextBtn = num+1;
+						  if(nextFlag){  
+						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
+						  }
+					},error: function(jqXHR, textStatus, errorThrown) {
+						console.log(ajax.responseText);
+				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+				}); 
 			  
-			  var nextFlag = false;
-			  if(total > btnCount){total = btnCount; nextFlag = true;}
-			  var prevBtn = num-1;
-			  
-			  if(prevBtn >= 0){
-				  
-				  $('pagination').append('<li class="pagePreBtn"><a onclick="pagePreBtn('+prevBtn+')";>‹‹</a></li>');
-			  }
-			  var start = num*btnCount;
-			  for(var i = 1 ;i<=total ;i++){
-				var btnIndex = start+i;
-				  $('.pagination').append('<li class="pageIndex'+btnIndex+'"><a onclick="pageIndex('+btnIndex+')";>'+btnIndex+'</a></li>');
-			  }
-				  
-			  var nextBtn = num+1;
-			  if(nextFlag){
-				  
-			   
-				  
-			  
-			 $('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
-			  }
 		}; 
 		
 		

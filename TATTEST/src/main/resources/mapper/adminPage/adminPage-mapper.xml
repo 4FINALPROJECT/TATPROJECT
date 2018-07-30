@@ -11,4 +11,7 @@
 	<select id="selectTotalPaging" resultType="_int">
 		SELECT count(*) FROM MEMBER
 	</select>
+	<select id="totalPagingCount" resultType="_int">
+		SELECT 
+	</select>
 </mapper>

@@ -13,7 +13,7 @@ public class PagingVo {
 	        pageCnt = 5;
 	        index = 0;
 	        pageStartNum = 1;
-	        listCnt = 1;
+	        listCnt = 5;
 	        pageLastNum = 0;
 	    }
 	    public PagingVo() {}
