@@ -7,7 +7,7 @@
 	<insert id="insertPayment" parameterType="payment">
 	
 		INSERT INTO PAYMENT
-		VALUES(#{m_code}, #{p_code}, sysdate, sysdate+(SELECT V_TERM FROM PAYMENT_CODE WHERE P_CODE=#{p_code}), NULL)
+		VALUES(#{m_code}, #{p_code}, sysdate, sysdate+(SELECT V_TERM FROM PAYMENT_CODE WHERE P_CODE=#{p_code}))
 		
 		<!-- INSERT INTO PAYMENT VALUES((SELECT #{m_code}, #{p_code} FROM MEMBER JOIN PAYMENT USING(M_CODE)
         JOIN PAYMENT_CODE USING(P_CODE)), DEFAULT, DEFAULT); -->
