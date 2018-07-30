@@ -64,7 +64,7 @@
 							<div id="currentBuying" class="row sub_content">
 					            <div class="col-lg-12 col-md-12 col-sm-12">
 					                <div class="dividerHeading">
-					                    <h4><span>결제 중인 상품</span></h4>
+					                    <h4><span>현재 구매 중 상품</span></h4>
 					                </div>
 					            </div>
 					            
@@ -81,7 +81,7 @@
 				                        </tr>
 				                        </thead>
 				                        <tbody>
-				                        <c:if test="${p.e_date} > 0 ">
+				                        <c:if test="${p.e_date gt 0}">
 				                        <tr>
 				                            <td>1</td>
 				                            <td>${p.p_name}</td>
@@ -90,7 +90,7 @@
 				                            <td><p id="e_date"><b>${p.e_date}일</b></p></td>
 				                        </tr>
 				                         </c:if>
-				                          <c:if test="${p.e_date} <= 0">
+				                          <c:if test="${p.e_date le 0}">
 				                        <tr>
 				                            <td colspan="5">현재 이용 중인 상품이 없습니다.</td>
 				                        </tr>
@@ -129,70 +129,6 @@
 				                            <td>2018.02.25</td>
 				                            <td>만료</td>
 				                        </tr>
-				                        <tr>
-				                            <td>2</td>
-				                            <td>1 Month</td>
-				                            <td>2017.09.01</td>
-				                            <td>2017.09.30</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        <tr>
-				                            <td>3</td>
-				                            <td>1 Month</td>
-				                            <td>2017.08.01</td>
-				                            <td>2017.08.30</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        <tr>
-				                            <td>4</td>
-				                            <td>3 Month</td>
-				                            <td>2016.01.04</td>
-				                            <td>2016.04.04</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        <tr>
-				                            <td>5</td>
-				                            <td>1 Year</td>
-				                            <td>2015.01.01</td>
-				                            <td>2015.12.31</td>
-				                            <td>만료</td>
-				                        </tr> 
-				                        <tr>
-				                            <td>6</td>
-				                            <td>3 Month</td>
-				                            <td>2014.05.01</td>
-				                            <td>2014.07.30</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        <tr>
-				                            <td>7</td>
-				                            <td>6 Month</td>
-				                            <td>2010.01.01</td>
-				                            <td>2010.06.30</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        <tr>
-				                            <td>8</td>
-				                            <td>1 Month</td>
-				                            <td>2009.06.24</td>
-				                            <td>2009.07.24</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        <tr>
-				                            <td>9</td>
-				                            <td>1 Month</td>
-				                            <td>2007.02.25</td>
-				                            <td>2007.03.27</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        <tr>
-				                            <td>10</td>
-				                            <td>1 Year</td>
-				                            <td>2005.05.05</td>
-				                            <td>2006.05.04</td>
-				                            <td>만료</td>
-				                        </tr> 
-				                        
 				                        </tbody>
 				                    </table>
 				                </div>

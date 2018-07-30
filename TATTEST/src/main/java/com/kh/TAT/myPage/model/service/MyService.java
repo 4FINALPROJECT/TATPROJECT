@@ -3,7 +3,7 @@ package com.kh.TAT.myPage.model.service;
 import java.util.List;
 
 import com.kh.TAT.common.model.vo.Member;
-import com.kh.TAT.common.model.vo.Payment;
+import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
 public interface MyService {
@@ -25,7 +25,9 @@ public interface MyService {
 
 	
 	//결제 정보 관련 
-	Payment selectOnePayment(String m_code);
+	MyPayment selectOnePayment(String m_code);
+
+	List<MyPayment> selectListPayment(String m_code);
 
 	
 

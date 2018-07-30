@@ -31,7 +31,11 @@
 	</update>
 	
 	<select id="selectOnePayment" parameterType="String" resultType="myPayment">
-		SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE) E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code}
+		SELECT * FROM(SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code})  WHERE E_DATE > 0
+	</select>
+	
+	<select id="selectListPayment" parameterType="String" resultType="myPayment">
+		SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code}
 	</select>
 	
 		

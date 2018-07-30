@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.TAT.common.model.vo.Member;
-import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.myPage.model.service.MyService;
 import com.kh.TAT.myPage.model.service.mail.MailService;
+import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
 @Controller
@@ -71,9 +71,11 @@ public class MyController {
 		HttpSession session = request.getSession(false);
 		String m_code = (String)session.getAttribute("m_code");
 		
-		Payment p = myS.selectOnePayment(m_code);
+		MyPayment p = myS.selectOnePayment(m_code);
 		request.setAttribute("p", p);
 		
+		List<MyPayment> paymentList = myS.selectListPayment(m_code);
+		request.setAttribute("paymentList", paymentList);
 		return "myPage/myPage_Payment";
 	}
 	
