@@ -47,11 +47,11 @@
 			                            <span><i class="fa fa-comments"></i> <a href="#">${te.t_use_count}</a></span>
 			                        </div>
 			                        <div class="blog-title">
-			                            <h2><a href="#" title="">${te.t_name}</a></h2>
+			                            <h2><a href="#" title="">${te.t_title}</a></h2>
 			                        </div>
 			
 			                        <div class="blog-desc">
-			                            <p>${te.t_detail}</p>
+			                            <p>${te.t_comment}</p>
 			                        </div>
 			                        <div class="blog-button">
 			                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat?t_code=${te.t_code}">Read More</a>

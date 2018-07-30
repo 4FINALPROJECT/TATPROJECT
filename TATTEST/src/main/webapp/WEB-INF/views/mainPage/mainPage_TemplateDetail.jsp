@@ -48,10 +48,10 @@
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<div class="project_description">
 							<div class="widget_title">
-								<h4><span>제목 : ${temp.t_name}</span></h4>
+								<h4><span>제목 : ${temp.t_title}</span></h4>
 							</div>
 
-							<p>설명 : ${temp.t_detail}.</p>
+							<p>설명 : ${temp.t_comment}.</p>
 						</div>
 					</div>
 					
@@ -81,20 +81,28 @@
                                     <li class="comment">
                                         <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_1.png" class="avatar"></div>
                                         <div class="comment-container">
-                                            <h4 class="comment-author"><a href="#">${tempReply.m_code} [${tempReply.tr_rate}점]</a></h4>
+                                            <h4 class="comment-author"><a href="#">${tempReply.m_name} [${tempReply.tr_rate}점]</a></h4>
                                             <div class="comment-meta"><a href="#" class="comment-date link-style1">${tempReply.tr_date}</a></div>
                                             <div class="comment-body">
                                                 <p>${tempReply.tr_reply}</p>
+                                                   <%-- ${tempReply.tr_num} --%>
+                                                
                                             </div>
-                                            <c:if test="${m.m_name eq tempReply.m_code}">
-                                            <a data-toggle="modal" data-target="#UpdateReply">수정</a>
-                                            </c:if>
-                                            <c:if test="${m.m_name eq tempReply.m_code}">
-                                            <a href="${pageContext.request.contextPath}/main/DeleteReply.tat?m_code=${tempReply.m_code}&tr_reply=${tempReply.tr_reply}&t_code=${temp.t_code}">삭제</a>
+                                            <c:if test="${m_code eq tempReply.m_code}">
+                                            <a data-target="#${tempReply.tr_num}" data-toggle="collapse">수정</a>                                                                                        
+                                            
+                                            <a href="${pageContext.request.contextPath}/main/DeleteReply.tat?m_code=${tempReply.m_name}&tr_num=${tempReply.tr_num}&t_code=${temp.t_code}">삭제</a>
+                                            <form class="UpdateReply" action="${pageContext.request.contextPath}/main/UpdateReply.tat">
+                                            <div class="collapse" id="${tempReply.tr_num}">											  
+											  <input type="text" name="tr_reply" placeholder="${tempReply.tr_reply}" value=""/>	
+											  <input type="hidden" name="tr_num" value="${tempReply.tr_num}"/>
+											  <input type="hidden" name="t_code" value="${temp.t_code}"/>
+											  <button onclick="UpdateReply();">수정 완료</button>											  										    											  											  
+											</div>
+											</form>
                                             </c:if>
                                         </div>
-                                        
-                                    </li>
+                                    </li>                                  
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -113,7 +121,8 @@
                             <div class="comment_form">
                                <div class="row">
                                <input type="hidden" value="${temp.t_code}" name="t_code"/>
-                               <input type="hidden" value="${temp.m_code}" name="m_code"/>
+                               <input type="hidden" value="${m_code}" name="m_code"/>
+                               
                                    <!-- <div class="col-sm-4">
                                        <input class="col-lg-4 col-md-4 form-control" name="m_code" type="text" id="m_code" size="30"  onfocus="if(this.value == 'Name') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Name'; }" value="Name" placeholder="Name" >
                                    </div>
@@ -128,12 +137,16 @@
                             <div class="comment-box row">
                                 <div class="col-sm-12">
                                     <p>
-                                        <textarea name="tr_reply" class="form-control" rows="6" cols="40" id="tr_reply" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="내용 입력란">Message</textarea>
+                                        <textarea name="tr_reply" class="form-control" rows="6" cols="40" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="내용 입력란">Message</textarea>
                                     </p>
                                 </div>
                             </div>
-
+							<c:if test="${!empty m_code}">
                             <button id="insertReply" type="submit" class="btn btn-lg btn-default">Post Comment</button>
+                            </c:if>
+                            <c:if test="${empty m_code}">
+                            <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>
+                            </c:if>
                             </form>
                             </c:if>
                         </div>
@@ -143,36 +156,6 @@
 		</section>
 		
 	</section>
-	
-	
-	<div class="modal fade" id="UpdateReply" tabindex="-1" role="dialog">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title">댓글 수정하기</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<form action="${pageContext.request.contextPath}/main/UpdateReply.tat" method="post">
-										<div class="form-group">
-											<label for="recipient-name" class="col-form-label">댓글 입력란</label>
-											<input type="text" class="form-control" name="tr_reply">
-											<input type="hidden" class="form-control" name="m_code" value="${temp.m_code}">
-											<input type="hidden" class="form-control" name="t_code" value="${temp.t_code}">
-											<%-- <input type="hidden" class="form-control" name="tr_no" value="${tempReply.tr_no}"> --%>
-										</div>
-										<button type="submit" class="btn btn-primary">수정완료</button>
-									</form>
-								</div>
-								<div class="modal-footer">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-	
 	
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>

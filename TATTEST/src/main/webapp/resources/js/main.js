@@ -634,3 +634,12 @@ function statusChangeCallback(response) {
 	  console.log("기간 메소드!");
   }
   
+  // 템플릿 댓글 수정 함수 //
+  function UpdateReply() {
+	$('.UpdateReply').submit();
+}
+  // 메인 리턴 함수 //
+  function mainReturn() {
+	$('#MainReturn').click();
+}
+  

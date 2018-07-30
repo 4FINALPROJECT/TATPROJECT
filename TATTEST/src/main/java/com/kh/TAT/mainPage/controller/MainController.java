@@ -36,7 +36,7 @@ import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 import com.kh.TAT.mainPage.model.service.MainService;
 
 @Controller
-@SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "temp", "m_code", "ter", "tempReply"})
+@SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "temp", "m_code", "m_name", "ter", "tempReply"})
 public class MainController {
 
 	@Autowired
@@ -117,16 +117,16 @@ public class MainController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		String m_code = (String) session.getAttribute("m_code");
-		Member m = mainS.selectOneMCode(m_code);
-		
-		
 		temp = mainS.tempDetail(t_code);
 		List<Map<String, String>> tempReplylist = mainS.replyBoard(t_code);
 		
 		mv.addObject("temp", temp);
-		mv.addObject("m", m);
+		
 		mv.addObject("tempReply", tempReplylist);
+		/*String m_code = (String) session.getAttribute("m_code");
+		Member m = mainS.selectOneMCode(m_code);
+		mv.addObject("m", m);*/
+		
 		mv.setViewName("mainPage/mainPage_TemplateDetail");
 		
 		System.out.println("보자보자"+ tempReplylist);
@@ -177,16 +177,16 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		
 		String m_code = request.getParameter("m_code");
-		String tr_reply = request.getParameter("tr_reply");
+		int tr_num = Integer.parseInt(request.getParameter("tr_num"));
 		String t_code = request.getParameter("t_code");
 		
 		
 		ter.setM_code(m_code);
-		ter.setTr_reply(tr_reply);
+		ter.setTr_num(tr_num);
 		
 		
 		System.out.println("삭제할 아이디값: "+m_code);
-		System.out.println("삭제할 댓글값: "+tr_reply);
+		System.out.println("삭제할 댓글번호 값: "+tr_num);
 		
 		
 		mainS.DeleteReply(ter);
@@ -205,14 +205,12 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		
 		String tr_reply = request.getParameter("tr_reply");
-		String m_code = request.getParameter("m_code");
-		String t_code = request.getParameter("t_code");
-		int tr_no = Integer.parseInt(request.getParameter("tr_no"));
+		String t_code = request.getParameter("t_code");		
+		int tr_num = Integer.parseInt(request.getParameter("tr_num"));
 		
 		ter.setTr_reply(tr_reply);
-		ter.setM_code(m_code);
 		ter.setT_code(t_code);
-		ter.setTr_no(tr_no);
+		ter.setTr_num(tr_num);
 		
 		mainS.UpdateReply(ter);
 		
@@ -307,7 +305,8 @@ public class MainController {
 			String msg = "";
 			String loc = "/";
 			
-			String code = ""; 
+			String code = "";
+			String name = "";
 			
 			if(m == null) {
 				msg = "존재하지 않는 이메일 입니다.";
@@ -317,8 +316,10 @@ public class MainController {
 				if(bcryptPasswordEncoder.matches(m_pwd, m.getM_pwd())){
 					msg = "로그인 성공!";
 					code = m.getM_code();
+					name = m.getM_name();
 					// mv.addObject("m", m);
 					mv.addObject("m_code", code);
+					mv.addObject("m_name", name);
 					// mv.addObject("p", p);
 					System.out.println(mv);
 				} else {
