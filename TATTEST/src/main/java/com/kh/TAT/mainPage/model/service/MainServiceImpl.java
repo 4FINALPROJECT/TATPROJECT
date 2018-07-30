@@ -1,6 +1,6 @@
 package com.kh.TAT.mainPage.model.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
-import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.Template;
 import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 import com.kh.TAT.mainPage.model.dao.MainDao;
+
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -120,7 +120,9 @@ public class MainServiceImpl implements MainService {
 	public Member selectOneMCode(String m_code) {
 		// TODO Auto-generated method stub
 		return mainD.selectOneMCode(m_code);
+
 	}
+
 
 	@Override
 	public void DeleteReply(TemplateReplyBoard ter) {
@@ -133,4 +135,5 @@ public class MainServiceImpl implements MainService {
 		// TODO Auto-generated method stub
 		mainD.UpdateReply(ter);
 	}
+
 }

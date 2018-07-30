@@ -12,7 +12,6 @@
 	<c:import url="common/mainPage_Signup.jsp"></c:import>
 	
 	<section class="wrapper">
-	    
 		<section class="page_head">
 			<div class="container">
 				<div class="row">
@@ -266,7 +265,6 @@
                 </div>
             </div>
         </section>
-		
 	</section>
 
 	<c:import url="common/mainPage_Footer.jsp"></c:import>

@@ -8,10 +8,13 @@
 					<span><i class="fa fa-forumbee"></i> The Awesome Template</span>
 				</div>
 				<div class="col-sm-4 top-info">
+
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/edit/Main.tat" class="my-tweet">에</a></li>
 						<li><a href="${pageContext.request.contextPath}/my/Main.tat" class="my-skype">마</a></li>
+
 						<c:if test="${m.m_code eq 'A001'}">
+
 							<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint"data-toggle="tooltip" data-placement="bottom" title="관리자페이지">관</a></li>
 						</c:if>
 						<c:if test="${empty m_code and empty f and empty g}">
@@ -20,8 +23,11 @@
 						<c:if test="${empty m_code and empty f and empty g}">
 						<li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">로</a></li>
 						</c:if>
+
 						<c:if test="${!empty m_code}">
+
 						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
+
 						</c:if>
 					</ul>
 				</div>
