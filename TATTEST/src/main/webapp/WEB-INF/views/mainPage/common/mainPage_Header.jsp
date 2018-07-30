@@ -8,7 +8,6 @@
 					<span><i class="fa fa-forumbee"></i> The Awesome Template</span>
 				</div>
 				<div class="col-sm-4 top-info">
-
 					<ul>
 						<%-- <li><a href="${pageContext.request.contextPath}/edit/Main.tat" class="my-tweet">에</a></li> --%>
 						<c:if test="${m_code ne 'A001' and !empty m_code}">
@@ -23,8 +22,7 @@
 						</c:if>
 						<c:if test="${!empty m_code}">
 						<li><a onclick="mainReturn();" href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
-						</c:if>						
-
+						</c:if>	
 					</ul>
 				</div>
 			</div>

@@ -39,44 +39,45 @@ import com.kh.TAT.mainPage.model.service.MainService;
 @SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "temp", "m_code", "m_name", "ter", "tempReply"})
 public class MainController {
 
-	@Autowired
-	MainService mainS;
-	
-	@Autowired
-	private BCryptPasswordEncoder bcryptPasswordEncoder;
-	
-	@Autowired
-	private EmailSender emailSender;
-	   
+   @Autowired
+   MainService mainS;
+   
+   @Autowired
+   private BCryptPasswordEncoder bcryptPasswordEncoder;
+   
+   @Autowired
+   private EmailSender emailSender;
+      
     @Autowired
-	private Email email;
-	   
-	@Autowired
-	private JavaMailSender mailSender;
-	
-	// 기능소개 페이지 이동
-	@RequestMapping("/main/Feature.tat")
-	public String Feature(){
-		return "mainPage/mainPage_Feature";
-	}
-	
-	// 둘러보기 페이지 이동
-	@RequestMapping("/main/Explore.tat")
-	public String Explore(){
-		return "mainPage/mainPage_Explore";
-	}
-	
-	// 둘러보기 상세보기 페이지 이동
-	@RequestMapping("/main/ExploreDetail.tat")
-	public String ExploreDetail(){
-		return "mainPage/mainPage_ExploreDetail";
-	}
-	
-	// 프리미엄 페이지 이동
-	@RequestMapping("/main/Upgrade.tat")
-	public ModelAndView Upgrade(HttpServletRequest request){
-		HttpSession session = request.getSession(false);
-		ModelAndView mv = new ModelAndView();
+   private Email email;
+      
+   @Autowired
+   private JavaMailSender mailSender;
+   
+   // 기능소개 페이지 이동
+   @RequestMapping("/main/Feature.tat")
+   public String Feature(){
+      return "mainPage/mainPage_Feature";
+   }
+   
+   // 둘러보기 페이지 이동
+   @RequestMapping("/main/Explore.tat")
+   public String Explore(){
+      return "mainPage/mainPage_Explore";
+   }
+   
+   // 둘러보기 상세보기 페이지 이동
+   @RequestMapping("/main/ExploreDetail.tat")
+   public String ExploreDetail(){
+      return "mainPage/mainPage_ExploreDetail";
+   }
+   
+   // 프리미엄 페이지 이동
+   @RequestMapping("/main/Upgrade.tat")
+   public ModelAndView Upgrade(HttpServletRequest request){
+      HttpSession session = request.getSession(false);
+      ModelAndView mv = new ModelAndView();
+
 
 		String m_code = (String) session.getAttribute("m_code");
 		Member m = mainS.selectOneMCode(m_code);
@@ -486,6 +487,8 @@ public class MainController {
 				String.format("yyyy-mm-dd", m_birth);
 				java.sql.Date birth = java.sql.Date.valueOf(m_birth);*/
 
+
+
 				String m_email = request.getParameter("m_email");
 				String m_name = request.getParameter("m_name");			
 				String m_gender = request.getParameter("m_gender");
@@ -603,3 +606,4 @@ public class MainController {
 			}
 	
 }
+

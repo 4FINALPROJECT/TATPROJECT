@@ -10,7 +10,6 @@
 	<c:import url="WEB-INF/views/mainPage/common/mainPage_Header.jsp"></c:import>
 	<c:import url="WEB-INF/views/mainPage/common/mainPage_Signin.jsp"></c:import>
 	<c:import url="WEB-INF/views/mainPage/common/mainPage_Signup.jsp"></c:import>
-	
 	<section class="wrapper">
         <div class="slider-wrapper">
             <div class="slider">
@@ -899,6 +898,7 @@
             </div>
         </section>
     </section>
+>>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
 	
 	<c:import url="WEB-INF/views/mainPage/common/mainPage_Footer.jsp"></c:import>
 	<c:import url="WEB-INF/views/common/JS.jsp"></c:import>

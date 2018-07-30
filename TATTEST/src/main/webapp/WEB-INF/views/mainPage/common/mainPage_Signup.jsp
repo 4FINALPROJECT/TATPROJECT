@@ -48,6 +48,7 @@
                         </div>
                     </div>
                     <div class="form-group text-center" id="insertBtnForm">
+
                         <button id="insertBtn" class="login100-form-btn" data-dismiss="modal" data-toggle="modal" data-target="#signin">가입하기</button>
                     </div>
                 </form>

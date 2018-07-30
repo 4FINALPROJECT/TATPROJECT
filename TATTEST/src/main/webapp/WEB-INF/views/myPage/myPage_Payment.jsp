@@ -27,7 +27,6 @@
 				</div>
 			</div>
 		</section>
-		
 		<section class="content left_sidebar">
 			<div class="container">
 				<div class="row">
@@ -174,7 +173,6 @@
 				</div>
 			
 		</section>
-		
 	</section>
 
 	<c:import url="common/myPage_Footer.jsp"></c:import>
