@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="templateReplyBoard">
-	<resultMap type="templateReplyBoard" id="templateReplyBoardMap">	
+	<resultMap type="templateReplyBoard" id="templateReplyBoardMap">
+			
 	</resultMap>
 	
-	<select id="selectReplyBoard" parameterType="templateReplyBoard" resultMap="templateReplyBoardMap">
-		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, TR_REPLY, TR_DATE, TR_RATE, TR_NUM FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code} ORDER BY TR_DATE DESC
-		<!-- SELECT * FROM TEMPLATE_REPLY_BOARD TER WHERE T_CODE = #{t_code} -->
+
+	<select id="selectReplyBoard" parameterType="templateReplyBoard" resultType="replyName">
+		SELECT TR_NUM, T_CODE, M_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_NAME, TR_REPLY, TR_DATE, TR_RATE FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code} ORDER BY TR_DATE DESC
 	</select>
 	
 	<insert id="insertReplyBoard" parameterType="templateReplyBoard">
 		INSERT INTO TEMPLATE_REPLY_BOARD VALUES(
-		#{t_code}, (SELECT M_CODE FROM MEMBER WHERE M_NAME = #{m_code}), #{tr_reply}, sysdate, #{tr_rate}, SEQ_REPLY.NEXTVAL)
+		SEQ_TEMPLATE_REPLY.NEXTVAL, #{t_code}, #{m_code}, #{tr_reply}, sysdate, #{tr_rate})
 	</insert>
 	
 	<delete id="deleteReplyBoard" parameterType="templateReplyBoard">
-		DELETE FROM TEMPLATE_REPLY_BOARD WHERE TR_REPLY = #{tr_reply}
+		DELETE FROM TEMPLATE_REPLY_BOARD WHERE TR_NUM= #{tr_num}
 	</delete>
 	
 	<update id="updateReplyBoard" parameterType="templateReplyBoard">

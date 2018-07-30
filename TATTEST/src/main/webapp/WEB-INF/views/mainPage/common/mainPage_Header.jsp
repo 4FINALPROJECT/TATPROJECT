@@ -9,20 +9,20 @@
 				</div>
 				<div class="col-sm-4 top-info">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/edit/Main.tat" class="my-tweet">에</a></li>
+						<%-- <li><a href="${pageContext.request.contextPath}/edit/Main.tat" class="my-tweet">에</a></li> --%>
+						<c:if test="${m_code ne 'A001' and !empty m_code}">
 						<li><a href="${pageContext.request.contextPath}/my/Main.tat" class="my-skype">마</a></li>
-						<c:if test="${m.m_code eq 'A001'}">
-							<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint"data-toggle="tooltip" data-placement="bottom" title="관리자페이지">관</a></li>
 						</c:if>
-						<c:if test="${empty m_code and empty f and empty g}">
-						<li><a href="#" class="my-rss" data-toggle="modal" data-target="#signup">회</a></li>
+						<c:if test="${m_code eq 'A001'}">
+						<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint">관</a></li>
 						</c:if>
-						<c:if test="${empty m_code and empty f and empty g}">
+						<c:if test="${empty m_code}">
+						<li><a href="#" class="my-rss" data-toggle="modal" data-target="#signup">회</a></li>						
 						<li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">로</a></li>
 						</c:if>
 						<c:if test="${!empty m_code}">
-						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
-						</c:if>
+						<li><a onclick="mainReturn();" href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
+						</c:if>	
 					</ul>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 		<div class="container">
 			<div class="row">
 				<div  class="col-lg-3 col-sm-3 ">
-					<div id="logo"><h1><a href="${pageContext.request.contextPath}">TAT</a></h1></div>
+					<div id="logo"><h1><a id="MainReturn" href="${pageContext.request.contextPath}">TAT</a></h1></div>
 				</div>
 				<div class="col-lg-9 col-sm-9">
 					<div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -60,8 +60,12 @@
 								</li>
 								<li><a href="#" >프리미엄</a>
 									<ul class="dropdown-menu">
+										<c:if test="${!empty m_code}">
 										<li><a href="${pageContext.request.contextPath}/main/Upgrade.tat">프리미엄 플랜</a></li>
-									    
+									    </c:if>
+									    <c:if test="${empty m_code}">
+									    <li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">프리미엄 플랜</a></li>
+									    </c:if>
 									</ul>
 								</li>
 								<li><a href="#">템플릿</a>

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
-import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.Template;
 import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 
@@ -120,6 +119,7 @@ public class MainDaoImpl implements MainDao {
 	public Member selectOneMCode(String m_code) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.memberCode", m_code);
+
 	}
 
 	@Override
@@ -134,4 +134,5 @@ public class MainDaoImpl implements MainDao {
 		// TODO Auto-generated method stub
 		sqlSession.update("templateReplyBoard.updateReplyBoard", ter);
 	}	
+
 }

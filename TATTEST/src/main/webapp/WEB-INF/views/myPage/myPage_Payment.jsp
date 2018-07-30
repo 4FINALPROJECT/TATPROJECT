@@ -41,7 +41,6 @@
 				</div>
 			</div>
 		</section>
-		
 		<section class="content left_sidebar">
 			<div class="container">
 				<div class="row">
