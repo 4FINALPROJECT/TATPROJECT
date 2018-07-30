@@ -214,14 +214,14 @@
 									 <c:if test="${p.pageStartNum ne 1}">
 										<!--이전 페이지 이동 -->
 										<li class="pageFirst"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>‹‹</a></li>
-										<li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li>
+										<%-- <li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li> --%>
 									</c:if>
 									
                 						<%-- <li class='pageIndex${0}'><a onclick='pageIndex(${0});'>${1}</a></li>
                 						<li class='pageIndex${1}'><a onclick='pageIndex(${1});'>${2}</a></li>
                 						<li class='pageIndex${2}'><a onclick='pageIndex(${2});'>${3}</a></li>
                 						<li class='pageIndex${3}'><a onclick='pageIndex(${3});'>${4}</a></li>
-                						<li class='pageIndex${4}'><a onclick='pageIndex(${4});'>${5}</a></li> --%>
+                						<li class='pageIndex${4}'><a onclick='pageIndex(${4});'>${5}</a></li>  --%>
             						
 									<c:if test="${p.lastChk}">
 										<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>
@@ -311,16 +311,18 @@
 			console.log("게시글 총갯수total : "+total)
 			var num; 
 			if(total%showDoubleCount != 0){
-				num = Math.ceil((total/showCount))+1;
+				num = Math.ceil(total/showCount);
+				console.log("math_ceil값1 : "+num);
 			}else{
 				num = Math.ceil(total/showCount);
+				console.log("math_ceil값2 : "+num);
 			} 
 				console.log("버튼 갯수 : "+num);
 			if(num > 5){num = 5};
 				for(var i= 0 ; i<num;i++ ){ 
 				$('.pagination').append('<li class=pageIndex'+i+'><a onclick=pageIndex('+i+');>'+(i+1)+'</a></li>');
 				};
-				pageNext();
+				// pageNext();
 				
 				
 		};
@@ -332,6 +334,7 @@
 				success : function(data){
 				console.log("데이터 확인123 : "+ data);
 					var total = data;
+					console.log(total);
 					pageBtnCreate(total);
 					
 				},error: function(jqXHR, textStatus, errorThrown) {
@@ -344,7 +347,7 @@
 			var start = pageStartNum;
 			
 			
-			// alert(pageStartNum+"페이지 이동테스트");
+			 // alert(pageStartNum+"페이지 이동테스트");
 			 /* if(pageStartNum != 1){
 				start = 1;
 				end = 40;
@@ -392,14 +395,14 @@
 		};
 			
 			
-		function pageNext(start, total, listCnt, pageCnt){
+		/* function pageNext(start, total, listCnt, pageCnt){
 			$.('.pagination').append(<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>);
-		};
+		}; */
 		function pageLast(start, total, listCnt, pageCnt){
 			alert("마지막으로 가기 테스트");
 			
 			pageIndex(start, total);
-		}
+		};
 		
 	
 		 
