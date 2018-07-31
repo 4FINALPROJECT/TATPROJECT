@@ -632,6 +632,12 @@ function statusChangeCallback(response) {
   function UpdateReply() {
 	$('.UpdateReply').submit();
 }
+  
+  // 둘러보기 댓글 수정 함수 //
+  function UpdateEditReply() {
+		$('.UpdateEditReply').submit();
+	}
+  
   // 메인 리턴 함수 //
   function mainReturn() {
 	$('#MainReturn').click();
