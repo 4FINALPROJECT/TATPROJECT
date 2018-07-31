@@ -1,16 +1,20 @@
 package com.kh.TAT.mainPage.model.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
-import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.Template;
+import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 import com.kh.TAT.mainPage.model.dao.MainDao;
+
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -95,4 +99,92 @@ public class MainServiceImpl implements MainService {
 		// TODO Auto-generated method stub
 		return mainD.selectTemplateBoard();
 	}
+
+	@Override
+	public Template tempDetail(String t_code) {
+		// TODO Auto-generated method stub
+		return mainD.tempDetail(t_code);
+	}
+
+	@Override
+	public List<Map<String, String>> replyBoard(String t_code) {
+		// TODO Auto-generated method stub
+		return mainD.replyBoard(t_code);
+	}
+
+	@Override
+	public int insertReplyBoard(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		return mainD.insertReplyBoard(ter);
+	}
+
+	@Override
+	public Member selectOneMCode(String m_code) {
+		// TODO Auto-generated method stub
+		return mainD.selectOneMCode(m_code);
+
+	}
+
+
+	@Override
+	public void DeleteReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		mainD.DeleteReply(ter);
+	}
+
+	@Override
+	public void UpdateReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		mainD.UpdateReply(ter);
+	}
+
+
+	@Override
+	public List<Map<String, String>> selectFaqBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectFaqBoard();
+	}
+
+	@Override
+	public List<Map<String, String>> selectEditBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectEditBoard();
+	}
+
+	@Override
+	public Edit editDetail(String e_code) {
+		// TODO Auto-generated method stub
+		return mainD.editDetail(e_code);
+	}
+
+	@Override
+	public List<Map<String, String>> EditreplyBoard(String e_code) {
+		// TODO Auto-generated method stub
+		return mainD.EditreplyBoard(e_code);
+	}
+
+	@Override
+	public int insertEditReplyBoard(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		return mainD.insertEditReplyBoard(er);
+	}
+
+	@Override
+	public void DeleteEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		mainD.DeleteEditReply(er);
+	}
+
+	@Override
+	public void UpdateEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		mainD.UpdateEditReply(er);
+	}
+
+	@Override
+	public List<Map<String, String>> selectEdit(Edit newedit) {
+		// TODO Auto-generated method stub
+		return mainD.selectEdit(newedit);
+	}
+
 }

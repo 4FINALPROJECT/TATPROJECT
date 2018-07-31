@@ -33,105 +33,33 @@
 		<section class="content blog masonry_blog">
 	        <div class="container">
 	            <div class="mixed-container masonry_wrapper_blog row wow fadeInUp">
-	                <div class="item">
-	                    <div class="blog-item">
-	                        <figure class="post_video">
-	                            <div class="video">
-	                                <iframe src="http://player.vimeo.com/video/3365942?title=0&amp;byline=0&amp;portrait=0" width="100%" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	                            </div>
-	                        </figure>
-	                        <div class="metaInfo">
-	                            <span><i class="fa fa-calendar"></i> <a href="#">Nov 28, 2015</a> </span>
-	                            <span><i class="fa fa-tag"></i>  <a href="#">Design</a> </span>
-	                            <span><i class="fa fa-comments"></i> <a href="#">22 Comments</a></span>
-	                        </div>
-	                        <div class="blog-title">
-	                            <h2><a href="#" title="">Mauris rutrum id libero in ornare</a></h2>
-	                        </div>
-	
-	                        <div class="blog-desc">
-	                            <p>Lorem ipsum door sit amet, fugiat deicata aElectrify id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-	                        </div>
-	                        <div class="blog-button">
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat">Read More</a>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <div class="item">
-	                    <div class="blog-item">
-	                        <figure class="post_video">
-	                            <div class="video">
-	                                <iframe src="http://player.vimeo.com/video/3365942?title=0&amp;byline=0&amp;portrait=0" width="100%" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	                            </div>
-	                        </figure>
-	                        <div class="metaInfo">
-	                            <span><i class="fa fa-calendar"></i> <a href="#">Nov 28, 2015</a> </span>
-	                            <span><i class="fa fa-tag"></i>  <a href="#">Design</a> </span>
-	                            <span><i class="fa fa-comments"></i> <a href="#">22 Comments</a></span>
-	                        </div>
-	                        <div class="blog-title">
-	                            <h2><a href="#" title="">Mauris rutrum id libero in ornare</a></h2>
-	                        </div>
-	
-	                        <div class="blog-desc">
-	                            <p>Lorem ipsum door sit amet, fugiat deicata aElectrify id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-	                        </div>
-	                        <div class="blog-button">
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat">Read More</a>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <div class="item">
-	                    <div class="blog-item">
-	                        <figure class="post_video">
-	                            <div class="video">
-	                                <iframe src="http://player.vimeo.com/video/3365942?title=0&amp;byline=0&amp;portrait=0" width="100%" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	                            </div>
-	                        </figure>
-	                        <div class="metaInfo">
-	                            <span><i class="fa fa-calendar"></i> <a href="#">Nov 28, 2015</a> </span>
-	                            <span><i class="fa fa-tag"></i>  <a href="#">Design</a> </span>
-	                            <span><i class="fa fa-comments"></i> <a href="#">22 Comments</a></span>
-	                        </div>
-	                        <div class="blog-title">
-	                            <h2><a href="#" title="">Mauris rutrum id libero in ornare</a></h2>
-	                        </div>
-	
-	                        <div class="blog-desc">
-	                            <p>Lorem ipsum door sit amet, fugiat deicata aElectrify id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-	                        </div>
-	                        <div class="blog-button">
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat">Read More</a>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <div class="item">
-	                    <div class="blog-item">
-	                        <figure class="post_video">
-	                            <div class="video">
-	                                <iframe src="http://player.vimeo.com/video/3365942?title=0&amp;byline=0&amp;portrait=0" width="100%" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	                            </div>
-	                        </figure>
-	                        <div class="metaInfo">
-	                            <span><i class="fa fa-calendar"></i> <a href="#">Nov 28, 2015</a> </span>
-	                            <span><i class="fa fa-tag"></i>  <a href="#">Design</a> </span>
-	                            <span><i class="fa fa-comments"></i> <a href="#">22 Comments</a></span>
-	                        </div>
-	                        <div class="blog-title">
-	                            <h2><a href="#" title="">Mauris rutrum id libero in ornare</a></h2>
-	                        </div>
-	
-	                        <div class="blog-desc">
-	                            <p>Lorem ipsum door sit amet, fugiat deicata aElectrify id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-	                        </div>
-	                        <div class="blog-button">
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat">Read More</a>
-	                        </div>
-	                    </div>
-	                </div>
+	                 <c:forEach items="${te}" var="te">
+			                <div class="item">
+			                    <div class="blog-item">
+			                        <figure class="post_video">
+			                            <div class="video">
+			                                <iframe src="http://player.vimeo.com/video/3365942?title=0&amp;byline=0&amp;portrait=0" width="100%" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			                            </div>
+			                        </figure>
+			                        <div class="metaInfo">
+			                            <span><i class="fa fa-calendar"></i> <a href="#">${te.t_date}</a> </span>
+			                            <span><i class="fa fa-tag"></i>  <a href="#">${te.t_category}</a> </span>
+			                            <span><i class="fa fa-comments"></i> <a href="#">${te.t_use_count}</a></span>
+			                        </div>
+			                        <div class="blog-title">
+			                            <h2><a href="#" title="">${te.t_title}</a></h2>
+			                        </div>
+			
+			                        <div class="blog-desc">
+			                            <p>${te.t_comment}</p>
+			                        </div>
+			                        <div class="blog-button">
+			                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat?t_code=${te.t_code}">Read More</a>
+			                        </div>
+			                    </div>
+			                </div>
+					</c:forEach>
+	                
 	
 	            </div>
 	            <div class="col-sm-12 text-center">
@@ -149,7 +77,6 @@
 	    </section>
 		
 	</section>
-	
 	<section class="promo_box wow bounceIn">
            <div class="container">
                <div class="row">

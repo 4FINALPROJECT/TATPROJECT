@@ -1,11 +1,17 @@
 package com.kh.TAT.adminPage.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
 import com.kh.TAT.common.model.vo.Member;
 
 import com.kh.TAT.adminPage.model.service.AdminService;
@@ -23,19 +29,67 @@ public class AdminController {
 		return "adminPage/adminPage_Main";
 	}
 	// 회원정보 페이지 이동
-	@RequestMapping("/admin/Member.tat")
-	public String Member(Model model, PagingVo paging){
+	@RequestMapping(value="/admin/Member.tat")
+	public String Member(){
+	    return "adminPage/adminPage_Member";
+	}
+	@ResponseBody
+	@RequestMapping(value="/admin/MemberAjax.tat")
+	public List<Member> Member(PagingVo paging,@RequestParam("start") int start){
 		// 게시판 페이지 이동
-			
+		System.out.println("출력결과 start : "+start);
+		
+		paging.setIndex(start);
+		
 	    List<Member> memberList = adminS.selectMemberList(paging);
 	    paging.setTotal(adminS.selectTotalPaging());
-	    model.addAttribute("memberList", memberList);
-	    model.addAttribute("p", paging);
 	    
-	    System.out.println("p : "+paging);
-	    return "adminPage/adminPage_Member";
+	    System.out.println("memberList :"+memberList);
+	    
+	    /*return "adminPage/adminPage_Member";*/
+	    return memberList;
 
 	}
+	@ResponseBody
+	@RequestMapping(value="/admin/MemberTotalAjax.tat")
+	public int totalpageList(){
+		int totalpageList = adminS.selectTotalPaging();
+		System.out.println("게시글 갯수 : "+totalpageList);
+		return totalpageList;
+	}
+	/*@ResponseBody
+	@RequestMapping(value="/admin/MemberAjax.tat")
+	public String paging(Model model, PagingVo paging){
+        
+        List<Member> memberList = adminS.selectMemberList(paging);
+        System.out.println("memberList :"+memberList);
+        paging.setTotal(adminS.selectTotalPaging());
+        model.addAttribute("memberList", memberList);
+        model.addAttribute("p", paging);
+        return "paging";
+	}*/
+	
+	/*@ResponseBody
+	@RequestMapping(value="/admin/MemberAjax.tat", method=RequestMethod.POST)
+	public ModelAndView outputJsonList(ModelAndView modelAndView,int start, int end) {
+		PagingVo paging = new PagingVo();
+		paging.setPageStartNum(start);
+		paging.setPageLastNum(end);
+		
+		List<Member> memberAjaxList = adminS.selectMemberList(paging);
+	    		//adminS.memberAjaxList(start, end);
+	     
+	    Map map = new HashMap();
+	    map.put("memberAjaxList", memberAjaxList);
+	    
+	     
+	    modelAndView.addAllObjects(map);
+	 
+	    // Keypoint ! setViewName에 들어갈 String 파라미터는 JsonView bean 설정해줬던 id와 같아야 한다.
+	    modelAndView.setViewName("jsonView");
+	     
+	    return modelAndView;
+	}*/
 	// 결제정보 페이지 이동
 	@RequestMapping("/admin/Payment.tat")
 	public String Payment(){

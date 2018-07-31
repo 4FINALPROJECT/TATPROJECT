@@ -5,6 +5,7 @@
 <head>
     <title>회원 조회 || TAT 관리자</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+
 </head>
 <body>
 	<c:import url="common/adminPage_Header.jsp"></c:import>
@@ -77,17 +78,17 @@
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_1.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_1.png" alt="" /></a></span>
                                                     <a href="#">Publishing packag esanse web page editos</a>
                                                     <i>October 09, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_2.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_2.png" alt="" /></a></span>
                                                     <a href="#">Sublishing packag esanse web page editos</a>
                                                     <i>October 08, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_3.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_3.png" alt="" /></a></span>
                                                     <a href="#">Mublishing packag esanse web page editos</a>
                                                     <i>October 07, 2015</i>
                                                 </li>
@@ -96,17 +97,17 @@
                                         <div class="tab-pane fade" id="Recent">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_4.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_4.png" alt="" /></a></span>
                                                     <a href="#">Various versions has evolved over the years</a>
                                                     <i>October 18, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_5.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_5.png" alt="" /></a></span>
                                                     <a href="#">Rarious versions has evolve over the years</a>
                                                     <i>October 17, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_6.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_6.png" alt="" /></a></span>
                                                     <a href="#">Marious versions has evolven over the years</a>
                                                     <i>October 16, 2015</i>
                                                 </li>
@@ -115,15 +116,15 @@
                                         <div class="tab-pane fade" id="Comment">
                                             <ul class="comments">
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_3.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_3.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambose</a> <i>says: </i> </strong> Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_1.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_1.png" alt="#"></a>
                                                     <p><strong><a href="#">Makaroni</a> <i>says: </i> </strong> Tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_2.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_2.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambanan</a> <i>says: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
                                                 </li>
                                             </ul>
@@ -191,8 +192,8 @@
 				                            <th>IS_USEABLE</th>
 				                        </tr>
 				                        </thead>
-				                        <tbody id="memberListTable">
-				                        <c:forEach var="m" items="${memberList}" >
+				                        <tbody class="memberListTable">
+				                        <%-- <c:forEach var="m" items="${memberList}" >
 				                        <tr>
 				                            <td>${m.m_code}</td>
 				                            <td>${m.m_email}</td>
@@ -202,7 +203,7 @@
 				                            <td>${m.enroll_date}</td>
 				                            <td>${m.is_usable}</td>
 				                        </tr>
-				                        </c:forEach>
+				                        </c:forEach> --%>
 				                        </tbody>
 				                    </table>
 
@@ -210,17 +211,26 @@
 				                        
 				                <div class="col-sm-12 text-center">
 									<ul class="pagination">
-									<c:if test="${p.pageStartNum ne 1}">
-										<li><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>&laquo;</a></li>
-									</c:if>
-									<c:forEach var='i' begin="${p.pageStartNum}" end="${p.pageLastNum}" step="1">
-                						<li class='pageIndex${i}'><a onclick='pageIndex(${i});'>${i}</a></li>
-            						</c:forEach>
-									<c:if test="${p.lastChk}">
-										<li><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>&raquo;</a></li>
-									</c:if>
+									 <%-- <c:if test="${p.pageStartNum ne 1}">
+										<!--이전 페이지 이동 -->
+										<li class="pageFirst"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>‹‹</a></li>
+										<li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹‹</a></li>
+									</c:if> --%>
+									
+                						<%-- <li class='pageIndex${0}'><a onclick='pageIndex(${0});'>${1}</a></li>
+                						<li class='pageIndex${1}'><a onclick='pageIndex(${1});'>${2}</a></li>
+                						<li class='pageIndex${2}'><a onclick='pageIndex(${2});'>${3}</a></li>
+                						<li class='pageIndex${3}'><a onclick='pageIndex(${3});'>${4}</a></li>
+                						<li class='pageIndex${4}'><a onclick='pageIndex(${4});'>${5}</a></li>  --%>
+            						
+									
+										<%-- <li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li> --%>
+										<!-- <li class="pageNextBtn"><a onclick='pageNextBtn(1);'>››</a></li> -->
+									
 									</ul>
 								</div>
+								
+																
 				            </div>
 				            
 				            <div class="col-lg-12 col-md-12 col-sm-12">
@@ -279,143 +289,168 @@
 	</section>
 	
 	<script>
+	 window.onload = function(){
+		 var start = 0;
+		 pageIndex(start);
+		 pageBtn(); 
+		 /* pageNextFirstBtn(); */
+		 
+	 }
+		var showCount = 1;
+		var btnCount = 5;
+		var showDoubleCount = 1.0;
+		var pageVal;
+		function pageFirst(start, pageCnt){
+			alert("처음으로 가기 테스트");
+			pageIndex(start, pageCnt);
+		};
+	
+		function pagePre(pageStartNum, pageCnt){
+			alert("이전으로 가기 테스트");
+		};
+		function pageNextFirstBtn(){
+			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
+		}
+		 function pageNextBtn(i){
+			
+			 var num = Math.ceil(((showCount*btnCount*i)+1)/showDoubleCount);
+			 pageIndex(num);
+			 pageNextBtnCreate(i,num);
+		}; 
+		
+		function pageBtnCreate(total){
+			console.log("게시글 총갯수total : "+total)
+			$('.pageIndex').empty();
+			var num; 
+			if(total%showDoubleCount != 0){
+				num = Math.ceil(total/showCount);
+				console.log("math_ceil값1 : "+num);
+			}else{
+				num = Math.ceil(total/showCount);
+				console.log("math_ceil값2 : "+num);
+			} 
+				console.log("버튼 갯수 : "+num);
+			
+			if(num > 5){
+				num = 5
+				for(var i= 0 ; i<num;i++ ){ 
+					$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+(i+1)+'</a></li>');
+					}
+				
+				
+			}else{
+				for(var i= 0 ; i<num;i++ ){ 
+				$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+(i+1)+'</a></li>');
+				};
+				/* pageLastBtn(); */
+				 
+			}
+				
+				
+		};
+		function pageBtn(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/MemberTotalAjax.tat",
+				type : "post",
+				dataType : 'json', 		
+				success : function(data){
+				console.log("데이터 확인123 : "+ data);
+					var total = data;
+					console.log(total);
+					pageBtnCreate(total);
+					num = Math.ceil(total/showCount);
+					pageNextFirstBtn();
+					console.log("초기버튼 값 : "+num);
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+		};
 		function pageIndex(pageStartNum){
 			
-			alert("페이징 테스트");
+			var start = pageStartNum;
 			
+			
+			 // alert(pageStartNum+"페이지 이동테스트");
+			 /* if(pageStartNum != 1){
+				start = 1;
+				end = 40;
+			}else if(pageStartNum == 0){
+				start = 1
+				end = 5;
+			}else{
+				start = 1
+				end = 5;
+			}  */
+			console.log("start 번호 확인 : "+ start);
+			
+			 $('.memberListTable').empty(); 
+			 $.ajax({
+				url : "${pageContext.request.contextPath}/admin/MemberAjax.tat",
+				type : "post",
+				dataType : 'json', 
+				data : {"start" : start,
+						
+				},success : function(data){
+					
+					console.log("데이터 확인 : "+ data);
+				
+					
+					createPageList(data);
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
 		};
-		
-		function pageMemberListCreate(pageStartNum){
-			$.ajax({
-				url: '/admin/Member.tat',
-		        type: 'post',
-		        data: {"start":paging.p.pageStartNum,
-		        		"last" : paging.p.pageLastNum
-		        }
-		        
-		        }
-		        success : function(data){
-		            obj.
-			});
-		}
-			var paging = {
-			        // 기본값 셋팅
-			        p: {
-			            index : 0,
-			            pageStartNum : 1
-			        },
-			        // 페이징 생성
-			        create: function(){
-			            var htmlTag = '';
-			            for (var i = paging.p.pageStartNum; i <= paging.p.pageLastNum; i++) {
-			                htmlTag += '<li class="pageIndex"><span>'+i+'</span></li>';
-			            }
-			            $('.index').html(htmlTag);
-			            
-			            // 현재 번호 ui
-			            $('.pageIndex').each(function(){
-			                if(paging.p.index == $(this).text()-1) {
-			                    $(this).addClass('active');
-			                }else {
-			                    $(this).removeClass('active');
-			                }
-			            });
-			            
-			            // 이전 페이지 이동 버튼 생성여부
-			            if(paging.p.pageStartNum != 1) {
-			                $('.preBtn').html('<li id="pagePreFirst"><span>«</span></li><li id="pagePre"><span>‹</span></li>');
-			                // 맨 첫 페이지 index
-			                $('#pagePreFirst').click(function(){
-			                    var index = paging.p.pageCnt+1;
-			                    var pageCnt = paging.p.pageCnt;
-			                    if (0 < index - pageCnt) {
-			                        index -= pageCnt;
-			                        paging.p.pageStartNum = index;
-			                        paging.p.index = index-1;
-			                        paging.ajax();
-			                    }
-			                });
-			                
-			                // 이전 페이지 index
-			                $('#pagePre').click(function(){
-			                    var index = paging.p.pageStartNum;
-			                    var pageCnt = paging.p.pageCnt;
-			                    if (0 < index - pageCnt) {
-			                        index -= pageCnt;
-			                        paging.p.pageStartNum = index;
-			                        paging.p.index = index-1;
-			                        paging.ajax();
-			                    }
-			                });
-			            }else {
-			                $('.preBtn').children('li').remove();
-			            }
-			            
-			            // index 리스트 처리
-			            $('.pageIndex').click(function(){
-			                var index = Number($(this).find('span').text());
-			                paging.p.index = index - 1;
-			                paging.ajax();
-			            });
-			            
-			            // 다음 페이지 이동 버튼 생성여부
-			            if(paging.p.lastChk) {
-			                $('.nextBtn').html('<li id="pageNext"><span>›</span></li><li id="pageLast"><span>»</span></li>');
-			                // 다음 페이지 index
-			                $('#pageNext').click(function(){
-			                    var index = paging.p.pageStartNum;
-			                    var total = paging.p.total;
-			                    var listCnt = paging.p.listCnt;
-			                    var pageCnt = paging.p.pageCnt;
-			                    
-			                    var totalPageCnt = Math.ceil(total / listCnt);
-			                    var max = Math.ceil(totalPageCnt / pageCnt);
-			                    if (max * pageCnt > index + pageCnt) {
-			                        index += pageCnt;
-			                        paging.p.pageStartNum = index;
-			                        paging.p.index = index-1;
-			                        paging.ajax();
-			                    }
-			                });
-			                // 마지막 페이지 index
-			                $('#pageLast').click(function(){
-			                    var index = paging.p.pageStartNum;
-			                    var total = paging.p.total;
-			                    var listCnt = paging.p.listCnt;
-			                    var pageCnt = paging.p.pageCnt;
-			                    
-			                    var totalPageCnt = Math.ceil(total / listCnt);
-			                    var max = Math.ceil(totalPageCnt / pageCnt);
-			                    while (max * pageCnt > index + pageCnt) {
-			                        index += pageCnt;
-			                    }
-			                    var remainListCnt = total - listCnt * (index - 1);
-			                    var remainPageCnt = Math.floor(remainListCnt / listCnt);
-			                    if (remainListCnt % listCnt != 0) {
-			                        remainPageCnt++;
-			                    }
-			                    var pageLastNum = 0;
-			                    if (remainListCnt <= listCnt) {
-			                        pageLastNum = index;
-			                    } else if (remainPageCnt <= pageCnt) {
-			                        pageLastNum = remainPageCnt + index - 1;
-			                    } else {
-			                        pageLastNum = pageCnt + index - 1;
-			                    }
-			                    paging.p.pageStartNum = index;
-			                    paging.p.index = index-1;
-			                    paging.ajax();
-			                });
-			            }else {
-			                $('.nextBtn').children('li').remove();
-			            }
-			        },
-			        remove : function() {
-			            $('.preBtn').children('li').remove();
-			            $('.index').html('1');
-			            $('.nextBtn').children('li').remove();
-			        }
+		function createPageList(data){
+			
+			console.log("페이징 처리 Ajax 값 확인 : "+ data.memberList);
+			
+			for(var idx in data){
+				console.log(data[idx].m_code);
+			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
+					'<td>'+data[idx].m_email+'</td>'+
+					'<td>'+data[idx].m_name+'</td>'+
+					'<td>'+data[idx].m_name+'</td>'+
+					'<td>'+data[idx].m_birth+'</td>'+
+					'<td>'+data[idx].enroll_date+'</td>'+
+					'<td>'+data[idx].is_usable+'</td></tr>');
 			};
+		};
+			
+			
+		 function pageNextBtnCreate(num,total){
+			  console.log("현재 버튼위치 값,토탈 :"+num,total);
+			  $('.pagination').empty();
+			  
+			  var nextFlag = false;
+			  if(total > btnCount){total = btnCount; nextFlag = true;}
+			  var prevBtn = num-1;
+			  
+			  if(prevBtn >= 0){
+				  
+				  $('pagination').append('<li class="pagePreBtn"><a onclick="pagePreBtn('+prevBtn+')";>‹‹</a></li>');
+			  }
+			  var start = num*btnCount;
+			  for(var i = 1 ;i<=total ;i++){
+				var btnIndex = start+i;
+				  $('.pagination').append('<li class="pageIndex'+btnIndex+'"><a onclick="pageIndex('+btnIndex+')";>'+btnIndex+'</a></li>');
+			  }
+				  
+			  var nextBtn = num+1;
+			  if(nextFlag){
+				  
+			   
+				  
+			  
+			 $('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
+			  }
+		}; 
+		
+		
+	
+		 
+		
 
 	</script>
 

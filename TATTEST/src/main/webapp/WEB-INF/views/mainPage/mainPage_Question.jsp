@@ -42,6 +42,7 @@
 	            </div>
 	            <div class="col-lg-12 col-md-12 col-sm-12">
 	                <div class="table-responsive">
+<<<<<<< HEAD
 	                    <table class="table table-striped table-hover">
 	                    <thead>
 					    <tr>
@@ -63,6 +64,29 @@
 					    </tr>
 					   </c:forEach>
 					  </tbody>
+=======
+	                    <table class="table table-striped table-hover">
+	                    <thead>
+					    <tr>
+					      <th scope="col">글번호</th>
+					      <th scope="col">카테고리</th>
+					      <th scope="col">제목</th>
+					      <th scope="col">작성자</th>
+					      <th scope="col">작성일</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <c:forEach items="${qa}" var="qa">
+					    <tr class="" data-toggle="modal" data-target="">
+					      <th scope="row">${qa.qa_num}</th>
+					      <td>${qa.qc_code}</td>
+					      <td>${qa.qa_title}</td>
+					      <td>${qa.m_code}</td>
+					      <td>${qa.qa_date}</td>
+					    </tr>
+					   </c:forEach>
+					  </tbody>
+>>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
 	                    </table>
 	                </div>
 	                        <div class="row">

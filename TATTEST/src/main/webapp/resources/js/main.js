@@ -331,7 +331,6 @@ $(document).ready(function() {
  */
 (function($){$.fn.touchwipe=function(settings){var config={min_move_x:20,min_move_y:20,wipeLeft:function(){},wipeRight:function(){},wipeUp:function(){},wipeDown:function(){},preventDefaultEvents:true};if(settings)$.extend(config,settings);this.each(function(){var startX;var startY;var isMoving=false;function cancelTouch(){this.removeEventListener('touchmove',onTouchMove);startX=null;isMoving=false}function onTouchMove(e){if(config.preventDefaultEvents){e.preventDefault()}if(isMoving){var x=e.touches[0].pageX;var y=e.touches[0].pageY;var dx=startX-x;var dy=startY-y;if(Math.abs(dx)>=config.min_move_x){cancelTouch();if(dx>0){config.wipeLeft()}else{config.wipeRight()}}else if(Math.abs(dy)>=config.min_move_y){cancelTouch();if(dy>0){config.wipeDown()}else{config.wipeUp()}}}}function onTouchStart(e){if(e.touches.length==1){startX=e.touches[0].pageX;startY=e.touches[0].pageY;isMoving=true;this.addEventListener('touchmove',onTouchMove,false)}}if('ontouchstart'in document.documentElement){this.addEventListener('touchstart',onTouchStart,false)}});return this}})(jQuery);
 
-
 //////////////////////////결제 스트립트 시작 //////////////////////////////
 
 function premiumService(e, a){
@@ -409,7 +408,7 @@ $('#searchPW').on('click',function(){
 // 비밀번호(정규식) 유효성 검사
 $(function(){	
 	$('#m_pwd').blur(function(){
-		var regexp =/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,}$/;;
+		var regexp =/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,}$/;
 		v = $(this).val();
 		
 		if(regexp.test(v)) {
@@ -629,4 +628,17 @@ function statusChangeCallback(response) {
 	  document.location.href = "daybyday.tat?m_code="+e;
 	  console.log("기간 메소드!");
   }
+  // 템플릿 댓글 수정 함수 //
+  function UpdateReply() {
+	$('.UpdateReply').submit();
+}
   
+  // 둘러보기 댓글 수정 함수 //
+  function UpdateEditReply() {
+		$('.UpdateEditReply').submit();
+	}
+  
+  // 메인 리턴 함수 //
+  function mainReturn() {
+	$('#MainReturn').click();
+}

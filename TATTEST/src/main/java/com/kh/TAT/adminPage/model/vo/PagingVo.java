@@ -13,12 +13,12 @@ public class PagingVo {
 	        pageCnt = 5;
 	        index = 0;
 	        pageStartNum = 1;
-	        listCnt = 5;
+	        listCnt = 1;
 	        pageLastNum = 0;
 	    }
 	    public PagingVo() {}
 	    public int getStart() {
-	        return index * listCnt;
+	        return index * listCnt+1;
 	    }
 	    public int getLast() {
 	        return (index * listCnt) + listCnt;
@@ -81,7 +81,7 @@ public class PagingVo {
 	    }
 	    @Override
 	    public String toString() {
-	        return "PagingFrontVO [pageCnt=" + pageCnt + ", index=" + index + ", pageStartNum=" + pageStartNum
+	        return "PagingVO [pageCnt=" + pageCnt + ", index=" + index + ", pageStartNum=" + pageStartNum
 	                + ", listCnt=" + listCnt + ", total=" + total + ", pageLastNum=" + pageLastNum
 	                + ", lastChk=" + lastChk + "]";
 	    }

@@ -42,7 +42,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-4">
 						<div class="project_description">
 							<div class="widget_title">
-								<h4><span>프로젝트 설명</span></h4>
+								<h4><span>${edit.proj_comment}</span></h4>
 							</div>
 							<p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut aut reiciendise voluptat maiores alias aut et perferendis doloribus asperiores ut labore.</p>
 							<p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -52,10 +52,10 @@
 								<h4><span>프로젝트 정보</span></h4>
 							</div>
 							<ul class="details">
-								<li><span>Client :</span>Louis</li>
+								<li><span>Client :</span>${edit.m_code}</li>
 								<li><span>Company :</span> Rain Technologies inc.</li>
 								<li><span>Category :</span> Web Design, Photography</li>
-								<li><span>Date :</span> 05 September 2015</li>
+								<li><span>Date :</span> ${edit.save_date}</li>
 								<li><span>Project URL :</span> <a href="#">www.bestjquery.com</a></li>
 							</ul>
 						</div>
@@ -63,99 +63,104 @@
 				</div>
                 <div class="news_comments">
                     <div class="dividerHeading">
-                        <h4><span>댓글 (6)</span></h4>
+                        <h4><span>댓글</span></h4>
                     </div>
                     <div id="comment">
                         <ul id="comment-list">
+                        <c:forEach items="${editReply}" var="editReply">
                             <li class="comment">
                                 <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_1.png" class="avatar"></div>
                                 <div class="comment-container">
-                                    <h4 class="comment-author"><a href="#">John Smith</a></h4>
-                                    <div class="comment-meta"><a href="#" class="comment-date link-style1">February 22, 2015</a></div>
+                                    <h4 class="comment-author"><a href="#">${editReply.m_name}[${editReply.er_rate}점]</a></h4>
+                                    <div class="comment-meta"><a href="#" class="comment-date link-style1">${editReply.er_date}</a></div>
                                     <div class="comment-body">
-                                        <p>Ne omnis saperet docendi nec, eos ea alii molestiae aliquand. Latine fuisset mele, mandamus atrioque eu mea, wi forensib argumentum vim an. Te viderer conceptam sed, mea et delenit fabellas probat.</p>
+                                        <p>${editReply.er_reply}</p>
                                     </div>
+                                    
+                            		        <c:if test="${m_code eq editReply.m_code}">
+                                            <a data-target="#${editReply.er_num}" data-toggle="collapse">수정</a>                                                                                        
+                                            
+                                            <a href="${pageContext.request.contextPath}/main/DeleteEditReply.tat?m_code=${editReply.m_name}&er_num=${editReply.er_num}&e_code=${editReply.e_code}">삭제</a>
+                                            <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat">
+                                            <div class="collapse" id="${editReply.er_num}">											  
+											  <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>	
+											  <input type="hidden" name="er_num" value="${editReply.er_num}"/>
+											  <input type="hidden" name="e_code" value="${editReply.e_code}"/>
+											  <button onclick="UpdateEditReply();">수정 완료</button>											  										    											  											  
+											</div>
+											</form>
+                                            </c:if>
+                                    
                                 </div>
                             </li>
-                            <li class="comment">
-                                <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_1.png" class="avatar"></div>
-                                <div class="comment-container">
-                                    <h4 class="comment-author"><a href="#">John Smith</a></h4>
-                                    <div class="comment-meta"><a href="#" class="comment-date link-style1">February 07, 2015</a></div>
-                                    <div class="comment-body">
-                                        <p>Eu mea harum soleat albucius. At duo nihil saperet inimicus. Ne quo dicit offendit eloquenam. Ut intellegam inn theophras tus mea. Vide ceteros mediocritatem est in, utamur gubergren contentiones.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="comment">
-                                <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_3.png" class="avatar"></div>
-                                <div class="comment-container">
-                                    <h4 class="comment-author"><a href="#">Thomas Smith</a></h4>
-                                    <div class="comment-meta"><a href="#" class="comment-date link-style1">February 02, 2015</a></div>
-                                    <div class="comment-body">
-                                        <p>Quodsi eirmod salutandi usu ei, ei mazim facete mel. Deleniti interesset at sed, sea ei malis expetenda. Ei efficiat integebat mel, vis alii insoles te. Vis ex bonorum contentiones. An cum possit reformidans. Est at eripuit theophrastus. Scripta imper diet ad nec, everti contentiones id eam, an eum causae officiis.</p>
-                                    </div>
-                                </div>
-                            </li>
+                        </c:forEach>
                         </ul>
                     </div>
+                    <c:if test="${empty m_code}">
+                        <button data-toggle="modal" data-target="#signin">댓글 남기기</button>
+                    </c:if>
                     <div class="dividerHeading">
-                        <h4><span>댓글 작성</span></h4>
-                    </div>
+                                <h4><span>Leave a comment</span></h4>
+                                </div>
+							<c:if test="${!empty m_code}">
+							<c:url value="/main/insertEditReply.tat" var="insertEditReply">
+								<%-- <c:param name="t_code" value="${temp.t_code}"/>
+								<c:param name="m_code" value=""/> --%>
+							</c:url>
+					<form id="insertEditReplyForm" action="${insertEditReply}">
+                    
                     <div class="comment_form">
                        <div class="row">
-                           <div class="col-sm-4">
-                               <input class="col-lg-4 col-md-4 form-control" name="name" type="text" id="name" size="30"  onfocus="if(this.value == 'Name') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Name'; }" value="Name" placeholder="Name" >
-                           </div>
-                           <div class="col-sm-4">
-                               <input class="col-lg-4 col-md-4 form-control" name="email" type="text" id="email" size="30" onfocus="if(this.value == 'E-mail') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'E-mail'; }" value="E-mail" placeholder="E-mail">
-                           </div>
-                           <div class="col-sm-4">
-                               <input class="col-lg-4 col-md-4 form-control" name="url" type="text" id="url" size="30" onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" value="Url" placeholder="Url">
-                           </div>
+                          <input type="hidden" value="${edit.e_code}" name="e_code"/>
+                          <input type="hidden" value="${m_code}" name="m_code"/> 
+                          
+                          <div class="col-sm-4">
+                             <input class="col-lg-4 col-md-4 form-control" max="5" min="1" name="er_rate" type="number" id="er_rate" size="30" onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" placeholder="점수입력란(1 ~ 5)">
+                          </div>
+                          
                        </div>
                     </div>
                     <div class="comment-box row">
                         <div class="col-sm-12">
                             <p>
-                                <textarea name="comments" class="form-control" rows="6" cols="40" id="comments" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="Message">Message</textarea>
+                                <textarea name="er_reply" class="form-control" rows="6" cols="40" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="내용 입력란">Message</textarea>
                             </p>
                         </div>
                     </div>
-                    <a class="btn btn-lg btn-default" href="#">작성하기</a>
+                    		<c:if test="${!empty m_code}">
+                            <button id="insertEditReply" type="submit" class="btn btn-lg btn-default">Post Comment</button>
+                            </c:if>
+                            <c:if test="${empty m_code}">
+                            <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>
+                            </c:if>
+                    </form>
+                    </c:if>
+                    
                 </div>
                 <div class="row sub_content">
                     <div class="col-md-12">
                         <div class="dividerHeading">
                             <h4><span>다른 프로젝트</span></h4>
                         </div>
-                        <div id="recent-work-slider" class="owl-carousel">
+                        <div id="recent-work-slider" class="owl-carousel">                            
+                            <c:forEach items="${editlist}" var="editlist">
+                                                        
                             <div class="recent-item box">
                                 <figure class="touching ">
                                     <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png" alt=""/>
                                     <div class="option inner">
                                         <div>
-                                            <h5>프로젝트 이름</h5>
+                                            <h5>${editlist.proj_name}</h5>
                                             <a href="${pageContext.request.contextPath}/resources/images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-link"></a>
-                                            <span>작성자</span>
+                                            <a href="${pageContext.request.contextPath}/main/ExploreDetail.tat?e_code=${editlist.e_code}&m_code=${editlist.m_code}" class="fa fa-link"></a>
+                                            <span>${editlist.proj_comment}</span>
                                         </div>
                                     </div>
                                 </figure>
                             </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_2.png" alt=""/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>Touch and Swipe</h5>
-                                            <a href="${pageContext.request.contextPath}/resources/images/portfolio/full/portfolio_2.png" class="fa fa-search mfp-image"></a>
-                                            <a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-link"></a>
-                                            <span>Mobile</span>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
+                            
+                            </c:forEach>
+                            
                         </div>
                     </div>
                 </div>

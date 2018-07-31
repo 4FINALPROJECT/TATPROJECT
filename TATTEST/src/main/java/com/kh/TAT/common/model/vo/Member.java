@@ -27,6 +27,7 @@ public class Member {
 		this.enroll_date = enroll_date;
 		this.is_usable = is_usable;
 	}
+	
 	public String getM_code() {
 		return m_code;
 	}

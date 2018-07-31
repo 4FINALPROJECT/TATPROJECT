@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="templateReplyBoard">
+	<resultMap type="templateReplyBoard" id="templateReplyBoardMap">
+			
+	</resultMap>
+	
+
+	<select id="selectReplyBoard" parameterType="templateReplyBoard" resultType="replyName">
+		SELECT TR_NUM, T_CODE, M_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_NAME, TR_REPLY, TR_DATE, TR_RATE FROM TEMPLATE_REPLY_BOARD TE WHERE T_CODE = #{t_code} ORDER BY TR_DATE DESC
+	</select>
+	
+	<insert id="insertReplyBoard" parameterType="templateReplyBoard">
+		INSERT INTO TEMPLATE_REPLY_BOARD VALUES(
+		SEQ_TEMPLATE_REPLY.NEXTVAL, #{t_code}, #{m_code}, #{tr_reply}, sysdate, #{tr_rate})
+	</insert>
+	
+	<delete id="deleteReplyBoard" parameterType="templateReplyBoard">
+		DELETE FROM TEMPLATE_REPLY_BOARD WHERE TR_NUM= #{tr_num}
+	</delete>
+	
+	<update id="updateReplyBoard" parameterType="templateReplyBoard">
+		UPDATE TEMPLATE_REPLY_BOARD SET TR_REPLY = #{tr_reply} WHERE TR_NUM = #{tr_num}
+	</update>
+</mapper>

@@ -27,4 +27,6 @@ public class AdminDaoImpl implements AdminDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.selectTotalPaging");
 	}
+
+	
 }

@@ -8,9 +8,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
-import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.Template;
+import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 
 @Repository
 public class MainDaoImpl implements MainDao {
@@ -94,5 +97,92 @@ public class MainDaoImpl implements MainDao {
 	public List<Map<String, String>> selectTemplateBoard() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("template.selectTemplate");
+	}
+
+	@Override
+	public Template tempDetail(String t_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("template.selectDetail", t_code);
+	}
+
+	@Override
+	public List<Map<String, String>> replyBoard(String t_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("templateReplyBoard.selectReplyBoard", t_code);
+	}
+
+	@Override
+	public int insertReplyBoard(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("templateReplyBoard.insertReplyBoard", ter);
+	}
+
+	@Override
+	public Member selectOneMCode(String m_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.memberCode", m_code);
+
+	}
+
+	@Override
+	public void DeleteReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("templateReplyBoard.deleteReplyBoard", ter);
+		
+	}
+
+	@Override
+	public void UpdateReply(TemplateReplyBoard ter) {
+		// TODO Auto-generated method stub
+		sqlSession.update("templateReplyBoard.updateReplyBoard", ter);
+	}
+
+	@Override
+	public List<Map<String, String>> selectFaqBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("faqBoard.selectFaqBoard");
+	}
+
+	@Override
+	public List<Map<String, String>> selectEditBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectEdit");
+	}
+
+	@Override
+	public Edit editDetail(String e_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("edit.selectDetailEdit", e_code);
+	}
+
+	@Override
+	public List<Map<String, String>> EditreplyBoard(String e_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("editReplyBoard.selectEditReplyBoard", e_code);
+	}
+
+	@Override
+	public int insertEditReplyBoard(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("editReplyBoard.insertEditReplyBoard", er);
+	}
+
+	@Override
+	public void DeleteEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("editReplyBoard.deleteEditReplyBoard", er);
+	}
+
+	@Override
+	public void UpdateEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		sqlSession.update("editReplyBoard.updateEditReplyBoard", er);
+	}
+
+	@Override
+	public List<Map<String, String>> selectEdit(Edit newedit) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectEditOne", newedit);
 	}	
+
 }

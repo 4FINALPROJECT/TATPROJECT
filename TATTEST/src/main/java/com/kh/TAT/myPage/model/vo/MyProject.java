@@ -1,18 +1,27 @@
-package com.kh.TAT.common.model.vo;
+package com.kh.TAT.myPage.model.vo;
 
 import java.sql.Date;
 
-public class Edit {
+public class MyProject {
+
 	private String e_code;
 	private String m_code;
 	private String proj_name;
 	private String proj_comment;
 	private Date save_date;
-	private String is_share;
-	private int e_use_count;
+	private int comment_count;
 	
-	public Edit() {
+	public MyProject() {}
+
+	public MyProject(String e_code, String m_code, String proj_name, String proj_comment, Date save_date,
+			int comment_count) {
 		super();
+		this.e_code = e_code;
+		this.m_code = m_code;
+		this.proj_name = proj_name;
+		this.proj_comment = proj_comment;
+		this.save_date = save_date;
+		this.comment_count = comment_count;
 	}
 
 	public String getE_code() {
@@ -55,31 +64,19 @@ public class Edit {
 		this.save_date = save_date;
 	}
 
-	public String getIs_share() {
-		return is_share;
+	public int getComment_count() {
+		return comment_count;
 	}
 
-	public void setIs_share(String is_share) {
-		this.is_share = is_share;
+	public void setComment_count(int comment_count) {
+		this.comment_count = comment_count;
 	}
 
-	public int getE_use_count() {
-		return e_use_count;
+	@Override
+	public String toString() {
+		return "MyProject [e_code=" + e_code + ", m_code=" + m_code + ", proj_name=" + proj_name + ", proj_comment="
+				+ proj_comment + ", save_date=" + save_date + ", comment_count=" + comment_count + "]";
 	}
-
-	public void setE_use_count(int e_use_count) {
-		this.e_use_count = e_use_count;
-	}
-
-	public Edit(String e_code, String m_code, String proj_name, String proj_comment, Date save_date, String is_share,
-			int e_use_count) {
-		super();
-		this.e_code = e_code;
-		this.m_code = m_code;
-		this.proj_name = proj_name;
-		this.proj_comment = proj_comment;
-		this.save_date = save_date;
-		this.is_share = is_share;
-		this.e_use_count = e_use_count;
-	}
+	
+	
 }
