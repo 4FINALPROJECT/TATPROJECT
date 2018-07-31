@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.common.model.vo.Template;
@@ -134,6 +136,55 @@ public class MainServiceImpl implements MainService {
 	public void UpdateReply(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
 		mainD.UpdateReply(ter);
+	}
+
+
+	@Override
+	public List<Map<String, String>> selectFaqBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectFaqBoard();
+	}
+
+	@Override
+	public List<Map<String, String>> selectEditBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectEditBoard();
+	}
+
+	@Override
+	public Edit editDetail(String e_code) {
+		// TODO Auto-generated method stub
+		return mainD.editDetail(e_code);
+	}
+
+	@Override
+	public List<Map<String, String>> EditreplyBoard(String e_code) {
+		// TODO Auto-generated method stub
+		return mainD.EditreplyBoard(e_code);
+	}
+
+	@Override
+	public int insertEditReplyBoard(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		return mainD.insertEditReplyBoard(er);
+	}
+
+	@Override
+	public void DeleteEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		mainD.DeleteEditReply(er);
+	}
+
+	@Override
+	public void UpdateEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		mainD.UpdateEditReply(er);
+	}
+
+	@Override
+	public List<Map<String, String>> selectEdit(Edit newedit) {
+		// TODO Auto-generated method stub
+		return mainD.selectEdit(newedit);
 	}
 
 }

@@ -211,22 +211,22 @@
 				                        
 				                <div class="col-sm-12 text-center">
 									<ul class="pagination">
-									 <c:if test="${p.pageStartNum ne 1}">
+									 <%-- <c:if test="${p.pageStartNum ne 1}">
 										<!--이전 페이지 이동 -->
 										<li class="pageFirst"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>‹‹</a></li>
-										<li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li>
-									</c:if>
+										<li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹‹</a></li>
+									</c:if> --%>
 									
                 						<%-- <li class='pageIndex${0}'><a onclick='pageIndex(${0});'>${1}</a></li>
                 						<li class='pageIndex${1}'><a onclick='pageIndex(${1});'>${2}</a></li>
                 						<li class='pageIndex${2}'><a onclick='pageIndex(${2});'>${3}</a></li>
                 						<li class='pageIndex${3}'><a onclick='pageIndex(${3});'>${4}</a></li>
-                						<li class='pageIndex${4}'><a onclick='pageIndex(${4});'>${5}</a></li> --%>
+                						<li class='pageIndex${4}'><a onclick='pageIndex(${4});'>${5}</a></li>  --%>
             						
-									<c:if test="${p.lastChk}">
-										<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>
-										<li class="pageLast"><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>››</a></li>
-									</c:if> 
+									
+										<%-- <li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li> --%>
+										<!-- <li class="pageNextBtn"><a onclick='pageNextBtn(1);'>››</a></li> -->
+									
 									</ul>
 								</div>
 								
@@ -293,11 +293,12 @@
 		 var start = 0;
 		 pageIndex(start);
 		 pageBtn(); 
+		 /* pageNextFirstBtn(); */
 		 
 	 }
-		var showCount = 5;
+		var showCount = 1;
 		var btnCount = 5;
-		var showDoubleCount = 5.0;
+		var showDoubleCount = 1.0;
 		var pageVal;
 		function pageFirst(start, pageCnt){
 			alert("처음으로 가기 테스트");
@@ -307,20 +308,43 @@
 		function pagePre(pageStartNum, pageCnt){
 			alert("이전으로 가기 테스트");
 		};
+		function pageNextFirstBtn(){
+			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
+		}
+		 function pageNextBtn(i){
+			
+			 var num = Math.ceil(((showCount*btnCount*i)+1)/showDoubleCount);
+			 pageIndex(num);
+			 pageNextBtnCreate(i,num);
+		}; 
+		
 		function pageBtnCreate(total){
 			console.log("게시글 총갯수total : "+total)
+			$('.pageIndex').empty();
 			var num; 
 			if(total%showDoubleCount != 0){
-				num = Math.ceil((total/showCount))+1;
+				num = Math.ceil(total/showCount);
+				console.log("math_ceil값1 : "+num);
 			}else{
 				num = Math.ceil(total/showCount);
+				console.log("math_ceil값2 : "+num);
 			} 
 				console.log("버튼 갯수 : "+num);
-			if(num > 5){num = 5};
+			
+			if(num > 5){
+				num = 5
 				for(var i= 0 ; i<num;i++ ){ 
-				$('.pagination').append('<li class=pageIndex'+i+'><a onclick=pageIndex('+i+');>'+(i+1)+'</a></li>');
+					$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+(i+1)+'</a></li>');
+					}
+				
+				
+			}else{
+				for(var i= 0 ; i<num;i++ ){ 
+				$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+(i+1)+'</a></li>');
 				};
-				pageNext();
+				/* pageLastBtn(); */
+				 
+			}
 				
 				
 		};
@@ -332,8 +356,11 @@
 				success : function(data){
 				console.log("데이터 확인123 : "+ data);
 					var total = data;
+					console.log(total);
 					pageBtnCreate(total);
-					
+					num = Math.ceil(total/showCount);
+					pageNextFirstBtn();
+					console.log("초기버튼 값 : "+num);
 				},error: function(jqXHR, textStatus, errorThrown) {
 					console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
@@ -344,7 +371,7 @@
 			var start = pageStartNum;
 			
 			
-			// alert(pageStartNum+"페이지 이동테스트");
+			 // alert(pageStartNum+"페이지 이동테스트");
 			 /* if(pageStartNum != 1){
 				start = 1;
 				end = 40;
@@ -392,14 +419,34 @@
 		};
 			
 			
-		function pageNext(start, total, listCnt, pageCnt){
-			$.('.pagination').append(<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>);
-		};
-		function pageLast(start, total, listCnt, pageCnt){
-			alert("마지막으로 가기 테스트");
-			
-			pageIndex(start, total);
-		}
+		 function pageNextBtnCreate(num,total){
+			  console.log("현재 버튼위치 값,토탈 :"+num,total);
+			  $('.pagination').empty();
+			  
+			  var nextFlag = false;
+			  if(total > btnCount){total = btnCount; nextFlag = true;}
+			  var prevBtn = num-1;
+			  
+			  if(prevBtn >= 0){
+				  
+				  $('pagination').append('<li class="pagePreBtn"><a onclick="pagePreBtn('+prevBtn+')";>‹‹</a></li>');
+			  }
+			  var start = num*btnCount;
+			  for(var i = 1 ;i<=total ;i++){
+				var btnIndex = start+i;
+				  $('.pagination').append('<li class="pageIndex'+btnIndex+'"><a onclick="pageIndex('+btnIndex+')";>'+btnIndex+'</a></li>');
+			  }
+				  
+			  var nextBtn = num+1;
+			  if(nextFlag){
+				  
+			   
+				  
+			  
+			 $('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
+			  }
+		}; 
+		
 		
 	
 		 

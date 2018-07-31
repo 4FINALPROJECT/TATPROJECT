@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.common.model.vo.Template;
@@ -133,6 +135,54 @@ public class MainDaoImpl implements MainDao {
 	public void UpdateReply(TemplateReplyBoard ter) {
 		// TODO Auto-generated method stub
 		sqlSession.update("templateReplyBoard.updateReplyBoard", ter);
+	}
+
+	@Override
+	public List<Map<String, String>> selectFaqBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("faqBoard.selectFaqBoard");
+	}
+
+	@Override
+	public List<Map<String, String>> selectEditBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectEdit");
+	}
+
+	@Override
+	public Edit editDetail(String e_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("edit.selectDetailEdit", e_code);
+	}
+
+	@Override
+	public List<Map<String, String>> EditreplyBoard(String e_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("editReplyBoard.selectEditReplyBoard", e_code);
+	}
+
+	@Override
+	public int insertEditReplyBoard(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("editReplyBoard.insertEditReplyBoard", er);
+	}
+
+	@Override
+	public void DeleteEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("editReplyBoard.deleteEditReplyBoard", er);
+	}
+
+	@Override
+	public void UpdateEditReply(EditReplyBoard er) {
+		// TODO Auto-generated method stub
+		sqlSession.update("editReplyBoard.updateEditReplyBoard", er);
+	}
+
+	@Override
+	public List<Map<String, String>> selectEdit(Edit newedit) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectEditOne", newedit);
 	}	
 
 }

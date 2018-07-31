@@ -26,8 +26,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Email;
 import com.kh.TAT.common.model.vo.EmailSender;
+import com.kh.TAT.common.model.vo.FaqBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
@@ -36,7 +39,7 @@ import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 import com.kh.TAT.mainPage.model.service.MainService;
 
 @Controller
-@SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "temp", "m_code", "m_name", "ter", "tempReply"})
+@SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "edit", "temp", "m_code", "m_name", "ter", "tempReply","er", "editReply", "editlist"})
 public class MainController {
 
    @Autowired
@@ -49,41 +52,185 @@ public class MainController {
    private EmailSender emailSender;
       
     @Autowired
-   private Email email;
-      
-   @Autowired
-   private JavaMailSender mailSender;
-   
-   // 기능소개 페이지 이동
-   @RequestMapping("/main/Feature.tat")
-   public String Feature(){
-      return "mainPage/mainPage_Feature";
-   }
-   
-   // 둘러보기 페이지 이동
-   @RequestMapping("/main/Explore.tat")
-   public String Explore(){
-      return "mainPage/mainPage_Explore";
-   }
-   
-   // 둘러보기 상세보기 페이지 이동
-   @RequestMapping("/main/ExploreDetail.tat")
-   public String ExploreDetail(){
-      return "mainPage/mainPage_ExploreDetail";
-   }
-   
-   // 프리미엄 페이지 이동
-   @RequestMapping("/main/Upgrade.tat")
-   public ModelAndView Upgrade(HttpServletRequest request){
-      HttpSession session = request.getSession(false);
-      ModelAndView mv = new ModelAndView();
 
+	private Email email;
+	   
+	@Autowired
+	private JavaMailSender mailSender;
+	
+	private String pageRemember;
+	
+	// 기능소개 페이지 이동
+	@RequestMapping("/main/Feature.tat")
+	public String Feature(){
+		pageRemember = "mainPage/mainPage_Feature";
+		return pageRemember;
+	}
+	
+	// 둘러보기 페이지 이동
+	@RequestMapping("/main/Explore.tat")
+	public ModelAndView Explore(Edit ed){
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<Map<String, String>> Editlist = mainS.selectEditBoard();
+		
+		mv.addObject("edit", Editlist);
+		
+		pageRemember = "mainPage/mainPage_Explore";
+		
+		mv.setViewName(pageRemember);
+		
+		return mv;
+	}
+	
+	// 둘러보기 상세보기 페이지 이동
+	@RequestMapping("/main/ExploreDetail.tat")
+	public ModelAndView ExploreDetail(HttpServletRequest request, Edit edit, Edit newedit){
+		String e_code = request.getParameter("e_code");
+		String m_code = request.getParameter("m_code");
+		
+		ModelAndView mv = new ModelAndView();
+		
+		edit = mainS.editDetail(e_code);
+		newedit.setE_code(e_code);
+		newedit.setM_code(m_code);
+		List<Map<String, String>> EditReplylist = mainS.EditreplyBoard(e_code);
+		
+		/*List<Map<String, String>> editlist = mainS.selectEditBoard();*/
+		
+		List<Map<String, String>> editlist = mainS.selectEdit(newedit);
+		
+		mv.addObject("editlist", editlist);
+		
+		mv.addObject("edit", edit);
+		
+		mv.addObject("editReply", EditReplylist);
+		/*String m_code = (String) session.getAttribute("m_code");
+		Member m = mainS.selectOneMCode(m_code);
+		mv.addObject("m", m);*/
+		
+		pageRemember = "mainPage/mainPage_ExploreDetail";
+		
+		mv.setViewName(pageRemember);
+		
+		return mv;
+	}
+	
+	// 둘러보기 댓글 작성
+	@RequestMapping("/main/insertEditReply.tat")
+	public ModelAndView insertEditReply(EditReplyBoard er,  HttpServletRequest request,
+			@RequestParam String er_reply, @RequestParam int er_rate, EditReplyBoard editReply){
+		
+		ModelAndView mv = new ModelAndView();
+		String msg = "";
+		/*
+		String e_code = request.getParameter("e_code");
+		
+		String m_code = request.getParameter("m_code");
+		*/
+		System.out.println("e_code : " + er.getE_code());
+		System.out.println("m_code : " + er.getM_code());
+		
+		//ter.setT_code(t_code);
+		//ter.setM_code(m_code);
+		//ter.setM_code(ter.getM_code());
+		er.setEr_reply(er_reply);
+		er.setEr_rate(er_rate);
+		
+		int result = mainS.insertEditReplyBoard(er);
+		
+		if(result > 0){
+			msg = "댓글 등록 성공!";
+			mv.addObject("msg", msg);
+			List<Map<String, String>> editReplylist = mainS.EditreplyBoard(er.getE_code());
+			
+			System.out.println(editReplylist);
+			
+			mv.addObject("editReply", editReplylist);
+			mv.addObject("er", er);
+			pageRemember = "mainPage/mainPage_ExploreDetail";
+			
+			mv.setViewName(pageRemember);
+		} else {
+			pageRemember = "mainPage/mainPage_ExploreDetail";
+			
+			mv.setViewName(pageRemember);
+			System.out.println("실패!!");
+		}
+		
+		return mv;
+	}
+	
+	// 둘러보기 댓글 삭제 //
+	@RequestMapping("/main/DeleteEditReply.tat")
+	public ModelAndView DeleteEditReply(HttpServletRequest request, EditReplyBoard er){
+		ModelAndView mv = new ModelAndView();
+		
+		String m_code = request.getParameter("m_code");
+		int er_num = Integer.parseInt(request.getParameter("er_num"));
+		String e_code = request.getParameter("e_code");
+		
+		
+		er.setM_code(m_code);
+		er.setEr_num(er_num);
+		er.setE_code(e_code);
+		
+		
+		System.out.println("삭제할 아이디값: "+m_code);
+		System.out.println("삭제할 댓글번호 값: "+er_num);
+		
+		
+		mainS.DeleteEditReply(er);
+		
+		List<Map<String, String>> editReplylist = mainS.EditreplyBoard(e_code);
+		mv.addObject("er", er);
+		mv.addObject("editReply", editReplylist);
+		
+		pageRemember = "mainPage/mainPage_ExploreDetail";
+		
+		mv.setViewName(pageRemember);
+		
+		return mv;
+	}
+	
+	// 둘러보기 댓글 수정 //
+	@RequestMapping("/main/UpdateEditReply.tat")
+	public ModelAndView UpdateEditReply(HttpServletRequest request, EditReplyBoard er){
+		ModelAndView mv = new ModelAndView();
+		
+		String er_reply = request.getParameter("er_reply");
+		String e_code = request.getParameter("e_code");		
+		int er_num = Integer.parseInt(request.getParameter("er_num"));
+		
+		er.setEr_reply(er_reply);
+		er.setE_code(e_code);
+		er.setEr_num(er_num);
+	
+		mainS.UpdateEditReply(er);
+		
+		List<Map<String, String>> EditReplylist = mainS.EditreplyBoard(e_code);
+		mv.addObject("editReply", EditReplylist);
+		
+		pageRemember = "mainPage/mainPage_ExploreDetail";
+		
+		mv.setViewName(pageRemember);
+		
+		return mv;
+	}
+	// 프리미엄 페이지 이동
+	@RequestMapping("/main/Upgrade.tat")
+	public ModelAndView Upgrade(HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		ModelAndView mv = new ModelAndView();
 
 		String m_code = (String) session.getAttribute("m_code");
 		Member m = mainS.selectOneMCode(m_code);
 		mv.addObject("m", m);
-
-		mv.setViewName("mainPage/mainPage_Upgrade");
+		
+		pageRemember = "mainPage/mainPage_Upgrade";
+		
+		mv.setViewName(pageRemember);
 		return mv;
 	}
 	
@@ -104,8 +251,9 @@ public class MainController {
 		mv.addObject("msg", msg);
 		mv.addObject("loc", loc);
 		
+		pageRemember= "mainPage/mainPage_Template";
 		
-		mv.setViewName("mainPage/mainPage_Template");
+		mv.setViewName(pageRemember);
 		return mv;
 	}
 	
@@ -127,8 +275,9 @@ public class MainController {
 		/*String m_code = (String) session.getAttribute("m_code");
 		Member m = mainS.selectOneMCode(m_code);
 		mv.addObject("m", m);*/
+		pageRemember = "mainPage/mainPage_TemplateDetail";
 		
-		mv.setViewName("mainPage/mainPage_TemplateDetail");
+		mv.setViewName(pageRemember);
 		
 		System.out.println("보자보자"+ tempReplylist);
 		return mv;
@@ -163,9 +312,13 @@ public class MainController {
 			System.out.println(tempReplylist);
 			mv.addObject("tempReply", tempReplylist);
 			mv.addObject("ter", ter);
-			mv.setViewName("mainPage/mainPage_TemplateDetail");
+			pageRemember = "mainPage/mainPage_TemplateDetail";
+			
+			mv.setViewName(pageRemember);
 		} else {
-			mv.setViewName("mainPage/mainPage_TemplateDetail");
+			pageRemember = "mainPage/mainPage_TemplateDetail";
+			
+			mv.setViewName(pageRemember);
 			System.out.println("실패!!");
 		}
 		
@@ -195,12 +348,14 @@ public class MainController {
 		List<Map<String, String>> tempReplylist = mainS.replyBoard(t_code);
 		mv.addObject("tempReply", tempReplylist);
 		
-		mv.setViewName("mainPage/mainPage_TemplateDetail");
+		pageRemember = "mainPage/mainPage_TemplateDetail";
+		
+		mv.setViewName(pageRemember);
 		
 		return mv;
 	}
 	
-	// 댓글 수정
+	// 템플릿 댓글 수정
 	@RequestMapping("/main/UpdateReply.tat")
 	public ModelAndView UpdateReply(HttpServletRequest request, TemplateReplyBoard ter){
 		ModelAndView mv = new ModelAndView();
@@ -218,7 +373,9 @@ public class MainController {
 		List<Map<String, String>> tempReplylist = mainS.replyBoard(t_code);
 		mv.addObject("tempReply", tempReplylist);
 		
-		mv.setViewName("mainPage/mainPage_TemplateDetail");
+		pageRemember = "mainPage/mainPage_TemplateDetail";
+		
+		mv.setViewName(pageRemember);
 		
 		return mv;
 	}
@@ -226,7 +383,8 @@ public class MainController {
 	// 제휴신청 페이지 이동
 	@RequestMapping("/main/Affiliate.tat")
 	public String Affiliate(){
-		return "mainPage/mainPage_Affiliate";
+		pageRemember = "mainPage/mainPage_Affiliate";
+		return pageRemember;
 	}
 	
 	// 1:1문의 페이지 이동
@@ -246,21 +404,41 @@ public class MainController {
 		mv.addObject("msg", msg);
 		mv.addObject("loc", loc);
 		
-		mv.setViewName("mainPage/mainPage_Question");
+		pageRemember = "mainPage/mainPage_Question";
+		
+		mv.setViewName(pageRemember);
 		
 		return mv;
 	}
 	
 	// FAQ 페이지 이동
 	@RequestMapping("/main/Faq.tat")
-	public String Faq(){
-		return "mainPage/mainPage_Faq";
+	public ModelAndView Faq(FaqBoard faq){
+		
+		String msg = "";
+		String loc = "/";
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<Map<String, String>> faqlist = mainS.selectFaqBoard();
+		
+		msg = "QA Success";
+		
+		mv.addObject("faq", faqlist);
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		
+		pageRemember = "mainPage/mainPage_Faq";
+		
+		mv.setViewName(pageRemember);
+		return mv;
 	}
 	
 	// 회사 소개 페이지 이동
 	@RequestMapping("/main/About.tat")
 	public String About(){
-		return "mainPage/mainPage_About";
+		pageRemember = "mainPage/mainPage_About";
+		return pageRemember;
 	}
 	
 	// 회원가입 메소드
@@ -306,7 +484,7 @@ public class MainController {
 			Member m = mainS.selectOneMember(m_email);
 			
 			String msg = "";
-			String loc = "/";
+			String loc = "/";			
 			
 			String code = "";
 			String name = "";
@@ -331,7 +509,7 @@ public class MainController {
 			}
 			mv.addObject("loc", loc);
 			mv.addObject("msg", msg);
-			mv.setViewName("mainPage/common/msg");
+			mv.setViewName(pageRemember);
 			
 			return mv;
 		}
@@ -496,6 +674,7 @@ public class MainController {
 				String code = "";
 				String msg = "";
 				String loc = "";
+				String name = "";
 				
 				m.setM_email(m_email);
 				m.setM_name(m_name);
@@ -516,9 +695,11 @@ public class MainController {
 						msg = "페이스북 로그인 성공!";
 						m = mainS.selectOneMember(m_email);
 						code = m.getM_code();
+						name = m.getM_name();
 						mv.addObject("msg", msg);
 						mv.addObject("loc", loc);
 						mv.addObject("m_code", code);
+						mv.addObject("m_name", name);
 						} else {
 							System.out.println("실패");
 						}
@@ -531,7 +712,7 @@ public class MainController {
 					mv.addObject("m_code", code);
 				}
 				
-				mv.setViewName("mainPage/common/msg");
+				mv.setViewName(pageRemember);
 				
 				return mv;
 			}
@@ -546,6 +727,7 @@ public class MainController {
 				String msg = "";
 				String loc = "";
 				String code = "";
+				String name = "";
 				
 				msg = "구글 로그인 성공!";
 				
@@ -563,10 +745,11 @@ public class MainController {
 						msg = "구글 로그인 성공!";
 						m = mainS.selectOneMember(m_email);
 						code = m.getM_code();
-						
+						name = m.getM_name();
 						mv.addObject("msg", msg);
 						mv.addObject("loc", loc);
 						mv.addObject("m_code", code);
+						mv.addObject("m_name", name);
 						} else {
 							System.out.println("실패");
 						}
@@ -579,7 +762,7 @@ public class MainController {
 						mv.addObject("loc", loc);
 						mv.addObject("m_code", code);
 				}
-				mv.setViewName("mainPage/common/msg");
+				mv.setViewName(pageRemember);
 				
 				return mv;
 			}
