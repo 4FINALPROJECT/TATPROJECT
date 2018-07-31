@@ -1,0 +1,108 @@
+#objectData{
+   top: 100px;
+   right: 2px;
+    width : 92px;
+    text-align : center;
+    position: absolute;
+    padding : 10px;
+    z-index: 10;
+    color : rgba(92, 92, 92, 0.9);
+    background : rgb(251, 253, 255);
+    border : 1px solid rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+#objectData img{
+   width : 20px;
+   height : 20px;
+   cursor : pointer;
+}
+.objectData_txt{
+   font-size : 10px;
+   color : rgba(92, 92, 92, 0.9);
+    width : 50px;
+    float: right;
+    top : 3px;
+    border-radius: 3px;
+    position : relative;
+    text-align: left;
+}
+.objectData_name_txt{
+    font-family: Arial;
+    font-size: 20px;
+}
+#item_inpo{
+   width : 290px;
+   position : absolute;
+    display: none;
+    background: rgba(231, 231, 231, 0.7);
+    border : 1px solid black;
+    border-radius : 20px;
+    z-index : 9000;
+    text-align: center;
+}
+.item_button{
+    border-radius : 30px;
+    text-align : center;
+    border : 1px solid rgba(0,0,0,0.6);
+    font-size : 17px;
+    width : 70px;
+    cursor: pointer;
+}
+.inpo_menu{
+    display : none;
+    width : 350px;
+    border-radius : 13px;
+    border: 0.5px solid rgb(189, 189, 189);
+    background: rgba(92, 177, 204,0.6);
+    position : absolute;
+    padding : 10px;
+    z-index : 8999;
+}
+.inpo_menu_source{
+    display: block;
+    width: 100px;
+    float : right;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+#border_size , #border_style , #border_color{
+    display: block;
+    width: 100px;
+    float : right;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.inpo_menu label{
+   top : 33px;
+    position: relative;
+    font-size : 16px;
+}
+#tooltip{
+   
+   display : none;
+   position : absolute;
+   background : #F2F5A9;
+   border : 1px solid #E6E6E6;
+   font-size : 25px;
+   z-index : 9999;
+   
+}
+.rink_page , .rink_submit{
+   display : none;
+}
+
+
