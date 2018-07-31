@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="editReplyBoard">
+	<resultMap type="editReplyBoard" id="editReplyBoardMap">		
+	</resultMap>
+	
+	<select id="selectEditReplyBoard" parameterType="editReplyBoard" resultType="replyEdName">
+		SELECT ER_NUM, E_CODE, M_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = E.M_CODE) M_NAME, ER_REPLY, ER_DATE, ER_RATE FROM EDIT_REPLY_BOARD E WHERE E_CODE = #{e_code} ORDER BY ER_DATE DESC
+	</select>
+	
+	<insert id="insertEditReplyBoard" parameterType="editReplyBoard">
+		INSERT INTO EDIT_REPLY_BOARD VALUES(
+		SEQ_EDIT_REPLY.NEXTVAL, #{e_code}, #{m_code}, #{er_reply}, sysdate, #{er_rate})
+	</insert>
+	
+	<delete id="deleteEditReplyBoard" parameterType="editReplyBoard">
+		DELETE FROM EDIT_REPLY_BOARD WHERE ER_NUM= #{er_num}
+	</delete>
+	
+	<update id="updateEditReplyBoard" parameterType="editReplyBoard">
+		UPDATE EDIT_REPLY_BOARD SET ER_REPLY = #{er_reply} WHERE ER_NUM = #{er_num}
+	</update>
+	
+</mapper>

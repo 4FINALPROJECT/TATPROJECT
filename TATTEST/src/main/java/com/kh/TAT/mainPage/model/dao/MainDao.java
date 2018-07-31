@@ -4,6 +4,8 @@ package com.kh.TAT.mainPage.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
 import com.kh.TAT.common.model.vo.Template;
@@ -49,5 +51,21 @@ public interface MainDao {
 	void DeleteReply(TemplateReplyBoard ter);
 
 	void UpdateReply(TemplateReplyBoard ter);
+
+	List<Map<String, String>> selectFaqBoard();
+
+	List<Map<String, String>> selectEditBoard();
+
+	Edit editDetail(String e_code);
+
+	List<Map<String, String>> EditreplyBoard(String e_code);
+
+	int insertEditReplyBoard(EditReplyBoard er);
+
+	void DeleteEditReply(EditReplyBoard er);
+
+	void UpdateEditReply(EditReplyBoard er);
+
+	List<Map<String, String>> selectEdit(Edit newedit);
 
 }

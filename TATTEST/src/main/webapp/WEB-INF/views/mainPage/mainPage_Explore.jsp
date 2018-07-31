@@ -41,51 +41,23 @@
 							<li data-filter=".branding"><a href="#">댓글</a></li>
 						</ul>
 						<div class="mixed-container masonry_wrapper">
+							<c:forEach items="${edit}" var="edit">
 							<div class="item responsive">
 								<div class="recent-item box">
 									<figure class="touching ">
 										<img src="${pageContext.request.contextPath}/resources/images/apple-devices-2.png" alt="" class="img-responsive"/>
 										<div class="option inner">
 											<div>
-												<h5>프로젝트</h5>
-												<span>작성자</span>
-												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-search mfp-image"></a>
-												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-link"></a>
+												<h5>${edit.proj_name}</h5>
+												<span>${edit.proj_comment}</span>
+												<a href="#" class="fa fa-search mfp-image"></a>
+												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat?e_code=${edit.e_code}&m_code=${edit.m_code}" class="fa fa-link"></a>
 											</div>
 										</div>
 									</figure>
 								</div>
 							</div>
-							<div class="item mobile">
-								<div class="recent-item box">
-									<figure class="touching ">
-										<img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png" alt="" class="img-responsive"/>
-										<div class="option inner">
-											<div>
-												<h5>프로젝트</h5>
-												<span>작성자</span>
-												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-search mfp-image"></a>
-												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-link"></a>
-											</div>
-										</div>
-									</figure>
-								</div>
-							</div>
-							<div class="item branding">
-								<div class="recent-item box">
-									<figure class="touching ">
-										<img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_2.png" alt="" class="img-responsive"/>
-										<div class="option inner">
-											<div>
-												<h5>프로젝트</h5>
-												<span>작성자</span>
-												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-search mfp-image"></a>
-												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat" class="fa fa-link"></a>
-											</div>
-										</div>
-									</figure>
-								</div>
-							</div>
+							</c:forEach>
 							
 						</div>
 					</div>
