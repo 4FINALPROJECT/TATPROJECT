@@ -54,7 +54,6 @@
 				</div>
 			</div>
 		</section>
-		
 		<section class="content left_sidebar">
 			<div class="container">
 				<div class="row">
@@ -188,6 +187,12 @@
 				        </div>
 	                </div>
 				</div>
+<<<<<<< HEAD
+			
+		</section>
+	</section>
+
+=======
 			</div>
 		</section>
 	</section>
@@ -390,6 +395,11 @@
 			}
 		
 	</script>
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
+	<c:import url="common/myPage_Footer.jsp"></c:import>
+=======
 	
+>>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
 </body>
 </html>

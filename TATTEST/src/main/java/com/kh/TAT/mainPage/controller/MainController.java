@@ -42,16 +42,17 @@ import com.kh.TAT.mainPage.model.service.MainService;
 @SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "edit", "temp", "m_code", "m_name", "ter", "tempReply","er", "editReply", "editlist"})
 public class MainController {
 
-	@Autowired
-	MainService mainS;
-	
-	@Autowired
-	private BCryptPasswordEncoder bcryptPasswordEncoder;
-	
-	@Autowired
-	private EmailSender emailSender;
-	   
+   @Autowired
+   MainService mainS;
+   
+   @Autowired
+   private BCryptPasswordEncoder bcryptPasswordEncoder;
+   
+   @Autowired
+   private EmailSender emailSender;
+      
     @Autowired
+
 	private Email email;
 	   
 	@Autowired
@@ -663,6 +664,8 @@ public class MainController {
 				/*String m_birth = request.getParameter("m_birthday");
 				String.format("yyyy-mm-dd", m_birth);
 				java.sql.Date birth = java.sql.Date.valueOf(m_birth);*/
+
+
 
 				String m_email = request.getParameter("m_email");
 				String m_name = request.getParameter("m_name");			

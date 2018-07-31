@@ -14,6 +14,7 @@ import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 
 public interface MainDao {
 
+
 	int insertMember(Member member);
 
 	Member selectOneMember(String m_email);
@@ -69,3 +70,4 @@ public interface MainDao {
 	List<Map<String, String>> selectEdit(Edit newedit);
 
 }
+

@@ -10,12 +10,8 @@
 		#{m_name,  jdbcType=VARCHAR}, #{m_birth}, #{m_gender, jdbcType=VARCHAR}, sysdate, DEFAULT)
 	</insert>
 	
-	<select id="memberLogin" parameterType="String" resultMap="memberMap">
+	<select id="memberLogin" parameterType="string" resultMap="memberMap">
 		SELECT * FROM MEMBER WHERE M_EMAIL = #{m_email}
-	</select>
-	
-	<select id="memberCode" parameterType="String" resultMap="memberMap">
-		SELECT * FROM MEMBER WHERE M_CODE = #{m_code}
 	</select>
 	
 	<select id="checkemailDuplicate" resultType="_int">
@@ -45,4 +41,5 @@
 		VALUES('G'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, '############', 
 		#{m_name,  jdbcType=VARCHAR}, null, null, sysdate, DEFAULT)
 	</insert>
+
 </mapper>

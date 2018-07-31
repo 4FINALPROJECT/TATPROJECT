@@ -77,7 +77,6 @@
 	    </section>
 		
 	</section>
-	
 	<section class="promo_box wow bounceIn">
            <div class="container">
                <div class="row">
