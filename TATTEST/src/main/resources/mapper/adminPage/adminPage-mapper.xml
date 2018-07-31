@@ -3,8 +3,8 @@
 <mapper namespace="member">
 	<select id="selectMemberList" resultType="Member" parameterType="pagingVo">
 		SELECT * FROM (    
-		SELECT ROWNUM RNUM, P.* FROM (    
-		SELECT *  FROM MEMBER ORDER BY M_CODE ASC ) P )
+		SELECT ROWNUM RNUM , M_CODE, M_EMAIL, M_NAME, TO_CHAR(M_BIRTH, 'RRRR-MM-DD') M_BIRTH, M_GENDER, TO_DATE(ENROLL_DATE, 'RRRR-MM-DD') ENROLL_DATE , IS_USABLE FROM (    
+		SELECT *  FROM MEMBER ORDER BY ENROLL_DATE DESC ) P )
 		WHERE RNUM BETWEEN #{start} AND #{last}
 	</select>
 	
@@ -12,6 +12,6 @@
 		SELECT count(*) FROM MEMBER
 	</select>
 	<select id="totalPagingCount" resultType="_int">
-		SELECT 
+		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM MEMBER) WHERE row_num >#{start}
 	</select>
 </mapper>

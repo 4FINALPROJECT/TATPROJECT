@@ -38,7 +38,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/MemberTotalCountAjax.tat")
 	public int totalPagingCount(@RequestParam("start") int start){
 		int totalPagingCount = adminS.totalPagingCount(start);
-		System.out.println("게시글 갯수 : "+totalPagingCount);
+		System.out.println("게시글 갯수count : "+totalPagingCount);
 		return totalPagingCount;
 	}
 	@ResponseBody
