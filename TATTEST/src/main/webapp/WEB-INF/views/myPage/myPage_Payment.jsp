@@ -100,7 +100,7 @@
 				                </div>
 				            </div>
 					      </div>   
-					        
+					          
 					        <!-- 결제 히스토리 -->
 					        <div id="paymentHistory" class="row sub_content">
 					            <div class="col-lg-12 col-md-12 col-sm-12">
@@ -113,27 +113,31 @@
 				                <div class="table-responsive">
 				                    <table class="table table-striped ">
 				                        <thead>
-				                        <tr>
-				                            <th>번호</th>
-				                            <th>상품명</th>
-				                            <th>구매 일자</th>
-				                            <th>만료 일자</th>
-				                            <th>남은 기간</th>
-				                        </tr>
+					                     	<tr>
+					                            <th>번호</th>
+					                            <th>상품명</th>
+					                            <th>구매 일자</th>
+					                            <th>만료 일자</th>
+					                            <th>남은 기간</th>
+					                        </tr>
 				                        </thead>
 				                        <tbody>
-				                        <tr>
-				                            <td>1</td>
-				                            <td>1 Month</td>
-				                            <td>2018.01.26</td>
-				                            <td>2018.02.25</td>
-				                            <td>만료</td>
-				                        </tr>
-				                        </tbody>
+					                      	<c:forEach items="${pl}" var="pl" varStatus="status">
+						                        <c:if test="${pl.e_date <= 0}">
+							                        <tr>
+							                            <th>${status.index}</th>
+							                            <th>${pl.p_name}</th>
+							                            <th>${pl.p_date}</th>
+							                            <th>${pl.v_date}</th>
+							                            <th>만료</th>
+							                        </tr>
+						                        </c:if>
+					                        </c:forEach>
+					                    </tbody>
 				                    </table>
 				                </div>
 				                        
-				                <div class="col-sm-12 text-center">
+				               <!--  <div class="col-sm-12 text-center">
 									<ul class="pagination">
 										<li><a href="#">&laquo;</a></li>
 										<li class="active"><a href="#">1</a></li>
@@ -143,7 +147,7 @@
 										<li><a href="#">5</a></li>
 										<li><a href="#">&raquo;</a></li>
 									</ul>
-								</div>
+								</div> -->
 				             </div>
 				          </div>
 				        </div>

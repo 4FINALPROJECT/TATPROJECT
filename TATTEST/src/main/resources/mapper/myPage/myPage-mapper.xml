@@ -35,8 +35,10 @@
 	</select>
 	
 	<select id="selectListPayment" parameterType="String" resultType="myPayment">
-		SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code}
+		SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code} ORDER BY P_DATE DESC
 	</select>
+	
+	
 	
 		
 </mapper>

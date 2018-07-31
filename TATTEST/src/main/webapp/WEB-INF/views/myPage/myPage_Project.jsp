@@ -32,7 +32,7 @@
 	        <div class="container">
 	            <div class="mixed-container masonry_wrapper_blog row wow fadeInUp">
 					
-					<c:forEach var="p" items="${list}" >
+					<c:forEach items="${list}" var="p" >
 	                <div class="item">
 	                    <div class="blog-item">
 	                        <div class="ImageWrapper">
@@ -53,7 +53,7 @@
 	                        </div><!-- end desc -->
 	
 	                        <div class="blog-button">
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat">Read More</a>
+	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat">상세 보기</a>
 	                        </div>
 	                    </div>
 	                </div>

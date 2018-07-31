@@ -48,6 +48,10 @@ public class MyController {
 		Member m = myS.selectOneMemberCode(m_code);
 		request.setAttribute("m", m);
 		
+		List<MyProject> list = myS.selectAllProject(m_code);
+		
+		request.setAttribute("list", list);
+		System.out.println("list : "+list);
 		
 		return "myPage/myPage_Main";
 	}
@@ -74,8 +78,8 @@ public class MyController {
 		MyPayment p = myS.selectOnePayment(m_code);
 		request.setAttribute("p", p);
 		
-		List<MyPayment> paymentList = myS.selectListPayment(m_code);
-		request.setAttribute("paymentList", paymentList);
+		List<MyPayment> pl = myS.selectListPayment(m_code);
+		request.setAttribute("pl", pl);
 		return "myPage/myPage_Payment";
 	}
 	
