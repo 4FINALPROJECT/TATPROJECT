@@ -167,10 +167,10 @@
 			                                    <label><i class="fas fa-angle-double-right"></i> 현재 비밀번호</label><input type="password" id="password1" name="password1" class="form-control" placeholder="현재 비밀번호" >      
 			                                </div>
 			                                <div class="col-lg-12 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 변경할 비밀번호</label><input type="password" id="password2" name="password2" class="form-control" placeholder="변경할 비밀번호" >
+			                                    <label><i class="fas fa-angle-double-right"></i> 변경할 비밀번호</label><input type="password" id="password2" name="password2" class="form-control" placeholder="변경할 비밀번호 (영문+숫자(기호)조합으로 8자 이상)" >
 			                                </div>
 			                                <div class="col-lg-12 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 변경할  비밀번호 확인</label><input type="password" id="password3" name="password3" class="form-control" placeholder="변경할 비밀번호 확인" >
+			                                    <label><i class="fas fa-angle-double-right"></i> 변경할  비밀번호 확인</label><input type="password" id="password3" name="password3" class="form-control" placeholder="변경할 비밀번호 확인 (영문+숫자(기호)조합으로 8자 이상)" >
 			                                </div>
 			                            </div>
 			                        </div>
@@ -357,7 +357,7 @@
 			         			type:"post",
 			         			success : function(data){
 			         					console.log("가져온 인증키 값 : "+data);
-			         				alert("됐다??");
+			         				alert("해당 이메일로 인증번호가 발송되었습니다.");
 			         				keyValue=data;
 								
 			         				
@@ -372,7 +372,7 @@
 			     
 			         	} 
 			         }else { // 그밖은 중복된 것이다.
-			        	 alert("중복된 아이디 입니다.");
+			        	 alert("이미 등록된 Email 입니다.");
 			        	 console.log(data.isUsable);
 			         }
 			         
@@ -387,9 +387,10 @@
 				if(keyValue == $('#verifyNum').val()){
 					
 					$('#changeEmailForm').submit();
+					alert("변경된 이메일로 다시 로그인 해 주시기 바랍니다.");
 					
 				}else{
-					alert("인증키 값이 다릅니다.");
+					alert("인증키 값이 일치하지 않습니다.");
 				}
 				
 			}

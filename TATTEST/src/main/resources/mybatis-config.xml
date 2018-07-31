@@ -14,9 +14,12 @@
 		<typeAlias type="com.kh.TAT.common.model.vo.TemplateReplyBoard" alias="templateReplyBoard"/>
 
 		<typeAlias type="com.kh.TAT.mainPage.model.vo.ReplyName" alias="replyName"/>
-		<typeAlias type="com.kh.TAT.mainPage.model.vo.ReplyEdName" alias="replyEdName"/>
-		
+
+
 		<typeAlias type="com.kh.TAT.myPage.model.vo.MyProject" alias="myProject"/>
+		<typeAlias type="com.kh.TAT.myPage.model.vo.MyPayment" alias="myPayment"/>
+
+		<typeAlias type="com.kh.TAT.mainPage.model.vo.ReplyEdName" alias="replyEdName"/>
 
 	</typeAliases>
 </configuration>

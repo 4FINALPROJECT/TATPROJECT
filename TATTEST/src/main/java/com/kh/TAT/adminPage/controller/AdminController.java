@@ -33,6 +33,14 @@ public class AdminController {
 	public String Member(){
 	    return "adminPage/adminPage_Member";
 	}
+	// 페이징 전용 
+	@ResponseBody
+	@RequestMapping(value="/admin/MemberTotalCountAjax.tat")
+	public int totalPagingCount(@RequestParam("start") int start){
+		int totalPagingCount = adminS.totalPagingCount(start);
+		System.out.println("게시글 갯수count : "+totalPagingCount);
+		return totalPagingCount;
+	}
 	@ResponseBody
 	@RequestMapping(value="/admin/MemberAjax.tat")
 	public List<Member> Member(PagingVo paging,@RequestParam("start") int start){

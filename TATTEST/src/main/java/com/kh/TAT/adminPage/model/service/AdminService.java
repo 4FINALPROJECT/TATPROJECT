@@ -13,6 +13,8 @@ public interface AdminService {
 	
 	int selectTotalPaging();
 
+	int totalPagingCount(int start);
+
 
 
 	

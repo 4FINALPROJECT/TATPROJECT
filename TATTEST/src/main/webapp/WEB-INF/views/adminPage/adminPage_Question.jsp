@@ -168,6 +168,20 @@
 		</section>
 		
 	</section>
+	
+	<script>
+	/* var name = "";
+	$('#id').val(name);
+	
+	function() {
+		$.ajax({
+			success : function(data) {
+				
+				name.val() == data.name;		
+			}
+		});
+	}; */
+	</script>
 
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>

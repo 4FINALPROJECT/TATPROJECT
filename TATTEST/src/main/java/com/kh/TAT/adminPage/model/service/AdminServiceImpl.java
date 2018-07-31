@@ -28,5 +28,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminD.selectTotalPaging();
 	}
 
+	@Override
+	public int totalPagingCount(int start) {
+		// TODO Auto-generated method stub
+		return adminD.totalPagingCount(start);
+	}
+
 	
 }
