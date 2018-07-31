@@ -7,10 +7,11 @@ public class Payment {
 	private String p_code;
 	private Date p_date;
 	private Date v_date;
-	
+
 	public Payment() {
 		super();
 	}
+	
 	public Payment(String m_code, String p_code, Date p_date, Date v_date) {
 		super();
 		this.m_code = m_code;
@@ -18,6 +19,7 @@ public class Payment {
 		this.p_date = p_date;
 		this.v_date = v_date;
 	}
+	
 	public String getM_code() {
 		return m_code;
 	}

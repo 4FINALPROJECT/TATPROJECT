@@ -3,10 +3,12 @@ package com.kh.TAT.myPage.model.dao;
 import java.util.List;
 
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
 public interface MyDao {
 
+	// 회원 정보 관련
 	Member selectOneMemberCode(String m_code);
 
 	int updateProfile(Member m);
@@ -20,5 +22,10 @@ public interface MyDao {
 	int checkEmailDuplicate(String chk);
 
 	int updateEmail(Member m);
+
+	// 결제 정보 관련
+	MyPayment selectOnePayment(String m_code);
+
+	List<MyPayment> selectListPayment(String m_code);
 
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
 @Repository
@@ -15,6 +16,7 @@ public class MyDaoImpl implements MyDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
+	// 회원정보 관련
 	@Override
 	public Member selectOneMemberCode(String m_code) {
 
@@ -56,5 +58,19 @@ public class MyDaoImpl implements MyDao {
 	public int updateEmail(Member m) {
 		
 		return sqlSession.update("member.updateEmail",m);
+	}
+
+	
+	// 결제 정보 관련
+	@Override
+	public MyPayment selectOnePayment(String m_code) {
+		
+		return sqlSession.selectOne("member.selectOnePayment",m_code);
+	}
+
+	@Override
+	public List<MyPayment> selectListPayment(String m_code) {
+		
+		return sqlSession.selectList("member.selectListPayment",m_code);
 	}
 }

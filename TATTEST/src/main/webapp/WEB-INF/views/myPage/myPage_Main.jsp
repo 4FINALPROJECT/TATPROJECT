@@ -120,102 +120,22 @@
                             <h4><span>내 프로젝트</span></h4>
                         </div>
                         <div id="recent-work-slider" class="owl-carousel">
+                            
+                            <c:forEach items="${list}" var="list">
                             <div class="recent-item box">
                                 <figure class="touching ">
                                     <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
                                     <div class="option inner">
                                         <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
+                                            <h5>${list.proj_name}</h5>
+                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a><span style="display:inline">미리보기</span><br>
+                                            <a href="portfolio_single.html" class="fa fa-link"></a><span style="display:inline"> 편집하기</span>
                                         </div>
                                     </div>
                                 </figure>
                             </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                            <div class="recent-item box">
-                                <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
-                                    <div class="option inner">
-                                        <div>
-                                            <h5>프로젝트 네임</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
+           					</c:forEach>
+           					
                         </div>
                     </div>
                 </div>
