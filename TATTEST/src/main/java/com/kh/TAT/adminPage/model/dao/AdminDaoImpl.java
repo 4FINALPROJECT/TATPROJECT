@@ -28,5 +28,11 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.selectOne("member.selectTotalPaging");
 	}
 
+	@Override
+	public int totalPagingCount(int start) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.totalPagingCount", start);
+	}
+
 	
 }

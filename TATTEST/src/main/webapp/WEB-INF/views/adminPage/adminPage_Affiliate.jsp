@@ -80,55 +80,15 @@
 	                            <th>Votes</th>
 	                        </tr>
 	                        </thead>
-	                        <tbody>
-	                        <tr>
-	                            <td>1</td>
-	                            <td>The Shawshank Redemption</td>
-	                            <td>1994</td>
-	                            <td>9.2</td>
-	                            <td>923,629</td>
-	                        </tr>
-	                        <tr>
-	                            <td>2</td>
-	                            <td>The Godfather</td>
-	                            <td>1972</td>
-	                            <td>9.2</td>
-	                            <td>663,133</td>
-	                        </tr>
-	                        <tr>
-	                            <td>3</td>
-	                            <td>The Godfather: Part II</td>
-	                            <td>1974</td>
-	                            <td>9.0</td>
-	                            <td>427,132</td>
-	                        </tr>
-	                        <tr>
-	                            <td>4</td>
-	                            <td>Pulp Fiction</td>
-	                            <td>1994</td>
-	                            <td>8.9</td>
-	                            <td>719,280</td>
-	                        </tr>
-	                        <tr>
-	                            <td>5</td>
-	                            <td>The Good, the Bad and the Ugly</td>
-	                            <td>1966</td>
-	                            <td>8.9</td>
-	                            <td>218,887</td>
-	                        </tr>
+	                        <tbody class="AffilliateListTable">
+	                        
 	                        </tbody>
 	                    </table>
 	                </div>
 	                        
 	                <div class="col-sm-12 text-center">
 						<ul class="pagination">
-							<li><a href="#">&laquo;</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&raquo;</a></li>
+							
 						</ul>
 					</div>
 	            </div>
@@ -185,6 +145,8 @@
 		</section>
 		
 	</section>
+	
+	
 
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
