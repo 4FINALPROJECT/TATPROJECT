@@ -9,7 +9,7 @@
 				</div>
 				<div class="col-sm-4 top-info">
 					<ul>
-						<%-- <li><a href="${pageContext.request.contextPath}/edit/Main.tat" class="my-tweet">에</a></li> --%>
+						<li><a href="${pageContext.request.contextPath}/edit/Main.tat" class="my-tweet">에</a></li>
 						<li><a href="${pageContext.request.contextPath}/my/Main.tat" class="my-skype">마</a></li>
 						<c:if test="${m.m_code eq 'A001'}">
 						<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint">관</a></li>
