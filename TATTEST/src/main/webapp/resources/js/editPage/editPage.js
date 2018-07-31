@@ -261,7 +261,7 @@ function stackMoveEvent(stackMove) {
 	}
 
 	
-	console.log("이동 값 : "+tmp[0].outerHTML);
+	//console.log("이동 값 : "+tmp[0].outerHTML);
 }
 
 
