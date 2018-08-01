@@ -55,7 +55,6 @@
         <div class="rink_submit">
            <input style="width : 60px;" type="button" value="적용">
         </div>
-        <!-- <input class="inpo_menu_source" type="url" style="width : 110px;" onkeyup="EnterUpDate_URL();"><br><br> -->
     </div>
     <div class="inpo_menu" id="type_inpo" oncontextmenu="return false">
         <label class="inpo_menu_source_name" > 색상 </label><br>
@@ -136,6 +135,12 @@
        </select>
        
     </div>
+    <div id = "title_controller">
+       <input type="button" value="외부 변경">
+       <input type="button" value="내부 변경">
+    </div>
     <div id = "tooltip">
     </div>
 </div>
+
+

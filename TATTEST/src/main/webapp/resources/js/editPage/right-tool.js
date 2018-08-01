@@ -105,27 +105,20 @@ function test345435(){
                        } else if (direction == 37) {
                           if(parseInt($(moveevent).parent().offset().left) < parseInt($(moveevent).offset().left)){
                              $(moveevent).animate({left: "-=1"}, 0);
-                             //stackMove = $(moveevent);
-                             //stackMoveEvent(stackMove);
+                             
                           }
                        } else if (direction == 38) {
                           if(parseInt($(moveevent).parent().offset().top) < parseInt($(moveevent).offset().top)){
-                             $(moveevent).animate({top: "-=1"}, 0);
-                             //stackMove = $(moveevent);
-                             //stackMoveEvent(stackMove);
+                             $(moveevent).animate({top: "-=1"}, 0);   
                           }
                        } else if (direction == 39) {
                           if(parseInt($(moveevent).parent().offset().left)+parseInt($(moveevent).parent().css("width"))  > parseInt($(moveevent).offset().left) + parseInt($(moveevent).css("width"))+6) {
                              $(moveevent).animate({left: "+=1"}, 0);
-                             //stackMove = $(moveevent);
-                             //stackMoveEvent(stackMove);
                           }
                            
                        } else if (direction == 40) {
                           if(parseInt($(moveevent).parent().offset().top) + parseInt($(moveevent).parent().css("height")) > parseInt($(moveevent).offset().top) + parseInt($(moveevent).css("height")) ){
-                             $(moveevent).animate({top: "+=1"}, 0);
-                             //stackMove = $(moveevent);
-                             //stackMoveEvent(stackMove);
+                             $(moveevent).animate({top: "+=1"}, 0);   
                           }
                        }
                        
@@ -237,7 +230,7 @@ function test345435(){
          $("#objectId").attr("value",$(this).attr("data-obj-no"));
          $("#item_inpo").css("display","inline-block");
          $(".inpo_menu").css("display","none");
-         $("#item_inpo").css({"top" : $(this).offset().top-40,"left" : $(this).offset().left});
+         $("#item_inpo").css({"top" : parseInt($(this).offset().top)-80,"left" : $(this).offset().left});
            $("#text_inpo").children('input').attr("value",objText);
 
            if($(this).children().eq(0).attr("type") != "button"){

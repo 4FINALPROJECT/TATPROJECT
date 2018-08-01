@@ -466,27 +466,27 @@
       <div id="tool_menu3-14" class="content">
          <br>메뉴
          <div class="titleMenu">
-            <table style = "font-size : 15px; text-align : center;">
-               <thead>
+            <table style = "font-size : 10px; text-align : center;">
+               <tbody>
                   <tr>
-                     <th>HOME</th>
-                     <th>Page-1</th>
-                     <th>Page-2</th>
-                     <th>Page-3</th>
+                     <td style="border : 1px solid black;">HOME</td>
+                     <td style="border : 1px solid black;">Page-1</td>
+                     <td style="border : 1px solid black;">Page-2</td>
+                     <td style="border : 1px solid black;">Page-3</td>
                   </tr>
-               </thead>
+               </tbody>
             </table>
          </div>
          <div class="titleMenu">
-            <table style = "font-size : 15px; text-align : center; background : red;">
-               <thead>
+            <table style = "font-size : 10px; text-align : center; background : red;">
+               <tbody>
                   <tr>
-                     <th>HOME</th>
-                     <th>Page-1</th>
-                     <th>Page-2</th>
-                     <th>Page-3</th>
+                     <td style="border : 1px solid black;">HOME</td>
+                     <td style="border : 1px solid black;">Page-1</td>
+                     <td style="border : 1px solid black;">Page-2</td>
+                     <td style="border : 1px solid black;">Page-3</td>
                   </tr>
-               </thead>
+               </tbody>
             </table>
          </div>
       </div>
