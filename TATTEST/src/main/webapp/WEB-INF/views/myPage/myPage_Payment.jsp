@@ -5,6 +5,20 @@
 <head>
 	<title>TAT 결제정보 || 마이페이지</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+	<style>
+		th,td{
+			text-align:center;
+		}
+		a{
+			cursor: pointer;
+		}
+		#paymentHistory{
+			display:none;
+		}
+		#e_date{
+			color:red;
+		}	
+	</style>
 </head>
 <body>
 	<c:import url="common/myPage_Header.jsp"></c:import>
@@ -27,7 +41,6 @@
 				</div>
 			</div>
 		</section>
-		
 		<section class="content left_sidebar">
 			<div class="container">
 				<div class="row">
@@ -39,77 +52,92 @@
 									<h4><span>Categories</span></h4>
 								</div>
 								<ul class="arrows_list list_style">
-									<li><a href="#"> Grapic Design (10)</a></li>
-									<li><a href="#"> Web Design & Development (25)</a></li>
-									<li><a href="#"> Photography (29)</a></li>
-									<li><a href="#"> Custom Illustrations (19)</a></li>
-									<li><a href="#"> Wordpress Themes(38)</a></li>
-									<li><a href="#"> Videography (33)</a></li>
-								</ul>
+									<li><a onclick="currentBuying();"> 현재 구매 중 상품</a></li>
+									<li><a onclick="paymentHistory();"> 결제 히스토리</a></li>
 							</div>
 						</div>
 					</div>
 					
+					
 					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-						<div class="row sub_content">
-				            <div class="col-lg-12 col-md-12 col-sm-12">
-				                <div class="dividerHeading">
-				                    <h4><span>회원 목록</span></h4>
-				                </div>
-				            </div>
-				            <div class="col-lg-12 col-md-12 col-sm-12">
-				                <div class="table-responsive">
-				                    <table class="table table-striped table-hover">
+							 <!-- 현재 내가 구매한 상품 -->
+							<div id="currentBuying" class="row sub_content">
+					            <div class="col-lg-12 col-md-12 col-sm-12">
+					                <div class="dividerHeading">
+					                    <h4><span>현재 구매 중 상품</span></h4>
+					                </div>
+					            </div>
+					            
+			          	    <div  class="col-lg-12 col-md-12 col-sm-12">
+			                	<div class="table-responsive">
+				                    <table class="table table-striped ">
 				                        <thead>
 				                        <tr>
-				                            <th>Rank</th>
-				                            <th>Name</th>
-				                            <th>Year</th>
-				                            <th>Rating</th>
-				                            <th>Votes</th>
+				                            <th>번호</th>
+				                            <th>상품명</th>
+				                            <th>구매 일자</th>
+				                            <th>만료 일자</th>
+				                            <th>남은 기간</th>
 				                        </tr>
 				                        </thead>
 				                        <tbody>
+				                        <c:if test="${p.e_date gt 0}">
 				                        <tr>
 				                            <td>1</td>
-				                            <td>The Shawshank Redemption</td>
-				                            <td>1994</td>
-				                            <td>9.2</td>
-				                            <td>923,629</td>
+				                            <td>${p.p_name}</td>
+				                            <td>${p.p_date}</td>
+				                            <td>${p.v_date}</td>
+				                            <td><p id="e_date"><b>${p.e_date}일</b></p></td>
 				                        </tr>
+				                         </c:if>
+				                          <c:if test="${p.e_date le 0}">
 				                        <tr>
-				                            <td>2</td>
-				                            <td>The Godfather</td>
-				                            <td>1972</td>
-				                            <td>9.2</td>
-				                            <td>663,133</td>
+				                            <td colspan="5">현재 이용 중인 상품이 없습니다.</td>
 				                        </tr>
-				                        <tr>
-				                            <td>3</td>
-				                            <td>The Godfather: Part II</td>
-				                            <td>1974</td>
-				                            <td>9.0</td>
-				                            <td>427,132</td>
-				                        </tr>
-				                        <tr>
-				                            <td>4</td>
-				                            <td>Pulp Fiction</td>
-				                            <td>1994</td>
-				                            <td>8.9</td>
-				                            <td>719,280</td>
-				                        </tr>
-				                        <tr>
-				                            <td>5</td>
-				                            <td>The Good, the Bad and the Ugly</td>
-				                            <td>1966</td>
-				                            <td>8.9</td>
-				                            <td>218,887</td>
-				                        </tr>
+				                         </c:if>
 				                        </tbody>
 				                    </table>
 				                </div>
+				            </div>
+					      </div>   
+					          
+					        <!-- 결제 히스토리 -->
+					        <div id="paymentHistory" class="row sub_content">
+					            <div class="col-lg-12 col-md-12 col-sm-12">
+					                <div class="dividerHeading">
+					                    <h4><span>결제 히스토리</span></h4>
+					                </div>
+					            </div>
+				            
+				            <div  class="col-lg-12 col-md-12 col-sm-12">
+				                <div class="table-responsive">
+				                    <table class="table table-striped ">
+				                        <thead>
+					                     	<tr>
+					                            <th>번호</th>
+					                            <th>상품명</th>
+					                            <th>구매 일자</th>
+					                            <th>만료 일자</th>
+					                            <th>남은 기간</th>
+					                        </tr>
+				                        </thead>
+				                        <tbody>
+					                      	<c:forEach items="${pl}" var="pl" varStatus="status">
+						                        <c:if test="${pl.e_date <= 0}">
+							                        <tr>
+							                            <th>${status.index}</th>
+							                            <th>${pl.p_name}</th>
+							                            <th>${pl.p_date}</th>
+							                            <th>${pl.v_date}</th>
+							                            <th>만료</th>
+							                        </tr>
+						                        </c:if>
+					                        </c:forEach>
+					                    </tbody>
+				                    </table>
+				                </div>
 				                        
-				                <div class="col-sm-12 text-center">
+				               <!--  <div class="col-sm-12 text-center">
 									<ul class="pagination">
 										<li><a href="#">&laquo;</a></li>
 										<li class="active"><a href="#">1</a></li>
@@ -119,65 +147,30 @@
 										<li><a href="#">5</a></li>
 										<li><a href="#">&raquo;</a></li>
 									</ul>
-								</div>
-				            </div>
-				            
-				            <div class="col-lg-12 col-md-12 col-sm-12">
-			                    <div class="dividerHeading">
-			                        <h4><span>상세정보</span></h4>
-			                    </div>
-			                    <p>Vidit nulla errem ea mea. Dolore apeirian insolens mea ut, indoctum consequuntur hasi. No aeque dictas dissenti as tusu, sumo quodsi fuisset mea in. Ea nobis populo interesset cum, ne sit quis elit officiis, min im tempor iracundia sit anet. Facer falli aliquam nec te. In eirmod utamur offendit vis, posidonium instructior sed te.</p>
-			
-			                    <div class="alert alert-success hidden alert-dismissable" id="contactSuccess">
-			                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			                        <strong>Success!</strong> Your message has been sent to us.
-			                    </div>
-			
-			                    <div class="alert alert-error hidden" id="contactError">
-			                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			                        <strong>Error!</strong> There was an error sending your message.
-			                    </div>
-			
-			                    <form id="contactForm" action="" novalidate="novalidate">
-			                        <div class="row">
-			                            <div class="form-group">
-			                                <div class="col-lg-6 ">
-			                                    <input type="text" id="name" name="name" class="form-control" maxlength="100" data-msg-required="Please enter your name." value="" placeholder="Your Name" >
-			                                </div>
-			                                <div class="col-lg-6 ">
-			                                    <input type="email" id="email" name="email" class="form-control" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="" placeholder="Your E-mail" >
-			                                </div>
-			                            </div>
-			                        </div>
-			                        <div class="row">
-			                            <div class="form-group">
-			                                <div class="col-md-12">
-			                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
-			                                </div>
-			                            </div>
-			                        </div>
-			                        <div class="row">
-			                            <div class="form-group">
-			                                <div class="col-md-12">
-			                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
-			
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </form>
-			                </div>
-				            
+								</div> -->
+				             </div>
+				          </div>
 				        </div>
-	                </div>
-						
 					</div>
 				</div>
-			
 		</section>
-		
 	</section>
 
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
+	<script>
+		
+		function currentBuying(){
+			$('#paymentHistory').css('display','none');
+			$('#currentBuying').css('display','block');
+		}
+		
+		function paymentHistory(){
+			$('#paymentHistory').css('display','block');
+			$('#currentBuying').css('display','none');
+			
+		}
+		
+	</script>
 </body>
 </html>

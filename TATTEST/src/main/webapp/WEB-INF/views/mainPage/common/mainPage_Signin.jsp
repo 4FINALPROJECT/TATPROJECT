@@ -84,6 +84,7 @@
 		            <div class="col-sm-6 mrgb-30 text-center">
 		                <a class="btn btn-sm btn-social-facebook">
 		                    <!-- <i class="fa fa-facebook" ></i> -->
+
 		                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState()">Facebook</fb:login-button>
 		                    
 		                </a>

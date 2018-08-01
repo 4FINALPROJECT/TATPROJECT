@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<title>프리미엄</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
 </head>
@@ -267,8 +268,6 @@
 	            </div>
 	        </div>
 	    </section>
-	
-		
 	</section>
 
 	<c:import url="common/mainPage_Footer.jsp"></c:import>

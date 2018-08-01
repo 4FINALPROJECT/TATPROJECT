@@ -188,62 +188,24 @@
 				                    <table class="table table-striped table-hover">
 				                        <thead>
 				                        <tr>
-				                            <th>Rank</th>
-				                            <th>Name</th>
-				                            <th>Year</th>
-				                            <th>Rating</th>
-				                            <th>Votes</th>
+				                            <th>프로젝트 코드</th>
+				                            <th>맴버 코드</th>
+				                            <th>프로젝트 이름</th>
+				                            <th>코멘트</th>
+				                            <th>저장 일자</th>
+				                            <th>공유 여부</th>
+				                            <th>사용 횟수</th>
 				                        </tr>
 				                        </thead>
-				                        <tbody>
-				                        <tr>
-				                            <td>1</td>
-				                            <td>The Shawshank Redemption</td>
-				                            <td>1994</td>
-				                            <td>9.2</td>
-				                            <td>923,629</td>
-				                        </tr>
-				                        <tr>
-				                            <td>2</td>
-				                            <td>The Godfather</td>
-				                            <td>1972</td>
-				                            <td>9.2</td>
-				                            <td>663,133</td>
-				                        </tr>
-				                        <tr>
-				                            <td>3</td>
-				                            <td>The Godfather: Part II</td>
-				                            <td>1974</td>
-				                            <td>9.0</td>
-				                            <td>427,132</td>
-				                        </tr>
-				                        <tr>
-				                            <td>4</td>
-				                            <td>Pulp Fiction</td>
-				                            <td>1994</td>
-				                            <td>8.9</td>
-				                            <td>719,280</td>
-				                        </tr>
-				                        <tr>
-				                            <td>5</td>
-				                            <td>The Good, the Bad and the Ugly</td>
-				                            <td>1966</td>
-				                            <td>8.9</td>
-				                            <td>218,887</td>
-				                        </tr>
+				                        <tbody class="projectListTable">
+				                        
 				                        </tbody>
 				                    </table>
 				                </div>
 				                        
 				                <div class="col-sm-12 text-center">
 									<ul class="pagination">
-										<li><a href="#">&laquo;</a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
+										
 									</ul>
 								</div>
 				            </div>
@@ -302,6 +264,131 @@
 		</section>
 		
 	</section>
+	<script>
+	
+	 window.onload = function(){
+		 pageIndex(1);
+		 pageBtn();  
+	 }
+		var showCount = 5;
+		var btnCount = 5;
+		var showDoubleCount = 5.0;
+		var pageVal;
+
+		/* function pageNextFirstBtn(){
+			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
+		} */
+		 function pageNextBtn(i){
+			
+			 var num = Math.ceil(((showCount*btnCount*i)+1)/showDoubleCount);
+			 pageIndex(num);
+			 pageNextBtnCreate(i,num);
+		}; 
+		
+		function pageBtnCreate(total){
+			$('.pageIndex').empty();
+			var num; 
+			if(total%showDoubleCount != 0){
+				num = Math.ceil(total/showCount);
+			}
+			else{
+			num = Math.ceil(total/showCount);
+			} 
+			if(num > 5){
+				num = 5
+				for(var i= 1 ; i<=num;i++ ){ 
+					$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+i+'</a></li>');
+				}
+			}else{
+				for(var i= 1 ; i<=num;i++ ){ 
+				$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+i+'</a></li>');
+				};
+			}	
+		};
+		
+		function pageBtn(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/ProjectTotalAjax.tat",
+				type : "post",
+				dataType : 'json', 		
+				success : function(data){
+					var total = data;
+					var count = Math.ceil(total/showDoubleCount);
+					pageBtnCreate(total);
+					if(count>btnCount){pageNextFirstBtn();}
+					
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+		};
+		
+		
+		
+		function pageIndex(pageStartNum){
+			
+			var start = pageStartNum-1;
+			 $('.projectListTable').empty(); 
+			 $.ajax({
+				url : "${pageContext.request.contextPath}/admin/ProjectAjax.tat",
+				type : "post",
+				dataType : 'json', 
+				data : {"start" : start,},
+				success : function(data){createPageList(data);},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+		};
+		function createPageList(data){
+			console.log("ajax 리스트 이름 확인 : "+data.ProjectList);
+			console.log("ajax data 전체 확인 : "+data);
+			for(var idx in data){
+				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
+			$('.projectListTable').append('<tr><td>'+data[idx].e_code+'</td>'+
+					'<td>'+data[idx].m_code+'</td>'+
+					'<td>'+data[idx].proj_name+'</td>'+
+					'<td>'+data[idx].proj_comment+'</td>'+
+					'<td>'+data[idx].save_date+'</td>'+
+					'<td>'+data[idx].is_share+'</td>'+
+					'<td>'+data[idx].e_use_count+'</td>');
+			
+			};
+		};
+			
+			
+		 function pageNextBtnCreate(num){
+			 var start = (showDoubleCount * btnCount * num) + 1;
+			 $.ajax({
+					url : "${pageContext.request.contextPath}/admin/ProjectTotalCountAjax.tat",
+					type : "post",
+					dataType : 'json',
+					data: {"start" : start},
+					success : function(data){
+						  $('.pagination').empty();
+						  var total = Math.ceil(data/showDoubleCount);
+						  var nextFlag = 1;
+						  if(total > btnCount){total = btnCount; nextFlag = 0;}
+						  var prevBtn = num-1;
+						  if(prevBtn >= 0){
+							 $('.pagination').append('<li class="pagePreBtn"><a onclick="pageNextBtn('+prevBtn+')";>‹‹</a></li>');
+						  }
+						  var start = num*btnCount;
+						  for(var i = 1 ;i<=total ;i++){
+							var btnIndex = start+i;
+							$('.pagination').append('<li class="pageIndex'+btnIndex+'"><a onclick="pageIndex('+btnIndex+')";>'+btnIndex+'</a></li>');
+						  }  
+						  var nextBtn = num+1;
+						  if(nextFlag == 0){  
+						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
+						  }
+					},error: function(jqXHR, textStatus, errorThrown) {
+						console.log(ajax.responseText);
+				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+				}); 
+			  
+		};	
+	</script>
 
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>

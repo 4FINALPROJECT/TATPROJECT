@@ -55,7 +55,7 @@
 									</ul>
 								</li>
 								<li><a href="${pageContext.request.contextPath}/main/Upgrade.tat">프리미엄</a></li>
-								<li><a href="${pageContext.request.contextPath}">로그아웃</a></li>
+								<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로그아웃</a></li>
 							</ul>
 						</div>
 					</div>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-		
+	
+	<!-- 회원정보 관련 -->
 	<select id="selectMember" parameterType="String" resultType="member">
 		SELECT * FROM MEMBER WHERE M_CODE = #{m_code} 
 	</select>
@@ -30,5 +31,24 @@
 		UPDATE MEMBER SET M_EMAIL=#{m_email} WHERE M_CODE = #{m_code}
 	</update>
 	
+	
+	<!-- 지불정보 관련 -->
+	<select id="selectOnePayment" parameterType="String" resultType="myPayment">
+		SELECT * FROM(SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code})  WHERE E_DATE > 0
+	</select>
+	
+	<select id="selectListPayment" parameterType="String" resultType="myPayment">
+		SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code} ORDER BY P_DATE DESC
+	</select>
+	
+	
+	<!-- 1:1게시판 관련 -->
+	<select id="selectQuestionBoard" parameterType="String" resultType="questionAnswerBoard">
+		SELECT QA_NUM,M_CODE,(SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE=qa.qc_code) QC_CODE,QA_TITLE,QA_CONTENT,QA_DATE,IS_OPEN,ADMIN_CODE,A_CONTENT,A_DATE FROM QUESTION_ANSWER_BOARD qa WHERE M_CODE = #{m_code}
+	</select>
+	
+	<select  id="widgetComment" parameterType="String" resultType="questionAnswerBoard">
+		SELECT QA_NUM, ADMIN_CODE, A_CONTENT FROM question_answer_board WHERE M_CODE= #{m_code} and ADMIN_CODE is not null ORDER BY 1 DESC
+	</select>
 		
 </mapper>

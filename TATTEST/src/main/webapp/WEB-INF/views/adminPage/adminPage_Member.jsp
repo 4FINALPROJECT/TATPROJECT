@@ -78,12 +78,12 @@
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_1.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_1.png" alt="" /></a></span>
                                                     <a href="#">Publishing packag esanse web page editos</a>
                                                     <i>October 09, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_2.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="/resources/images/content/recent_2.png" alt="" /></a></span>
                                                     <a href="#">Sublishing packag esanse web page editos</a>
                                                     <i>October 08, 2015</i>
                                                 </li>
@@ -193,17 +193,7 @@
 				                        </tr>
 				                        </thead>
 				                        <tbody class="memberListTable">
-				                        <%-- <c:forEach var="m" items="${memberList}" >
-				                        <tr>
-				                            <td>${m.m_code}</td>
-				                            <td>${m.m_email}</td>
-				                            <td>${m.m_name}</td>
-				                            <td>${m.m_birth}</td>
-				                            <td>${m.m_gender}</td>
-				                            <td>${m.enroll_date}</td>
-				                            <td>${m.is_usable}</td>
-				                        </tr>
-				                        </c:forEach> --%>
+				                        	
 				                        </tbody>
 				                    </table>
 
@@ -211,22 +201,7 @@
 				                        
 				                <div class="col-sm-12 text-center">
 									<ul class="pagination">
-									 <c:if test="${p.pageStartNum ne 1}">
-										<!--이전 페이지 이동 -->
-										<li class="pageFirst"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>‹‹</a></li>
-										<li class="pagePre"><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li>
-									</c:if>
-									
-                						<%-- <li class='pageIndex${0}'><a onclick='pageIndex(${0});'>${1}</a></li>
-                						<li class='pageIndex${1}'><a onclick='pageIndex(${1});'>${2}</a></li>
-                						<li class='pageIndex${2}'><a onclick='pageIndex(${2});'>${3}</a></li>
-                						<li class='pageIndex${3}'><a onclick='pageIndex(${3});'>${4}</a></li>
-                						<li class='pageIndex${4}'><a onclick='pageIndex(${4});'>${5}</a></li> --%>
-            						
-									<c:if test="${p.lastChk}">
-										<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>
-										<li class="pageLast"><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>››</a></li>
-									</c:if> 
+									 
 									</ul>
 								</div>
 								
@@ -290,123 +265,126 @@
 	
 	<script>
 	 window.onload = function(){
-		 var start = 0;
-		 pageIndex(start);
-		 pageBtn(); 
-		 
+		 pageIndex(1);
+		 pageBtn();  
 	 }
 		var showCount = 5;
 		var btnCount = 5;
 		var showDoubleCount = 5.0;
 		var pageVal;
-		function pageFirst(start, pageCnt){
-			alert("처음으로 가기 테스트");
-			pageIndex(start, pageCnt);
-		};
-	
-		function pagePre(pageStartNum, pageCnt){
-			alert("이전으로 가기 테스트");
-		};
+
+		function pageNextFirstBtn(){
+			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
+		}
+		 function pageNextBtn(i){
+			
+			 var num = Math.ceil(((showCount*btnCount*i)+1)/showDoubleCount);
+			 pageIndex(num);
+			 pageNextBtnCreate(i,num);
+		}; 
+		
 		function pageBtnCreate(total){
-			console.log("게시글 총갯수total : "+total)
+			$('.pageIndex').empty();
 			var num; 
 			if(total%showDoubleCount != 0){
-				num = Math.ceil((total/showCount))+1;
-			}else{
 				num = Math.ceil(total/showCount);
+			}
+			else{
+			num = Math.ceil(total/showCount);
 			} 
-				console.log("버튼 갯수 : "+num);
-			if(num > 5){num = 5};
-				for(var i= 0 ; i<num;i++ ){ 
-				$('.pagination').append('<li class=pageIndex'+i+'><a onclick=pageIndex('+i+');>'+(i+1)+'</a></li>');
+			if(num > 5){
+				num = 5
+				for(var i= 1 ; i<=num;i++ ){ 
+					$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+i+'</a></li>');
+				}
+			}else{
+				for(var i= 1 ; i<=num;i++ ){ 
+				$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+i+'</a></li>');
 				};
-				pageNext();
-				
-				
+			}	
 		};
+		
 		function pageBtn(){
 			$.ajax({
 				url : "${pageContext.request.contextPath}/admin/MemberTotalAjax.tat",
 				type : "post",
 				dataType : 'json', 		
 				success : function(data){
-				console.log("데이터 확인123 : "+ data);
 					var total = data;
+					var count = Math.ceil(total/showDoubleCount);
 					pageBtnCreate(total);
-					
+					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
 					console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
+		
+		
+		
 		function pageIndex(pageStartNum){
 			
-			var start = pageStartNum;
-			
-			
-			// alert(pageStartNum+"페이지 이동테스트");
-			 /* if(pageStartNum != 1){
-				start = 1;
-				end = 40;
-			}else if(pageStartNum == 0){
-				start = 1
-				end = 5;
-			}else{
-				start = 1
-				end = 5;
-			}  */
-			console.log("start 번호 확인 : "+ start);
-			
+			var start = pageStartNum-1;
 			 $('.memberListTable').empty(); 
 			 $.ajax({
 				url : "${pageContext.request.contextPath}/admin/MemberAjax.tat",
 				type : "post",
 				dataType : 'json', 
-				data : {"start" : start,
-						
-				},success : function(data){
-					
-					console.log("데이터 확인 : "+ data);
-				
-					
-					createPageList(data);
-				},error: function(jqXHR, textStatus, errorThrown) {
+				data : {"start" : start,},
+				success : function(data){createPageList(data);},
+				error: function(jqXHR, textStatus, errorThrown) {
 					console.log(ajax.responseText);
-			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			
-			console.log("페이징 처리 Ajax 값 확인 : "+ data.memberList);
-			
+			console.log("ajax 리스트 이름 확인 : "+data.memberList);
+			console.log("ajax data 전체 확인 : "+data);
 			for(var idx in data){
-				console.log(data[idx].m_code);
+				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].m_email+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+
-					'<td>'+data[idx].m_name+'</td>'+
 					'<td>'+data[idx].m_birth+'</td>'+
+					'<td>'+data[idx].m_gender+'</td>'+
 					'<td>'+data[idx].enroll_date+'</td>'+
 					'<td>'+data[idx].is_usable+'</td></tr>');
 			};
 		};
 			
 			
-		function pageNext(start, total, listCnt, pageCnt){
-			$.('.pagination').append(<li class="pageNext"><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>);
-		};
-		function pageLast(start, total, listCnt, pageCnt){
-			alert("마지막으로 가기 테스트");
-			
-			pageIndex(start, total);
-		}
-		
-	
-		 
-		
-
+		 function pageNextBtnCreate(num){
+			 var start = (showDoubleCount * btnCount * num) + 1;
+			 $.ajax({
+					url : "${pageContext.request.contextPath}/admin/MemberTotalCountAjax.tat",
+					type : "post",
+					dataType : 'json',
+					data: {"start" : start},
+					success : function(data){
+						  $('.pagination').empty();
+						  var total = Math.ceil(data/showDoubleCount);
+						  var nextFlag = false;
+						  if(total > btnCount){total = btnCount; nextFlag = true;}
+						  var prevBtn = num-1;
+						  if(prevBtn >= 0){
+							 $('.pagination').append('<li class="pagePreBtn"><a onclick="pageNextBtn('+prevBtn+')";>‹‹</a></li>');
+						  }
+						  var start = num*btnCount;
+						  for(var i = 1 ;i<=total ;i++){
+							var btnIndex = start+i;
+							$('.pagination').append('<li class="pageIndex'+btnIndex+'"><a onclick="pageIndex('+btnIndex+')";>'+btnIndex+'</a></li>');
+						  }  
+						  var nextBtn = num+1;
+						  if(nextFlag){  
+						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
+						  }
+					},error: function(jqXHR, textStatus, errorThrown) {
+						console.log(ajax.responseText);
+				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+				}); 
+			  
+		};	
 	</script>
-
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 </body>

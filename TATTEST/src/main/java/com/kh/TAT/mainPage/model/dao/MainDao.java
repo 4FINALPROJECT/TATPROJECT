@@ -15,6 +15,7 @@ import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 
 public interface MainDao {
 
+
 	int insertMember(Member member);
 
 	Member selectOneMember(String m_email);
@@ -78,3 +79,4 @@ public interface MainDao {
 	QuestionAnswerBoard QuestionBoard(int qa_num);
 
 }
+

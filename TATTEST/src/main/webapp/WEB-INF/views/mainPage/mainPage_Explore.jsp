@@ -80,7 +80,6 @@
 			</div>
 		</section>
 	</section>
-	
 	<section class="promo_box wow bounceIn">
            <div class="container">
                <div class="row">
@@ -101,7 +100,6 @@
                </div>
            </div>
        </section>
-
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 	<script>
