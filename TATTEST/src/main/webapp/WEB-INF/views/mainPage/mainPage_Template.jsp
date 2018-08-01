@@ -5,13 +5,76 @@
 <head>
 	<title>템플릿</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+	<style>
+		label{
+			position: absolute;
+			left:15px;
+		}
+	</style>
 </head>
 <body>
 	<c:import url="common/mainPage_Header.jsp"></c:import>
 	<c:import url="common/mainPage_Signin.jsp"></c:import>
 	<c:import url="common/mainPage_Signup.jsp"></c:import>
 	
-	<section class="wrapper">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">프로젝트 생성</button>
+	
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">프로젝트를 생성합니다.</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">프로젝트 명</label><br>
+	            <input type="text" class="form-control" id="recipient-name">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">프로젝트 설명</label><br>
+	            <textarea class="form-control" id="message-text"></textarea>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+	        <button type="button" class="btn btn-primary">생성</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<%-- <section class="wrapper">
 		<section class="page_head">
 			<div class="container">
 				<div class="row">
@@ -96,11 +159,10 @@
                    </div>
                </div>
            </div>
-       </section>
+       </section> --%>
 
-	<c:import url="common/mainPage_Footer.jsp"></c:import>
-	<c:import url="../common/JS.jsp"></c:import>
-	<script>
+	
+	<!-- <script>
 	    (function ($) {
 	        var $container = $('.masonry_wrapper_blog'),
 	                colWidth = function () {
@@ -162,6 +224,70 @@
 	        isotope();
 	        $(window).smartresize(isotope);
 	    }(jQuery));
+	</script> -->
+	
+	<c:import url="common/mainPage_Footer.jsp"></c:import>
+	<c:import url="../common/JS.jsp"></c:import>
+	<script>
+		
+		function newProject(){
+			
+			var commit_check = confirm('게시 하시겠습니까?');
+			   
+			   if ( commit_check ) {
+			      
+			      $('#newProjectModal').modal({
+			          backdrop: 'static',
+			          keyboard: false  // to prevent closing with Esc button (if you want this too)
+			      })
+			      
+			      // 모달창 열기
+			      $('#newProjectModal').modal("show");
+			      // 반대로 모달상태를 전환함
+			      // $('#myModal').modal("toggle");
+			      
+			      $('html').click(function(e) { 
+			         if($(e.target).hasClass('modal')) { 
+			            var modalOut = confirm('저장을 취소 하시겠습니까?');
+			            if ( modalOut ) {
+			               // 모달창 닫기
+			               $('#newProjectModal').modal("hide");
+			            } 
+			         }
+			      }); 
+			      
+			   } else {
+			      alert('게시 취소');
+			   }
+		}
+		
+		$('#submitProject').click(function(){
+			
+			var pro_name = $('#projectName').val();
+			var pro_content = $('#projectContent').val();
+			
+			$.ajax({
+				url : "/TAT/my/createProject.tat",
+				type : "POST",
+				data : { pro_name : pro_name, pro_content : pro_content },
+				success : function(data){
+					
+					console.log("데이터 값 : "+data);
+					
+					if ( data > 0 ) {
+						alert("폴더 생성 성공!");
+						location.href="/TAT/my/Project.tat";
+					}
+					
+				},error : function(){
+					
+				}
+				
+			});
+		});
+
+		
+		
 	</script>
 </body>
 </html>
