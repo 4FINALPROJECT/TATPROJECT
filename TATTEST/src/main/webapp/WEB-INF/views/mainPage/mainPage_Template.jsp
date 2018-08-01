@@ -54,7 +54,10 @@
 			                            <p>${te.t_comment}</p>
 			                        </div>
 			                        <div class="blog-button">
-			                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat?t_code=${te.t_code}">Read More</a>
+			                        	<form action="${pageContext.request.contextPath}/main/TemplateDetail.tat" method="post">
+			                        		<input type="hidden" name="t_code" value="${te.t_code}" />
+			                            	<button class="btn btn-small btn-default" type="submit">Read More</button>
+			                            </form>
 			                        </div>
 			                    </div>
 			                </div>

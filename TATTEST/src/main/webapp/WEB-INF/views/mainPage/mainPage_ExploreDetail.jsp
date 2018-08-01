@@ -79,9 +79,12 @@
                                     
                             		        <c:if test="${m_code eq editReply.m_code}">
                                             <a data-target="#${editReply.er_num}" data-toggle="collapse">수정</a>                                                                                        
-                                            
-                                            <a href="${pageContext.request.contextPath}/main/DeleteEditReply.tat?m_code=${editReply.m_name}&er_num=${editReply.er_num}&e_code=${editReply.e_code}">삭제</a>
-                                            <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat">
+                                            <form id="editDelete" action="${pageContext.request.contextPath}/main/DeleteEditReply.tat" method="post">
+                                            <input type="hidden" name="er_num" value="${editReply.er_num}"/>
+											<input type="hidden" name="e_code" value="${editReply.e_code}"/>
+                                            <a id="editDelete()">삭제</a>
+                                            </form>
+                                            <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat" method="post">
                                             <div class="collapse" id="${editReply.er_num}">											  
 											  <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>	
 											  <input type="hidden" name="er_num" value="${editReply.er_num}"/>
@@ -107,7 +110,7 @@
 								<%-- <c:param name="t_code" value="${temp.t_code}"/>
 								<c:param name="m_code" value=""/> --%>
 							</c:url>
-					<form id="insertEditReplyForm" action="${insertEditReply}">
+					<form id="insertEditReplyForm" action="${insertEditReply}" method="post">
                     
                     <div class="comment_form">
                        <div class="row">
@@ -167,7 +170,11 @@
 			</div>
 		</section>
 	</section>
-
+	<script>
+		function editDelete() {
+			$('#editDelete').submit();
+		}
+	</script>
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 </body>

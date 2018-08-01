@@ -15,7 +15,7 @@
 			</div>
 			<div class="modal-body">
 				<form id="memberLogin" method="post" name="loginform" 
-				action="${pageContext.request.contextPath}/main/memberLogin.tat" method="post">
+				action="${pageContext.request.contextPath}/main/Main.tat" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group text-center" >
                         <button id="loginForm" type="submit" class="btn btn-default btn-lg button">로그인</button>
-                        <button type="button" class="btn btn-default btn-lg button"  data-dismiss="modal" data-toggle="modal" data-target="#signup">회원가입</button>
+                        <button id="upForm" type="button" class="btn btn-default btn-lg button"  data-dismiss="modal" data-toggle="modal" data-target="#signup">회원가입</button>
                         <button type="button" class="btn btn-default btn-lg button" data-toggle="modal" data-target="#searchTime">비밀번호 찾기</button>
                     </div>
                 </form>

@@ -22,7 +22,7 @@
 						<li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">로</a></li>
 						</c:if>
 						<c:if test="${!empty m_code}">
-						<li><a onclick="mainReturn();" href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
+						<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
 						</c:if>						
 
 					</ul>

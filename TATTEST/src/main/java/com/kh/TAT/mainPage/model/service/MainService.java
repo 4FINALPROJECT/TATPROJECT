@@ -8,6 +8,7 @@ import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
+import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.Template;
 import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 
@@ -68,4 +69,13 @@ public interface MainService {
 
 	List<Map<String, String>> selectEdit(Edit newedit);
 
+	List<Map<String, String>> selectRecentBoard();
+
+	List<Map<String, String>> selectReplyCountBoard();
+
+	List<Map<String, String>> selectRateCountBoard();
+
+	QuestionAnswerBoard QuestionBoard(int qa_num);
+	
+	
 }

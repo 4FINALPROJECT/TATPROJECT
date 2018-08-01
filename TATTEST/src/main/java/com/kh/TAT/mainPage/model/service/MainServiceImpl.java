@@ -183,4 +183,28 @@ public class MainServiceImpl implements MainService {
 		// TODO Auto-generated method stub
 		return mainD.selectEdit(newedit);
 	}
+
+	@Override
+	public List<Map<String, String>> selectRecentBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectRecentBoard();
+	}
+
+	@Override
+	public List<Map<String, String>> selectReplyCountBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectReplyCountBoard();
+	}
+
+	@Override
+	public List<Map<String, String>> selectRateCountBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectRateCountBoard();
+	}
+
+	@Override
+	public QuestionAnswerBoard QuestionBoard(int qa_num) {
+		// TODO Auto-generated method stub
+		return mainD.QuestionBoard(qa_num);
+	}
 }
