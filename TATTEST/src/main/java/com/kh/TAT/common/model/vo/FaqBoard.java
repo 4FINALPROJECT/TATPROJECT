@@ -22,6 +22,12 @@ public class FaqBoard {
 		this.faq_answer = faq_answer;
 		this.faq_date = faq_date;
 	}
+	
+	public FaqBoard(String faq_question, String faq_answer) {
+		super();
+		this.faq_question = faq_question;
+		this.faq_answer = faq_answer;
+	}
 	public int getFaq_num() {
 		return faq_num;
 	}
@@ -58,4 +64,6 @@ public class FaqBoard {
 	public void setFaq_date(Date faq_date) {
 		this.faq_date = faq_date;
 	}
+	
+	
 }
