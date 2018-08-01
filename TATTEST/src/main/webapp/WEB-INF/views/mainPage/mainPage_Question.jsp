@@ -77,13 +77,18 @@
 					  </thead>
 					  <tbody>
 					  <c:forEach items="${qa}" var="qa">
-					    <tr class="" data-toggle="modal" data-target="">
+					  	
+					    <tr class="">					    
 					      <th scope="row">${qa.qa_num}</th>
 					      <td>${qa.qc_code}</td>
 					      <td>${qa.qa_title}</td>
 					      <td>${qa.m_code}</td>
 					      <td>${qa.qa_date}</td>
+					      <td><button onclick="QuestionD">내용보기</button></td> 
 					    </tr>
+					    <form class="QuestionD" action="${pageContext.request.contextPath}/main/QuestionDetail.tat" method="post">
+					  	<input type="hidden" name="qa_num" value="${qa.qa_num}" />
+					    </form>
 					   </c:forEach>
 					  </tbody>
 >>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
@@ -190,7 +195,11 @@
 	    </section>
 		
 	</section>
-
+	<script>
+		function QuestionD() {
+			$('.QuestionD').submit();
+		}
+	</script>
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 </body>

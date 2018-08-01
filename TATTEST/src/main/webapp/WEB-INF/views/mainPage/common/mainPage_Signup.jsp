@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> 가입 시 해당 <a href="#" data-toggle="modal" data-target="#">이용약관</a>, TAT 이메일 및 업데이트 수신에 동의하고 <a href="#" data-toggle="modal" data-target="#">개인정보 취급정책</a>을 숙지하였음을 인정합니다.
+                                <input id="tcheck" type="checkbox"> 가입 시 해당 <a href="#" data-toggle="modal" data-target="#">이용약관</a>, TAT 이메일 및 업데이트 수신에 동의하고 <a href="#" data-toggle="modal" data-target="#">개인정보 취급정책</a>을 숙지하였음을 인정합니다.
                             </label>
                         </div>
                     </div>

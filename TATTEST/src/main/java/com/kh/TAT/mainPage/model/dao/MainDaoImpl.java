@@ -179,11 +179,34 @@ public class MainDaoImpl implements MainDao {
       sqlSession.update("editReplyBoard.updateEditReplyBoard", er);
    }
 
-   @Override
-   public List<Map<String, String>> selectEdit(Edit newedit) {
-      // TODO Auto-generated method stub
-      return sqlSession.selectList("edit.selectEditOne", newedit);
-   }
+	@Override
+	public List<Map<String, String>> selectEdit(Edit newedit) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectEditOne", newedit);
+	}
 
+	@Override
+	public List<Map<String, String>> selectRecentBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectRecent");
+	}
 
+	@Override
+	public List<Map<String, String>> selectReplyCountBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectReplyCount");
+	}
+
+	@Override
+	public List<Map<String, String>> selectRateCountBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("edit.selectRateCount");
+	}
+
+	@Override
+	public QuestionAnswerBoard QuestionBoard(int qa_num) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("questionAnswerBoard.selectQDetail", qa_num);
+	}	
 }
+
