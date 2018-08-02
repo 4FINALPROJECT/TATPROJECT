@@ -2,18 +2,18 @@ package com.kh.TAT.adminPage.model.vo;
 
 import java.sql.Date;
 
-public class aPayment {
+public class AdminPayment {
 	private String m_code;
 	private String p_code;
 	private Date p_date;
 	private Date v_date;
 	private String m_name;
 
-	public aPayment() {
+	public AdminPayment() {
 		super();
 	}
 	
-	public aPayment(String m_code, String p_code, Date p_date, Date v_date) {
+	public AdminPayment(String m_code, String p_code, Date p_date, Date v_date) {
 		super();
 		this.m_code = m_code;
 		this.p_code = p_code;

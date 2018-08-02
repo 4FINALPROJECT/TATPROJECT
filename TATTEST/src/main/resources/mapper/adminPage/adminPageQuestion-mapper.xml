@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="adminQuestion">
+	<select id="selectQuestionList" resultType="AdminQuestion" parameterType="pagingVo">
+		SELECT QA_NUM, M_NAME, QC_NAME, QA_TITLE, QA_CONTENT, QA_DATE, A_CONTENT, A_DATE FROM(SELECT * FROM(
+		SELECT ROWNUM row_num, BOARDALL.* FROM (
+		SELECT * FROM QUESTION_ANSWER_BOARD JOIN MEMBER USING(M_CODE) JOIN QUESTION_CATEGORY USING(QC_CODE) ORDER BY QA_NUM ASC) BOARDALL) BOARDALLALL 
+		)WHERE row_num BETWEEN #{start} AND #{last}
+	</select>
+	
+	<select id="totalPaging" resultType="_int">
+		SELECT count(*) FROM QUESTION_ANSWER_BOARD
+	</select>
+	<select id="totalPagingCount" resultType="_int">
+		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM QUESTION_ANSWER_BOARD) WHERE row_num >#{start}
+	</select>
+</mapper>
+
