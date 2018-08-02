@@ -104,14 +104,5 @@
 .rink_page , .rink_submit{
    display : none;
 }
-#title_controller{
-   width : 400px;
-   background : rgba(231, 231, 231, 0.7);
-   border: 0.5px solid rgb(189, 189, 189);
-   border-radius : 13px;
-   position : absolute;
-   display : none;
-   z-index : 9999;
-}
 
 
