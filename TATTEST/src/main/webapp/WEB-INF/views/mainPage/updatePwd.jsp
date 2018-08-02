@@ -31,5 +31,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
- <script src="${pageContext.request.contextPath}/resources/js/mainPage/main.js"></script>
+ <c:import url="../common/JS.jsp"></c:import>
 </html>
