@@ -3,10 +3,11 @@ package com.kh.TAT.adminPage.model.dao;
 import java.util.List;
 
 import com.kh.TAT.adminPage.model.vo.PagingVo;
-import com.kh.TAT.adminPage.model.vo.aPayment;
+import com.kh.TAT.adminPage.model.vo.AdminPayment;
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.FaqBoard;
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 
 
 public interface AdminDao {
@@ -24,7 +25,7 @@ public interface AdminDao {
 
 	int PaymentTotalPaging();
 
-	List<aPayment> selectPaymentList(PagingVo paging);
+	List<AdminPayment> selectPaymentList(PagingVo paging);
 	
 	// Project
 
@@ -44,7 +45,13 @@ public interface AdminDao {
 
 	int insertFaqQuestion(FaqBoard faqboard);
 
-	List<FaqBoard> selectFaqSelect();
+	List<QuestionCategory> selectFaqSelect();
+
+	int questionTotalPagingCount(int start);
+
+	List<Edit> selectQuestionList(PagingVo paging);
+
+	int questionTotalPaging();
 
 	
 
