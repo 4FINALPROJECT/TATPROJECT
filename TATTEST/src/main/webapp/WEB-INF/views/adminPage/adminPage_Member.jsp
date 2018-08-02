@@ -311,8 +311,9 @@
 				dataType : 'json', 		
 				success : function(data){
 					var total = data;
+					var count = Math.ceil(total/showDoubleCount);
 					pageBtnCreate(total);
-					pageNextFirstBtn();
+					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
 					console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
@@ -340,7 +341,7 @@
 			console.log("ajax 리스트 이름 확인 : "+data.memberList);
 			console.log("ajax data 전체 확인 : "+data);
 			for(var idx in data){
-				console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy'));
+				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].m_email+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+

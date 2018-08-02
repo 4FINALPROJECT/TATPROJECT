@@ -392,9 +392,9 @@ function premiumService(e, a){
 /* Sign up test */
 
 // 회원가입 함수
-$('#insertBtn').on('click',function(){
+/*$('#insertBtn').on('click',function(){
 	$('#memberInsert').submit();
-});
+});*/
 
 // 로그인 함수
 $('#loginForm').on('click',function(){
@@ -403,6 +403,26 @@ $('#loginForm').on('click',function(){
 
 $('#searchPW').on('click',function(){
 	$('#search1').submit();
+});
+
+
+
+$( "#insertBtn" ).click(function( event ) {
+	var p1 = $('#m_email').val();
+	var p2 = $('#m_pwd').val();
+	var p3 = $('#m_pwd2').val();
+	var p4 = $('#m_name').val();
+	var p5 = $('#m_birth').val();
+	var p6 = $('#m_gender').val();
+	
+  if(p1 == "" || p2 == "" || p3 == "" || p4 == "" || p5 == "" || p6 == ""){
+  	alert("값을 입력해주세요.");
+  	$('#upForm').click();
+  } else {
+	  $('#memberInsert').submit();
+  }
+	 event.preventDefault();
+
 });
 
 // 비밀번호(정규식) 유효성 검사
@@ -419,6 +439,7 @@ $(function(){
 			$('#insertBtn').attr("disabled", true);
 			//$('#user_name').focus();
 		}
+			
 	});
 });
 
@@ -454,6 +475,7 @@ $(function(){
 			$('#insertBtn').attr("disabled", true);
 			//$('#user_name').focus();
 		}
+		
 	});
 });
 
@@ -471,7 +493,16 @@ $(function(){
 			$('#insertBtn').attr("disabled", true);
 			//$('#user_name').focus();
 		}
+		
 	});
+});
+
+$(function() {
+	if($('#tcheck').is(":checked") == false){
+		$('#insertBtn').attr("disabled", true);
+	} else {
+		$('#insertBtn').attr("disabled", false);
+	}
 });
 
 //이메일 중복체크 스트립트 //
@@ -576,7 +607,7 @@ function statusChangeCallback(response) {
     });
     FB.api(
   		  '/me',
-  		  'GET',
+  		  'POST',
   		  {"fields":"id,name,address,birthday,email,age_range,gender"},
   		  function(response) {
   			console.log("확인!"+response.password);

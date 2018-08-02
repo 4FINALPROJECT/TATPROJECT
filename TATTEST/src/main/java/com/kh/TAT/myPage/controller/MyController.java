@@ -1,11 +1,13 @@
 package com.kh.TAT.myPage.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.myPage.model.service.MyService;
 import com.kh.TAT.myPage.model.service.mail.MailService;
 import com.kh.TAT.myPage.model.vo.MyPayment;
@@ -118,19 +121,49 @@ public class MyController {
 	
 	// 문의하기 페이지 이동
 	@RequestMapping("/my/Question.tat")
-	public String Question(){
+	public String Question(HttpServletRequest request){
+		
+		HttpSession session = request.getSession(false);
+		String m_code = (String)session.getAttribute("m_code");
+		
+		List<QuestionAnswerBoard> list = myS.selectQuestionBoard(m_code);
+		List<QuestionAnswerBoard> widget = myS.widgetComment(m_code);
+		
+		System.out.println("위젯"+widget);
+		request.setAttribute("list", list);
+		request.setAttribute("widget", widget);
+		
+		
+		return "myPage/myPage_Question";
+	}
+	// 게시물 상세보기 이동
+	@RequestMapping("/my/QuestionDetail.tat")
+	public String QuestionDetail(HttpServletRequest request){
+		
+		HttpSession session = request.getSession(false);
+		String m_code = (String)session.getAttribute("m_code");
+		
+		List<QuestionAnswerBoard> list = myS.selectQuestionBoard(m_code);
+		
+		
+		
+		request.setAttribute("list", list);
+		
+		
 		return "myPage/myPage_Question";
 	}
 	
 	// 프로필 변경
-	@RequestMapping("/my/updateProfile.tat")
+	@RequestMapping(value="/my/updateProfile.tat", method=RequestMethod.POST)
 	public String updateProfile(HttpServletRequest request, Member m){
 		
 		System.out.println("가져온 M 값 :"+m);
 		
 		HttpSession session = request.getSession(false);
 		
-		m.setM_code((String)session.getAttribute("m_code"));
+		String m_code = (String)session.getAttribute("m_code");
+		
+		m.setM_code(m_code);
 		
 		System.out.println("밑에 m 값 : " + m);
 	
@@ -141,6 +174,9 @@ public class MyController {
 			m = myS.selectOneMemberCode(m.getM_code());
 			
 		}
+		List<MyProject> list = myS.selectAllProject(m_code);
+		
+		request.setAttribute("list", list);
 		
 		request.setAttribute("m", m);
 		
@@ -251,7 +287,7 @@ public class MyController {
 	    }
 	// 이메일 변경
 		
-		@RequestMapping("/my/updateEmail.tat")
+		@RequestMapping(value="/my/updateEmail.tat", method=RequestMethod.POST)
 		public String updateEmail(HttpServletRequest req, @RequestParam String email){
 			
 			HttpSession session = req.getSession(false);
@@ -267,6 +303,22 @@ public class MyController {
 			
 			return "redirect:/main/memberLogout.tat";
 			
+		}
+		
+	// 프로젝트 생성
+		@ResponseBody
+		@RequestMapping(value="/my/createProject.tat", method=RequestMethod.POST)
+		public void createProject(HttpSession session, HttpServletResponse res, @RequestParam String pro_name, @RequestParam String pro_content ) throws IOException{
+			
+			String m_code = (String) session.getAttribute("m_code");
+			
+			System.out.println("세션 확인 :  "+ m_code);
+
+			//int result = myS.createProject(m_code, pro_name, pro_content);
+			
+			int result = 1;
+			
+			res.getWriter().println(result);
 		}
 
 }

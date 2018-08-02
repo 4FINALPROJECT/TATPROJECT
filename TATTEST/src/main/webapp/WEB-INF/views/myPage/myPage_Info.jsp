@@ -8,10 +8,10 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
 	<style>
 		#changeEmail{
-			/* display:none; */
+		 	display:none; 
 		}
 		#changePassword{
-			
+			display:none; 
 		}
 		#changeProfile{
 		  
@@ -81,7 +81,7 @@
 			                        <h4><span>프로필 정보 변경</span></h4>
 			                    </div>
 			                    <p>회원님의 이름, 성별, 생년월일 변경할 수 있습니다. </p>
-			                    <form id="changeProfileForm" action="${pageContext.request.contextPath}/my/updateProfile.tat">
+			                    <form id="changeProfileForm" action="${pageContext.request.contextPath}/my/updateProfile.tat" method="post">
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-lg-12 ">
@@ -126,7 +126,7 @@
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			                                    <label><i class="fas fa-angle-double-right"></i> 현재 이메일</label><input type="text" class="form-control" maxlength="100" value="${m.m_email}" readonly>
+			                                    <label><i class="fas fa-angle-double-right"></i> 현재 이메일</label><input type="text" class="form-control" value="${m.m_email}" readonly>
 			                                </div>
 			                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 			                                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 second">
@@ -187,12 +187,12 @@
 				        </div>
 	                </div>
 				</div>
-<<<<<<< HEAD
+
 			
 		</section>
 	</section>
 
-=======
+
 			</div>
 		</section>
 	</section>
@@ -310,6 +310,7 @@
 								console.log($('#password2').val());
 								console.log($('#password3').val());
 								$('#changePasswordForm').submit();
+								alert("비밀번호가 변경되어 로그아웃 됩니다.");
 							}else{
 								alert("변경할 비밀번호가 일치하지 않습니다. 다시 작성해 주세요");
 								console.log($('#password2').val());
@@ -369,6 +370,7 @@
 			        
 			         		$('#emailSpan').fadeIn();
 			         		setInterval(function(){ $('#emailSpan').fadeOut(); },1500);
+			         		
 			     
 			         	} 
 			         }else { // 그밖은 중복된 것이다.
@@ -396,11 +398,8 @@
 			}
 		
 	</script>
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
+
 	<c:import url="common/myPage_Footer.jsp"></c:import>
-=======
-	
->>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
+
 </body>
 </html>

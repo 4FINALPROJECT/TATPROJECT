@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
@@ -72,5 +73,19 @@ public class MyDaoImpl implements MyDao {
 	public List<MyPayment> selectListPayment(String m_code) {
 		
 		return sqlSession.selectList("member.selectListPayment",m_code);
+	}
+
+	
+	// 1:1 게시판 관련
+	@Override
+	public List<QuestionAnswerBoard> selectQuestionBoard(String m_code) {
+		
+		return sqlSession.selectList("member.selectQuestionBoard",m_code);
+	}
+
+	@Override
+	public List<QuestionAnswerBoard> widgetComment(String m_code) {
+		
+		return sqlSession.selectList("member.widgetComment",m_code);
 	}
 }

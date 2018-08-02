@@ -42,23 +42,22 @@ import com.kh.TAT.mainPage.model.service.MainService;
 @SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "edit", "temp", "m_code", "m_name", "ter", "tempReply","er", "editReply", "editlist"})
 public class MainController {
 
-   @Autowired
-   MainService mainS;
-   
-   @Autowired
-   private BCryptPasswordEncoder bcryptPasswordEncoder;
-   
-   @Autowired
-   private EmailSender emailSender;
-      
+	@Autowired
+	MainService mainS;
+	
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	
+	@Autowired
+	private EmailSender emailSender;
+	   
     @Autowired
-
 	private Email email;
 	   
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	private String pageRemember;
+	private String pageRemember = "mainPage/logoutPage";
 	
 	// 기능소개 페이지 이동
 	@RequestMapping("/main/Feature.tat")
@@ -84,6 +83,61 @@ public class MainController {
 		return mv;
 	}
 	
+	// 둘러보기 최신 날짜순 정렬
+	@RequestMapping("/main/DateRecent.tat")
+	public ModelAndView DateRecent(Edit ed){
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<Map<String, String>> Editlist = mainS.selectRecentBoard();
+		
+		mv.addObject("edit", Editlist);
+		
+		pageRemember = "mainPage/mainPage_Explore";
+		
+		mv.setViewName(pageRemember);
+		
+		return mv;
+	}
+	
+	// 둘러보기 댓글 개수순 정렬
+		@RequestMapping("/main/ReplyCount.tat")
+		public ModelAndView ReplyCount(Edit ed, HttpServletRequest request){
+			
+			ModelAndView mv = new ModelAndView();
+			
+			String e_code = request.getParameter("e_code");
+			
+			List<Map<String, String>> Editlist = mainS.selectReplyCountBoard();
+			
+			mv.addObject("edit", Editlist);
+			
+			pageRemember = "mainPage/mainPage_Explore";
+			
+			mv.setViewName(pageRemember);
+			
+			return mv;
+		}
+	
+		// 둘러보기 별점순 정렬
+			@RequestMapping("/main/RateCount.tat")
+			public ModelAndView RateCount(Edit ed){
+					
+			ModelAndView mv = new ModelAndView();
+					
+			List<Map<String, String>> Editlist = mainS.selectRateCountBoard();
+					
+			mv.addObject("edit", Editlist);
+					
+			pageRemember = "mainPage/mainPage_Explore";
+					
+			mv.setViewName(pageRemember);
+					
+			return mv;
+			
+			}
+					
+		
 	// 둘러보기 상세보기 페이지 이동
 	@RequestMapping("/main/ExploreDetail.tat")
 	public ModelAndView ExploreDetail(HttpServletRequest request, Edit edit, Edit newedit){
@@ -411,6 +465,20 @@ public class MainController {
 		return mv;
 	}
 	
+	@RequestMapping("/main/QuestionDetail.tat")
+	public ModelAndView QuestionDetail(HttpServletRequest request, QuestionAnswerBoard question){
+		ModelAndView mv = new ModelAndView();
+		
+		int qa_num = Integer.parseInt(request.getParameter("qa_num"));		
+		
+		question = mainS.QuestionBoard(qa_num);
+		
+		mv.addObject("question", question);
+		mv.setViewName("mainPage/mainPage_QuestionDetail");
+		
+		return mv;
+	}
+	
 	// FAQ 페이지 이동
 	@RequestMapping("/main/Faq.tat")
 	public ModelAndView Faq(FaqBoard faq){
@@ -468,7 +536,7 @@ public class MainController {
 		}
 		
 		// 로그인 부분
-		@RequestMapping(value="/main/memberLogin.tat", method=RequestMethod.POST)
+		@RequestMapping(value="/main/Main.tat", method=RequestMethod.POST)
 		public ModelAndView memberLogin(@RequestParam String m_email,
 				@RequestParam String m_pwd, HttpServletRequest request, Payment p){
 			HttpSession session = request.getSession();
@@ -509,7 +577,7 @@ public class MainController {
 			}
 			mv.addObject("loc", loc);
 			mv.addObject("msg", msg);
-			mv.setViewName(pageRemember);
+			mv.setViewName("mainPage/logoutPage");
 			
 			return mv;
 		}
@@ -664,8 +732,6 @@ public class MainController {
 				/*String m_birth = request.getParameter("m_birthday");
 				String.format("yyyy-mm-dd", m_birth);
 				java.sql.Date birth = java.sql.Date.valueOf(m_birth);*/
-
-
 
 				String m_email = request.getParameter("m_email");
 				String m_name = request.getParameter("m_name");			
