@@ -48,7 +48,15 @@
 	</select>
 	
 	<select  id="widgetComment" parameterType="String" resultType="questionAnswerBoard">
-		SELECT QA_NUM, ADMIN_CODE, A_CONTENT FROM question_answer_board WHERE M_CODE= #{m_code} and ADMIN_CODE is not null ORDER BY 1 DESC
+		SELECT * FROM (SELECT QA_NUM, ADMIN_CODE, A_CONTENT FROM question_answer_board WHERE M_CODE= #{m_code} and ADMIN_CODE is not null ORDER BY 1 DESC) WHERE <![CDATA[  ROWNUM < 4 ]]>
 	</select>
+	
+	<select id="selectCategory" resultType="questionCategory">
+		SELECT * FROM question_Category
+	</select>
+	
+	<insert id="insertWriteBoard" parameterType="questionAnswerBoard" >
+		INSERT INTO QUESTION_ANSWER_BOARD VALUES (SEQ_QUESTION.NEXTVAL, #{m_code}, #{qc_code}, #{qa_title}, #{qa_content}, SYSDATE, #{is_open} ,NULL,NULL,NULL)
+	</insert>
 		
 </mapper>

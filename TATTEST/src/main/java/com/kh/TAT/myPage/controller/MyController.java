@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 import com.kh.TAT.myPage.model.service.MyService;
 import com.kh.TAT.myPage.model.service.mail.MailService;
 import com.kh.TAT.myPage.model.vo.MyPayment;
@@ -128,10 +129,12 @@ public class MyController {
 		
 		List<QuestionAnswerBoard> list = myS.selectQuestionBoard(m_code);
 		List<QuestionAnswerBoard> widget = myS.widgetComment(m_code);
+		List<QuestionCategory> categoryList = myS.selectCategory();
 		
-		System.out.println("위젯"+widget);
+		
 		request.setAttribute("list", list);
 		request.setAttribute("widget", widget);
+		request.setAttribute("categoryList", categoryList);
 		
 		
 		return "myPage/myPage_Question";
@@ -150,7 +153,7 @@ public class MyController {
 		request.setAttribute("list", list);
 		
 		
-		return "myPage/myPage_Question";
+		return "myPage/myPage_QuestionDetail";
 	}
 	
 	// 프로필 변경
@@ -320,5 +323,37 @@ public class MyController {
 			
 			res.getWriter().println(result);
 		}
-
+		
+	// 1:1 게시물 작성
+		@RequestMapping("/my/WriteBoard.tat")
+		public String writeBoard(HttpSession session,HttpServletRequest request, 
+									@RequestParam String title, 
+									@RequestParam String content, 
+									@RequestParam String category
+									){
+			String openYN = request.getParameter("openYN");
+			
+			if(openYN == null) openYN = "N";
+			
+			System.out.println(title);
+			System.out.println(content);
+			System.out.println(category);
+			System.out.println("체크 박스 값 : "+openYN);
+			
+			String m_code = (String) session.getAttribute("m_code");
+			
+			QuestionAnswerBoard qab = new QuestionAnswerBoard();
+			
+			qab.setQa_title(title);
+			qab.setQa_content(content);
+			qab.setQc_code(category);
+			qab.setM_code(m_code);
+			qab.setIs_open(openYN);
+			
+			int result = myS.insertWriteBoard(qab);
+			
+			return "redirect:/my/Question.tat";
+		}
+	
 }
+

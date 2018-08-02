@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
@@ -87,5 +88,17 @@ public class MyDaoImpl implements MyDao {
 	public List<QuestionAnswerBoard> widgetComment(String m_code) {
 		
 		return sqlSession.selectList("member.widgetComment",m_code);
+	}
+
+	@Override
+	public List<QuestionCategory> selectCategory() {
+		
+		return sqlSession.selectList("member.selectCategory");
+	}
+
+	@Override
+	public int insertWriteBoard(QuestionAnswerBoard qab) {
+		
+		return sqlSession.insert("member.insertWriteBoard",qab);
 	}
 }
