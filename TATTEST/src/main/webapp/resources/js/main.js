@@ -358,20 +358,9 @@ function premiumService(e, a){
 	        msg += '결제 금액 : ' + rsp.paid_amount;
 	        msg += '카드 승인번호 : ' + rsp.apply_num;
 	        
-	        changePage();
-	        
-	        /*document.location.href = "paymentInsert.tat?m_code="+e;*/
-	        
-	    } else {
-	        var msg = '결제에 실패하였습니다.';
-	        var p_code;
-	        msg += '내용 : ' + rsp.error_msg;
-	        
-	        
 	        if(a == 30000){
 	        	p_code = "PC1";
-	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
-	        	
+	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;	
 	        } else if(a == 80000){
 	        	p_code = "PC3";
 	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
@@ -382,6 +371,15 @@ function premiumService(e, a){
 	        	p_code = "PC12";
 	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
 	        } 
+	        
+	        changePage();
+	        
+	        /*document.location.href = "paymentInsert.tat?m_code="+e;*/
+	        
+	    } else {
+	        var msg = '결제에 실패하였습니다.';
+	        var p_code;
+	        msg += '내용 : ' + rsp.error_msg;	        
 	    }
 	    alert(msg);
 	});
@@ -432,10 +430,12 @@ $(function(){
 		v = $(this).val();
 		
 		if(regexp.test(v)) {
-			$('#chkMsg2').text("정확한 입력방식입니다!!")
+			$('#chkMsg2').text("정확한 입력방식입니다!!");
+			$('#chkMsg2').css("color", "green");
 			$('#insertBtn').attr("disabled", false);	
 		} else {
-			$('#chkMsg2').text("영문+숫자(기호)조합으로 8자 이상 입력해야합니다. Ex) test12345")
+			$('#chkMsg2').text("영문+숫자(기호)조합으로 8자 이상 입력해야합니다. Ex) test12345");
+			$('#chkMsg2').css("color", "red");
 			$('#insertBtn').attr("disabled", true);
 			//$('#user_name').focus();
 		}
@@ -449,11 +449,13 @@ $(function(){
 		var p1=$("#m_pwd").val(), p2=$("#m_pwd2").val();
 		if(p1!=p2){
 			$('#chkMsg3').text("비밀번호가 일치하지 않습니다.")
+			$('#chkMsg3').css("color", "red");
 			$('#insertBtn').attr("disabled", true);
 			$('#changePwd').attr("disabled", true);
 			//$("#password").focus();
 		} else {
 			$('#chkMsg3').text("비밀번호가 일치합니다.")
+			$('#chkMsg3').css("color", "green");
 			$('#insertBtn').attr("disabled", false);
 			$('#changePwd').attr("disabled", false);
 		}
@@ -469,9 +471,11 @@ $(function(){
 		
 		if(regexp.test(v)) {
 			$('#chkMsg4').text("정확한 입력방식입니다!!")
+			$('#chkMsg4').css("color", "green");
 			$('#insertBtn').attr("disabled", false);
 		} else {
 			$('#chkMsg4').text("실명을 입력해주세요!! Ex) 홍길동")
+			$('#chkMsg4').css("color", "red");
 			$('#insertBtn').attr("disabled", true);
 			//$('#user_name').focus();
 		}
@@ -487,9 +491,11 @@ $(function(){
 		
 		if(regexp.test(v)) {
 			$('#chkMsg1-1').text("정확한 입력방식입니다!!")
+			$('#chkMsg1-1').css("color", "green");
 			$('#insertBtn').attr("disabled", false);
 		} else {
 			$('#chkMsg1-1').text("빈칸이거나 형식에 맞지 않습니다!! Ex) test@test.com")
+			$('#chkMsg1-1').css("color", "red");
 			$('#insertBtn').attr("disabled", true);
 			//$('#user_name').focus();
 		}
@@ -514,8 +520,10 @@ $("#m_email").on("keyup",function(){
 	      success:function(data){
 	    	  if(data.isUsable == true){ // viewName을 활용한 방식
 					$('#chkMsg1').text("사용가능한 이메일입니다.");
+					$('#chkMsg1').css("color", "green");
 				} else {					
 					$('#chkMsg1').text("중복된 이메일입니다.");
+					$('#chkMsg1').css("color", "red");
 					$('#insertBtn').attr("disabled", true);
 				}
 				
@@ -607,14 +615,13 @@ function statusChangeCallback(response) {
     });
     FB.api(
   		  '/me',
-  		  'POST',
+  		  'post',
   		  {"fields":"id,name,address,birthday,email,age_range,gender"},
   		  function(response) {
   			console.log("확인!"+response.password);
   			
   			document.location.href = "Flogin.tat?m_email="+response.email+"&"+
-  			"m_name="+response.name+"&"+"m_birthday="+response.birthday+"&"+
-  			"m_gender="+response.gender;
+  			"m_name="+response.name;
   			
   		  }
   		  );

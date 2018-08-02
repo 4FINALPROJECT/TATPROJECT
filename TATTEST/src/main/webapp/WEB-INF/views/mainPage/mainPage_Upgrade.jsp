@@ -48,7 +48,7 @@
 							<div class="pricingTable"><!-- BODY BOX-->
 								<div class="pricingTable-header"><!-- HEADER BOX-->
 									<span class="heading">1 Month</span>
-									<span class="price-value">$<span>26.44</span><span class="mo">/mo</span></span>
+									<span class="price-value"><span>30000원</span><span class="mo">/mo</span></span>
 								</div><!--/ BODY BOX-->
 
 								<div class="pricingContent">
@@ -94,7 +94,7 @@
 								<div class="pricingTable-header">
 
 									<span class="heading">3 Month</span>
-									<span class="price-value">$<span>70.52</span><span class="mo">/mo</span></span>
+									<span class="price-value"><span>80000원</span><span class="mo">/mo</span></span>
 
 								</div>
 
@@ -137,7 +137,7 @@
 								<div class="pricingTable-header">
 
 									<span class="heading">6 Month</span>
-									<span class="price-value">$<span>132.22</span><span class="mo">/mo</span></span>
+									<span class="price-value"><span>150000원</span><span class="mo">/mo</span></span>
 
 								</div>
 
@@ -180,7 +180,7 @@
 								<div class="pricingTable-header">
 
 									<span class="heading">12 Month</span>
-									<span class="price-value">$<span>255.62</span><span class="mo">/mo</span></span>
+									<span class="price-value"><span>290000원</span><span class="mo">/mo</span></span>
 
 								</div>
 
