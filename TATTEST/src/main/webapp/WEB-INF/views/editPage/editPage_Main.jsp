@@ -163,6 +163,7 @@ $(function() {
 	$('.tat-head-content-right > div:nth-child(7)').click(function(){
 		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]"))[0] );
 		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]")).html() );
+	});
 });
 
 </script>
