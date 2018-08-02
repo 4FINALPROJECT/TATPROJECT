@@ -10,5 +10,5 @@
 <div class="edit-wrap">
 	<div class="edit-view-head-wrap">
 		<div class="edit-view-head">
-		</div>ㅇㅇ
+		</div>
     </div>
