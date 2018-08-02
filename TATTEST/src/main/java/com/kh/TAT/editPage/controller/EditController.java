@@ -17,11 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.editPage.model.service.EditService;
 
-
+@SessionAttributes(value={"m_code"})
 @Controller
 public class EditController {
 
@@ -40,13 +41,15 @@ public class EditController {
 	@RequestMapping("/edit/newPage.tat")
 	public String newPage(HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		
-		Member m = (Member) session.getAttribute("m");
+		String m_code = (String) session.getAttribute("m_code");
 		
-		if ( m != null ) {
+		System.out.println("m 확인 : "+ m_code);
+		
+		if ( m_code != null ) {
 			
-			System.out.println(m.getM_code());
+			System.out.println(m_code);
 			
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m.getM_code());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
 
 			File userFile = new File(newPageRes);
 			
@@ -191,13 +194,13 @@ public class EditController {
 		
 	}
 	
-	@RequestMapping("/member/editCurrentPage.tat")
+	@RequestMapping("/edit/editCurrentPage.tat")
 	public String editCurrentPage(HttpSession session, HttpServletRequest request, Model model) {
 		
-		Member m = (Member) session.getAttribute("m");
+		String m_code = (String) session.getAttribute("m_code");
 		
-		if ( m != null ) {
-			String currentPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m.getM_code());
+		if ( m_code != null ) {
+			String currentPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
 			
 			
 			// 받아올 db의 파일이름
@@ -240,18 +243,18 @@ public class EditController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/member/editOop.tat", method=RequestMethod.POST)
+	@RequestMapping(value="/edit/editOop.tat", method=RequestMethod.POST)
 	public Map<String, Object> editOop(Model model, @RequestParam String edit, HttpSession session, HttpServletRequest request) throws Exception {
 		
-		Member m = (Member)session.getAttribute("m");
+		String m_code = (String)session.getAttribute("m_code");
 		
 		FileWriter writer = null;
 		
 		String editHead;
 		String editBody;
 		
-		if ( m != null ) {
-			System.out.println("세션 아이디 확인 : "+ m.getM_code());
+		if ( m_code != null ) {
+			System.out.println("세션 아이디 확인 : "+ m_code);
 			
 			editHead = edit.substring(0, ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ) );
 			editBody = edit.substring( ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ), 
@@ -261,7 +264,7 @@ public class EditController {
 			System.out.println("editBody 추출 : "+ editBody);
 			
 			// 사용자 폴더 경로 받아오기
-			String currentPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m.getM_code());
+			String currentPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
 			
 			// 받아올 db의 파일 이름
 			String userFileName = "home";
