@@ -8,5 +8,7 @@
 		SELECT QA_NUM, (SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE = QA.QC_CODE) QC_CODE, QA_TITLE,(SELECT M_NAME FROM MEMBER WHERE M_CODE = QA.M_CODE) M_CODE, QA_DATE FROM QUESTION_ANSWER_BOARD QA WHERE IS_OPEN = 'Y' 
 	</select>
 	
-	
+	<select id="selectQDetail" parameterType="questionAnswerBoard" resultMap="questionAnswerBoardMap">
+		SELECT * FROM QUESTION_ANSWER_BOARD WHERE QA_NUM = #{qa_num}
+	</select>
 </mapper>

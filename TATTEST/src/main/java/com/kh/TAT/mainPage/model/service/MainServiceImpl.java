@@ -11,6 +11,7 @@ import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.Payment;
+import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.Template;
 import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 import com.kh.TAT.mainPage.model.dao.MainDao;
@@ -185,6 +186,30 @@ public class MainServiceImpl implements MainService {
 	public List<Map<String, String>> selectEdit(Edit newedit) {
 		// TODO Auto-generated method stub
 		return mainD.selectEdit(newedit);
+	}
+
+	@Override
+	public List<Map<String, String>> selectRecentBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectRecentBoard();
+	}
+
+	@Override
+	public List<Map<String, String>> selectReplyCountBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectReplyCountBoard();
+	}
+
+	@Override
+	public List<Map<String, String>> selectRateCountBoard() {
+		// TODO Auto-generated method stub
+		return mainD.selectRateCountBoard();
+	}
+
+	@Override
+	public QuestionAnswerBoard QuestionBoard(int qa_num) {
+		// TODO Auto-generated method stub
+		return mainD.QuestionBoard(qa_num);
 	}
 
 }

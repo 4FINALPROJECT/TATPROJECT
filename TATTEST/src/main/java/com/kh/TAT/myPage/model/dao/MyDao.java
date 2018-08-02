@@ -3,6 +3,7 @@ package com.kh.TAT.myPage.model.dao;
 import java.util.List;
 
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
@@ -27,5 +28,11 @@ public interface MyDao {
 	MyPayment selectOnePayment(String m_code);
 
 	List<MyPayment> selectListPayment(String m_code);
+
+	
+	// 1:1 게시판 관련
+	List<QuestionAnswerBoard> selectQuestionBoard(String m_code);
+
+	List<QuestionAnswerBoard> widgetComment(String m_code);
 
 }
