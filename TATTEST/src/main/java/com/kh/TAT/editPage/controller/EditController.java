@@ -33,7 +33,17 @@ public class EditController {
 	
 	// 편집 페이지 메인 이동
 	@RequestMapping("/edit/Main.tat")
-	public String edit(){
+	public String edit(HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		
+		String m_code = (String) session.getAttribute("m_code");
+		
+		Member member = editS.memberSelectPayment(m_code);
+		
+		System.out.println("member값 확인  : " + member.getIs_usable());
+		
+		request.setAttribute("member" , member);
+		
 		return "editPage/editPage_Main";
 	}
 	

@@ -158,7 +158,7 @@ function saveEvent() {
 	if ( save_check ) {
 		alert('저장 완료!');
 		$.ajax({
-			url : "/spring/member/editOop.do",
+			url : "/TAT/edit/editOop.tat",
 			data : { edit : editWrap.html() },
 			dataType : "json",
 			type : "POST",

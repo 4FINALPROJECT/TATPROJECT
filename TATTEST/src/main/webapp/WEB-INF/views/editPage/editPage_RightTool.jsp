@@ -6,9 +6,9 @@
 <div id="objectData">
     <img id="item_copy" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/copy.png">
     <img id="item_copystart" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/copystart.png"><br><br>
-    <img id="item_copycontent" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/copycontent.png">
-    <img id="item_delete" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/delete.png"><br><br>
+    <img id="item_copycontent" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/order(top).png">
     <img id="item_order" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/order.png"><br><br>
+    <img id="item_delete" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/delete.png"><br><br>
     <label>회전</label><br>
     <label class="objectData_name_txt">cº</label><input class="objectData_txt" type="number" min="0" max="359" value="0" step="0" onkeyup="EnterUpDate_rotate();"><br>
     <label>크기</label><br>
@@ -18,6 +18,7 @@
     <label class="objectData_name_txt">x</label><input class="objectData_txt" type="number" min="0" value="0" step="0" readonly><br>
     <label class="objectData_name_txt">y</label><input class="objectData_txt" type="number" min="0" value="0" step="0" readonly><br>
 </div>
+<input type="hidden" id="is_usableChk" value= ${ member.is_usable }>
 <table id="item_inpo">
         <thead>
             <tr>
@@ -55,7 +56,6 @@
         <div class="rink_submit">
            <input style="width : 60px;" type="button" value="적용">
         </div>
-        <!-- <input class="inpo_menu_source" type="url" style="width : 110px;" onkeyup="EnterUpDate_URL();"><br><br> -->
     </div>
     <div class="inpo_menu" id="type_inpo" oncontextmenu="return false">
         <label class="inpo_menu_source_name" > 색상 </label><br>
@@ -67,75 +67,64 @@
         <br>
         <label class="inpo_menu_source_name" > 폰트 변경 </label><br>
         <select class="inpo_menu_source">
+        <option value=""> 기본값 </option>
            <option value="돋움" >돋움</option>
            <option value="궁서체" >궁서체</option>
            <option value="바탕체" >바탕체</option>
            <option value="맑은고딕" >맑은고딕</option>
         </select><br>
-        <!-- <input class="inpo_menu_source" type="text"><br> -->
         <label class="inpo_menu_source_name" > 폰트 사이즈 </label><br>
-        <input class="inpo_menu_source" type="number" onkeyup="EnterUpDate_fSize();"><br>
+        <input class="inpo_menu_source" type="number" min="1" max="100" onkeyup="EnterUpDate_fSize();"><br>
         <label class="inpo_menu_source_name" > 폰트 색상 </label><br>
         <input class="inpo_menu_source form-control" type="text"><br><br>
     </div>
+    
     <div class="inpo_menu" id="free_type" oncontextmenu="return false">
-       <label class="free_source_name"> 색상 </label>
+       <label class="free_source_name"> 색상 </label><br>
        <select class="free_source">
-          <option value="빨강"> 빨강색 </option>
-          <option value="주황"> 주황색 </option>
-          <option value="노랑"> 노랑색 </option>
-          <option value="초록"> 초록색 </option>
-          <option value="파랑"> 파랑색 </option>
-          <option value="보라"> 보라색 </option>
-          <option value="검정"> 검정색 </option>
-          <option value="하양"> 하양색 </option>
-          <option value="분홍"> 분홍색 </option>
-       </select>
-       <label class="free_source_name" > 테두리 </label><br>
-       <select class="free_source">
-          <option value="0.5px"> 0.5px </option>
-          <option value="1px"> 1px </option>
-          <option value="1.5px"> 1.5px </option>
-          <option value="2px"> 2px </option>
-          <option value="2.5px"> 2.5px </option>
-          <option value="3px"> 3px </option>
-       </select>
-       <input type="text" value="solid">
-       <select class="free_source">
-          <option value="빨강"> 빨강색 </option>
-          <option value="주황"> 주황색 </option>
-          <option value="노랑"> 노랑색 </option>
-          <option value="초록"> 초록색 </option>
-          <option value="파랑"> 파랑색 </option>
-          <option value="보라"> 보라색 </option>
-          <option value="검정"> 검정색 </option>
-          <option value="하양"> 하양색 </option>
-          <option value="분홍"> 분홍색 </option>
+       	  <option value=""> 기본값 </option>
+          <option value="red"> 빨간색 </option>
+          <option value="orange"> 주황색 </option>
+          <option value="yellow"> 노란색 </option>
+          <option value="green"> 초록색 </option>
+          <option value="blue"> 파란색 </option>
+          <option value="purple"> 보라색 </option>
+          <option value="black"> 검은색 </option>
+          <option value="white"> 하얀색 </option>
+          <option value="pink"> 분홍색 </option>
        </select>
         <br>
         <label class="free_source_name" > 폰트 변경 </label><br>
         <select class="free_source">
+           <option value=""> 기본값 </option>
            <option value="돋움" >돋움</option>
            <option value="궁서체" >궁서체</option>
            <option value="바탕체" >바탕체</option>
            <option value="맑은고딕" >맑은고딕</option>
         </select><br>
         <label class="free_source_name" > 폰트 사이즈 </label><br>
-        <input class="free_source" type="number" min="1" max="100" step="0" value="0"><br>
+        <input class="free_source" type="number" min="1" max="100" onkeyup="free_EnterUpDate_fSize();"><br>
         <label class="free_source_name" > 폰트 색상 </label><br>
         <select class="free_source">
-          <option value="빨강"> 빨강색 </option>
-          <option value="주황"> 주황색 </option>
-          <option value="노랑"> 노랑색 </option>
-          <option value="초록"> 초록색 </option>
-          <option value="파랑"> 파랑색 </option>
-          <option value="보라"> 보라색 </option>
-          <option value="검정"> 검정색 </option>
-          <option value="하양"> 하양색 </option>
-          <option value="분홍"> 분홍색 </option>
+          <option value=""> 기본값 </option>
+          <option value="red"> 빨간색 </option>
+          <option value="orange"> 주황색 </option>
+          <option value="yellow"> 노란색 </option>
+          <option value="green"> 초록색 </option>
+          <option value="blue"> 파란색 </option>
+          <option value="purple"> 보라색 </option>
+          <option value="black"> 검은색 </option>
+          <option value="white"> 하얀색 </option>
+          <option value="pink"> 분홍색 </option>
        </select>
-       
+    </div>
+
+    <div id = "title_controller">
+       <input type="button" value="외부 변경">
+       <input type="button" value="내부 변경">
     </div>
     <div id = "tooltip">
     </div>
 </div>
+
+
