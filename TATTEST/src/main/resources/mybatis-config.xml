@@ -9,6 +9,7 @@
 		<typeAlias type="com.kh.TAT.common.model.vo.Member" alias="member"/>
 		<typeAlias type="com.kh.TAT.adminPage.model.vo.PagingVo" alias="pagingVo"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.Payment" alias="payment"/>
+		<typeAlias type="com.kh.TAT.adminPage.model.vo.aPayment" alias="aPayment"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.QuestionAnswerBoard" alias="questionAnswerBoard"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.Template" alias="template"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.TemplateReplyBoard" alias="templateReplyBoard"/>

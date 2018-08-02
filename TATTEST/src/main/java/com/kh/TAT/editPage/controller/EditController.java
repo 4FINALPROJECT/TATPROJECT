@@ -34,7 +34,7 @@ public class EditController {
 		return "editPage/editPage_Main";
 	}
 	
-private Scanner scan;
+	private Scanner scan;
 	
 	@RequestMapping("/edit/newPage.tat")
 	public String newPage(HttpSession session, HttpServletRequest request, Model model) throws Exception {
