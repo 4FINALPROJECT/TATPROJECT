@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 import com.kh.TAT.myPage.model.dao.MyDao;
 import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
@@ -86,5 +87,17 @@ public class MyServiceImpl implements MyService {
 	public List<QuestionAnswerBoard> widgetComment(String m_code) {
 		
 		return myD.widgetComment(m_code);
+	}
+
+	@Override
+	public List<QuestionCategory> selectCategory() {
+		
+		return myD.selectCategory();
+	}
+
+	@Override
+	public int insertWriteBoard(QuestionAnswerBoard qab) {
+		
+		return myD.insertWriteBoard(qab);
 	}
 }

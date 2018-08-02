@@ -82,7 +82,7 @@
                                             <form id="editDelete" action="${pageContext.request.contextPath}/main/DeleteEditReply.tat" method="post">
                                             <input type="hidden" name="er_num" value="${editReply.er_num}"/>
 											<input type="hidden" name="e_code" value="${editReply.e_code}"/>
-                                            <a id="editDelete()">삭제</a>
+                                            <a onclick="editDelete()">삭제</a>
                                             </form>
                                             <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat" method="post">
                                             <div class="collapse" id="${editReply.er_num}">											  
@@ -100,7 +100,7 @@
                         </ul>
                     </div>
                     <c:if test="${empty m_code}">
-                        <button data-toggle="modal" data-target="#signin">댓글 남기기</button>
+                        <button data-toggle="modal" data-target="#signin" style="background: white; border-radius: 12px;">댓글 남기기</button>
                     </c:if>
                     <div class="dividerHeading">
                                 <h4><span>Leave a comment</span></h4>
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     		<c:if test="${!empty m_code}">
-                            <button id="insertEditReply" type="submit" class="btn btn-lg btn-default">Post Comment</button>
+                            <button id="insertEditReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
                             </c:if>
                             <c:if test="${empty m_code}">
                             <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>

@@ -39,7 +39,7 @@ import com.kh.TAT.common.model.vo.TemplateReplyBoard;
 import com.kh.TAT.mainPage.model.service.MainService;
 
 @Controller
-@SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "edit", "temp", "m_code", "m_name", "ter", "tempReply","er", "editReply", "editlist"})
+@SessionAttributes(value={"m", "f", "g", "qa", "p", "te", "edit", "temp", "m_code", "m_name", "ter", "tempReply","er", "editReply", "editlist", "question"})
 public class MainController {
 
 	@Autowired
@@ -207,7 +207,7 @@ public class MainController {
 			
 			mv.setViewName(pageRemember);
 		} else {
-			pageRemember = "mainPage/mainPage_ExploreDetail";
+			pageRemember = "mainPage/common/mainPage_error";
 			
 			mv.setViewName(pageRemember);
 			System.out.println("실패!!");
@@ -370,7 +370,7 @@ public class MainController {
 			
 			mv.setViewName(pageRemember);
 		} else {
-			pageRemember = "mainPage/mainPage_TemplateDetail";
+			pageRemember = "mainPage/common/mainPage_error";
 			
 			mv.setViewName(pageRemember);
 			System.out.println("실패!!");
@@ -465,6 +465,7 @@ public class MainController {
 		return mv;
 	}
 	
+	// 1:1 디테일 페이지 //
 	@RequestMapping("/main/QuestionDetail.tat")
 	public ModelAndView QuestionDetail(HttpServletRequest request, QuestionAnswerBoard question){
 		ModelAndView mv = new ModelAndView();
@@ -591,7 +592,8 @@ public class MainController {
 					status.setComplete();
 				}
 				
-				return "redirect:/";
+				//return "redirect:/";
+				return "mainPage/logoutPage";
 			}
 			
 			// 이메일 중복체크 부분
@@ -735,7 +737,6 @@ public class MainController {
 
 				String m_email = request.getParameter("m_email");
 				String m_name = request.getParameter("m_name");			
-				String m_gender = request.getParameter("m_gender");
 				
 				String code = "";
 				String msg = "";
@@ -744,7 +745,6 @@ public class MainController {
 				
 				m.setM_email(m_email);
 				m.setM_name(m_name);
-				m.setM_gender(m_gender);
 				m.setIs_usable("N");
 				/*m.setM_birth(birth);*/
 				
@@ -778,7 +778,7 @@ public class MainController {
 					mv.addObject("m_code", code);
 				}
 				
-				mv.setViewName(pageRemember);
+				mv.setViewName("mainPage/logoutPage");
 				
 				return mv;
 			}
@@ -828,7 +828,7 @@ public class MainController {
 						mv.addObject("loc", loc);
 						mv.addObject("m_code", code);
 				}
-				mv.setViewName(pageRemember);
+				mv.setViewName("mainPage/logoutPage");
 				
 				return mv;
 			}

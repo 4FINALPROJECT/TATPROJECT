@@ -75,14 +75,14 @@
 		                </div>
 		            </div>
 		            <div class="col-sm-6 mrgb-30 text-center">
-		                <a class="btn btn-sm btn-social-googleplus" onclick="GoogleLogin()">
+		                <a class="btn btn-default btn-lg button" onclick="GoogleLogin()">
 		                    <!-- <i class="fa fa-google-plus"></i><br /> -->
 		                    <div class="g-signin2" onclick="GoogleLogin()" data-onsuccess="onSignIn" data-theme="dark" data-height="30"></div>
 		                    
 		                </a>
 		            </div>
 		            <div class="col-sm-6 mrgb-30 text-center">
-		                <a class="btn btn-sm btn-social-facebook">
+		                <a class="btn btn-default btn-lg button">
 		                    <!-- <i class="fa fa-facebook" ></i> -->
 
 		                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState()">Facebook</fb:login-button>

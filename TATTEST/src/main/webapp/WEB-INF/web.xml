@@ -36,7 +36,12 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.tat</url-pattern>
 	</servlet-mapping>
-
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/mainPage/common/mainPage_error.jsp</location>
+	</error-page>
+	
 	<!-- #4. post방식 인코딩 설정 UTF-8 필터 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -51,4 +56,9 @@
   		<url-pattern>*.tat</url-pattern>
   	</filter-mapping>
   	
+  	<!-- 공용에러페이지등록 -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/views/mainPage/common/mainPage_error.jsp</location>
+	</error-page>
 </web-app>
