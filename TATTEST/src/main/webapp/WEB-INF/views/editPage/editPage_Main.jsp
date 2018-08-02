@@ -115,7 +115,8 @@
 		
 	</c:if> --%>
 	
-	<c:import url="../member/page1.jsp"/>
+	<c:import url="../member/M001/E1/page1.jsp"/>
+	
 	</div>
 	
 </div>
