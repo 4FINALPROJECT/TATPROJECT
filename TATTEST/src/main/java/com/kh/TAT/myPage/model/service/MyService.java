@@ -2,6 +2,8 @@ package com.kh.TAT.myPage.model.service;
 
 import java.util.List;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.QuestionCategory;
@@ -14,8 +16,6 @@ public interface MyService {
 	Member selectOneMemberCode(String m_code);
 
 	int updateProfile(Member m);
-
-	List<MyProject> selectAllProject(String m_code);
 
 	int updatePassword(Member m);
 
@@ -40,6 +40,22 @@ public interface MyService {
 	List<QuestionCategory> selectCategory();
 
 	int insertWriteBoard(QuestionAnswerBoard qab);
+
+	QuestionAnswerBoard selectOneBoard(int qa_num);
+
+	
+	// 나의 프로젝트 관련
+	List<MyProject> selectAllProject(String m_code);
+	
+	Edit selectOneProjectDetail(String e_code);
+
+	List<EditReplyBoard> selectListReply(String e_code);
+
+	int countComment(String e_code);
+
+	int createProject(Edit newProject);
+	
+	
 
 	
 
