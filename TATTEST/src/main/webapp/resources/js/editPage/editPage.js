@@ -183,7 +183,7 @@ function saveEvent() {
 		alert('저장 완료!');
 		$.ajax({
 			url : "/TAT/edit/editOop.tat",
-			data : { edit : editWrap.html() },
+			data : { edit : editWrap[0].outerHTML },
 			dataType : "json",
 			type : "POST",
 			success : function(data) {
