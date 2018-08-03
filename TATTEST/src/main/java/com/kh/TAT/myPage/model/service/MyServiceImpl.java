@@ -126,4 +126,10 @@ public class MyServiceImpl implements MyService {
 		
 		return myD.countComment(e_code);
 	}
+
+	@Override
+	public int createProject(Edit newProject) {
+		
+		return myD.createProject(newProject);
+	}
 }

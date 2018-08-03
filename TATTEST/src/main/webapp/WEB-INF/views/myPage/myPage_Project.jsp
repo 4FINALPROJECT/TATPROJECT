@@ -54,6 +54,7 @@
 	
 	                        <div class="blog-button">
 	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat?e_code=${p.e_code}">상세 보기</a>
+	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/edit/newPage.tat?e_code=${p.e_code}">편집 하기</a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -65,7 +66,6 @@
 	    </section>
 		
 	</section>
-
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 	<script>
@@ -130,6 +130,10 @@
 	        isotope();
 	        $(window).smartresize(isotope);
 	    }(jQuery));
+	    
+	    
+	    
+	    
 	</script>
 </body>
 </html>

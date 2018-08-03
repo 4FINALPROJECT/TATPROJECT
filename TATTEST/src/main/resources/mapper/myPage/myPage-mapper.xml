@@ -76,4 +76,8 @@
 		SELECT COUNT(*) FROM EDIT_REPLY_BOARD WHERE E_CODE=#{E_CODE}
 	</select>
 
+	<insert id="createProject" parameterType="edit">
+		INSERT INTO EDIT VALUES('E'||SEQ_EDIT.NEXTVAL,#{m_code},#{proj_name},#{proj_comment},DEFAULT,DEFAULT,NULL)
+	</insert>
+
 </mapper>

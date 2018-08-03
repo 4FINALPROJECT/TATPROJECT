@@ -50,4 +50,6 @@ public interface MyDao {
 
 	int countComment(String e_code);
 
+	int createProject(Edit newProject);
+
 }

@@ -52,6 +52,8 @@ public interface MyService {
 	List<EditReplyBoard> selectListReply(String e_code);
 
 	int countComment(String e_code);
+
+	int createProject(Edit newProject);
 	
 	
 

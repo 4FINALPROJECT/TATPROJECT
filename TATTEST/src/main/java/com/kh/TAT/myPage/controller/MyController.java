@@ -369,6 +369,30 @@ public class MyController {
 			return "redirect:/my/Question.tat";
 		}
 		
+	// 프로젝트 생성 
+		
+	@RequestMapping("/my/createProject.tat")
+	public String writeBoard(HttpSession session,HttpServletRequest request, @RequestParam String proj_name, @RequestParam String proj_comment){
+		
+		String m_code = (String) session.getAttribute("m_code");
+		
+		System.out.println("proj_name : "+ proj_name);
+		System.out.println("proj_name : "+ proj_comment);
+		
+		Edit newProject = new Edit();  
+		
+		newProject.setProj_name(proj_name);
+		newProject.setProj_comment(proj_comment);
+		newProject.setM_code(m_code);
+		
+		int result = myS.createProject(newProject);
+		
+		
+		
+		
+
+		return "redirect:/my/Project.tat";
+	}
 	
 	
 }

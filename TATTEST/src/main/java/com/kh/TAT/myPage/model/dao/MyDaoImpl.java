@@ -128,4 +128,10 @@ public class MyDaoImpl implements MyDao {
 		
 		return sqlSession.selectOne("member.countComment", e_code);
 	}
+
+	@Override
+	public int createProject(Edit newProject) {
+		
+		return sqlSession.insert("member.createProject", newProject);
+	}
 }
