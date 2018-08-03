@@ -145,7 +145,7 @@
                                 </div>
                             </div>
 							<c:if test="${!empty m_code}">
-                            <button id="insertReply" type="submit" class="btn btn-lg btn-default">Post Comment</button>
+                            <button id="insertReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
                             </c:if>
                             <c:if test="${empty m_code}">
                             <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>

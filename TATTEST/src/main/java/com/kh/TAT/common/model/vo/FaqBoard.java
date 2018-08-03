@@ -10,6 +10,7 @@ public class FaqBoard {
 	private String faq_answer;
 	private Date faq_date;
 	
+	
 	public FaqBoard() {
 		super();
 	}
@@ -25,6 +26,7 @@ public class FaqBoard {
 	
 	public FaqBoard(String faq_question, String faq_answer) {
 		super();
+		
 		this.faq_question = faq_question;
 		this.faq_answer = faq_answer;
 	}

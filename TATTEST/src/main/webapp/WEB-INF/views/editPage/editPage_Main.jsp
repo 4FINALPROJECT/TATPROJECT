@@ -24,7 +24,16 @@
 				<span style="float: right;">▽</span>
 			</div>
 			<div class="tat-my-page-content">
-				
+				<div class="tat-my-page-list">
+					<div>HOME</div>
+					<div>PAGE1</div>
+					<div>PAGE2</div>
+					<div>PAGE3</div>
+					<div>PAGE4</div>
+				</div>
+				<div class="tat-my-page-btn">
+					<div>페이지 관리</div>
+				</div>
 			</div>
 		</div>
 		
@@ -101,21 +110,29 @@
 <!-- 오른쪽 툴바 -->
 	<c:import url="editPage_RightTool.jsp"/>
 	
-	
-<%-- <!-- 회원 편집 공간 -->
-
-	<c:if test="${ editPage == null }">
+<!-- 회원 편집 공간 -->
+	<%-- <c:if test="${ editPageHead == null }">
 		에러발생
 	</c:if>
-	
-	<c:set value="${ editPage }" var="abc"/>
-	<c:if test="${ editPage != null }">
-		
-		<c:import url="/${ editPage }"/>
-		
+	<c:if test="${ editPageHead != null }">
+		<c:import url="/${ editPageHead }"/>
 	</c:if> --%>
 	
-	<c:import url="../member/page1.jsp"/>
+	<c:if test="${ editPageBody == null }">
+		에러발생
+	</c:if>
+	<c:if test="${ editPageBody != null }">
+		<c:import url="/${ editPageBody }"/>
+	</c:if>
+	
+	<%-- <c:if test="${ editPageFooter == null }">
+		에러발생
+	</c:if>
+	<c:if test="${ editPageFooter != null }">
+		<c:import url="/${ editPageFooter }"/>
+	</c:if> --%>
+	
+		
 	</div>
 	
 </div>
@@ -142,117 +159,12 @@
 	
 <script>
 
-
-
-$('#save-btn').on('click', function(){
-	//console.log(editWrap.html());
-	saveEvent();
-});
-
-$('#commit-btn').click(function(){
-	commitEvent();
-});
-
-
 $(function() {
 	$('.tat-head-content-right > div:nth-child(7)').click(function(){
 		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]"))[0] );
 		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]")).html() );
 	});
-	
-	//undo 뒤로가기
-	$('.tat-head-content-right > div:nth-child(6)').click(function(){
-		if ( tmp == null ) {
-			alert("기록이 없습니다.");
-		} else {
-			if ( tmp[0].dataset.stack == "add" ) {
-				
-				if ( stackCount == -1 ) {
-					alert("기록이 없습니다.");
-				} else {
-					undoEvent();
-				}
-				
-			} else if ( tmp[0].dataset.stack == "move" ) {
-				
-				if ( stackCount == -1 ) {
-					alert("기록이 없습니다.");
-				} else {
-					moveUndo();
-				}
-				
-			} else {
-			
-				if ( redoCount == -1 ) {
-					alert("기록이 없습니다.");
-				} else {
-					redoEvent();
-				}
-				console.log("stackCount"+ stackCount);
-				console.log("redoCount"+ redoCount);
-			}
-		}
-
-		
-		
-	});
-	
-	
-	// redo 앞으로가기
-	$('.tat-head-content-right > div:nth-child(5)').click(function(){
-		if ( tmp == null ) {
-			alert("기록이 없습니다.");
-		} else {
-			if ( stackCount > -2 && stackCount < 5 ) {
-	
-				if ( tmp[0].dataset.stack == "add" ) {
-					
-					if ( redoCount == -1 ) {
-						alert("기록이 없습니다.");
-					} else {
-						redoEvent();
-					}
-					
-				} else if ( tmp[0].dataset.stack == "move" ) {
-					
-					if ( stackCount == -1 ) {
-						alert("기록이 없습니다.");
-					} else {
-						moveRedo();
-					}
-					
-				} else {
-					
-					if ( redoCount == -1 ) {
-						undoEvent();
-					} else {
-						alert("기록이 없습니다.");
-					}
-	
-				}
-			}
-		}
-	});
 });
-
-
-function moveUndo() {
-	if ( stackCount > -1 && stackCount < 5 ) {
-		stackCount--;
-		redoCount++;
-		tmp = stack.pop();
-		stackRedo.push(tmp);
-		editWrap.find(tmp).remove();
-		
-	}
-}
-
-function moveRedo() {
-	if ( stackCount > -2 || stackRedo.length > 0 ) {
-		
-	}
-}
-
 
 </script>
 </html>

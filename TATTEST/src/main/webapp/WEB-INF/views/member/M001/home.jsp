@@ -5,4 +5,5 @@
 		<div class="edit-view-body">
 		</div>
 	</div>
+
 	<%@ include file="footer.jsp" %>

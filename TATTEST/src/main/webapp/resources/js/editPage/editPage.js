@@ -11,13 +11,35 @@ var swap;
 var stackDataChk;
 var stackMove;
 var stackMoveRedo;
+var id_count;
+var idCountFilter;
+
+// var 변수를 만들어서 obj-no의 값이 있다면 담을 때마다 길이가 쌓임.
+// if 문으로 idCountFilter가 0 보다 크다면 그 값은 -1을 하여 id_count로 하고 
+// 아니면 else로 idCountFilter는 0이 되니까 -1로 해서 
+// id_count는 -1로 시작.
+
+$(function() {
+
+	idCountFilter = editWrap.find($("div[data-obj-no*=data-"));
+	
+	
+	if ( idCountFilter.length-1 > 0 ) {
+		id_count = idCountFilter.length-1;
+	} else {
+		id_count = -1;
+	}
+	
+	
+});
 
 $('.tat-head-hide').on('click',function(){
 	$('.tat-head').slideToggle('slow');
 });
+
 $('.tat-my-page').on({
 	"mouseenter" : function(){
-        $(this).css({
+		$(this).css({
            "background-color" : "#eaf7ff",
            "cursor" : "pointer"                 
         }),
@@ -27,7 +49,7 @@ $('.tat-my-page').on({
         })
     },
     "mouseleave" : function(){
-        $(this).css({
+		$(this).css({
            "background-color" : "white",
            "color" : "black"
         }),
@@ -36,7 +58,8 @@ $('.tat-my-page').on({
         	"color" : "coral"
         })
     },
-    "click" : function(){
+	"click" : function(){
+    	$('.tat-my-page-content').toggle();
         $(this).css({
         	"background-color" : "white",
         	"cursor" : "unset"
@@ -46,7 +69,10 @@ $('.tat-my-page').on({
         	"color" : "white"
         })
     }
+    
 });
+
+
 
 $('.tat-head-content-center > div').on({
 	"mouseenter" : function(){
@@ -140,7 +166,7 @@ function commitEvent() {
 					// 모달창 닫기
 					$('#myModal').modal("hide");
 				} 
-			} 
+			}
 		}); 
 		
 	} else {
@@ -153,7 +179,7 @@ function saveEvent() {
 	if ( save_check ) {
 		alert('저장 완료!');
 		$.ajax({
-			url : "/TAT/member/editOop.tat",
+			url : "/TAT/edit/editOop.tat",
 			data : { edit : editWrap.html() },
 			dataType : "json",
 			type : "POST",
@@ -179,7 +205,7 @@ function stackEvent() {
 		stack.push(stackT);
 		stack.shift();
 
-		console.log("스택 맨 끝 요소 캐치 : "+ stack[4][0].outerHTML);
+		//console.log("스택 맨 끝 요소 캐치 : "+ stack[4][0].outerHTML);
 	}
     tmp = stackT;
 }
@@ -248,7 +274,9 @@ function redoEvent() {
 	}
 }
 
-function stackMoveEvent(stackMove) {
+
+function stackMoveEvent() {
+	console.log(stackMove);
 	tmp = stackMove.attr("data-stack", "move");
 	
 	
@@ -260,14 +288,107 @@ function stackMoveEvent(stackMove) {
 		stack.shift();
 	}
 
-	
-	console.log("이동 값 : "+tmp[0].outerHTML);
 }
 
 
+function moveUndo() {
+	if ( stackCount > -1 && stackCount < 5 ) {
+		stackCount--;
+		redoCount++;
+		tmp = stack.pop();
+		stackRedo.push(tmp);
+		editWrap.find(tmp).remove();
+	}
+}
+
+function moveRedo() {
+	if ( stackCount > -2 || stackRedo.length > 0 ) {
+		
+	}
+}
 
 
+//undo 뒤로가기
+$('.tat-head-content-right > div:nth-child(6)').click(function(){
+	if ( tmp == null ) {
+		alert("기록이 없습니다.");
+	} else {
+		if ( tmp[0].dataset.stack == "add" ) {
+			
+			if ( stackCount == -1 ) {
+				alert("기록이 없습니다.");
+			} else {
+				undoEvent();
+			}
+			
+		}/*  else if ( tmp[0].dataset.stack == "move" ) {
+			
+			if ( stackCount == -1 ) {
+				alert("기록이 없습니다.");
+			} else {
+				moveUndo();
+			}
+			
+		} */ else {
+		
+			if ( redoCount == -1 ) {
+				alert("기록이 없습니다.");
+			} else {
+				redoEvent();
+			}
+		}
+	}
 
+	
+	
+});
+
+
+// redo 앞으로가기
+$('.tat-head-content-right > div:nth-child(5)').click(function(){
+	if ( tmp == null ) {
+		alert("기록이 없습니다.");
+	} else {
+		if ( stackCount > -2 && stackCount < 5 ) {
+
+			if ( tmp[0].dataset.stack == "add" ) {
+				
+				if ( redoCount == -1 ) {
+					alert("기록이 없습니다.");
+				} else {
+					redoEvent();
+				}
+				
+			}/*  else if ( tmp[0].dataset.stack == "move" ) {
+				
+				if ( stackCount == -1 ) {
+					alert("기록이 없습니다.");
+				} else {
+					moveRedo();
+				}
+				
+			}  */else {
+				
+				if ( redoCount == -1 ) {
+					undoEvent();
+				} else {
+					alert("기록이 없습니다.");
+				}
+
+			}
+		}
+	}
+});
+
+
+$('#save-btn').on('click', function(){
+	//console.log(editWrap.html());
+	saveEvent();
+});
+
+$('#commit-btn').click(function(){
+	commitEvent();
+});
 
 $('#tat-head-logo').on('click', function(){
 	var siteOut = confirm('아직 저장을 안하셨습니다. 저장 하시겠습니까?');

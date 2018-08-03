@@ -2,7 +2,7 @@
 var bodysize = parseInt($(".edit-view-body-wrap").css("height"));
 var objectBottomTop;
 $(function(){
-
+	   
    testdrag();
    test345435();
    // 부트 스트랩
@@ -191,6 +191,8 @@ function test345435(){
            
          $("#item_inpo").css("display","none");
          $(".inpo_menu").css("display","none");
+         $("#title_controller").css("display" , "none");
+         $(".total_tool").css("display" , "none");
          $("#objectId").attr("value",$(this).attr("data-obj-no"));
          
          $(".objectData_txt").eq(0).attr("value", angle);
@@ -209,7 +211,8 @@ function test345435(){
            
        });
        $(this).bind("contextmenu",function(event){
-          
+         if($(this).children().eq(0).prop("tagName") != "IMG"){
+         
          event.preventDefault();
          
          w = Math.floor($(this).width());
@@ -228,12 +231,13 @@ function test345435(){
          
          $(".upDateBorder").remove();
          $("#objectId").attr("value",$(this).attr("data-obj-no"));
+         $("#title_controller").css("display","none");
          $("#item_inpo").css("display","inline-block");
          $(".inpo_menu").css("display","none");
          $("#item_inpo").css({"top" : parseInt($(this).offset().top)-80,"left" : $(this).offset().left});
            $("#text_inpo").children('input').attr("value",objText);
 
-           if($(this).children().eq(0).attr("type") != "button"){
+           if($(this).children().eq(0).attr("class") != "btn_style"){
               $("#item_rink").css("display","none");
            } else {
               $("#item_rink").css("display","inline-block");
@@ -241,18 +245,36 @@ function test345435(){
            
            $("#rink_inpo").children('input').attr("value",rinksource);
            
-           $("#type_inpo").children('input').eq(0).attr("value",rgb2hex(objBackColor));
-           $("#type_inpo").children('input').eq(1).attr("value",rgb2hex(objBorder_color));
-           $("#type_inpo").children('input').eq(2).attr("value",objBorder[1]);
-           $("#type_inpo").children('input').eq(3).attr("value",objBorder[0]);
+           
            if($("#type_inpo").children('select').children().attr("value") == objFontFamily){
               
            } else {
-              $("#type_inpo").children('select').append("<option value="+objFontFamily+">"+objFontFamily+"</option>");
+        	   
+        	  if($("#is_usableChk").val() == "Y"){
+        		  
+        		  $("#type_inpo").children('input').eq(0).attr("value",rgb2hex(objBackColor));
+                  $("#type_inpo").children('input').eq(1).attr("value",rgb2hex(objBorder_color));
+                  $("#type_inpo").children('input').eq(2).attr("value",objBorder[1]);
+                  $("#type_inpo").children('input').eq(3).attr("value",objBorder[0]);	  
+        		  $("#type_inpo").children('input').eq(4).attr("value",objFontSize);
+        		  $("#type_inpo").children('input').eq(5).attr("value",rgb2hex(objFontColor));
+        		  $("#type_inpo").children('select').children().eq(0).attr("value",objFontFamily);
+        		  
+        	  } else {
+        		  if(rgb2hex(objBackColor) == "#000000"){
+        			  $("#free_type").children('select').eq(0).children().eq(0).attr("value","");  
+        		  } else {
+        			  $("#free_type").children('select').eq(0).children().eq(0).attr("value",rgb2hex(objBackColor));  
+        		  }
+        		  $("#free_type").children('select').eq(1).children().eq(0).attr("value",objFontFamily);
+        		  $("#free_type").children('select').eq(2).children().eq(0).attr("value",rgb2hex(objFontColor));
+        		  $("#free_type").children('input').eq(0).attr("value",objFontSize);
+        		  
+        	  }
+        	  
            }
-           $("#type_inpo").children('input').eq(4).attr("value",objFontSize);
-           $("#type_inpo").children('input').eq(5).attr("value",rgb2hex(objFontColor));
-           $(".objectData_txt").eq(0).attr("value", "");
+           
+//           $(".objectData_txt").eq(0).attr("value", "");
            
            if($(this).children("span").length < 1){
               $(".objectData_txt").eq(1).attr({"value" : w , "readonly" : false});
@@ -263,6 +285,7 @@ function test345435(){
            }
            $(".objectData_txt").eq(3).attr("value", x);
            $(".objectData_txt").eq(4).attr("value", y);
+         	}
          });
        });
    }
@@ -480,12 +503,19 @@ function test345435(){
              "left":$("#item_inpo").offset().left});
              });
        $("#item_type").on("click",function(){
-          $(".inpo_menu").css("display","none");
-          $("#type_inpo").css("display","inline-block");
-          $("#type_inpo").css({
-             "top":$("#item_inpo").offset().top + 40,
-             "left":$("#item_inpo").offset().left});
-             });
+    	   $(".inpo_menu").css("display","none");
+    	   if($("#is_usableChk").val() == "Y"){
+    	          $("#type_inpo").css("display","inline-block");
+    	          $("#type_inpo").css({
+    	             "top":$("#item_inpo").offset().top + 40,
+    	             "left":$("#item_inpo").offset().left});
+    	   } else {
+    		   $("#free_type").css("display","inline-block")
+    		   $("#free_type").css({
+  	             "top":$("#item_inpo").offset().top + 40,
+  	             "left":$("#item_inpo").offset().left});
+    	   }
+       });
        $("#item_close").on("click",function(){close();});
     });
     function EnterUpDate_rotate(){
@@ -517,16 +547,53 @@ function test345435(){
     }
     function EnterUpDate_fSize(){
        if(event.keyCode == 13){
-          $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#type_inpo").children("input").eq(4).val() + "px");   
+    	   
+    	  if($("#type_inpo").children("input").eq(4).val() <= 100 && $("#type_inpo").children("input").eq(4).val() > 0){
+    		  
+    		  $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#type_inpo").children("input").eq(4).val() + "px");
+    		  
+    	  } else {
+    		  
+    		  alert("1~100의 숫자만 입력해주세요.");
+    		  
+    	  }
+       }
+    }
+    function free_EnterUpDate_fSize(){
+       if(event.keyCode == 13){
+    	   
+    	 if($("#free_type").children("input").eq(0).val() <= 100 && $("#free_type").children("input").eq(0).val() > 0){
+    		 
+          $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#free_type").children("input").eq(0).val() + "px");
+          
+    	 } else {
+    		 
+     		alert("1~100의 숫자만 입력해주세요.");
+     		
+   	  	 }
+    	 
        }
     }
     function close(){
         $("#item_inpo").css("display","none");
         $(".inpo_menu").css("display","none");
     }
-    $("#type_inpo").children("select").click(function(){
-       $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-family",$(this).val());
-    });
+    if($("#is_usableChk").val() == "Y"){
+    	$("#type_inpo").children("select").click(function(){
+    	    $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-family",$(this).val());
+    	});	
+    } else {
+    	$("#free_type").children("select").eq(0).click(function(){
+    		$("div[data-obj-no*="+$("#objectId").val()+"]").children().css("background",$(this).val());
+    	});
+    	$("#free_type").children("select").eq(1).click(function(){
+    		$("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-family",$(this).val());
+    	});
+    	$("#free_type").children("select").eq(2).click(function(){
+    		$("div[data-obj-no*="+$("#objectId").val()+"]").children().css("color",$(this).val());
+    	});
+    }
+    
     
     var rinkdata;
     
@@ -554,20 +621,18 @@ function test345435(){
     });
     
     $(".rink_page").children().click(function(){
-       
-       if($(this).val() == "window.open()"){
+       if($(this).val() == "새창"){
           
-          rinkdata = "window.open("+rinkdata+")";
+          rinkdata = "window.open('"+rinkdata+"')";
           
        } else {
           
-          rinkdata = "location.href="+rinkdata;
+          rinkdata = "location.href='"+rinkdata+"'";
           
        }
        $(".rink_select").css("display","none");
        $(".rink_page").css("display","none");
        $(".rink_submit").css("display","inline");
-       
        
     });
     

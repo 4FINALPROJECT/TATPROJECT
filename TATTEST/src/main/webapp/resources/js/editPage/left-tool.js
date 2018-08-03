@@ -15,6 +15,7 @@ $(".edit-wrap").mousedown(function(e){
    $(".total_tool").css("display" , "none");
    $("#item_inpo").css("display" , "none");
    $(".inpo_menu").css("display" , "none");
+   $("#title_controller").css("display" , "none");
    
    $(".upDateBorder").remove();
    
@@ -216,16 +217,17 @@ $(".edit-wrap").mousedown(function(e){
 }
 
 window.onblur = function() {
-   $("#objectId").attr("value",null);
+//   $("#objectId").attr("value",null);
    $("#multiselect").remove();
    event.stopImmediatePropagation();
    return;
 }
 $("div[id*=left_main]").each(function(){
    $(this).click(function(e){
-      
+	  $(".upDateBorder").remove();
       $("#item_inpo").css("display" , "none");
       $(".inpo_menu").css("display" , "none");
+      $("#title_controller").css("display" , "none");
       
       var mainid_chk = $(this).attr("id").substr($(this).attr("id").lastIndexOf("_")+1,10);
       
@@ -291,17 +293,24 @@ $("#tool_menu3-14").children("div").click(function(){
    });
    
    var menu_td = menu_clone.children().children().children().children();
-   
+
    menu_td.css({"width":"25%","height":"100px"});
    
    menu_clone.children().css({"text-align":"center","width":parseInt($(".edit-view-head").css("width")) - 6});
    
    $(".edit-view-head").append(menu_clone.css({"position":"absolute" , "top" : parseInt($(".edit-view-head-wrap").css("height")) - parseInt(menu_td.css("height")) - 6 }));
    
-   $("div[class*=titleMenu]").each(function(){
+   $(".edit-view-head").children($("div[class*=titleMenu]")).each(function(){
       
     $(this).click(function(){
+    	
+       $(".upDateBorder").remove();
+       $(".total_tool").css("display" , "none");
+       $("#item_inpo").css("display","none");
+       $(".inpo_menu").css("display","none");
+       
        $("#title_controller").css({"display" : "inline-block" , "top" : parseInt($(this).offset().top)-80 , "left" : $(this).offset().left }); 
+       
     });
     
        $(this).mousedown(function(){
@@ -312,13 +321,15 @@ $("#tool_menu3-14").children("div").click(function(){
    
 });
 
+//$("#btn_skin1").mouseover(function(){
+//	event.stopPropagation();
+//});
+
 // 배경화면 변경 스크립트
 function changeimg(cimg){
-    var body = document.getElementsByTagName('body');
-    body[0].style.backgroundImage="url("+cimg+")";
+    editWrap[0].style.backgroundImage="url("+cimg+")";
 }
 
-var id_count = -1;
 var edit_height = parseInt($(".edit-view-head-wrap").css("height"));
 var edit_top = parseInt($(".edit-view-head-wrap").offset().top);
 
