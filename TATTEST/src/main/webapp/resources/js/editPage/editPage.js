@@ -20,16 +20,24 @@ var idCountFilter;
 // id_count는 -1로 시작.
 
 $(function() {
+	var id_x = 0;
 
-	idCountFilter = editWrap.find($("div[data-obj-no*=data-"));
+	$("div[data-obj-no*=data-").each(function(){
+		id_x = $(this).attr("data-obj-no").substr(5);
+	});
+	
+	idCountFilter = id_x;
 	
 	
 	if ( idCountFilter.length-1 > 0 ) {
+		
 		id_count = idCountFilter.length-1;
+		
 	} else {
 		id_count = -1;
 	}
 	
+	console.log(id_count);
 	
 });
 

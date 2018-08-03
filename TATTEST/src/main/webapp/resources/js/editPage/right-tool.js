@@ -2,9 +2,10 @@
 var bodysize = parseInt($(".edit-view-body-wrap").css("height"));
 var objectBottomTop;
 $(function(){
-	   
+   
    testdrag();
    test345435();
+
    // 부트 스트랩
    //console.log($("#objectId").attr("value"));
     $("input[class*=form-control]").ColorPicker({
@@ -253,7 +254,11 @@ function test345435(){
         	  if($("#is_usableChk").val() == "Y"){
         		  
         		  $("#type_inpo").children('input').eq(0).attr("value",rgb2hex(objBackColor));
-                  $("#type_inpo").children('input').eq(1).attr("value",rgb2hex(objBorder_color));
+        		  if(rgb2hex(objBorder_color) == "#333333"){
+        			  $("#type_inpo").children('input').eq(1).attr("value","#000000");
+        		  } else {
+        			  $("#type_inpo").children('input').eq(1).attr("value",rgb2hex(objBorder_color));  
+        		  }
                   $("#type_inpo").children('input').eq(2).attr("value",objBorder[1]);
                   $("#type_inpo").children('input').eq(3).attr("value",objBorder[0]);	  
         		  $("#type_inpo").children('input').eq(4).attr("value",objFontSize);
