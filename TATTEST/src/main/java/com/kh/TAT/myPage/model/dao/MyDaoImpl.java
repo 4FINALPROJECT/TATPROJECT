@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.QuestionCategory;
@@ -30,12 +32,6 @@ public class MyDaoImpl implements MyDao {
 	public int updateProfile(Member m) {
 		
 		return sqlSession.update("member.updateProfile",m);
-	}
-
-	@Override
-	public List<MyProject> selectAllProject(String m_code) {
-		
-		return sqlSession.selectList("member.selectAllProject",m_code);
 	}
 
 	@Override
@@ -100,5 +96,42 @@ public class MyDaoImpl implements MyDao {
 	public int insertWriteBoard(QuestionAnswerBoard qab) {
 		
 		return sqlSession.insert("member.insertWriteBoard",qab);
+	}
+
+	@Override
+	public QuestionAnswerBoard selectOneBoard(int qa_num) {
+		
+		return sqlSession.selectOne("member.selectOneBoard",qa_num);
+	}
+
+	// 나의 프로젝트 관련
+	@Override
+	public List<MyProject> selectAllProject(String m_code) {
+		
+		return sqlSession.selectList("member.selectAllProject",m_code);
+	}
+	
+	@Override
+	public Edit selectOneProjectDetail(String e_code) {
+		
+		return sqlSession.selectOne("member.selectOneProjectDetail",e_code);
+	}
+
+	@Override
+	public List<EditReplyBoard> selectListReply(String e_code) {
+		
+		return sqlSession.selectList("member.selectListReply",e_code);
+	}
+
+	@Override
+	public int countComment(String e_code) {
+		
+		return sqlSession.selectOne("member.countComment", e_code);
+	}
+
+	@Override
+	public int createProject(Edit newProject) {
+		
+		return sqlSession.insert("member.createProject", newProject);
 	}
 }

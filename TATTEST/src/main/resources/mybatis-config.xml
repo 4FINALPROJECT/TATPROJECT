@@ -24,6 +24,7 @@
 
 		<typeAlias type="com.kh.TAT.mainPage.model.vo.ReplyEdName" alias="replyEdName"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.QuestionCategory" alias="questionCategory"/>
+		
 
 	</typeAliases>
 </configuration>

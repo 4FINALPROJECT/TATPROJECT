@@ -53,29 +53,19 @@
 	                        </div><!-- end desc -->
 	
 	                        <div class="blog-button">
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat">상세 보기</a>
+	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat?e_code=${p.e_code}">상세 보기</a>
+	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/edit/newPage.tat?e_code=${p.e_code}">편집 하기</a>
 	                        </div>
 	                    </div>
 	                </div>
 					</c:forEach>
 	                
 	            </div>
-	            <div class="col-sm-12 text-center">
-	                <ul class="pagination">
-	                    <li><a href="#">&laquo;</a></li>
-	                    <li class="active"><a href="#">1</a></li>
-	                    <li><a href="#">2</a></li>
-	                    <li><a href="#">3</a></li>
-	                    <li><a href="#">4</a></li>
-	                    <li><a href="#">5</a></li>
-	                    <li><a href="#">&raquo;</a></li>
-	                </ul>
-	            </div>
+	            
 	        </div> <!--/.container-->
 	    </section>
 		
 	</section>
-
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 	<script>
@@ -140,6 +130,10 @@
 	        isotope();
 	        $(window).smartresize(isotope);
 	    }(jQuery));
+	    
+	    
+	    
+	    
 	</script>
 </body>
 </html>
