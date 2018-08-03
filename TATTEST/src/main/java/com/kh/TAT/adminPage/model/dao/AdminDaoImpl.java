@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.TAT.adminPage.model.vo.PagingVo;
 import com.kh.TAT.adminPage.model.vo.AdminPayment;
+import com.kh.TAT.adminPage.model.vo.AdminQuestion;
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.FaqBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionCategory;
+import com.kh.TAT.common.model.vo.Template;
 
 @Repository
 public class AdminDaoImpl implements AdminDao {
@@ -107,13 +109,33 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.insert("faqBoard.insertFaqQuestion", faqboard);
 	}
 
+	
+	@Override
+	public List<FaqBoard> faqSelectUpdateList(int faq_num) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("faqBoard.faqSelectUpdateList", faq_num);
+	}
+	
+	@Override
+	public int faqUpdateList(FaqBoard faqboard) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("faqBoard.faqUpdateList", faqboard);
+	}
+
+	@Override
+	public int faqDeleteQuestion(FaqBoard faqboard) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("faqBoard.faqDeleteList", faqboard);
+	}
+
+	// Question
+	
 	@Override
 	public List<QuestionCategory> selectFaqSelect() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("questionCategory.selectFaqSelect");
 	}
-
-	// Question
+	
 	@Override
 	public int questionTotalPagingCount(int start) {
 		// TODO Auto-generated method stub
@@ -131,6 +153,44 @@ public class AdminDaoImpl implements AdminDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("adminQuestion.totalPaging");
 	}
+	
+	@Override
+	public List<AdminQuestion> questionSelectUpdateList(int qa_num) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("adminQuestion.questionSelectUpdateList", qa_num);
+	}
+
+	@Override
+	public int updateQuestion(int qa_num) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("adminQuestion.updateQuestion", qa_num);
+	}
+	
+	// Template
+
+	@Override
+	public List<Template> selectTemplateList(PagingVo paging) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("template.selectTemplateList", paging);
+	}
+
+	@Override
+	public int templateTotalPaging() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("template.templateTotalPaging");
+	}
+
+	@Override
+	public int templateTotalPagingCount(int start) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("template.templateTotalPagingCount", start);
+	}
+
+	
+
+	
+
+	
 	
 	
 

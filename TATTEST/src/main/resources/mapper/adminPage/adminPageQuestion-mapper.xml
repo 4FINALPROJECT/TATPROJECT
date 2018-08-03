@@ -14,5 +14,12 @@
 	<select id="totalPagingCount" resultType="_int">
 		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM QUESTION_ANSWER_BOARD) WHERE row_num >#{start}
 	</select>
+	<select id="questionSelectUpdateList" resultType="AdminQuestion" parameterType="_int" >
+		SELECT * FROM QUESTION_ANSWER_BOARD JOIN MEMBER USING(M_CODE) JOIN QUESTION_CATEGORY USING(QC_CODE) WHERE QA_NUM = #{faq_num}
+	</select>
+	<update id="updateQuestion">
+		UPDATE QUESTION_ANSWER_BOARD SET ADMIN_CODE = 'A001' , A_CONTENT = #{a_content}, A_DATE = SYSDATE WHERE QA_NUM = #{qa_num}
+	</update>
+	
 </mapper>
 
