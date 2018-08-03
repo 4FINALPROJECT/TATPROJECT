@@ -2,9 +2,10 @@
 var bodysize = parseInt($(".edit-view-body-wrap").css("height"));
 var objectBottomTop;
 $(function(){
-	   
+   
    testdrag();
    test345435();
+
    // 부트 스트랩
    //console.log($("#objectId").attr("value"));
     $("input[class*=form-control]").ColorPicker({

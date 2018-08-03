@@ -1,5 +1,5 @@
 function testdrag(){
-
+	
    var mulitTop = 0;
    var mulitLeft = 0;
    var origin_multichk = [];
