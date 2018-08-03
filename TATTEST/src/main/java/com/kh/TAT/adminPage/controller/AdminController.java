@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.FaqBoard;
 import com.kh.TAT.common.model.vo.Member;
-
+import com.kh.TAT.common.model.vo.QuestionCategory;
 import com.kh.TAT.adminPage.model.service.AdminService;
+import com.kh.TAT.adminPage.model.vo.AdminPayment;
 import com.kh.TAT.adminPage.model.vo.PagingVo;
-import com.kh.TAT.adminPage.model.vo.aPayment;
 
 @Controller
 public class AdminController {
@@ -109,13 +109,13 @@ public class AdminController {
 	}
 	@ResponseBody
 	@RequestMapping(value="/admin/PaymentAjax.tat")
-	public List<aPayment> Payment(PagingVo paging,@RequestParam("start") int start){
+	public List<AdminPayment> Payment(PagingVo paging,@RequestParam("start") int start){
 		// 게시판 페이지 이동
 		System.out.println("출력결과 start : "+start);
 	
 		paging.setIndex(start);
 			
-		List<aPayment> paymentList = adminS.selectPaymentList(paging);
+		List<AdminPayment> paymentList = adminS.selectPaymentList(paging);
 		paging.setTotal(adminS.PaymentTotalPaging());
 		    
 	    System.out.println("PaymentList :"+paymentList);
@@ -198,22 +198,62 @@ public class AdminController {
 			return totalpageList;
 		}
 		@ResponseBody
-		@RequestMapping(value="/admin/FaqQuestionAjax.tat")
-		public int FaqQuestion(@RequestParam("faqQuest") String faqQuest,@RequestParam("faqAnswer") String faqAnswer){
+		@RequestMapping(value="/admin/insertFaqQuestionAjax.tat")
+		public int InsertFaqQuestion(@RequestParam("qccode") String qccode,@RequestParam("quest") String quest,
+				@RequestParam("answer") String answer){
 			FaqBoard faqboard = new FaqBoard();
 			
-			faqboard.setFaq_question(faqQuest);
-			faqboard.setFaq_answer(faqAnswer);
+			System.out.println("코드 : "+qccode+"질문 :"+quest+"답변 :"+answer);
+			faqboard.setQc_code(qccode);
+			faqboard.setFaq_question(quest);
+			faqboard.setFaq_answer(answer);
 			int faqQuestion = adminS.insertFaqQuestion(faqboard);
 			
 			return faqQuestion;
 		}
 		@ResponseBody
 		@RequestMapping(value="/admin/FaqSelectAjax.tat")
-		public List<FaqBoard> FaqSelect(){
+		public List<QuestionCategory> FaqSelect(){
 			
-			List<FaqBoard> faqSelect = adminS.selecFaqSelect();
+			
+			List<QuestionCategory> faqSelect = adminS.selectFaqSelect();
+			System.out.println("faqSelect : "+adminS.selectFaqSelect());
 			return faqSelect;
+		}
+		
+	// Question
+		
+		// 페이징 전용 
+		@ResponseBody
+		@RequestMapping(value="/admin/QuestionTotalCountAjax.tat")
+		public int QuestionTotalPagingCount(@RequestParam("start") int start){
+			int totalPagingCount = adminS.questionTotalPagingCount(start);
+			System.out.println("게시글 갯수count : "+totalPagingCount);
+			return totalPagingCount;
+		}
+		@ResponseBody
+		@RequestMapping(value="/admin/QuestionAjax.tat")
+		public List<Edit> Question(PagingVo paging,@RequestParam("start") int start){
+			// 게시판 페이지 이동
+			System.out.println("출력결과 start : "+start);
+						
+			paging.setIndex(start);
+						
+			List<Edit> questionList = adminS.selectQuestionList(paging);
+			paging.setTotal(adminS.questionTotalPaging());
+					    
+		    System.out.println("QuestionList :"+questionList);
+					    
+		    /*return "adminPage/adminPage_Member";*/
+		    return questionList;
+
+		}
+		@ResponseBody
+		@RequestMapping(value="/admin/QuestionTotalAjax.tat")
+		public int QuestiontotalpageList(){
+			int totalpageList = adminS.questionTotalPaging();
+			System.out.println("게시글 갯수 : "+totalpageList);
+			return totalpageList;
 		}
 	
 	

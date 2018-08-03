@@ -71,11 +71,10 @@
 	                    <form id="contactForm" action="" novalidate="novalidate">
 	                    	<div class="row">
 	                            <div class="form-group">
-	                                <div class="col-md-12">
+	                                <div class="col-md-2">
 	                                	
 	                                    <select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">
-	                                    	<option value="">
-	                                    	</option>
+	                                    	
 	                                    </select>
 	                                </div>
 	                            </div>
@@ -83,21 +82,21 @@
 	                        <div class="row">
 	                            <div class="form-group">
 	                                <div class="col-md-12">
-	                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
+	                                    <input type="text" id="subject" name="subject" class="form-control insertQuestion" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
 	                                </div>
 	                            </div>
 	                        </div>
 	                        <div class="row">
 	                            <div class="form-group">
 	                                <div class="col-md-12">
-	                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
+	                                    <textarea id="message" class="form-control insertAnswer" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
 	
 	                                </div>
 	                            </div>
 	                        </div>
 	                        <div class="row">
 	                            <div class="col-md-12">
-	                                <input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" value="Send Message">
+	                                <input type="submit" class="btn btn-default btn-lg" onclick="insertFaq()"  value="Send Message">
 	                            </div>
 	                        </div>
 	                    </form>
@@ -126,14 +125,38 @@
 				type : "post",
 				dataType : 'json',
 				success : function(data){
+					if(data.length==0){$('.faqSelect').append('<option value="">선택</option>')}
 					for(var idx in data){
-						$('.faqSelect').append('<option value="'+data[idx].qc_code+'"></option');
+						$('.faqSelect').append('<option value="'+data[idx].qc_code+'">'+data[idx].qc_name+'</option');
 					}
 				},error: function(jqXHR, textStatus, errorThrown) {
 					console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 			
+		}
+		function insertFaq(){
+			alert("??");
+			console.log($('.faqSelect').val());
+			console.log($('.insertQuestion').val());
+			console.log($('.insertAnswer').val());
+			var qccode = $('.faqSelect').val();
+			var quest = $('.insertQuestion').val();
+			var answer = $('.insertAnswer').val();
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/insertFaqQuestionAjax.tat",
+				type : "post",
+				dataType : 'json',
+				data : {"qccode" : $('.faqSelect').val(),
+						"quest" : $('.insertQuestion').val(),
+						"answer" : $('.insertAnswer').val()	
+				},success : function(data){
+					alert("등록이 완료되었습니다.");
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			})
 		}
 
 		function pageNextFirstBtn(){

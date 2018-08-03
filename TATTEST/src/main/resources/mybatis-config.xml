@@ -6,10 +6,12 @@
 		<typeAlias type="com.kh.TAT.common.model.vo.Edit" alias="edit"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.EditReplyBoard" alias="editReplyBoard"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.FaqBoard" alias="faqBoard"/>
+		<typeAlias type="com.kh.TAT.common.model.vo.QuestionCategory" alias="questionCategory"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.Member" alias="member"/>
 		<typeAlias type="com.kh.TAT.adminPage.model.vo.PagingVo" alias="pagingVo"/>
+		<typeAlias type="com.kh.TAT.adminPage.model.vo.AdminQuestion" alias="adminQuestion"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.Payment" alias="payment"/>
-		<typeAlias type="com.kh.TAT.adminPage.model.vo.aPayment" alias="aPayment"/>
+		<typeAlias type="com.kh.TAT.adminPage.model.vo.AdminPayment" alias="adminPayment"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.QuestionAnswerBoard" alias="questionAnswerBoard"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.Template" alias="template"/>
 		<typeAlias type="com.kh.TAT.common.model.vo.TemplateReplyBoard" alias="templateReplyBoard"/>
@@ -21,6 +23,7 @@
 		<typeAlias type="com.kh.TAT.myPage.model.vo.MyPayment" alias="myPayment"/>
 
 		<typeAlias type="com.kh.TAT.mainPage.model.vo.ReplyEdName" alias="replyEdName"/>
+		<typeAlias type="com.kh.TAT.common.model.vo.QuestionCategory" alias="questionCategory"/>
 
 	</typeAliases>
 </configuration>
