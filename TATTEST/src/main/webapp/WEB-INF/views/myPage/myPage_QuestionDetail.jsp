@@ -10,6 +10,23 @@
 			text-align:center;
 			
 		}
+		#boardTable{
+			
+		}
+		#boardWrite{
+			display:none;
+		}
+		a{
+			cursor:pointer;
+		}
+	  	#shareBoard{
+	  		color:green;
+	  		
+	  	}
+	  	#unshareBoard{
+	  		color:red;
+	  		
+	  	}
 	</style>
 </head>
 <body>
@@ -22,12 +39,13 @@
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<div class="page_title">
-							<h2>1:1 Question</h2>
+							<h2>1:1 Question Detail</h2>
 						</div>
 						<nav id="breadcrumbs">
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/my/Main.tat">MyPage </a>/</li>
-								<li>Question</li>
+								<li><a href="${pageContext.request.contextPath}/my/Question.tat">Question </a> /</li>
+								<li>Detail</li>
 							</ul>
 						</nav>
 					</div>
@@ -48,7 +66,7 @@
 									</div>
 								<ul class="arrows_list list_style">
 									<li><a href="${pageContext.request.contextPath}/my/Question.tat"> 내 질문 게시판</a></li>
-									<li><a href="#"> 질문 하기</a></li>
+									<li><a onclick="boardWrite();"> 질문 하기</a></li>
 								</ul>
 							</div>
 
@@ -61,15 +79,14 @@
                                     <div  class="tab-content clearfix">
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
+                                               
+                                              
+                                               <c:forEach items="${widget}" var="w">
                                                <li class="comments_list clearfix">
-                                                    <p><strong><a href="#">1 -번 게시물</a> <i>답변: </i> </strong> Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
+                                                    <p><strong><a href="#">${w.qa_num} -글 유형 : </a> <i>답변 : </i></strong>${w.a_content }</p>
                                                 </li>
-                                                <li class="comments_list clearfix">
-                                                    <p><strong><a href="#">2 -번 게시물</a> <i>답변: </i> </strong> Tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
-                                                </li>
-                                                <li class="comments_list clearfix">
-                                                    <p><strong><a href="#">3 -번 게시물</a> <i>답변: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
-                                                </li>
+                                                </c:forEach>
+                                              
                                             </ul>
                                         </div>
                                     </div>
@@ -81,25 +98,11 @@
 					
 					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 						<div class="row sub_content">
-				            <div class="col-lg-12 col-md-12 col-sm-12">
+				            <div class="col-lg-12 col-md-12 col-sm-12" id="boardTable">
 				                <div class="dividerHeading">
-				                    <h4><span>1:1 질문 게시판</span></h4>
+				                    <h4><span>게시물 상세보기</span></h4>
 				                </div>
 				            </div>
-				            <div class="col-lg-12 col-md-12 col-sm-12">
-				                <div class="col-sm-12 text-center">
-									<ul class="pagination">
-										<li><a href="#">&laquo;</a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
-									</ul>
-								</div>
-				            </div>
-				            
 				            <div class="col-lg-12 col-md-12 col-sm-12">
 			                    <div class="dividerHeading">
 			                        <h4><span>게시글 상세정보</span></h4>
@@ -142,9 +145,9 @@
 			                    
 			                </div>
 				            
+				            
 				        </div>
-	                </div>
-						
+	                  </div>
 					</div>
 				</div>
 			
@@ -152,7 +155,39 @@
 		
 	</section>
 
+	
+
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
+	
+	<script>
+		function boardWrite(){
+		
+			$('#boardWrite').css('display','block');
+			$('#boardTable').css('display','none');
+			
+		}
+	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

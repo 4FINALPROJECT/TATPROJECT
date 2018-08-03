@@ -39,17 +39,18 @@
 						    <option value="F">여성</option>
 						  </select>
                     </div>
-                    <center><span id="errorMsg">형식에 맞게 입력하지 않으면 가입하실수 없습니다.</span></center>
-                    <div class="form-group">
+                    <center><span id="errorMsg">형식에 맞게 입력하지 않으면 가입하실수 없습니다.</span></center><br />
+                    <!-- <div class="form-group">
                         <div class="checkbox">
                             <label>
                                 <input id="tcheck" type="checkbox"> 가입 시 해당 <a href="#" data-toggle="modal" data-target="#">이용약관</a>, TAT 이메일 및 업데이트 수신에 동의하고 <a href="#" data-toggle="modal" data-target="#">개인정보 취급정책</a>을 숙지하였음을 인정합니다.
                             </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group text-center" id="insertBtnForm">
 
-                        <button id="insertBtn" class="login100-form-btn" data-dismiss="modal" data-toggle="modal" data-target="#signin">가입하기</button>
+                        <button id="insertBtn" class="login100-form-btn" data-dismiss="modal" data-toggle="modal" data-target="#signin"
+                        style="background: white; border-radius: 12px; width: 200px;">가입하기</button>
                     </div>
                 </form>
 			</div>

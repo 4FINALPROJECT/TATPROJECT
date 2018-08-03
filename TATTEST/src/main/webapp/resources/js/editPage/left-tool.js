@@ -352,7 +352,6 @@ function changeimg(cimg){
     editWrap[0].style.backgroundImage="url("+cimg+")";
 }
 
-var id_count = -1;
 var edit_height = parseInt($(".edit-view-head-wrap").css("height"));
 var edit_top = parseInt($(".edit-view-head-wrap").offset().top);
 

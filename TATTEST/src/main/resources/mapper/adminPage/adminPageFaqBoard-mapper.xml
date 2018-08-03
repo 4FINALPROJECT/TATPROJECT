@@ -4,7 +4,7 @@
 	<select id="selectFaqList" resultType="FaqBoard" parameterType="pagingVo">
 		SELECT * FROM(SELECT * FROM(
 		SELECT ROWNUM row_num, BOARDALL.* FROM (
-		SELECT * FROM FAQ_BOARD ORDER BY FAQ_DATE) BOARDALL) BOARDALLALL 
+		SELECT * FROM FAQ_BOARD ORDER BY FAQ_NUM) BOARDALL) BOARDALLALL 
 		)WHERE row_num BETWEEN #{start} AND #{last}
 	</select>
 	
@@ -14,11 +14,12 @@
 	<select id="totalPagingCount" resultType="_int" parameterType="_int">
 		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM FAQ_BOARD) WHERE row_num >#{start}
 	</select>
-	<select id="selectFaqSelect" resultType="FaqBoard">
-		SELECT * FROM QUESTION_CATEGORY
 	
-	</select>
-	<insert id="insertFaqQuestion" parameterType="faqBoard">
-		
+	<insert id="insertFaqQuestion" >
+		<selectKey keyProperty="faq_num" resultType="_int" order="AFTER">
+			SELECT SEQ_FAQ.CURRVAL FROM DUAL
+		</selectKey>
+		INSERT INTO "FINALDB"."FAQ_BOARD" (FAQ_NUM, M_CODE, QC_CODE, FAQ_QUESTION, FAQ_ANSWER, FAQ_DATE) 
+		VALUES (SEQ_FAQ.NEXTVAL, 'A001',#{qc_code},#{faq_question},#{faq_answer}, TO_DATE('2018-01-12', 'YYYY-MM-DD'))
 	</insert>
 </mapper>
