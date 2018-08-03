@@ -375,7 +375,7 @@ public class EditController {
          outBody.close();
          
       }
-	      Map<String, Object> map = new HashMap<>();
+	      Map<String, Object> map = new HashMap<String, Object>();
 	      
 	      String editLog = edit.toString();
 	      
