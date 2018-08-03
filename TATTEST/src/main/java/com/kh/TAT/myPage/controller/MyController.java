@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.QuestionCategory;
@@ -116,7 +118,17 @@ public class MyController {
 	
 	// 프로젝트 상세보기 페이지 이동
 	@RequestMapping("/my/ProjectDetail.tat")
-	public String ProjectDetail(){
+	public String ProjectDetail(HttpServletRequest request, @RequestParam String e_code){
+		
+		
+		Edit p = myS.selectOneProjectDetail(e_code);
+		List<EditReplyBoard> rList = myS.selectListReply(e_code);
+		int count = myS.countComment(e_code);
+		
+		request.setAttribute("p", p);
+		request.setAttribute("rList", rList);
+		request.setAttribute("count", count);
+		
 		return "myPage/myPage_ProjectDetail";
 	}
 	
@@ -141,17 +153,19 @@ public class MyController {
 	}
 	// 게시물 상세보기 이동
 	@RequestMapping("/my/QuestionDetail.tat")
-	public String QuestionDetail(HttpServletRequest request){
+	public String QuestionDetail(HttpServletRequest request, @RequestParam int qa_num){
 		
 		HttpSession session = request.getSession(false);
 		String m_code = (String)session.getAttribute("m_code");
 		
 		List<QuestionAnswerBoard> list = myS.selectQuestionBoard(m_code);
+		List<QuestionAnswerBoard> widget = myS.widgetComment(m_code);
 		
-		
+		QuestionAnswerBoard QAB = myS.selectOneBoard(qa_num);
 		
 		request.setAttribute("list", list);
-		
+		request.setAttribute("widget", widget);
+		request.setAttribute("QAB", QAB);
 		
 		return "myPage/myPage_QuestionDetail";
 	}
@@ -354,6 +368,8 @@ public class MyController {
 			
 			return "redirect:/my/Question.tat";
 		}
+		
+	
 	
 }
 

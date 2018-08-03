@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.QuestionCategory;
@@ -99,5 +101,29 @@ public class MyServiceImpl implements MyService {
 	public int insertWriteBoard(QuestionAnswerBoard qab) {
 		
 		return myD.insertWriteBoard(qab);
+	}
+
+	@Override
+	public QuestionAnswerBoard selectOneBoard(int qa_num) {
+	
+		return  myD.selectOneBoard(qa_num);
+	}
+
+	@Override
+	public Edit selectOneProjectDetail(String e_code) {
+		
+		return myD.selectOneProjectDetail(e_code);
+	}
+
+	@Override
+	public List<EditReplyBoard> selectListReply(String e_code) {
+		
+		return myD.selectListReply(e_code);
+	}
+
+	@Override
+	public int countComment(String e_code) {
+		
+		return myD.countComment(e_code);
 	}
 }

@@ -2,6 +2,8 @@ package com.kh.TAT.myPage.model.dao;
 
 import java.util.List;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.QuestionCategory;
@@ -39,5 +41,13 @@ public interface MyDao {
 	List<QuestionCategory> selectCategory();
 
 	int insertWriteBoard(QuestionAnswerBoard qab);
+
+	QuestionAnswerBoard selectOneBoard(int qa_num);
+
+	Edit selectOneProjectDetail(String e_code);
+
+	List<EditReplyBoard> selectListReply(String e_code);
+
+	int countComment(String e_code);
 
 }
