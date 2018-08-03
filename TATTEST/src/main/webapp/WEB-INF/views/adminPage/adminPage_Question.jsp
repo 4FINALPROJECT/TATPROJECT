@@ -105,6 +105,14 @@
 	                            </div>
 	                        </div>
 	                        <div class="row">
+	                            <div class="form-group">
+	                                <div class="col-md-12">
+	                                    <textarea id="text" class="form-control questionContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000"></textarea>
+	
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row">
 	                            <div class="col-md-12">
 	                                <input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" value="Send Message">
 	                            </div>
