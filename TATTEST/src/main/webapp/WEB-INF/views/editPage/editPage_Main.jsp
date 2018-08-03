@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>EDIT PAGE MAIN</title>
-
 	<c:import url="common/EDIT_CSS.jsp"/>
 </head>
 <body>
@@ -151,13 +150,12 @@
 </div>
 
 </body>
-
 	<!-- JS File for EditPage -->
 	<c:import url="common/EDIT_JS.jsp"/>
 
 	
 <script>
-
+var folderName = '${ fN }';
 $(function() {
 	$('.tat-head-content-right > div:nth-child(7)').click(function(){
 		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]"))[0] );

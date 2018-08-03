@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.editPage.model.service.EditService;
 
@@ -52,17 +53,23 @@ public class EditController {
 	
 	
 	@RequestMapping("/edit/newPage.tat")
-	public String newPage(HttpSession session, HttpServletRequest request, Model model) throws Exception {
+	public String newPage(HttpSession session, HttpServletRequest request, Model model, @RequestParam String e_code) throws Exception {
 		
 		String m_code = (String) session.getAttribute("m_code");
 		
+		System.out.println("e_code 확인 : "+e_code);
 		//System.out.println("m 확인 : "+ m_code);
 		
-		if ( m_code != null ) {
+		if ( m_code != null && e_code != null ) {
 			
-			System.out.println(m_code);
+			Edit edit = editS.projectSelectOne(e_code);
 			
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
+			//System.out.println("쿼리문 결과 확인 : "+ edit);
+			System.out.println("쿼리문 프로젝트 이름 : "+ edit.getProj_name());
+			//System.out.println(m_code);
+			
+			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
 
 			File userFile = new File(newPageRes);
 			
@@ -90,9 +97,6 @@ public class EditController {
 			}
 			//System.out.println("headSplitString 값 확인 : "+ headSplitString);
 			/////////////////////////////////
-			
-			
-			
 			
 			// body 파일 함수 생성
 			/////////////////////////////////
@@ -186,7 +190,8 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-
+			request.setAttribute("fN", edit.getProj_name());
+			
 			System.out.println(newBodyPage.exists());
 			
 			return "editPage/editPage_Main";
@@ -259,119 +264,122 @@ public class EditController {
 	
 	@ResponseBody
 	@RequestMapping(value="/edit/editOop.tat", method=RequestMethod.POST)
-	public Map<String, Object> editOop(Model model, @RequestParam String edit, HttpSession session, HttpServletRequest request) throws Exception {
-		
-		String m_code = (String)session.getAttribute("m_code");
+	public Map<String, Object> editOop(Model model, @RequestParam String edit, HttpSession session, HttpServletRequest request, @RequestParam String folderName) throws Exception {
+      
+      String m_code = (String)session.getAttribute("m_code");
+      
+      
+      String editHead;
+      String editBody;
+      
+      System.out.println("ajax folder 확인 : "+ folderName);
+      if ( m_code != null ) {
+         //System.out.println("세션 아이디 확인 : "+ m_code);
+         
+         editHead = edit.substring(0, ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ) );
+         editBody = edit.substring( ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ), 
+               ( edit.indexOf(("<div class=\"edit-view-foot-wrap\"")) ) );
+         
+         System.out.println("editHead 추출 : "+ editHead);
+         System.out.println("editBody 추출 : "+ editBody);
+         
+         // 사용자 폴더 경로 받아오기
+         String currentPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ folderName);
+         
+         // 받아올 db의 파일 이름
+         String userFileName = "home";
+         
+         // 사용자의 head jsp 파일 받아오기
+         File headPage = new File(currentPageRes+"/head.jsp");
+         
+         // 사용자의 body jsp 파일 받아오기
+         File currentBodyPage = new File(currentPageRes+"/"+ userFileName +".jsp");
+         
+         
+         //System.out.println("File headPage 확인 : "+headPage);
+         
+         // head 파일 함수 생성
+         /////////////////////////////////
+         String headres = currentPageRes+"/head.jsp";
+         scan = new Scanner(new FileInputStream(headres));
+         
+         String headResult = "";
+         
+         while ( scan.hasNext() ) {
+            headResult += scan.nextLine();
+         }
+         scan.close();
+         String[] headSplit = headResult.split(">");
+         String headSplitString = "";
+         for ( String i : headSplit ) {
+            headSplitString += i+">\n";
+         }
+         //System.out.println("headSplitString 값 확인 : \n"+ headSplitString);
+         /////////////////////////////////
+         
+         
+         
+         
+         // body 파일 함수 생성
+         /////////////////////////////////
+         String bodyres = currentPageRes+"/home.jsp";
+         scan = new Scanner(new FileInputStream(bodyres));
+         
+         String bodyResult = "";
+         
+         while ( scan.hasNext() ) {
+            bodyResult += scan.nextLine();
+         }
+         scan.close();
+         String[] bodySplit = bodyResult.split(">");
+         String bodySplitString = "";
+         for ( String i : bodySplit ) {
+            bodySplitString += i+">\n";
+         }
+         //System.out.println("bodySplitString 값 확인 : \n"+ bodySplitString);
+         
+         String headHead = headSplitString.substring(0, headSplitString.indexOf("<div class=\"edit-wrap\""));
+         
+         
+         System.out.println(" 추출 헤더 자료 확인 : \n" +headHead);
+         
+         String headTotal = headHead+ editHead;
+         
+         //System.out.println("헤드 토럴 : \n"+headTotal);
+         
 
-		String editHead;
-		String editBody;
-		
-		if ( m_code != null ) {
-			//System.out.println("세션 아이디 확인 : "+ m_code);
-			
-			editHead = edit.substring(0, ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ) );
-			editBody = edit.substring( ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ), 
-					( edit.indexOf(("<div class=\"edit-view-foot-wrap\"")) ) );
-			
-			System.out.println("editHead 추출 : "+ editHead);
-			System.out.println("editBody 추출 : "+ editBody);
-			
-			// 사용자 폴더 경로 받아오기
-			String currentPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			
-			// 받아올 db의 파일 이름
-			String userFileName = "home";
-			
-			// 사용자의 head jsp 파일 받아오기
-			File headPage = new File(currentPageRes+"/head.jsp");
-			
-			// 사용자의 body jsp 파일 받아오기
-			File currentBodyPage = new File(currentPageRes+"/"+ userFileName +".jsp");
-			
-			
-			//System.out.println("File headPage 확인 : "+headPage);
-			
-			// head 파일 함수 생성
-			/////////////////////////////////
-			String headres = currentPageRes+"/head.jsp";
-			scan = new Scanner(new FileInputStream(headres));
-			
-			String headResult = "";
-			
-			while ( scan.hasNext() ) {
-				headResult += scan.nextLine();
-			}
-			scan.close();
-			String[] headSplit = headResult.split(">");
-			String headSplitString = "";
-			for ( String i : headSplit ) {
-				headSplitString += i+">\n";
-			}
-			//System.out.println("headSplitString 값 확인 : \n"+ headSplitString);
-			/////////////////////////////////
-			
-			
-			
-			
-			// body 파일 함수 생성
-			/////////////////////////////////
-			String bodyres = currentPageRes+"/home.jsp";
-			scan = new Scanner(new FileInputStream(bodyres));
-			
-			String bodyResult = "";
-			
-			while ( scan.hasNext() ) {
-				bodyResult += scan.nextLine();
-			}
-			scan.close();
-			String[] bodySplit = bodyResult.split(">");
-			String bodySplitString = "";
-			for ( String i : bodySplit ) {
-				bodySplitString += i+">\n";
-			}
-			//System.out.println("bodySplitString 값 확인 : \n"+ bodySplitString);
-			
-			String headHead = headSplitString.substring(0, headSplitString.indexOf("<div class=\"edit-view-head-wrap\""));
-			
-			
-			//System.out.println(" 추출 헤더 자료 확인 : \n" +headHead);
-			
-			String headTotal = headHead+ editHead;
-			
-			//System.out.println("헤드 토럴 : \n"+headTotal);
-			
 
-			String bodyHead = bodySplitString.substring(0,bodySplitString.indexOf("<div class=\"edit-view-body-wrap"));
-			String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
-					bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
-			String bodyFoot = bodySplitString.substring(bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
-			
-			
-			//System.out.println("bodyHead : \n"+ bodyHead);
-			//System.out.println("bodyHead : \n"+ bodyReal);
-			//System.out.println("bodyHead : \n"+ bodyFoot);
-			
-			String bodyTotal = "\t"+bodyHead+ editBody+ bodyFoot;
-			
-			//System.out.println("버리 토럴 : \n"+ bodyTotal);
-			
-			
-			BufferedWriter outHead = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(headPage), "UTF-8"));
-			outHead.write(headTotal);
-			outHead.flush();
-			outHead.close();
-			
-			BufferedWriter outBody = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(currentBodyPage),"UTF-8"));
-			outBody.write(bodyTotal);
-			outBody.flush();
-			outBody.close();
-			
-		}
-		Map<String, Object> map = new HashMap<>();
-		
-		String editLog = edit.toString();
-		
-		map.put("editLog", editLog);
-		return map;
+         String bodyHead = bodySplitString.substring(0,bodySplitString.indexOf("<div class=\"edit-view-body-wrap"));
+         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
+               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
+         String bodyFoot = bodySplitString.substring(bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
+         
+         
+         //System.out.println("bodyHead : \n"+ bodyHead);
+         //System.out.println("bodyHead : \n"+ bodyReal);
+         //System.out.println("bodyHead : \n"+ bodyFoot);
+         
+         String bodyTotal = "\t"+bodyHead+ editBody+ bodyFoot;
+         
+         //System.out.println("버리 토럴 : \n"+ bodyTotal);
+         
+         
+         BufferedWriter outHead = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(headPage), "UTF-8"));
+         outHead.write(headTotal);
+         outHead.flush();
+         outHead.close();
+         
+         BufferedWriter outBody = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(currentBodyPage),"UTF-8"));
+         outBody.write(bodyTotal);
+         outBody.flush();
+         outBody.close();
+         
+      }
+	      Map<String, Object> map = new HashMap<>();
+	      
+	      String editLog = edit.toString();
+	      
+	      map.put("editLog", editLog);
+	      return map;
 	}
 }

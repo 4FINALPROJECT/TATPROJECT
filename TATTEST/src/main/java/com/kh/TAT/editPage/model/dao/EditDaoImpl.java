@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.Member;
 
 @Repository
@@ -17,4 +18,12 @@ public class EditDaoImpl implements EditDao {
 
 		return sqlSession.selectOne("edit.SelectPayment",m_code);
 	}
+
+	@Override
+	public Edit projectSelectOne(String e_code) {
+		
+		return sqlSession.selectOne("edit.SelectProject", e_code);
+	}
+
+	
 }

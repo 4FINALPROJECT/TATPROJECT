@@ -98,42 +98,43 @@
 					
 					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 						<div class="row sub_content">
-				            <div class="col-lg-12 col-md-12 col-sm-12" id="boardTable">
-				                <div class="dividerHeading">
-				                    <h4><span>게시물 상세보기</span></h4>
-				                </div>
-				            </div>
 				            <div class="col-lg-12 col-md-12 col-sm-12">
 			                    <div class="dividerHeading">
 			                        <h4><span>게시글 상세정보</span></h4>
 			                    </div>
 			                    <p>해당 게시글을 상세 볼 수 있는 공간입니다.</p>
-			
-			                  
+									<div class="row">
+			                            <div class="form-group">
+			                                <div class="col-lg-12 ">
+			                                    <label><i class="fas fa-angle-double-right"></i> 글 유형</label><input class="form-control" type="text" value="${QAB.qc_code}" readonly>
+			                                </div>
+			                            </div>
+			                        </div>
+			                  		
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-lg-12 ">
-			                                    <label><i class="fas fa-angle-double-right"></i> 제목</label><input type="text" class="form-control" value="${qa_title}" readonly>
+			                                    <label><i class="fas fa-angle-double-right"></i> 제목</label><input type="text" class="form-control" value="${QAB.qa_title}" readonly>
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-md-12">
-			                                    <label><i class="fas fa-angle-double-right"></i> 내용</label><textarea class="form-control" rows="10" cols="50" readonly>${qa_content}</textarea>
+			                                    <label><i class="fas fa-angle-double-right"></i> 내용</label><textarea class="form-control" rows="10" cols="50" readonly>${QAB.qa_content}</textarea>
 			                                </div>
 			                            </div>
 			                        </div>
-			                        <c:if test="${admin_code ne null}">
+			                        <c:if test="${QAB.admin_code ne null}">
 				                        <div class="row">
 				                            <div class="form-group">
 				                                <div class="col-md-12">
-				                                    <label><i class="fas fa-angle-double-right"></i> 관리자 답변</label><textarea class="form-control" rows="10" cols="50" readonly>${a_content}</textarea>
+				                                    <label><i class="fas fa-angle-double-right"></i> 관리자 답변</label><textarea class="form-control" rows="10" cols="50" readonly>${QAB.a_content}</textarea>
 				                                </div>
 				                            </div>
 				                        </div>
 			                        </c:if>
-			                        <c:if test="${admin_code eq null}">
+			                        <c:if test="${QAB.admin_code eq null}">
 				                        <div class="row">
 				                            <div class="form-group">
 				                                <div class="col-md-12">

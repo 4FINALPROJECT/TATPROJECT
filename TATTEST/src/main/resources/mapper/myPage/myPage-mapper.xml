@@ -10,10 +10,6 @@
 	<update id="updateProfile" parameterType="member">
 		UPDATE MEMBER SET M_NAME= #{m_name}, M_BIRTH= #{m_birth}, M_GENDER = #{m_gender} WHERE M_CODE = #{m_code}
 	</update>	
-	
-	<select id="selectAllProject" parameterType="String" resultType="MyProject">
-		SELECT E_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, ER.COMMENT_COUNT FROM EDIT LEFT JOIN (SELECT E_CODE, COUNT(*) AS COMMENT_COUNT FROM EDIT_REPLY_BOARD  GROUP BY E_CODE) ER  USING(E_CODE) WHERE M_CODE= #{m_code} ORDER BY SAVE_DATE ASC
-	</select>	
 		
 	<select id="checkPwd" parameterType="String" resultType="String" >
 		SELECT M_PWD FROM MEMBER WHERE M_CODE = #{m_code}
@@ -58,5 +54,30 @@
 	<insert id="insertWriteBoard" parameterType="questionAnswerBoard" >
 		INSERT INTO QUESTION_ANSWER_BOARD VALUES (SEQ_QUESTION.NEXTVAL, #{m_code}, #{qc_code}, #{qa_title}, #{qa_content}, SYSDATE, #{is_open} ,NULL,NULL,NULL)
 	</insert>
+	
+	<select id="selectOneBoard" parameterType="_int" resultType="questionAnswerBoard"> 
+		SELECT QA_NUM, M_CODE, (SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE=QAB.QC_CODE) QC_CODE, QA_TITLE, QA_CONTENT, QA_DATE, IS_OPEN, ADMIN_CODE, A_CONTENT, A_DATE FROM question_answer_board QAB WHERE QA_NUM=#{QA_NUM}
+	</select>
+	
+	<!-- 프로젝트 관련 -->
+	<select id="selectAllProject" parameterType="String" resultType="MyProject">
+		SELECT E_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, ER.COMMENT_COUNT FROM EDIT LEFT JOIN (SELECT E_CODE, COUNT(*) AS COMMENT_COUNT FROM EDIT_REPLY_BOARD  GROUP BY E_CODE) ER  USING(E_CODE) WHERE M_CODE= #{m_code} ORDER BY SAVE_DATE ASC
+	</select>
 		
+	<select id="selectOneProjectDetail" parameterType="String" resultType="edit">
+		SELECT E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE=E.M_CODE) M_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, IS_SHARE, E_USE_COUNT FROM EDIT E WHERE E_CODE=#{E_CODE}
+	</select>
+	
+	<select id="selectListReply" parameterType="String" resultType="editReplyBoard">
+		SELECT ER_NUM, E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE=ERB.M_CODE) M_CODE, ER_REPLY, ER_DATE, ER_RATE FROM EDIT_REPLY_BOARD ERB WHERE E_CODE=#{E_CODE}
+	</select>
+	
+	<select id="countComment" parameterType="String" resultType="_int" >
+		SELECT COUNT(*) FROM EDIT_REPLY_BOARD WHERE E_CODE=#{E_CODE}
+	</select>
+
+	<insert id="createProject" parameterType="edit">
+		INSERT INTO EDIT VALUES('E'||SEQ_EDIT.NEXTVAL,#{m_code},#{proj_name},#{proj_comment},DEFAULT,DEFAULT,NULL)
+	</insert>
+
 </mapper>
