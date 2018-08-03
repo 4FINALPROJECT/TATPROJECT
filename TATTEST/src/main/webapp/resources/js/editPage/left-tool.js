@@ -1,15 +1,15 @@
 function testdrag(){
-	
+
    var mulitTop = 0;
    var mulitLeft = 0;
-   var origin_multichk = [];
-      
+   var true_chk = [];
+   var true_count = 0;
+   
 $(".edit-wrap").mousedown(function(e){
    if($("#multiborder").length > 0){
       
       $("#multiborder").remove();
       testdrag();
-      
    }
    
    $(".total_tool").css("display" , "none");
@@ -18,6 +18,10 @@ $(".edit-wrap").mousedown(function(e){
    $("#title_controller").css("display" , "none");
    
    $(".upDateBorder").remove();
+   
+   true_count = 0;
+   
+   true_chk.pop();
    
    var selectLeft = e.pageX;
    var selectTop = e.pageY;
@@ -73,7 +77,7 @@ $(".edit-wrap").mousedown(function(e){
                parseInt($(this).offset().left) < mulitLeft){
             
             $(this).attr("multichk","true");
-
+            
          } else {
             
             $(this).attr("multichk","false");
@@ -134,7 +138,7 @@ $(".edit-wrap").mousedown(function(e){
             }
             
             data_counts++;
-            
+            true_chk.push($(this).attr("data-obj-no"));
          }
          
       });
@@ -151,6 +155,7 @@ $(".edit-wrap").mousedown(function(e){
          if($("#multiborder").length > 0){
             $("#multiborder").remove();
          }
+         
          $(".edit-wrap").append($multiborder);
       }
       
@@ -162,13 +167,15 @@ $(".edit-wrap").mousedown(function(e){
       var OriginerLeft = [];
       var CalculationTop = 0;
       var CalculationLeft = 0;
-      
-      $("#multiborder").mouseover(function(){
-         $(".edit-wrap").off("mousedown");
-         $(".edit-wrap").off("mousemove");
+
+      $("#multiborder").mousemove(function(){
+    	  $("#multiborder").mousedown(function(){
+    	      $(".edit-wrap").off("mousedown");
+    	      $(".edit-wrap").off("mousemove");
+    	  });
+
          $("#multiborder").on("mousemove");
 
-         var topcheck;
          $("#multiborder").draggable({
             containment : ".edit-view-body",
             start : function(e,ui){
@@ -177,9 +184,7 @@ $(".edit-wrap").mousedown(function(e){
                CalculationLeft = parseInt($multiborder.offset().left);
                
                $("div[data-obj-no*=data-]").each(function(){
-                  console.log(ui.helper.offset().left);
-                  console.log($(this).offset().left);
-                  if($(this).attr("multichk") == "false"){
+                  if($(this).attr("data-obj-no") == true_chk[true_count]){
                   if(ui.helper.offset().top <= $(this).offset().top &&
                 		  $(this).offset().top >= ui.helper.offset().top + ui.helper.css("height") &&
                 		  ui.helper.offset().left <= $(this).offset().left &&
@@ -193,13 +198,20 @@ $(".edit-wrap").mousedown(function(e){
                           "left" : $(this).offset().left - ui.helper.offset().left,
                           "width" : $(this).css("width"),
                           "height" : $(this).css("height")
-                          })); 
+                          }));
+                	  true_count = 0;
+                	  
+                  } else {
+                	  
+                	  ++true_count;
+                	  
                   }
                 	  console.log(ui.helper.offset().top);
                      OriginerTop.push(parseInt($(this).offset().top));
                      OriginerLeft.push(parseInt($(this).offset().left));
                      
                      trueParent = $(this).parent().attr("class").split(" ");
+                     
                      ui.helper.append($(this).clone().css({
                         "background" : "rgb(193,231,67,0.3)",
                         "top" : $(this).offset().top - ui.helper.offset().top,
@@ -214,8 +226,7 @@ $(".edit-wrap").mousedown(function(e){
             		console.log(ui.helper.children());
                   for(var i in OriginerTop){
                      $("."+trueParent[0]).children("div").each(function(){
-                        if($(this).attr("data-obj-no") == ui.helper.children().eq(i).attr("data-obj-no") &&
-                              $(this).attr("multichk") == ui.helper.children().eq(i).attr("multichk")){
+                        if($(this).attr("data-obj-no") == true_chk[i]){
                            $(this).offset({top : OriginerTop[i] - (CalculationTop - parseInt(ui.helper.offset().top)),
                               left : OriginerLeft[i] - (CalculationLeft - parseInt(ui.helper.offset().left))});
                         }
@@ -226,7 +237,10 @@ $(".edit-wrap").mousedown(function(e){
             }
          });
       });
-      
+      $("#multiborder").mouseout(function(){
+    	  $(".edit-wrap").on("mousedown");
+          $(".edit-wrap").on("mousemove");
+      });
    });
 });
 
