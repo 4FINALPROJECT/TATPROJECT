@@ -338,6 +338,7 @@ public class EditController {
 	         //System.out.println("헤드 토럴 : \n"+headTotal);
 	         
 
+
 	         String bodyHead = bodySplitString.substring(0,bodySplitString.indexOf("<div class=\"edit-view-body-wrap"));
 	         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
 	               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));

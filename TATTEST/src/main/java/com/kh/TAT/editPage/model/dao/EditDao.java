@@ -6,4 +6,6 @@ public interface EditDao {
 
 	Member memberSelectPayment(String m_code);
 
+
+
 }
