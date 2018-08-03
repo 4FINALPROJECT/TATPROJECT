@@ -364,6 +364,7 @@ $("#tool_menu3-14").children("div").click(function(){
 // 배경화면 변경 스크립트
 function changeimg(cimg){
     editWrap[0].style.backgroundImage="url("+cimg+")";
+    console.log(editWrap[0].outerHTML);
 }
 
 var edit_height = parseInt($(".edit-view-head-wrap").css("height"));
