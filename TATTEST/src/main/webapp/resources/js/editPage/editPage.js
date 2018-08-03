@@ -12,7 +12,7 @@ var stackDataChk;
 var stackMove;
 var stackMoveRedo;
 var id_count;
-var idCountFilter;
+var id_x = 0;
 
 // var 변수를 만들어서 obj-no의 값이 있다면 담을 때마다 길이가 쌓임.
 // if 문으로 idCountFilter가 0 보다 크다면 그 값은 -1을 하여 id_count로 하고 
@@ -21,15 +21,18 @@ var idCountFilter;
 
 $(function() {
 
-	idCountFilter = editWrap.find($("div[data-obj-no*=data-"));
+
+	$("div[data-obj-no*=data-").each(function(){
+		id_x = $(this).attr("data-obj-no").substr(5);
+	});
 	
-	
-	if ( idCountFilter.length-1 > 0 ) {
-		id_count = idCountFilter.length-1;
+	if ( id_x > 0 ) {
+		
+		id_count = id_x;
+		
 	} else {
 		id_count = -1;
 	}
-	
 	
 });
 

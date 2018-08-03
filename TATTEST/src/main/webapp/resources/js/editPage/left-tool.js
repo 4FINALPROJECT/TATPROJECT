@@ -1,5 +1,5 @@
 function testdrag(){
-
+	
    var mulitTop = 0;
    var mulitLeft = 0;
    var origin_multichk = [];
@@ -23,7 +23,7 @@ $(".edit-wrap").mousedown(function(e){
    var selectTop = e.pageY;
    
    var $multiselected = $("<div id='multiselect'>");
-   $multiselected.css({"border":"2px dashed black","position":"absolute","transform-origin":"top left"});
+   $multiselected.css({"border":"2px dashed black","position":"absolute","transform-origin":"top left","background":"rgba(206,246,245,0.2)"});
    $(".edit-wrap").append($multiselected.css({"top":e.pageY-50,"left":e.pageX}));
    
    $(".edit-wrap").mousemove(function(e) {
@@ -177,9 +177,25 @@ $(".edit-wrap").mousedown(function(e){
                CalculationLeft = parseInt($multiborder.offset().left);
                
                $("div[data-obj-no*=data-]").each(function(){
-                  
+                  console.log(ui.helper.offset().left);
+                  console.log($(this).offset().left);
                   if($(this).attr("multichk") == "false"){
-
+                  if(ui.helper.offset().top <= $(this).offset().top &&
+                		  $(this).offset().top >= ui.helper.offset().top + ui.helper.css("height") &&
+                		  ui.helper.offset().left <= $(this).offset().left &&
+                		  $(this).offset().left >= ui.helper.offset().left + ui.helper.css("width")){
+                      OriginerTop.push(parseInt($(this).offset().top));
+                      OriginerLeft.push(parseInt($(this).offset().left));
+                	  
+                	  ui.helper.append($(this).clone().css({
+                          "background" : "rgb(193,231,67,0.3)",
+                          "top" : $(this).offset().top - ui.helper.offset().top,
+                          "left" : $(this).offset().left - ui.helper.offset().left,
+                          "width" : $(this).css("width"),
+                          "height" : $(this).css("height")
+                          })); 
+                  }
+                	  console.log(ui.helper.offset().top);
                      OriginerTop.push(parseInt($(this).offset().top));
                      OriginerLeft.push(parseInt($(this).offset().left));
                      
@@ -195,7 +211,7 @@ $(".edit-wrap").mousedown(function(e){
                });
             },
             stop : function(e,ui){
-
+            		console.log(ui.helper.children());
                   for(var i in OriginerTop){
                      $("."+trueParent[0]).children("div").each(function(){
                         if($(this).attr("data-obj-no") == ui.helper.children().eq(i).attr("data-obj-no") &&
@@ -281,7 +297,7 @@ $("td[id*=category]").click(function(e){
 });
 
 $("#tool_menu3-14").children("div").click(function(){
-   
+
    var menu_clone = $(this).clone();
    
    menu_clone.attr("class","titleMenu");
@@ -292,13 +308,19 @@ $("#tool_menu3-14").children("div").click(function(){
       }
    });
    
-   var menu_td = menu_clone.children().children().children().children();
-
-   menu_td.css({"width":"25%","height":"100px"});
+   var menu_td = menu_clone.children().children().children();
+   
+   for(var i = 0 ; i < $(".tat-my-page-list").children("div").length ; i++){
+	   if(i < 4){
+		   menu_td.children().eq(i).text($(".tat-my-page-list").children("div").eq(i).text());   
+	   }
+   }
+   
+   menu_td.children().css({"width":"25%","height":"100px"});
    
    menu_clone.children().css({"text-align":"center","width":parseInt($(".edit-view-head").css("width")) - 6});
    
-   $(".edit-view-head").append(menu_clone.css({"position":"absolute" , "top" : parseInt($(".edit-view-head-wrap").css("height")) - parseInt(menu_td.css("height")) - 6 }));
+   $(".edit-view-head").append(menu_clone.css({"position":"absolute" , "top" : parseInt($(".edit-view-head-wrap").css("height")) - parseInt(menu_td.children().css("height")) - 6 }));
    
    $(".edit-view-head").children($("div[class*=titleMenu]")).each(function(){
       
