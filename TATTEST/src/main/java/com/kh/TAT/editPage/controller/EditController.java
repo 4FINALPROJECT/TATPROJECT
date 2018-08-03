@@ -1,8 +1,11 @@
 package com.kh.TAT.editPage.controller;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -53,7 +56,7 @@ public class EditController {
 		
 		String m_code = (String) session.getAttribute("m_code");
 		
-		System.out.println("m 확인 : "+ m_code);
+		//System.out.println("m 확인 : "+ m_code);
 		
 		if ( m_code != null ) {
 			
@@ -66,7 +69,7 @@ public class EditController {
 			// 폴더 생성
 			if ( !userFile.exists() ) {
 				userFile.mkdirs();
-				System.out.println("유저의 파일 저장 경로 확인 : "+ userFile.mkdirs());
+				//System.out.println("유저의 파일 저장 경로 확인 : "+ userFile.mkdirs());
 			}
 
 			// head 파일 함수 생성
@@ -85,7 +88,7 @@ public class EditController {
 			for ( String i : headSplit ) {
 				headSplitString += i+">\n";
 			}
-			System.out.println("headSplitString 값 확인 : "+ headSplitString);
+			//System.out.println("headSplitString 값 확인 : "+ headSplitString);
 			/////////////////////////////////
 			
 			
@@ -107,7 +110,7 @@ public class EditController {
 			for ( String i : bodySplit ) {
 				bodySplitString += i+">\n";
 			}
-			System.out.println("bodySplitString 값 확인 : "+ bodySplitString);
+			//System.out.println("bodySplitString 값 확인 : "+ bodySplitString);
 
 			// footer 파일 함수 생성
 			/////////////////////////////////
@@ -125,7 +128,7 @@ public class EditController {
 			for ( String i : footerSplit ) {
 				footerSplitString += i+">\n";
 			}
-			System.out.println("footerSplitString 값 확인 : "+ footerSplitString);
+			//System.out.println("footerSplitString 값 확인 : "+ footerSplitString);
 			/////////////////////////////////
 			
 			
@@ -150,15 +153,6 @@ public class EditController {
 			String bodyRead = readBodyTrue.replace("\\", "/");
 			String footerRead = readFooterTrue.replace("\\", "/");
 			
-
-			System.out.println("head 변환 경로 값 : "+ headRead);
-			System.out.println("body 변환 경로 값 : "+ bodyRead);
-			System.out.println("footer 변환 경로 값 : "+ footerRead);
-			
-			
-			
-			
-			
 			if ( !newHeadPage.exists() ) {
 				writer = new FileWriter(newHeadPage, false);
 				writer.write(headSplitString);
@@ -181,6 +175,12 @@ public class EditController {
 				writer.flush();
 				writer.close();
 			}
+			
+			Member member = editS.memberSelectPayment(m_code);
+			
+			System.out.println("member값 확인  : " + member.getIs_usable());
+			
+			request.setAttribute("member" , member);
 			
 			model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
 			addAttribute("editPageFooter", footerRead);
@@ -233,10 +233,15 @@ public class EditController {
 			String readTrue = "";
 			readTrue = readSplit.substring(readSplit.indexOf("webapp")+7);
 			
-			
 			String read = readTrue.replace("\\", "/");
 			
 			model.addAttribute("editPageBody", read);
+			
+			Member member = editS.memberSelectPayment(m_code);
+			
+			System.out.println("member값 확인  : " + member.getIs_usable());
+			
+			request.setAttribute("member" , member);
 			
 			return "editPage/editPage_Main";
 		} else {
@@ -257,14 +262,12 @@ public class EditController {
 	public Map<String, Object> editOop(Model model, @RequestParam String edit, HttpSession session, HttpServletRequest request) throws Exception {
 		
 		String m_code = (String)session.getAttribute("m_code");
-		
-		FileWriter writer = null;
-		
+
 		String editHead;
 		String editBody;
 		
 		if ( m_code != null ) {
-			System.out.println("세션 아이디 확인 : "+ m_code);
+			//System.out.println("세션 아이디 확인 : "+ m_code);
 			
 			editHead = edit.substring(0, ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ) );
 			editBody = edit.substring( ( edit.indexOf(("<div class=\"edit-view-body-wrap\"")) ), 
@@ -280,13 +283,13 @@ public class EditController {
 			String userFileName = "home";
 			
 			// 사용자의 head jsp 파일 받아오기
-			File headPage = new File(currentPageRes+"/home.jsp");
+			File headPage = new File(currentPageRes+"/head.jsp");
 			
 			// 사용자의 body jsp 파일 받아오기
 			File currentBodyPage = new File(currentPageRes+"/"+ userFileName +".jsp");
 			
 			
-			System.out.println("File headPage 확인 : "+headPage);
+			//System.out.println("File headPage 확인 : "+headPage);
 			
 			// head 파일 함수 생성
 			/////////////////////////////////
@@ -304,7 +307,7 @@ public class EditController {
 			for ( String i : headSplit ) {
 				headSplitString += i+">\n";
 			}
-			System.out.println("headSplitString 값 확인 : \n"+ headSplitString);
+			//System.out.println("headSplitString 값 확인 : \n"+ headSplitString);
 			/////////////////////////////////
 			
 			
@@ -327,6 +330,16 @@ public class EditController {
 				bodySplitString += i+">\n";
 			}
 			//System.out.println("bodySplitString 값 확인 : \n"+ bodySplitString);
+			
+			String headHead = headSplitString.substring(0, headSplitString.indexOf("<div class=\"edit-view-head-wrap\""));
+			
+			
+			//System.out.println(" 추출 헤더 자료 확인 : \n" +headHead);
+			
+			String headTotal = headHead+ editHead;
+			
+			//System.out.println("헤드 토럴 : \n"+headTotal);
+			
 
 			String bodyHead = bodySplitString.substring(0,bodySplitString.indexOf("<div class=\"edit-view-body-wrap"));
 			String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
@@ -338,35 +351,25 @@ public class EditController {
 			//System.out.println("bodyHead : \n"+ bodyReal);
 			//System.out.println("bodyHead : \n"+ bodyFoot);
 			
-			String bodyTotal = bodyHead+ editBody+ bodyFoot;
+			String bodyTotal = "\t"+bodyHead+ editBody+ bodyFoot;
 			
-			System.out.println("버리 토럴 : "+ bodyTotal);
+			//System.out.println("버리 토럴 : \n"+ bodyTotal);
 			
-//			if ( !headPage.exists() ) {
-//				writer = new FileWriter(headPage, true);
-//				writer.write();
-//				writer.flush();
-//				writer.close();
-//			}
-//			
-//			if ( !currentBodyPage.exists() ) {
-//				writer = new FileWriter(currentBodyPage, true);
-//				writer.write();
-//				writer.flush();
-//				writer.close();
-//			}
 			
+			BufferedWriter outHead = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(headPage), "UTF-8"));
+			outHead.write(headTotal);
+			outHead.flush();
+			outHead.close();
+			
+			BufferedWriter outBody = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(currentBodyPage),"UTF-8"));
+			outBody.write(bodyTotal);
+			outBody.flush();
+			outBody.close();
 			
 		}
 		Map<String, Object> map = new HashMap<>();
 		
-		//System.out.println("edit 값 : "+ edit);
-		
-		
-		
 		String editLog = edit.toString();
-		
-		//System.out.println("editLog 값 : "+ editLog);
 		
 		map.put("editLog", editLog);
 		return map;
