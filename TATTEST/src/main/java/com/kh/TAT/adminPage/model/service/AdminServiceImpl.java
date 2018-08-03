@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.kh.TAT.adminPage.model.dao.AdminDao;
 import com.kh.TAT.adminPage.model.vo.PagingVo;
-import com.kh.TAT.adminPage.model.vo.aPayment;
+import com.kh.TAT.adminPage.model.vo.AdminPayment;
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.FaqBoard;
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 
 
 @Service
@@ -53,7 +54,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<aPayment> selectPaymentList(PagingVo paging) {
+	public List<AdminPayment> selectPaymentList(PagingVo paging) {
 		// TODO Auto-generated method stub
 		return adminD.selectPaymentList(paging);
 	}
@@ -103,10 +104,30 @@ public class AdminServiceImpl implements AdminService {
 		return adminD.insertFaqQuestion(faqboard);
 	}
 
+	
 	@Override
-	public List<FaqBoard> selecFaqSelect() {
+	public List<QuestionCategory> selectFaqSelect() {
 		// TODO Auto-generated method stub
 		return adminD.selectFaqSelect();
+	}
+
+	// Question
+	@Override
+	public int questionTotalPagingCount(int start) {
+		// TODO Auto-generated method stub
+		return adminD.questionTotalPagingCount(start);
+	}
+
+	@Override
+	public List<Edit> selectQuestionList(PagingVo paging) {
+		// TODO Auto-generated method stub
+		return adminD.selectQuestionList(paging);
+	}
+
+	@Override
+	public int questionTotalPaging() {
+		// TODO Auto-generated method stub
+		return adminD.questionTotalPaging();
 	}
 
 	

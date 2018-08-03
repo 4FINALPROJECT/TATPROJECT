@@ -6,11 +6,13 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.kh.TAT.adminPage.model.vo.PagingVo;
-import com.kh.TAT.adminPage.model.vo.aPayment;
+import com.kh.TAT.adminPage.model.vo.AdminPayment;
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.FaqBoard;
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 
 @Repository
 public class AdminDaoImpl implements AdminDao {
@@ -44,19 +46,19 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public int paymentTotalPagingCount(int start) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("aPayment.totalPagingCount", start);
+		return sqlSession.selectOne("adminPayment.totalPagingCount", start);
 	}
 
 	@Override
 	public int PaymentTotalPaging() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("aPayment.totalPaging");
+		return sqlSession.selectOne("adminPayment.totalPaging");
 	}
 
 	@Override
-	public List<aPayment> selectPaymentList(PagingVo paging) {
+	public List<AdminPayment> selectPaymentList(PagingVo paging) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("aPayment.selectPaymentList",paging);
+		return sqlSession.selectList("adminPayment.selectPaymentList",paging);
 	}
 	
 	// Project
@@ -79,6 +81,8 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.selectOne("edit.totalPaging");
 	}
 
+	// FAQ
+	
 	@Override
 	public int faqTotalPagingCount(int start) {
 		// TODO Auto-generated method stub
@@ -104,9 +108,28 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public List<FaqBoard> selectFaqSelect() {
+	public List<QuestionCategory> selectFaqSelect() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("faqBoard.selectFaqSelect");
+		return sqlSession.selectList("questionCategory.selectFaqSelect");
+	}
+
+	// Question
+	@Override
+	public int questionTotalPagingCount(int start) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("adminQuestion.totalPagingCount", start);
+	}
+
+	@Override
+	public List<Edit> selectQuestionList(PagingVo paging) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("adminQuestion.selectQuestionList", paging);
+	}
+
+	@Override
+	public int questionTotalPaging() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("adminQuestion.totalPaging");
 	}
 	
 	
