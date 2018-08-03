@@ -11,6 +11,27 @@ var swap;
 var stackDataChk;
 var stackMove;
 var stackMoveRedo;
+var id_count;
+var idCountFilter;
+
+// var 변수를 만들어서 obj-no의 값이 있다면 담을 때마다 길이가 쌓임.
+// if 문으로 idCountFilter가 0 보다 크다면 그 값은 -1을 하여 id_count로 하고 
+// 아니면 else로 idCountFilter는 0이 되니까 -1로 해서 
+// id_count는 -1로 시작.
+
+$(function() {
+
+	idCountFilter = editWrap.find($("div[data-obj-no*=data-"));
+	
+	
+	if ( idCountFilter.length-1 > 0 ) {
+		id_count = idCountFilter.length-1;
+	} else {
+		id_count = -1;
+	}
+	
+	
+});
 
 $('.tat-head-hide').on('click',function(){
 	$('.tat-head').slideToggle('slow');
