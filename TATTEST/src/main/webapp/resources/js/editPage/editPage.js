@@ -177,13 +177,14 @@ function commitEvent() {
 	}
 }
 
+
 function saveEvent() {
 	var save_check = confirm('저장 하시겠습니까?');
 	if ( save_check ) {
 		alert('저장 완료!');
 		$.ajax({
 			url : "/TAT/edit/editOop.tat",
-			data : { edit : editWrap[0].outerHTML },
+			data : { edit : editWrap[0].outerHTML, folderName : folderName },
 			dataType : "json",
 			type : "POST",
 			success : function(data) {
@@ -397,7 +398,7 @@ $('#tat-head-logo').on('click', function(){
 	var siteOut = confirm('아직 저장을 안하셨습니다. 저장 하시겠습니까?');
 	if ( siteOut ) {
 		saveEvent();
-		//location.href="/TAT/edit/Main.tat";
+		location.href="/TAT/edit/Main.tat";
 	} else {
 		
 	}
