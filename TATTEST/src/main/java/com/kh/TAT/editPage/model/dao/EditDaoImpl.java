@@ -17,4 +17,6 @@ public class EditDaoImpl implements EditDao {
 
 		return sqlSession.selectOne("edit.SelectPayment",m_code);
 	}
+
+
 }

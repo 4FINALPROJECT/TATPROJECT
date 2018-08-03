@@ -17,4 +17,7 @@ public class EditServiceImpl implements EditService {
 		
 		return editD.memberSelectPayment(m_code);
 	}
+
+
 }
+
