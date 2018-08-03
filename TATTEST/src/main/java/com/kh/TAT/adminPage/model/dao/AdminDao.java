@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.kh.TAT.adminPage.model.vo.PagingVo;
 import com.kh.TAT.adminPage.model.vo.AdminPayment;
+import com.kh.TAT.adminPage.model.vo.AdminQuestion;
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.FaqBoard;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionCategory;
+import com.kh.TAT.common.model.vo.Template;
 
 
 public interface AdminDao {
@@ -46,13 +48,35 @@ public interface AdminDao {
 	int insertFaqQuestion(FaqBoard faqboard);
 
 	List<QuestionCategory> selectFaqSelect();
+	
+	List<FaqBoard> faqSelectUpdateList(int faq_num);
+
+	int faqUpdateList(FaqBoard faqboard);
+
+	int faqDeleteQuestion(FaqBoard faqboard);
+	
+	// Question
 
 	int questionTotalPagingCount(int start);
 
 	List<Edit> selectQuestionList(PagingVo paging);
 
 	int questionTotalPaging();
+	
+	List<AdminQuestion> questionSelectUpdateList(int qa_num);
+	
+	int updateQuestion(int qa_num);
 
+	
+	// Template
+
+	List<Template> selectTemplateList(PagingVo paging);
+
+	int templateTotalPaging();
+
+	int templateTotalPagingCount(int start);
+
+	
 	
 
 }
