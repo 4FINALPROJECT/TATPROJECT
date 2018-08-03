@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="edit-wrap" oncontextmenu="return false" onselectstart="return false">
+<div class="edit-wrap" id="??"oncontextmenu="return false" ondragstart="return false">
 	<div class="edit-view-head-wrap">
 		<div class="edit-view-head">
 		</div>

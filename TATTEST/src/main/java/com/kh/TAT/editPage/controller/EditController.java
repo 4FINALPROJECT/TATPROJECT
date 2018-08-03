@@ -182,6 +182,12 @@ public class EditController {
 				writer.close();
 			}
 			
+			Member member = editS.memberSelectPayment(m_code);
+			
+			System.out.println("member값 확인  : " + member.getIs_usable());
+			
+			request.setAttribute("member" , member);
+			
 			model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
 			addAttribute("editPageFooter", footerRead);
 			
@@ -233,10 +239,15 @@ public class EditController {
 			String readTrue = "";
 			readTrue = readSplit.substring(readSplit.indexOf("webapp")+7);
 			
-			
 			String read = readTrue.replace("\\", "/");
 			
 			model.addAttribute("editPageBody", read);
+			
+			Member member = editS.memberSelectPayment(m_code);
+			
+			System.out.println("member값 확인  : " + member.getIs_usable());
+			
+			request.setAttribute("member" , member);
 			
 			return "editPage/editPage_Main";
 		} else {

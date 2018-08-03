@@ -118,10 +118,6 @@
 		<c:import url="/${ editPageHead }"/>
 	</c:if> --%>
 	
-<<<<<<< HEAD
-	<c:import url="../member/M001/E1/page1.jsp"/>
-	
-=======
 	<c:if test="${ editPageBody == null }">
 		에러발생
 	</c:if>
@@ -136,8 +132,6 @@
 		<c:import url="/${ editPageFooter }"/>
 	</c:if> --%>
 	
-		
->>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
 	</div>
 	
 </div>
