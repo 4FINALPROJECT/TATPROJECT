@@ -82,4 +82,14 @@ public class Edit {
 		this.is_share = is_share;
 		this.e_use_count = e_use_count;
 	}
+
+	@Override
+	public String toString() {
+		return "Edit [e_code=" + e_code + ", m_code=" + m_code + ", proj_name=" + proj_name + ", proj_comment="
+				+ proj_comment + ", save_date=" + save_date + ", is_share=" + is_share + ", e_use_count=" + e_use_count
+				+ "]";
+	}
+	
+	
+	
 }

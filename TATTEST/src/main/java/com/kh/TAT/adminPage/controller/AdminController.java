@@ -17,7 +17,9 @@ import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionCategory;
 import com.kh.TAT.adminPage.model.service.AdminService;
 import com.kh.TAT.adminPage.model.vo.AdminPayment;
+import com.kh.TAT.adminPage.model.vo.AdminQuestion;
 import com.kh.TAT.adminPage.model.vo.PagingVo;
+import com.kh.TAT.common.model.vo.Template;;
 
 @Controller
 public class AdminController {
@@ -220,6 +222,49 @@ public class AdminController {
 			System.out.println("faqSelect : "+adminS.selectFaqSelect());
 			return faqSelect;
 		}
+		@ResponseBody
+		@RequestMapping(value="/admin/FaqSelectUpdateListAjax.tat")
+		public List<FaqBoard> FaqSelectUpdate(@RequestParam("faq_num") int faq_num){
+			// 게시판 페이지 이동
+			System.out.println("출력할 faq_num 번호 : "+faq_num);
+			
+							
+			List<FaqBoard> faqSelectUpdateList = adminS.faqSelectUpdateList(faq_num);
+			
+					    
+		    System.out.println("FaqList :"+faqSelectUpdateList);
+					    
+		    /*return "adminPage/adminPage_Member";*/
+		    return faqSelectUpdateList;
+
+		}
+		@ResponseBody
+		@RequestMapping(value="/admin/updateFaqQuestionAjax.tat")
+		public int updateFaqQuestion(@RequestParam("qccode") String qccode,@RequestParam("quest") String quest,
+				@RequestParam("answer") String answer, @RequestParam("faq_num") int faq_num){
+			FaqBoard faqboard = new FaqBoard();
+			
+			System.out.println("코드 : "+qccode+"질문 :"+quest+"답변 :"+answer);
+			faqboard.setQc_code(qccode);
+			faqboard.setFaq_question(quest);
+			faqboard.setFaq_answer(answer);
+			faqboard.setFaq_num(faq_num);
+			int faqUpdateQuestion = adminS.updateFaqQuestion(faqboard);
+			
+			return faqUpdateQuestion;
+		}
+		
+		@ResponseBody
+		@RequestMapping(value="/admin/deleteFaqQuestionAjax.tat")
+		public int deleteFaqQuestion(@RequestParam("faq_num") int faq_num){
+			FaqBoard faqboard = new FaqBoard();
+			
+			faqboard.setFaq_num(faq_num);
+			int faqDeleteQuestion = adminS.deleteFaqQuestion(faqboard);
+			
+			return faqDeleteQuestion;
+		}
+		
 		
 	// Question
 		
@@ -255,6 +300,68 @@ public class AdminController {
 			System.out.println("게시글 갯수 : "+totalpageList);
 			return totalpageList;
 		}
+		
+		@ResponseBody
+		@RequestMapping(value="/admin/QuestionCommentAjax.tat")
+		public List<AdminQuestion> QuestionSelectUpdate(@RequestParam("qa_num") int qa_num){
+			// 게시판 페이지 이동
+			System.out.println("출력할 qa_num 번호 : "+qa_num);
+			
+							
+			List<AdminQuestion> questionSelectUpdateList = adminS.questionSelectUpdateList(qa_num);
+			
+					    
+		    System.out.println("qaList :"+questionSelectUpdateList);
+					    
+		    /*return "adminPage/adminPage_Member";*/
+		    return questionSelectUpdateList;
+
+		}
+		
+		@ResponseBody
+		@RequestMapping(value="/admin/updateQuestionAjax.tat")
+		public int updateQuestion(@RequestParam("qa_num") int qa_num){
+
+			System.out.println("qa_num2 : "+qa_num);
+			int updateQuestion = adminS.updateQuestion(qa_num);
+			
+			return updateQuestion;
+		}
+		// Template
+		
+		@ResponseBody
+		@RequestMapping(value="/admin/TemplateTotalCountAjax.tat")
+		public int TemplateTotalPagingCount(@RequestParam("start") int start){
+			int totalPagingCount = adminS.templateTotalPagingCount(start);
+			System.out.println("게시글 갯수count : "+totalPagingCount);
+			return totalPagingCount;
+		}
+		@ResponseBody
+		@RequestMapping(value="/admin/TemplateAjax.tat")
+		public List<Template> Template(PagingVo paging,@RequestParam("start") int start){
+			// 게시판 페이지 이동
+			System.out.println("출력결과 start : "+start);
+			
+			paging.setIndex(start);
+			
+		    List<Template> templateList = adminS.selectTemplateList(paging);
+		    paging.setTotal(adminS.templateTotalPaging());
+		    
+		    System.out.println("templateList :"+templateList);
+		    
+		    /*return "adminPage/adminPage_Member";*/
+		    return templateList;
+
+		}
+		// 토탈갯수 새기
+		@ResponseBody
+		@RequestMapping(value="/admin/TemplateTotalAjax.tat")
+		public int TemplateTotalpageList(){
+			int totalpageList = adminS.templateTotalPaging();
+			System.out.println("게시글 갯수 : "+totalpageList);
+			return totalpageList;
+		}
+		
 	
 	
 	

@@ -78,7 +78,7 @@
 	                    <div class="dividerHeading">
 	                        <h4><span>문의 내용</span></h4>
 	                    </div>
-	                    <form id="contactForm" action="" novalidate="novalidate">
+	                    <form id="contactForm" class="questionAnswer" action="" novalidate="novalidate">
 	                        <div class="row">
 	                            <div class="form-group">
 	                                <div class="col-lg-6 ">
@@ -92,7 +92,7 @@
 	                        <div class="row">
 	                            <div class="form-group">
 	                                <div class="col-md-12">
-	                                    <input type="text" id="subject" name="subject" class="form-control questionTitle" maxlength="100" data-msg-required="Please enter the subject.">
+	                                    <input type="text" id="subject questionTitle" name="subject" class="form-control questionTitle" maxlength="100" data-msg-required="Please enter the subject.">
 	                                </div>
 	                            </div>
 	                        </div>
@@ -105,8 +105,16 @@
 	                            </div>
 	                        </div>
 	                        <div class="row">
+	                            <div class="form-group">
+	                                <div class="col-md-12">
+	                                    <textarea id="text" class="form-control questionContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000"></textarea>
+	
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row">
 	                            <div class="col-md-12">
-	                                <input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" value="Send Message">
+	                                <input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" onclick="updateAdminComment()" value="Send Message">
 	                            </div>
 	                        </div>
 	                    </form>
@@ -127,19 +135,46 @@
 		var btnCount = 5;
 		var showDoubleCount = 5.0;
 		var pageVal;
+		
+		
 
-		function questionListTable(qNum){
+		function updateAdminComment(qa_num){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/admin/QuestionTotalAjax.tat",
+				url : "${pageContext.request.contextPath}/admin/updateQuestionAjax.tat",
 				type : "post",
 				dataType : 'json',
-				data : {"qa_num" : aNum},
+				data : {"qa_num" : qa_num
+				},success : function(data){
+					alert("등록이 완료되었습니다.");
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			});
+		}
+		
+		function questionListTable(qNum){
+			$('.questionAnswer').empty();
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/QuestionCommentAjax.tat",
+				type : "post",
+				dataType : 'json',
+				data : {"qa_num" : qNum},
 				success : function(data){
-					$('.questionName').val(data.qa_num);
-					$('.questionCategory').val(data.qc_name);
-					$('.questionTitle').val(data.qa_title);
-					$('.questionContent').val(data.qa_content);
-					
+					for(var idx in data){
+						if(data[idx].a_content == null){data[idx].a_content = ""};
+					$('.questionAnswer').append('<div class="row"><div class="form-group"><div class="col-lg-6 ">'+
+							'<input type="text" id="name" name="" class="form-control questionName" maxlength="100" data-msg-required="Please enter your name." value="'+data[idx].m_name+'" readonly>'+
+							'</div><div class="col-lg-6 "><input type="email" id="email" name="email" class="form-control questionCategory" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="'+data[idx].qc_name+'" readonly>'+
+							'</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
+							'<input type="text" id="subject questionTitle" name="subject" class="form-control questionTitle" maxlength="100" data-msg-required="Please enter the subject." value="'+data[idx].qa_title+'" readonly></div></div>'+
+							'</div><div class="row"><div class="form-group"><div class="col-md-12">'+
+							'<textarea id="message" class="form-control questionContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" value="" readonly>'+data[idx].qa_content+'</textarea>'+
+							'</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
+							'<textarea id="text" class="form-control questionAdminContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" value="">'+data[idx].a_content+'</textarea>'+
+							'</div></div></div><div class="row"><div class="col-md-12">'+
+							'<input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" onclick="updateAdminComment('+data[idx].qa_num+')" value="수정 및 등록">'+
+							'</div></div>');
+					}
 				},error: function(jqXHR, textStatus, errorThrown) {
 					console.log(jqXHR.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
