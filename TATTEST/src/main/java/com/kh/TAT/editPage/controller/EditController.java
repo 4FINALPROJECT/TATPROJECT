@@ -1,24 +1,15 @@
 package com.kh.TAT.editPage.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.URLEncoder;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.zip.ZipOutputStream;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,7 +61,7 @@ public class EditController {
 			//System.out.println(m_code);
 			
 			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 
 			File userFile = new File(newPageRes);
 			
@@ -186,7 +177,7 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-			request.setAttribute("fN", edit.getProj_name());
+			request.setAttribute("fN", edit.getE_code());
 			
 			System.out.println(newBodyPage.exists());
 			
@@ -232,7 +223,7 @@ public class EditController {
 			//System.out.println(m_code);
 			
 			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 
 			File userFile = new File(newPageRes);
 			
@@ -353,7 +344,7 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-			request.setAttribute("fN", edit.getProj_name());
+			request.setAttribute("fN", edit.getE_code());
 			
 			System.out.println(newBodyPage.exists());
 			
@@ -515,8 +506,8 @@ public class EditController {
 
 
          String bodyHead = bodySplitString.substring(0,bodySplitString.indexOf("<div class=\"edit-view-body-wrap"));
-         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
-               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
+//         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
+//               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
          String bodyFoot = bodySplitString.substring(bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
          
          
@@ -550,7 +541,7 @@ public class EditController {
 	
 	
 	@RequestMapping("/edit/FileDownload.tat")
-	public void fileDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public void fileDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String m_code = (String) session.getAttribute("m_code");
 		// e_code 를 받고 
@@ -560,9 +551,24 @@ public class EditController {
 		if ( m_code != null && e_code != null ) {
 			Edit edit = editS.projectSelectOne(e_code);
 			
-			//파일저장 디렉토리
+			// 파일저장 디렉토리
 			String saveDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
 			
+			File file = new File(saveDirectory);
+			
+			// 압축 파일경로 존재하는지 chk
+			if ( !file.exists() ) {
+				System.out.println("파일 존재 X");
+			}
+			
+			FileOutputStream fos = null;
+			ZipOutputStream zos = null;
+
+			fos = new FileOutputStream(new File(edit.getProj_name()+".zip"));
+			zos = new ZipOutputStream(fos);
+
+			zos.close();
+			fos.close();
 			
 		}
 		
