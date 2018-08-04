@@ -123,7 +123,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5 feature-block">
-                        <img class="img-responsive center-block" src="images/laptop.png"/>
+                        <img class="img-responsive center-block" src="${pageContext.request.contextPath}/resources/images/laptop.png"/>
                     </div>
 
                     <div class="feature-block col-sm-7">
@@ -207,7 +207,7 @@
                 <div class="row super_sub_content">
                     <div class="col-lg-6 wow fadeInLeft">
                         <div class="text-center">
-                            <img src="images/mobile-1.png" alt=""/>
+                            <img src="${pageContext.request.contextPath}/resources/images/mobile-1.png" alt=""/>
                         </div>
                     </div>
 
@@ -372,7 +372,7 @@
                                         <i class="fa fa-star"></i>
                                     </p>
                                     <div class="parallax-testimonial-review">
-                                        <img src="images/testimonials/1.png" alt="testimonial">
+                                        <img src="${pageContext.request.contextPath}/resources/images/testimonials/1.png" alt="testimonial">
                                         <span>Jonathan Dower</span>
                                         <small>Company Inc.</small>
                                     </div>
@@ -390,7 +390,7 @@
                                         <i class="fa fa-star"></i>
                                     </p>
                                     <div class="parallax-testimonial-review">
-                                        <img src="images/testimonials/2.png" alt="testimonial">
+                                        <img src="${pageContext.request.contextPath}/resources/images/testimonials/2.png" alt="testimonial">
                                         <span>Jonathan Dower</span>
                                         <small>Leopard</small>
                                     </div>
@@ -408,7 +408,7 @@
                                         <i class="fa fa-star"></i>
                                     </p>
                                     <div class="parallax-testimonial-review">
-                                        <img src="images/testimonials/3.png" alt="testimonial">
+                                        <img src="${pageContext.request.contextPath}/resources/images/testimonials/3.png" alt="testimonial">
                                         <span>Jonathan Dower</span>
                                         <small>Leopard</small>
                                     </div>
@@ -445,11 +445,11 @@
 
                     <div class="portfolio-item mockups">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_1.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>A Graphic Design Item</h5>
-                                    <a href="images/portfolio/full/portfolio_3.png" class="fa fa-search mfp-image"></a>
+                                    <a href="${pageContext.request.contextPath}/resources/images/portfolio/full/portfolio_3.png" class="fa fa-search mfp-image"></a>
                                     <a href="portfolio_single.html" class="fa fa-link"></a>
                                 </div>
                             </div>
@@ -458,7 +458,7 @@
 
                     <div class="portfolio-item web-design graphic-design">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_2.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_2.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>New Flayer Design Item</h5>
@@ -471,7 +471,7 @@
 
                     <div class="portfolio-item graphic-design">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_3.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_3.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>Gray and Pink</h5>
@@ -484,7 +484,7 @@
 
                     <div class="portfolio-item mockups">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_4.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_4.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>Amazing Keyboard Desin</h5>
@@ -497,7 +497,7 @@
 
                     <div class="portfolio-item flayers">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_5.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_5.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>Our Favorite Colors</h5>
@@ -510,7 +510,7 @@
 
                     <div class="portfolio-item flayers">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_6.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_6.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>Not War Make Design</h5>
@@ -523,7 +523,7 @@
 
                     <div class="portfolio-item graphic-design mockups">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_7.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_7.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>A GREAT MOCK-UPS</h5>
@@ -536,7 +536,7 @@
 
                     <div class="portfolio-item web-design mockups">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_8.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_8.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>Missis Of 2014</h5>
@@ -549,7 +549,7 @@
 
                     <div class="portfolio-item web-design mockups">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_9.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_9.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>Light Carpet</h5>
@@ -562,7 +562,7 @@
 
                     <div class="portfolio-item web-design mockups">
                         <div class="box">
-                            <img src="images/portfolio/portfolio_10.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_10.png" alt="">
                             <div class="option inner">
                                 <div>
                                     <h5>Business Card Mock-Up</h5>
@@ -627,7 +627,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 inner-image same-height hidden-sm hidden-xs " style="background:url('images/awesome.png')no-repeat;"></div>
+                    <div class="col-md-6 inner-image same-height hidden-sm hidden-xs " style="background:url('${pageContext.request.contextPath}/resources/images/awesome.png')no-repeat;"></div>
                 </div>
             </div>
         </div>
@@ -636,7 +636,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-7">
-                        <img class="img-responsive center-block" src="images/imac.png"/>
+                        <img class="img-responsive center-block" src="${pageContext.request.contextPath}/resources/images/imac.png"/>
                     </div>
                     <div class="feature-block col-sm-5">
                         <h4>Mobile is the future,<span><br/> fully responsive & retina ready</span></h4>
@@ -687,7 +687,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 inner-image hidden-sm hidden-xs same-height" style="background:url('images/slide-1.png')no-repeat;"></div>
+                    <div class="col-md-6 inner-image hidden-sm hidden-xs same-height" style="background:url('${pageContext.request.contextPath}/resources/images/slide-1.png')no-repeat;"></div>
                 </div>
             </div>
         </div>
@@ -696,7 +696,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 text-center">
-                        <img class="" src="images/awesome-img.png"/>
+                        <img class="" src="${pageContext.request.contextPath}/resources/images/awesome-img.png"/>
                     </div>
                     <div class="col-md-5">
                         <h4>Professional,<span><br/>business solution & consulting</span></h4>
@@ -769,7 +769,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <img src="images/phones.png" class="img-responsive center-block">
+                        <img src="${pageContext.request.contextPath}/resources/images/phones.png" class="img-responsive center-block">
                     </div>
 
                     <div class="col-md-4 mrgt-70">
@@ -808,7 +808,7 @@
                     <div id="post-slider" class="owl-carousel">
                         <div class="post-slide">
                             <div class="post-img">
-                                <img src="images/blog/blog_1.png">
+                                <img src="${pageContext.request.contextPath}/resources/images/blog/blog_1.png">
                             </div>
                             <h5 class="post-title"><a href="blog-post.html">Latest News Post</a></h5>
                             <div class="post-date">
@@ -819,7 +819,7 @@
                         </div>
                         <div class="post-slide">
                             <div class="post-img">
-                                <img src="images/blog/blog_2.png">
+                                <img src="${pageContext.request.contextPath}/resources/images/blog/blog_2.png">
                             </div>
                             <h5 class="post-title"><a href="blog-post.html">Latest News Post</a></h5>
                             <div class="post-date">
@@ -830,7 +830,7 @@
                         </div>
                         <div class="post-slide">
                             <div class="post-img">
-                                <img src="images/blog/blog_3.png">
+                                <img src="${pageContext.request.contextPath}/resources/images/blog/blog_3.png">
                             </div>
                             <h5 class="post-title"><a href="blog-post.html">Latest News Post</a></h5>
                             <div class="post-date">
@@ -841,7 +841,7 @@
                         </div>
                         <div class="post-slide">
                             <div class="post-img">
-                                <img src="images/blog/blog-4.png">
+                                <img src="${pageContext.request.contextPath}/resources/images/blog/blog-4.png">
                             </div>
                             <h5 class="post-title"><a href="blog-post.html">Latest News Post</a></h5>
                             <div class="post-date">
@@ -852,7 +852,7 @@
                         </div>
                         <div class="post-slide">
                             <div class="post-img">
-                                <img src="images/blog/blog_1.png">
+                                <img src="${pageContext.request.contextPath}/resources/images/blog/blog_1.png">
                             </div>
                             <h5 class="post-title"><a href="blog-post.html">Latest News Post</a></h5>
                             <div class="post-date">
@@ -863,7 +863,7 @@
                         </div>
                         <div class="post-slide">
                             <div class="post-img">
-                                <img src="images/blog/blog_2.png">
+                                <img src="${pageContext.request.contextPath}/resources/images/blog/blog_2.png">
                             </div>
                             <h5 class="post-title"><a href="blog-post.html">Latest News Post</a></h5>
                             <div class="post-date">
@@ -898,7 +898,6 @@
             </div>
         </section>
     </section>
->>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
 	
 	<c:import url="WEB-INF/views/mainPage/common/mainPage_Footer.jsp"></c:import>
 	<c:import url="WEB-INF/views/common/JS.jsp"></c:import>

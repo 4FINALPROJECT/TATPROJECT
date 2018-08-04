@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.messaging.MessagingException;
@@ -853,6 +852,23 @@ public class MainController {
 				
 				return mv;
 			}
-	
+	// 둘러보기 페이지 아이프레임 이동
+	@RequestMapping("/main/ExploreIframe.tat")
+	public String ExploreIframe(HttpServletRequest request, Model model){
+
+		String e_code = request.getParameter("e_code");
+
+		String m_code = request.getParameter("m_code");
+		
+		
+
+		String headRead = "WEB-INF/views/member/"+m_code+"/김김김프로젝트1/head.jsp";
+		String bodyRead = "WEB-INF/views/member/M001/김김김프로젝트1/home.jsp";
+		String footerRead = "WEB-INF/views/member/M001/김김김프로젝트1/footer.jsp";
+		
+		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
+		addAttribute("editPageFooter", footerRead);
+		return pageRemember;
+	}
 }
 

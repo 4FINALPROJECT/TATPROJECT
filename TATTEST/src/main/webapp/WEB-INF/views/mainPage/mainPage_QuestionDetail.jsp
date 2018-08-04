@@ -39,22 +39,17 @@
 	                	<h2>1대1 문의 상세 내용</h2><br />
 	                	<form id="contactForm" action="" novalidate="novalidate">
 	                        <div class="row">
-	                            <div class="form-group" style="width: 550px;">
-	                                <div class="col-lg-6 ">
+	                            <div class="form-group">
+	                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 	                                    	질문 번호 : <input type="number" name="qa_num" class="form-control" value="${question.qa_num}" readonly="readonly">
 	                                </div>
-	                                <div class="col-lg-6 ">
+	                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 	                                    	질문 날짜 : <input type="text" name="qa_date" class="form-control" value="${question.qa_date}" readonly="readonly">
-	                                </div>	                                
-	                            </div>
-	                        </div>
-	                        
-	                        <div class="row">
-	                            <div class="form-group" style="width: 550px;">	                                
-	                                <div class="col-lg-6 ">
+	                                </div>	                                                                
+	                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 	                                    	카테고리 : <input type="text" id="qc_code" name="qc_code" class="form-control" maxlength="100" value="${question.qc_code}" readonly="readonly">
 	                                </div>
-	                                <div class="col-lg-6 ">
+	                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 	                                    	질문자 : <input type="text" id="m_code" name="m_code" class="form-control" maxlength="100" value="${question.m_code}" readonly="readonly">
 	                                </div>
 	                            </div>
@@ -85,7 +80,7 @@
 	                        
 	                        <div class="row">
 	                            <div class="form-group">
-	                            	<div class="col-lg-6 " style="width: 550px;">
+	                            	<div class="col-lg-12 ">
 	                                    	답변 날짜 : <input type="text" name="a_date" class="form-control" value="${question.a_date}" readonly="readonly">
 	                                </div>
 	                                <div class="col-md-12">

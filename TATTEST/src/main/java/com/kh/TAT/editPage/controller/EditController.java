@@ -1,16 +1,13 @@
 package com.kh.TAT.editPage.controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +61,7 @@ public class EditController {
 			//System.out.println(m_code);
 			
 			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 
 			File userFile = new File(newPageRes);
 			
@@ -180,11 +177,15 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-			request.setAttribute("fN", edit.getProj_name());
+			request.setAttribute("fN", edit.getE_code());
 			
 			System.out.println(newBodyPage.exists());
 			
 			return "editPage/editPage_Main";
+			
+		} else if ( m_code == null ) {
+			// 에러페이지 처리
+			msg = "로그인 해주세요.";
 			
 		} else if ( e_code == null ){
 			// 에러페이지 처리
@@ -194,11 +195,7 @@ public class EditController {
 			model.addAttribute("msg", msg);
 			
 			return "myPage/common/msg";
-		} else if ( m_code == null ) {
-			// 에러페이지 처리
-			msg = "로그인 해주세요.";
-			
-		}
+		} 
 			model.addAttribute("loc", loc);
 			model.addAttribute("msg", msg);
 		
@@ -226,7 +223,7 @@ public class EditController {
 			//System.out.println(m_code);
 			
 			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 
 			File userFile = new File(newPageRes);
 			
@@ -347,7 +344,7 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-			request.setAttribute("fN", edit.getProj_name());
+			request.setAttribute("fN", edit.getE_code());
 			
 			System.out.println(newBodyPage.exists());
 			
@@ -509,8 +506,8 @@ public class EditController {
 
 
          String bodyHead = bodySplitString.substring(0,bodySplitString.indexOf("<div class=\"edit-view-body-wrap"));
-         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
-               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
+//         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
+//               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
          String bodyFoot = bodySplitString.substring(bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
          
          
@@ -540,5 +537,40 @@ public class EditController {
 	      
 	      map.put("editLog", editLog);
 	      return map;
+	}
+	
+	
+	@RequestMapping("/edit/FileDownload.tat")
+	public void fileDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String m_code = (String) session.getAttribute("m_code");
+		// e_code 를 받고 
+		String e_code = request.getParameter("e_code");
+		
+		
+		if ( m_code != null && e_code != null ) {
+			Edit edit = editS.projectSelectOne(e_code);
+			
+			// 파일저장 디렉토리
+			String saveDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			
+			File file = new File(saveDirectory);
+			
+			// 압축 파일경로 존재하는지 chk
+			if ( !file.exists() ) {
+				System.out.println("파일 존재 X");
+			}
+			
+			FileOutputStream fos = null;
+			ZipOutputStream zos = null;
+
+			fos = new FileOutputStream(new File(edit.getProj_name()+".zip"));
+			zos = new ZipOutputStream(fos);
+
+			zos.close();
+			fos.close();
+			
+		}
+		
 	}
 }
