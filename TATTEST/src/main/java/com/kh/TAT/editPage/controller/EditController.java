@@ -61,7 +61,7 @@ public class EditController {
 			//System.out.println(m_code);
 			
 			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 
 			File userFile = new File(newPageRes);
 			
@@ -177,7 +177,7 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-			request.setAttribute("fN", edit.getProj_name());
+			request.setAttribute("fN", edit.getE_code());
 			
 			System.out.println(newBodyPage.exists());
 			
@@ -223,7 +223,7 @@ public class EditController {
 			//System.out.println(m_code);
 			
 			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 
 			File userFile = new File(newPageRes);
 			
@@ -344,7 +344,7 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-			request.setAttribute("fN", edit.getProj_name());
+			request.setAttribute("fN", edit.getE_code());
 			
 			System.out.println(newBodyPage.exists());
 			
