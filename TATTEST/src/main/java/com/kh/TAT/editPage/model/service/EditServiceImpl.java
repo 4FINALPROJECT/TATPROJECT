@@ -21,7 +21,7 @@ public class EditServiceImpl implements EditService {
 
 	@Override
 	public Edit projectSelectOne(String e_code) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return editD.projectSelectOne(e_code);
 	}
 }
