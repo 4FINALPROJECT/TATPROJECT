@@ -8,7 +8,25 @@
 	<style>
 		th,td{
 			text-align:center;
+			
 		}
+		#boardTable{
+			
+		}
+		#boardWrite{
+			display:none;
+		}
+		a{
+			cursor:pointer;
+		}
+	  	#shareBoard{
+	  		color:green;
+	  		
+	  	}
+	  	#unshareBoard{
+	  		color:red;
+	  		
+	  	}
 	</style>
 </head>
 <body>
@@ -46,8 +64,8 @@
 									<h4><span>Categories</span></h4>
 									</div>
 								<ul class="arrows_list list_style">
-									<li><a href="#"> 내 질문 게시판</a></li>
-									<li><a href="#"> 질문 하기</a></li>
+									<li><a href="${pageContext.request.contextPath}/my/Question.tat"> 내 질문 게시판</a></li>
+									<li><a onclick="boardWrite();"> 질문 하기</a></li>
 								</ul>
 							</div>
 
@@ -60,15 +78,14 @@
                                     <div  class="tab-content clearfix">
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
+                                               
+                                              
+                                               <c:forEach items="${widget}" var="w">
                                                <li class="comments_list clearfix">
-                                                    <p><strong><a href="#">1 -번 게시물</a> <i>답변: </i> </strong> Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
+                                                    <p><strong><a href="#">${w.qa_num} -글 유형 : </a> <i>답변 : </i></strong>${w.a_content }</p>
                                                 </li>
-                                                <li class="comments_list clearfix">
-                                                    <p><strong><a href="#">2 -번 게시물</a> <i>답변: </i> </strong> Tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
-                                                </li>
-                                                <li class="comments_list clearfix">
-                                                    <p><strong><a href="#">3 -번 게시물</a> <i>답변: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
-                                                </li>
+                                                </c:forEach>
+                                              
                                             </ul>
                                         </div>
                                     </div>
@@ -80,17 +97,18 @@
 					
 					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 						<div class="row sub_content">
-				            <div class="col-lg-12 col-md-12 col-sm-12">
+				            <div class="col-lg-12 col-md-12 col-sm-12" id="boardTable">
 				                <div class="dividerHeading">
 				                    <h4><span>1:1 질문 게시판</span></h4>
 				                </div>
-				            </div>
-				            <div class="col-lg-12 col-md-12 col-sm-12">
+				            
+				            <div class="col-lg-12 col-md-12 col-sm-12" >
 				                <div class="table-responsive">
-				                    <table class="table table-striped table-hover">
+				                    <table class="table">
 				                        <thead>
 				                        <tr>
 				                            <th>글 번호</th>
+				                            <th>글 유형</th>
 				                            <th>제목</th>
 				                            <th>작성일</th>
 				                            <th>공개여부</th>
@@ -98,25 +116,29 @@
 				                        </tr>
 				                        </thead>
 				                        <tbody>
+				                        	<c:forEach items="${list}" var="b">
 					                        <tr>
-					                            <td>${qa_num}</td>
-					                            <td>${qa_title}</td>
-					                            <td>${qa_date}</td>
-					                            <c:if test="${is_open eq 'Y'}">
+					                            <td>${b.qa_num}</td>
+					                            <td>${b.qc_code}</td>
+					                            <td>${b.qa_title}</td>
+					                            <td>${b.qa_date}</td>
+					                            <c:if test="${b.is_open eq 'N'}">
 					                            <td><i class="fas fa-lock"></i></td>
 					                            </c:if>
-					                            <c:if test="${is_open eq 'N'}">
+					                            <c:if test="${b.is_open eq 'Y'}">
 					                            <td><i class="fas fa-lock-open"></i></td>
 					                            </c:if>
-					                            <c:if test="${a_content ne null}">
+					                            <c:if test="${b.a_content ne null}">
 					                            <td><i class="fas fa-check-circle"></i></td>
 					                            </c:if>
 					                            <c:if test="${a_content eq null}">
 					                            <td></td>
 					                            </c:if>
 					                        </tr>
+					                        </c:forEach>
 				                        </tbody>
 				                    </table>
+				                </div>
 				                </div>
 				                        
 				                <div class="col-sm-12 text-center">
@@ -132,54 +154,62 @@
 								</div>
 				            </div>
 				            
-				            <div class="col-lg-12 col-md-12 col-sm-12">
-			                    <div class="dividerHeading">
-			                        <h4><span>게시글 상세정보</span></h4>
-			                    </div>
-			                    <p>Vidit nulla errem ea mea. Dolore apeirian insolens mea ut, indoctum consequuntur hasi. No aeque dictas dissenti as tusu, sumo quodsi fuisset mea in. Ea nobis populo interesset cum, ne sit quis elit officiis, min im tempor iracundia sit anet. Facer falli aliquam nec te. In eirmod utamur offendit vis, posidonium instructior sed te.</p>
-			
-			                    <div class="alert alert-success hidden alert-dismissable" id="contactSuccess">
-			                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			                        <strong>Success!</strong> Your message has been sent to us.
-			                    </div>
-			
-			                    <div class="alert alert-error hidden" id="contactError">
-			                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			                        <strong>Error!</strong> There was an error sending your message.
-			                    </div>
-			
-			                    <form id="contactForm" action="" novalidate="novalidate">
+				            <form action="${pageContext.request.contextPath}/my/WriteBoard.tat" id="submitBoard">
+					            <div class="col-lg-12 col-md-12 col-sm-12" id="boardWrite">
+				                    <div class="dividerHeading">
+				                        <h4><span>게시글 작성하기</span></h4>
+				                    </div>
+				                    <p>1:1 문의 글을 작성할 수 있는 공간입니다.</p>
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-lg-6 ">
-			                                    <input type="text" id="name" name="name" class="form-control" maxlength="100" data-msg-required="Please enter your name." value="" placeholder="Your Name" >
+			                                <div class="col-lg-3">
+			                                    <label><i class="fas fa-angle-double-right"></i> 질문 유형</label>
+			                                    <select class="form-control" name="category" >
+			                                    	<c:forEach items="${categoryList}" var="list" >
+			                                    		<option value="${list.qc_code}">${list.qc_name}</option>
+			                                    	</c:forEach>
+			                                    </select>
 			                                </div>
-			                                <div class="col-lg-6 ">
-			                                    <input type="email" id="email" name="email" class="form-control" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="" placeholder="Your E-mail" >
+			                            </div>
+			                        </div>
+			                        <div class="row">
+			                            <div class="form-group">
+			                                <div class="col-lg-12" style="display:inline-block;">
+			                                    <label><i class="fas fa-angle-double-right"></i> 공개 여부</label>
+			                                    <div class="col-lg-12">
+			                                    	<input class="form-control col-lg-2" type="checkbox" id="openYORN" name="openYN" style="width:40px; height:40px;">
+			                                    	<span class="form-control col-lg-6" id="shareBoard">공개</span><span class="form-control" id="unshareBoard">비공개</span><br>	
+			                                    </div>
+			                                    
+			                                </div>
+			                            </div>
+			                        </div>
+			                        <div class="row">
+			                            <div class="form-group">
+			                                <div class="col-lg-12 ">
+			                                    <label><i class="fas fa-angle-double-right"></i> 제목</label><input class="form-control" type="text" name="title" id="title" >
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
 			                                <div class="col-md-12">
-			                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
+			                                    <label><i class="fas fa-angle-double-right"></i> 내용</label><textarea class="form-control" name="content" id="content" rows="10" cols="50" style="resize:none;"></textarea>
 			                                </div>
 			                            </div>
 			                        </div>
 			                        <div class="row">
 			                            <div class="form-group">
-			                                <div class="col-md-12">
-			                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
-			
+			                                <div class="col-md-3 input-group-prepend">
+			                                  <button id="writeBoard" class="form-control" onclick="writeBoard();">작성 완료</button>
 			                                </div>
 			                            </div>
 			                        </div>
-			                    </form>
-			                </div>
+				                </div>
+				            </form>
 				            
 				        </div>
-	                </div>
-						
+	                  </div>
 					</div>
 				</div>
 			
@@ -187,7 +217,57 @@
 		
 	</section>
 
+	<a href="${pageContext.request.contextPath}/my/QuestionDetail.tat">가자갖갖갖가작작작자가작</a>
+
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
+	
+	<script>
+		function boardWrite(){
+		
+			$('#boardWrite').css('display','block');
+			$('#boardTable').css('display','none');
+			
+		}
+		
+		function writeBoard(){
+			
+			var title = $('#title').val();
+			var content = $('#content').val();
+			
+			if(title != null && content != null){
+				
+				console.log("들어와?");
+				
+				$('#submitBoard').submit();
+			}else
+				alert("제목 또는 내용이 작성해주시기 바랍니다.");
+			
+		}
+		
+		
+		$(function(){
+			$('#openYORN').val('N');
+			
+		});
+		
+		$('#openYORN').on('change',function(){
+			if($('#openYORN').is(":checked")){
+				$(this).val('Y');
+			
+				console.log($('#openYORN').val());
+			}else{
+				$(this).val('N');
+				
+				console.log($('#openYORN').val());
+			}
+			
+		});
+			
+		
+		
+		
+	</script>
 </body>
 </html>
+

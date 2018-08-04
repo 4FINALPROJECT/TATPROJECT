@@ -95,29 +95,47 @@
 	top: 7%;
 }
 
-/* .tat-head-content-center > div:hover {
-	color : #4eb7f5;
-}
-
-.tat-head-content-center > div:LAST-CHILD:HOVER {
-	color : #9a4cc6;
-} */
-
 .tat-my-page {
 	border-right: 1px solid #caffff;
 	height: 100%;
 }
-/*  .tat-head-content > div {
-	width: 28px;
-	height: 28px;
-	margin: 0 8px 0 0;
-	border-radius: 50%;
-	border: 1px solid #b6c1cd;
-	box-shadow : 0 0 14px 0 rgba(22, 45, 61, 0.36);
-	display: inline-block;
-	position: relative;
-	font-size: small;
-} */
+
+.tat-my-page-content {
+	position: absolute;
+	display: none;
+	left: 89px;
+	top: 49px;
+	width: 210px;
+	height: 200px;
+	text-align: center;
+	background: white;
+	z-index: 7777;
+	border : 2px solid cornflowerblue;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	/* border-radius: 20px;
+	box-shadow : 0 0 14px 0 rgba(22, 45, 61, 0.36); */
+}
+
+.tat-my-page-list > div {
+	padding-left : 15px;
+	width : 100%;
+	height : 30px;
+	text-align : left;
+}
+
+.tat-my-page-list {
+	padding : 8px;
+}
+
+.tat-my-page-btn {
+	border-top : 2px solid black;
+}
+
+.tat-my-page-btn > div {
+	padding: 5px;
+}
+
 .tat-head-content-box-wrap {
 	float: right;
 	position: absolute;
@@ -167,27 +185,27 @@
 	border-bottom: 0.5px solid gray;
 }
 .tat-sitebox {
-	left: 24%;
+	left: 1%;
 	padding: 10px;
 }
 
 .tat-setbox {
-	left: 28%;
+	left: 5%;
 	padding: 10px;
 }
 
 .tat-toolbox {
-	left: 32%;
+	left: 9%;
 	padding: 10px;
 }
 
 .tat-contentbox {
-	left: 36%;
+	left: 13%;
 	padding: 10px;
 }
 
 .tat-upgradebox {
-	left: 40%;
+	left: 17%;
 	padding: 10px;
 }
 
@@ -270,7 +288,7 @@
 .edit-view-body {
 	display: inline-block;
 	width: 80%;
-	height: 500px;
+	height: 750px;
    	border-left: 3px dashed red;
 	border-right: 3px dashed red;
 }

@@ -2,27 +2,32 @@ function testdrag(){
 
    var mulitTop = 0;
    var mulitLeft = 0;
-   var origin_multichk = [];
+   var true_chk = [];
+   var true_count = 0;
    
 $(".edit-wrap").mousedown(function(e){
    if($("#multiborder").length > 0){
       
       $("#multiborder").remove();
       testdrag();
-      
    }
    
    $(".total_tool").css("display" , "none");
    $("#item_inpo").css("display" , "none");
    $(".inpo_menu").css("display" , "none");
+   $("#title_controller").css("display" , "none");
    
    $(".upDateBorder").remove();
+   
+   true_count = 0;
+   
+   true_chk.pop();
    
    var selectLeft = e.pageX;
    var selectTop = e.pageY;
    
    var $multiselected = $("<div id='multiselect'>");
-   $multiselected.css({"border":"2px dashed black","position":"absolute","transform-origin":"top left"});
+   $multiselected.css({"border":"2px dashed black","position":"absolute","transform-origin":"top left","background":"rgba(206,246,245,0.2)"});
    $(".edit-wrap").append($multiselected.css({"top":e.pageY-50,"left":e.pageX}));
    
    $(".edit-wrap").mousemove(function(e) {
@@ -72,7 +77,7 @@ $(".edit-wrap").mousedown(function(e){
                parseInt($(this).offset().left) < mulitLeft){
             
             $(this).attr("multichk","true");
-
+            
          } else {
             
             $(this).attr("multichk","false");
@@ -133,7 +138,7 @@ $(".edit-wrap").mousedown(function(e){
             }
             
             data_counts++;
-            
+            true_chk.push($(this).attr("data-obj-no"));
          }
          
       });
@@ -150,6 +155,7 @@ $(".edit-wrap").mousedown(function(e){
          if($("#multiborder").length > 0){
             $("#multiborder").remove();
          }
+         
          $(".edit-wrap").append($multiborder);
       }
       
@@ -161,13 +167,15 @@ $(".edit-wrap").mousedown(function(e){
       var OriginerLeft = [];
       var CalculationTop = 0;
       var CalculationLeft = 0;
-      
-      $("#multiborder").mouseover(function(){
-         $(".edit-wrap").off("mousedown");
-         $(".edit-wrap").off("mousemove");
+
+      $("#multiborder").mousemove(function(){
+    	  $("#multiborder").mousedown(function(){
+    	      $(".edit-wrap").off("mousedown");
+    	      $(".edit-wrap").off("mousemove");
+    	  });
+
          $("#multiborder").on("mousemove");
 
-         var topcheck;
          $("#multiborder").draggable({
             containment : ".edit-view-body",
             start : function(e,ui){
@@ -176,13 +184,34 @@ $(".edit-wrap").mousedown(function(e){
                CalculationLeft = parseInt($multiborder.offset().left);
                
                $("div[data-obj-no*=data-]").each(function(){
-                  
-                  if($(this).attr("multichk") == "false"){
-
+                  if($(this).attr("data-obj-no") == true_chk[true_count]){
+                  if(ui.helper.offset().top <= $(this).offset().top &&
+                		  $(this).offset().top >= ui.helper.offset().top + ui.helper.css("height") &&
+                		  ui.helper.offset().left <= $(this).offset().left &&
+                		  $(this).offset().left >= ui.helper.offset().left + ui.helper.css("width")){
+                      OriginerTop.push(parseInt($(this).offset().top));
+                      OriginerLeft.push(parseInt($(this).offset().left));
+                	  
+                	  ui.helper.append($(this).clone().css({
+                          "background" : "rgb(193,231,67,0.3)",
+                          "top" : $(this).offset().top - ui.helper.offset().top,
+                          "left" : $(this).offset().left - ui.helper.offset().left,
+                          "width" : $(this).css("width"),
+                          "height" : $(this).css("height")
+                          }));
+                	  true_count = 0;
+                	  
+                  } else {
+                	  
+                	  ++true_count;
+                	  
+                  }
+                	  console.log(ui.helper.offset().top);
                      OriginerTop.push(parseInt($(this).offset().top));
                      OriginerLeft.push(parseInt($(this).offset().left));
                      
                      trueParent = $(this).parent().attr("class").split(" ");
+                     
                      ui.helper.append($(this).clone().css({
                         "background" : "rgb(193,231,67,0.3)",
                         "top" : $(this).offset().top - ui.helper.offset().top,
@@ -194,11 +223,10 @@ $(".edit-wrap").mousedown(function(e){
                });
             },
             stop : function(e,ui){
-
+            		console.log(ui.helper.children());
                   for(var i in OriginerTop){
                      $("."+trueParent[0]).children("div").each(function(){
-                        if($(this).attr("data-obj-no") == ui.helper.children().eq(i).attr("data-obj-no") &&
-                              $(this).attr("multichk") == ui.helper.children().eq(i).attr("multichk")){
+                        if($(this).attr("data-obj-no") == true_chk[i]){
                            $(this).offset({top : OriginerTop[i] - (CalculationTop - parseInt(ui.helper.offset().top)),
                               left : OriginerLeft[i] - (CalculationLeft - parseInt(ui.helper.offset().left))});
                         }
@@ -209,23 +237,27 @@ $(".edit-wrap").mousedown(function(e){
             }
          });
       });
-      
+      $("#multiborder").mouseout(function(){
+    	  $(".edit-wrap").on("mousedown");
+          $(".edit-wrap").on("mousemove");
+      });
    });
 });
 
 }
 
 window.onblur = function() {
-   $("#objectId").attr("value",null);
+//   $("#objectId").attr("value",null);
    $("#multiselect").remove();
    event.stopImmediatePropagation();
    return;
 }
 $("div[id*=left_main]").each(function(){
    $(this).click(function(e){
-      
+	  $(".upDateBorder").remove();
       $("#item_inpo").css("display" , "none");
       $(".inpo_menu").css("display" , "none");
+      $("#title_controller").css("display" , "none");
       
       var mainid_chk = $(this).attr("id").substr($(this).attr("id").lastIndexOf("_")+1,10);
       
@@ -269,20 +301,77 @@ $("td[id*=category]").click(function(e){
       
       $("#tool_menu"+toolmenu_chk).css({"display":"block"});
       
+      if(toolmenu_chk == "3-14"){
+         
+         $("#tool_menu3-14").children("div").off("mousedown");
+         
+      }
+      
    });
 });
+
+$("#tool_menu3-14").children("div").click(function(){
+
+   var menu_clone = $(this).clone();
+   
+   menu_clone.attr("class","titleMenu");
+   
+   $(".edit-view-head").children().each(function(){
+      if($(".edit-view-head").children().attr("class") == "titleMenu"){
+         $(this).remove();
+      }
+   });
+   
+   var menu_td = menu_clone.children().children().children();
+   
+   for(var i = 0 ; i < $(".tat-my-page-list").children("div").length ; i++){
+	   if(i < 4){
+		   menu_td.children().eq(i).text($(".tat-my-page-list").children("div").eq(i).text());   
+	   }
+   }
+   
+   menu_td.children().css({"width":"25%","height":"100px"});
+   
+   menu_clone.children().css({"text-align":"center","width":parseInt($(".edit-view-head").css("width")) - 6});
+   
+   $(".edit-view-head").append(menu_clone.css({"position":"absolute" , "top" : parseInt($(".edit-view-head-wrap").css("height")) - parseInt(menu_td.children().css("height")) - 6 }));
+   
+   $(".edit-view-head").children($("div[class*=titleMenu]")).each(function(){
+      
+    $(this).click(function(){
+    	
+       $(".upDateBorder").remove();
+       $(".total_tool").css("display" , "none");
+       $("#item_inpo").css("display","none");
+       $(".inpo_menu").css("display","none");
+       
+       $("#title_controller").css({"display" : "inline-block" , "top" : parseInt($(this).offset().top)-80 , "left" : $(this).offset().left }); 
+       
+    });
+    
+       $(this).mousedown(function(){
+          event.stopPropagation();
+       });
+       
+    });
+   
+});
+
+//$("#btn_skin1").mouseover(function(){
+//	event.stopPropagation();
+//});
+
 // 배경화면 변경 스크립트
 function changeimg(cimg){
-    var body = document.getElementsByTagName('body');
-    body[0].style.backgroundImage="url("+cimg+")";
+    editWrap[0].style.backgroundImage="url("+cimg+")";
+    console.log(editWrap[0].outerHTML);
 }
 
-var id_count = -1;
 var edit_height = parseInt($(".edit-view-head-wrap").css("height"));
 var edit_top = parseInt($(".edit-view-head-wrap").offset().top);
 
 function dragevent(){
-
+   
 var counts = [0];
 
 var resizeOpts = { 

@@ -6,7 +6,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
 
@@ -28,12 +32,6 @@ public class MyDaoImpl implements MyDao {
 	public int updateProfile(Member m) {
 		
 		return sqlSession.update("member.updateProfile",m);
-	}
-
-	@Override
-	public List<MyProject> selectAllProject(String m_code) {
-		
-		return sqlSession.selectList("member.selectAllProject",m_code);
 	}
 
 	@Override
@@ -72,5 +70,68 @@ public class MyDaoImpl implements MyDao {
 	public List<MyPayment> selectListPayment(String m_code) {
 		
 		return sqlSession.selectList("member.selectListPayment",m_code);
+	}
+
+	
+	// 1:1 게시판 관련
+	@Override
+	public List<QuestionAnswerBoard> selectQuestionBoard(String m_code) {
+		
+		return sqlSession.selectList("member.selectQuestionBoard",m_code);
+	}
+
+	@Override
+	public List<QuestionAnswerBoard> widgetComment(String m_code) {
+		
+		return sqlSession.selectList("member.widgetComment",m_code);
+	}
+
+	@Override
+	public List<QuestionCategory> selectCategory() {
+		
+		return sqlSession.selectList("member.selectCategory");
+	}
+
+	@Override
+	public int insertWriteBoard(QuestionAnswerBoard qab) {
+		
+		return sqlSession.insert("member.insertWriteBoard",qab);
+	}
+
+	@Override
+	public QuestionAnswerBoard selectOneBoard(int qa_num) {
+		
+		return sqlSession.selectOne("member.selectOneBoard",qa_num);
+	}
+
+	// 나의 프로젝트 관련
+	@Override
+	public List<MyProject> selectAllProject(String m_code) {
+		
+		return sqlSession.selectList("member.selectAllProject",m_code);
+	}
+	
+	@Override
+	public Edit selectOneProjectDetail(String e_code) {
+		
+		return sqlSession.selectOne("member.selectOneProjectDetail",e_code);
+	}
+
+	@Override
+	public List<EditReplyBoard> selectListReply(String e_code) {
+		
+		return sqlSession.selectList("member.selectListReply",e_code);
+	}
+
+	@Override
+	public int countComment(String e_code) {
+		
+		return sqlSession.selectOne("member.countComment", e_code);
+	}
+
+	@Override
+	public int createProject(Edit newProject) {
+		
+		return sqlSession.insert("member.createProject", newProject);
 	}
 }

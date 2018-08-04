@@ -1,45 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-	<resultMap type="member" id="memberMap">	
-	</resultMap>
-	
-	<insert id="insertMember" parameterType="member">
-		INSERT INTO MEMBER
-		VALUES('M'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, #{m_pwd,  jdbcType=VARCHAR}, 
-		#{m_name,  jdbcType=VARCHAR}, #{m_birth}, #{m_gender, jdbcType=VARCHAR}, sysdate, DEFAULT)
-	</insert>
-	
-	<select id="memberLogin" parameterType="string" resultMap="memberMap">
-		SELECT * FROM MEMBER WHERE M_EMAIL = #{m_email}
-	</select>
-	
-	<select id="checkemailDuplicate" resultType="_int">
-		SELECT COUNT(*) AS CNT FROM MEMBER WHERE M_EMAIL = #{m_email}
-	</select>
-	
-	<select id="emailCheck" parameterType="java.util.Map" resultType="java.lang.String">
-		SELECT M_PWD FROM MEMBER WHERE M_EMAIL=#{email}
-	</select>
-	
-	<update id="changePWD" parameterType="member">
-		UPDATE MEMBER SET M_PWD = #{m_pwd} WHERE M_EMAIL = #{m_email}
-	</update>
-	
-	<update id="updateUsable" parameterType="member">
-		UPDATE MEMBER SET IS_USABLE = 'Y' WHERE M_CODE = #{m_code}
-	</update>
-	
-	<insert id="insertFmember" parameterType="member">
-	INSERT INTO MEMBER
-		VALUES('F'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, '############', 
-		#{m_name,  jdbcType=VARCHAR}, null, null, sysdate, DEFAULT)
-	</insert>
-	
-	<insert id="insertGmember" parameterType="member">
-	INSERT INTO MEMBER
-		VALUES('G'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, '############', 
-		#{m_name,  jdbcType=VARCHAR}, null, null, sysdate, DEFAULT)
-	</insert>
-
+   <resultMap type="member" id="memberMap">   
+   </resultMap>
+   
+   <insert id="insertMember" parameterType="member">
+      INSERT INTO MEMBER
+      VALUES('M'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, #{m_pwd,  jdbcType=VARCHAR}, 
+      #{m_name,  jdbcType=VARCHAR}, #{m_birth}, #{m_gender, jdbcType=VARCHAR}, sysdate, DEFAULT)
+   </insert>
+   
+   <select id="memberLogin" parameterType="String" resultMap="memberMap">
+      SELECT * FROM MEMBER WHERE M_EMAIL = #{m_email}
+   </select>
+   
+   <select id="memberCode" parameterType="String" resultMap="memberMap">
+      SELECT * FROM MEMBER WHERE M_CODE = #{m_code}
+   </select>
+   
+   <select id="checkemailDuplicate" resultType="_int">
+      SELECT COUNT(*) AS CNT FROM MEMBER WHERE M_EMAIL = #{m_email}
+   </select>
+   
+   <select id="emailCheck" parameterType="java.util.Map" resultType="java.lang.String">
+      SELECT M_PWD FROM MEMBER WHERE M_EMAIL=#{email}
+   </select>
+   
+   <update id="changePWD" parameterType="member">
+      UPDATE MEMBER SET M_PWD = #{m_pwd} WHERE M_EMAIL = #{m_email}
+   </update>
+   
+   <update id="updateUsable" parameterType="member">
+      UPDATE MEMBER SET IS_USABLE = 'Y' WHERE M_CODE = #{m_code}
+   </update>
+   
+   <insert id="insertFmember" parameterType="member">
+   INSERT INTO MEMBER
+      VALUES('F'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, '############', 
+      #{m_name,  jdbcType=VARCHAR}, null, null, sysdate, DEFAULT)
+   </insert>
+   
+   <insert id="insertGmember" parameterType="member">
+   INSERT INTO MEMBER
+      VALUES('G'||TO_CHAR(SEQ_MEMBER.NEXTVAL,'FM000'), #{m_email,  jdbcType=VARCHAR}, '############', 
+      #{m_name,  jdbcType=VARCHAR}, null, null, sysdate, DEFAULT)
+   </insert>
 </mapper>
