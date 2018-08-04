@@ -144,6 +144,7 @@ public class MainController {
 		String m_code = request.getParameter("m_code");
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("m_code", m_code);
 		
 		edit = mainS.editDetail(e_code);
 		newedit.setE_code(e_code);
@@ -857,18 +858,32 @@ public class MainController {
 	public String ExploreIframe(HttpServletRequest request, Model model){
 
 		String e_code = request.getParameter("e_code");
-
 		String m_code = request.getParameter("m_code");
 		
-		
-
-		String headRead = "WEB-INF/views/member/"+m_code+"/김김김프로젝트1/head.jsp";
-		String bodyRead = "WEB-INF/views/member/M001/김김김프로젝트1/home.jsp";
-		String footerRead = "WEB-INF/views/member/M001/김김김프로젝트1/footer.jsp";
+		String headRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/head.jsp";
+		String bodyRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/home.jsp";
+		String footerRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/footer.jsp";
 		
 		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
 		addAttribute("editPageFooter", footerRead);
-		return pageRemember;
+		
+		return "editPage/editPage_Main";
+	}
+	
+	// 템플릿 페이지 아이프레임 이동
+	@RequestMapping("/main/TemplateIframe.tat")
+	public String TemplateIframe(HttpServletRequest request, Model model){
+
+		String t_category = request.getParameter("t_category");
+		
+		String headRead = "WEB-INF/views/template/"+t_category+"/head.jsp";
+		String bodyRead = "WEB-INF/views/template/"+t_category+"/home.jsp";
+		String footerRead = "WEB-INF/views/template/"+t_category+"/footer.jsp";
+		
+		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
+		addAttribute("editPageFooter", footerRead);
+		
+		return "editPage/editPage_Main";
 	}
 }
 

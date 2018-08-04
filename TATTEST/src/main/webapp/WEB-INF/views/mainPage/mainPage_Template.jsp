@@ -43,7 +43,7 @@
 			                    <div class="blog-item">
 			                        <figure class="post_video">
 			                            <div class="video">
-			                                <iframe src="${pageContext.request.contextPath}/WEB-INF/views/template/${te.t_category}/home.jsp" width="100%" height="320" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			                                <iframe src="${pageContext.request.contextPath}/main/TemplateIframe.tat?t_category=${te.t_category}" width="100%" height="320" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 			                            </div>
 			                        </figure>
 			                        <div class="metaInfo">
