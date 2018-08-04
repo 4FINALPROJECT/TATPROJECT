@@ -10,6 +10,7 @@ public class FaqBoard {
 	private String faq_answer;
 	private Date faq_date;
 	
+	
 	public FaqBoard() {
 		super();
 	}
@@ -21,6 +22,13 @@ public class FaqBoard {
 		this.faq_question = faq_question;
 		this.faq_answer = faq_answer;
 		this.faq_date = faq_date;
+	}
+	
+	public FaqBoard(String qc_code, String faq_question, String faq_answer) {
+		super();
+		this.qc_code = qc_code;
+		this.faq_question = faq_question;
+		this.faq_answer = faq_answer;
 	}
 	public int getFaq_num() {
 		return faq_num;
@@ -58,4 +66,11 @@ public class FaqBoard {
 	public void setFaq_date(Date faq_date) {
 		this.faq_date = faq_date;
 	}
+	@Override
+	public String toString() {
+		return "FaqBoard [faq_num=" + faq_num + ", m_code=" + m_code + ", qc_code=" + qc_code + ", faq_question="
+				+ faq_question + ", faq_answer=" + faq_answer + ", faq_date=" + faq_date + "]";
+	}
+	
+	
 }

@@ -79,9 +79,12 @@
                                     
                             		        <c:if test="${m_code eq editReply.m_code}">
                                             <a data-target="#${editReply.er_num}" data-toggle="collapse">수정</a>                                                                                        
-                                            
-                                            <a href="${pageContext.request.contextPath}/main/DeleteEditReply.tat?m_code=${editReply.m_name}&er_num=${editReply.er_num}&e_code=${editReply.e_code}">삭제</a>
-                                            <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat">
+                                            <form id="editDelete" action="${pageContext.request.contextPath}/main/DeleteEditReply.tat" method="post">
+                                            <input type="hidden" name="er_num" value="${editReply.er_num}"/>
+											<input type="hidden" name="e_code" value="${editReply.e_code}"/>
+                                            <a onclick="editDelete()">삭제</a>
+                                            </form>
+                                            <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat" method="post">
                                             <div class="collapse" id="${editReply.er_num}">											  
 											  <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>	
 											  <input type="hidden" name="er_num" value="${editReply.er_num}"/>
@@ -97,7 +100,7 @@
                         </ul>
                     </div>
                     <c:if test="${empty m_code}">
-                        <button data-toggle="modal" data-target="#signin">댓글 남기기</button>
+                        <button data-toggle="modal" data-target="#signin" style="background: white; border-radius: 12px;">댓글 남기기</button>
                     </c:if>
                     <div class="dividerHeading">
                                 <h4><span>Leave a comment</span></h4>
@@ -107,7 +110,7 @@
 								<%-- <c:param name="t_code" value="${temp.t_code}"/>
 								<c:param name="m_code" value=""/> --%>
 							</c:url>
-					<form id="insertEditReplyForm" action="${insertEditReply}">
+					<form id="insertEditReplyForm" action="${insertEditReply}" method="post">
                     
                     <div class="comment_form">
                        <div class="row">
@@ -128,7 +131,7 @@
                         </div>
                     </div>
                     		<c:if test="${!empty m_code}">
-                            <button id="insertEditReply" type="submit" class="btn btn-lg btn-default">Post Comment</button>
+                            <button id="insertEditReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
                             </c:if>
                             <c:if test="${empty m_code}">
                             <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>
@@ -167,7 +170,11 @@
 			</div>
 		</section>
 	</section>
-
+	<script>
+		function editDelete() {
+			$('#editDelete').submit();
+		}
+	</script>
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 </body>

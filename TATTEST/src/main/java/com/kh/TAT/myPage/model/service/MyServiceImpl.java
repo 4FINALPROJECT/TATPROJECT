@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.TAT.common.model.vo.Edit;
+import com.kh.TAT.common.model.vo.EditReplyBoard;
 import com.kh.TAT.common.model.vo.Member;
+import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
+import com.kh.TAT.common.model.vo.QuestionCategory;
 import com.kh.TAT.myPage.model.dao.MyDao;
 import com.kh.TAT.myPage.model.vo.MyPayment;
 import com.kh.TAT.myPage.model.vo.MyProject;
@@ -71,5 +75,61 @@ public class MyServiceImpl implements MyService {
 	public List<MyPayment> selectListPayment(String m_code) {
 		
 		return myD.selectListPayment(m_code);
+	}
+
+	
+	// 1:1 게시판 관련
+	@Override
+	public List<QuestionAnswerBoard> selectQuestionBoard(String m_code) {
+		
+		return myD.selectQuestionBoard(m_code);
+	}
+
+	@Override
+	public List<QuestionAnswerBoard> widgetComment(String m_code) {
+		
+		return myD.widgetComment(m_code);
+	}
+
+	@Override
+	public List<QuestionCategory> selectCategory() {
+		
+		return myD.selectCategory();
+	}
+
+	@Override
+	public int insertWriteBoard(QuestionAnswerBoard qab) {
+		
+		return myD.insertWriteBoard(qab);
+	}
+
+	@Override
+	public QuestionAnswerBoard selectOneBoard(int qa_num) {
+	
+		return  myD.selectOneBoard(qa_num);
+	}
+
+	@Override
+	public Edit selectOneProjectDetail(String e_code) {
+		
+		return myD.selectOneProjectDetail(e_code);
+	}
+
+	@Override
+	public List<EditReplyBoard> selectListReply(String e_code) {
+		
+		return myD.selectListReply(e_code);
+	}
+
+	@Override
+	public int countComment(String e_code) {
+		
+		return myD.countComment(e_code);
+	}
+
+	@Override
+	public int createProject(Edit newProject) {
+		
+		return myD.createProject(newProject);
 	}
 }

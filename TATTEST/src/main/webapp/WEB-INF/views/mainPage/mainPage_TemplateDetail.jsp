@@ -90,9 +90,12 @@
                                             </div>
                                             <c:if test="${m_code eq tempReply.m_code}">
                                             <a data-target="#${tempReply.tr_num}" data-toggle="collapse">수정</a>                                                                                        
-                                            
-                                            <a href="${pageContext.request.contextPath}/main/DeleteReply.tat?m_code=${tempReply.m_name}&tr_num=${tempReply.tr_num}&t_code=${temp.t_code}">삭제</a>
-                                            <form class="UpdateReply" action="${pageContext.request.contextPath}/main/UpdateReply.tat">
+                                            <form id="tempDelete" action="${pageContext.request.contextPath}/main/DeleteReply.tat" method="post">
+                                            <input type="hidden" name="tr_num" value="${tempReply.tr_num}"/>
+											<input type="hidden" name="t_code" value="${temp.t_code}"/>
+                                            <a onclick="tempDelete()">삭제</a>
+                                            </form>
+                                            <form class="UpdateReply" action="${pageContext.request.contextPath}/main/UpdateReply.tat" method="post">
                                             <div class="collapse" id="${tempReply.tr_num}">											  
 											  <input type="text" name="tr_reply" placeholder="${tempReply.tr_reply}" value=""/>	
 											  <input type="hidden" name="tr_num" value="${tempReply.tr_num}"/>
@@ -117,7 +120,7 @@
 								<%-- <c:param name="t_code" value="${temp.t_code}"/>
 								<c:param name="m_code" value=""/> --%>
 							</c:url>
-                            <form id="insertReplyForm" action="${insertReply}">
+                            <form id="insertReplyForm" action="${insertReply}" method="post">
                             <div class="comment_form">
                                <div class="row">
                                <input type="hidden" value="${temp.t_code}" name="t_code"/>
@@ -142,7 +145,7 @@
                                 </div>
                             </div>
 							<c:if test="${!empty m_code}">
-                            <button id="insertReply" type="submit" class="btn btn-lg btn-default">Post Comment</button>
+                            <button id="insertReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
                             </c:if>
                             <c:if test="${empty m_code}">
                             <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>
@@ -221,6 +224,10 @@
 	        isotope();
 	        $(window).smartresize(isotope);
 	    }(jQuery));
+	    
+	function tempDelete() {
+		$('#tempDelete').submit();
+	}    
 	</script>
 </body>
 </html>

@@ -53,31 +53,29 @@
 	                        </div><!-- end desc -->
 	
 	                        <div class="blog-button">
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat">상세 보기</a>
+	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat?e_code=${p.e_code}">상세 보기</a>
+	                            <%-- <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/edit/Main.tat?e_code=${p.e_code}">편집 하기</a> --%>
+								<form style="display: inline-block;" method="post" action="${pageContext.request.contextPath}/edit/Main.tat">
+									<input type="hidden" name="e_code" value="${ p.e_code }"/>
+									<input type="submit" class="btn btn-small btn-default" value="편집 하기"/>
+								</form>               
 	                        </div>
 	                    </div>
 	                </div>
 					</c:forEach>
 	                
 	            </div>
-	            <div class="col-sm-12 text-center">
-	                <ul class="pagination">
-	                    <li><a href="#">&laquo;</a></li>
-	                    <li class="active"><a href="#">1</a></li>
-	                    <li><a href="#">2</a></li>
-	                    <li><a href="#">3</a></li>
-	                    <li><a href="#">4</a></li>
-	                    <li><a href="#">5</a></li>
-	                    <li><a href="#">&raquo;</a></li>
-	                </ul>
-	            </div>
+	            
 	        </div> <!--/.container-->
 	    </section>
 		
 	</section>
-
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
+	<c:if test="${ msg != null }">
+		<c:import url="common/msg.jsp"></c:import>
+	</c:if>
+	
 	<script>
 	    (function ($) {
 	        var $container = $('.masonry_wrapper_blog'),
@@ -140,6 +138,10 @@
 	        isotope();
 	        $(window).smartresize(isotope);
 	    }(jQuery));
+	    
+	    
+	    
+	    
 	</script>
 </body>
 </html>

@@ -37,158 +37,41 @@
                 </div>
                 
             </div>
-            <div class="col-lg-6 col-sm-6 ">
-                <div class="panel-group accordion" id="accordion">
+            <div class="col-lg-12 col-sm-9 ">
+                <div class="panel-group accordion faqBoardList" id="accordion">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse02">
+                                <a class="faqQuestion" data-toggle="collapse" data-parent="#accordion" href="#collapse02">
                                    
                                     Morbi Congue Turpis Sollicitudin
                                 </a>
                             </h4>
                         </div>
                         <div id="collapse02" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse03">
-                                   
-                                    Nisi Massa Pretium Mauris Nec Tincidunt Tortor
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse03" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse04">
-                                   
-                                    Exercitationem Interdum Porttitor
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse04" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-sm-6 ">
-                <div class="panel-group accordion" id="toggle">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse06">
-                                    This is an awesome template
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse06" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse00">
-                                   
-                                    Click me to display content
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse00" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">
-                                   
-                                    Visual Composer
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse10" class="panel-collapse collapse">
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="panel-body faqAnswer">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</div>
+                            <div class="col-lg-12 col-sm-3 setBtn">
                 
+           					</div> 
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            
+            
+
             <div class="col-sm-12 text-center">
 						<ul class="pagination">
-							<li><a href="#">&laquo;</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&raquo;</a></li>
+							
 						</ul>
-					</div>
-	                
-	                <div class="col-lg-12 col-md-12 col-sm-12">
-	                    <div class="dividerHeading">
-	                        <h4><span>FAQ 등록</span></h4>
-	                    </div>
-	                    <p>Vidit nulla errem ea mea. Dolore apeirian insolens mea ut, indoctum consequuntur hasi. No aeque dictas dissenti as tusu, sumo quodsi fuisset mea in. Ea nobis populo interesset cum, ne sit quis elit officiis, min im tempor iracundia sit anet. Facer falli aliquam nec te. In eirmod utamur offendit vis, posidonium instructior sed te.</p>
-	
-	                    <div class="alert alert-success hidden alert-dismissable" id="contactSuccess">
-	                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	                        <strong>Success!</strong> Your message has been sent to us.
-	                    </div>
-	
-	                    <div class="alert alert-error hidden" id="contactError">
-	                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	                        <strong>Error!</strong> There was an error sending your message.
-	                    </div>
-	
-	                    <form id="contactForm" action="" novalidate="novalidate">
-	                        <div class="row">
-	                            <div class="form-group">
-	                                <div class="col-lg-6 ">
-	                                    <input type="text" id="name" name="name" class="form-control" maxlength="100" data-msg-required="Please enter your name." value="" placeholder="Your Name" >
-	                                </div>
-	                                <div class="col-lg-6 ">
-	                                    <input type="email" id="email" name="email" class="form-control" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="" placeholder="Your E-mail" >
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="row">
-	                            <div class="form-group">
-	                                <div class="col-md-12">
-	                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="row">
-	                            <div class="form-group">
-	                                <div class="col-md-12">
-	                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
-	
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="row">
-	                            <div class="col-md-12">
-	                                <input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" value="Send Message">
-	                            </div>
-	                        </div>
-	                    </form>
+			</div>
+				<div class="col-sm-12 text-center">
+	               <input type="submit" class="btn btn-default btn-lg" onclick="createFaq()"  value="등록 ">
+	            </div>
+
+	                <div class="col-lg-12 col-md-12 col-sm-12 FaqFormPage">
+	                    
 	                </div>
 	                
 				</div>
@@ -196,6 +79,253 @@
 		</section>
 		
 	</section>
+	
+	<script>
+	 window.onload = function(){
+		 pageIndex(1);
+		 pageBtn();
+		 
+	 }
+		var showCount = 5;
+		var btnCount = 5;
+		var showDoubleCount = 5.0;
+		var pageVal;
+		
+		
+		function updateFaq(num){
+			var faq_num = num;
+			$('.FaqFormPage').children().remove();
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/FaqSelectUpdateListAjax.tat",
+				type : "post",
+				dataType : 'json', 
+				data : {"faq_num" : faq_num,},
+				success : function(data){
+					for(var idx in data){
+					$('.FaqFormPage').append('<div class="dividerHeading"><h4><span>FAQ 수정</span></h4></div><form id="contactForm" action="" novalidate="novalidate">'+
+				        	'<div class="row"><div class="form-group"><div class="col-md-2"><select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">'+
+				            '</select></div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
+				            '<input type="text" id="subject" name="subject" class="form-control updateQuestion" maxlength="100" data-msg-required="Please enter the subject." value="'+data[idx].faq_question+'" placeholder="Subject">'+
+				            '</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
+				            '<textarea id="message" class="form-control updateAnswer" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000">'+data[idx].faq_answer+'</textarea>'+
+				            '</div></div></div><div class="row"><div class="col-md-12"><input type="submit" class="btn btn-default btn-lg" onclick="updateBtn('+data[idx].faq_num+')"  value="수정하기"></div></div></form>');
+					
+					}
+					pageSelect();
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+			
+		}
+		function updateBtn(num){
+			console.log($('.faqSelect').val());
+			console.log($('.updateQuestion').val());
+			console.log($('.updateAnswer').val());
+			var qccode = $('.faqSelect').val();
+			var quest = $('.updateQuestion').val();
+			var answer = $('.updateAnswer').val();
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/updateFaqQuestionAjax.tat",
+				type : "post",
+				dataType : 'json',
+				data : {"qccode" : $('.faqSelect').val(),
+						"quest" : $('.updateQuestion').val(),
+						"answer" : $('.updateAnswer').val(),
+						"faq_num" : num
+				},success : function(data){
+					alert("등록이 완료되었습니다.");
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			});
+		}
+		function deleteBtn(num){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/deleteFaqQuestionAjax.tat",
+				type : "post",
+				dataType : 'json',
+				data : {"faq_num" : num
+				},success : function(data){
+					alert("삭제가 되었습니다.");
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			});
+		}
+		function createFaq(){
+			$('.FaqFormPage').empty();
+			$('.FaqFormPage').append('<div class="dividerHeading"><h4><span>FAQ 등록</span></h4></div><form id="contactForm" action="" novalidate="novalidate">'+
+        	'<div class="row"><div class="form-group"><div class="col-md-2"><select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">'+
+            '</select></div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
+            '<input type="text" id="subject" name="subject" class="form-control insertQuestion" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">'+
+            '</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
+            '<textarea id="message" class="form-control insertAnswer" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>'+
+            '</div></div></div><div class="row"><div class="col-md-12"><input type="submit" class="btn btn-default btn-lg" onclick="createBtn()"  value="등록하기"></div></div></form>');
+			pageSelect();
+		}
+		function pageSelect(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/FaqSelectAjax.tat",
+				type : "post",
+				dataType : 'json',
+				success : function(data){
+					if(data.length==0){$('.faqSelect').append('<option value="">선택</option>')}
+					for(var idx in data){
+						$('.faqSelect').append('<option value="'+data[idx].qc_code+'">'+data[idx].qc_name+'</option');
+						
+
+					}
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			});
+			
+		}
+		function createBtn(){
+			alert("??");
+			console.log($('.faqSelect').val());
+			console.log($('.insertQuestion').val());
+			console.log($('.insertAnswer').val());
+			var qccode = $('.faqSelect').val();
+			var quest = $('.insertQuestion').val();
+			var answer = $('.insertAnswer').val();
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/insertFaqQuestionAjax.tat",
+				type : "post",
+				dataType : 'json',
+				data : {"qccode" : $('.faqSelect').val(),
+						"quest" : $('.insertQuestion').val(),
+						"answer" : $('.insertAnswer').val()	
+				},success : function(data){
+					alert("등록이 완료되었습니다.");
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			})
+		}
+
+		function pageNextFirstBtn(){
+			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
+		}
+		 function pageNextBtn(i){
+			
+			 var num = Math.ceil(((showCount*btnCount*i)+1)/showDoubleCount);
+			 pageIndex(num);
+			 pageNextBtnCreate(i,num);
+		}; 
+		
+		function pageBtnCreate(total){
+			$('.pageIndex').empty();
+			var num; 
+			if(total%showDoubleCount != 0){
+				num = Math.ceil(total/showCount);
+			}
+			else{
+			num = Math.ceil(total/showCount);
+			} 
+			if(num > 5){
+				num = 5
+				for(var i= 1 ; i<=num;i++ ){ 
+					$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+i+'</a></li>');
+				}
+			}else{
+				for(var i= 1 ; i<=num;i++ ){ 
+				$('.pagination').append('<li class="pageIndex'+i+'"><a onclick="pageIndex('+i+')";>'+i+'</a></li>');
+				};
+			}	
+		};
+		
+		function pageBtn(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/FaqTotalAjax.tat",
+				type : "post",
+				dataType : 'json', 		
+				success : function(data){
+					var total = data;
+					var count = Math.ceil(total/showDoubleCount);
+					pageBtnCreate(total);
+					if(count>btnCount){pageNextFirstBtn();}
+				},error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+		};
+		
+		
+		
+		function pageIndex(pageStartNum){
+			
+			var start = pageStartNum-1;
+			 $('.faqBoardList').empty();
+			 $('.setBtn').empty();
+			 $.ajax({
+				url : "${pageContext.request.contextPath}/admin/FaqAjax.tat",
+				type : "post",
+				dataType : 'json', 
+				data : {"start" : start,},
+				success : function(data){createPageList(data);},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(ajax.responseText);
+			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
+			}); 
+		};
+		function createPageList(data){
+			console.log("ajax 리스트 이름 확인 : "+data.FaqList);
+			console.log("ajax data 전체 확인 : "+data);
+			var count = 0;
+			for(var idx in data){
+				count++;
+				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
+			$('.faqBoardList').append(
+			'<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">'+
+			'<a class="faqQuestion" data-toggle="collapse" data-parent="#accordion" href="#collapse'+data[idx].faq_num+'">'+
+			data[idx].faq_question+'</a></h4></div><div id="collapse'+data[idx].faq_num+'" class="panel-collapse collapse">'+
+			'<div class="panel-body">'+data[idx].faq_answer+'</div><input type="submit" class="btn btn-default btn-lg" onclick="updateFaq('+data[idx].faq_num+')"  value="수정">'+
+            '<input type="submit" class="btn btn-default btn-lg" onclick="deleteBtn('+data[idx].faq_num+')"  value="삭제"></div></div></div>');
+				/* $('.setBtn').append('<div class="col-lg-12 col-sm-3 ">'+
+            '<input type="submit" class="btn btn-default btn-lg" onclick="insertFaq()"  value="수정">'+
+            '<input type="submit" class="btn btn-default btn-lg" onclick="insertFaq()"  value="삭제"></div>');*/
+			}; 
+		};
+			
+			
+		 function pageNextBtnCreate(num){
+			 var start = (showDoubleCount * btnCount * num) + 1;
+			 $.ajax({
+					url : "${pageContext.request.contextPath}/admin/FaqTotalCountAjax.tat",
+					type : "post",
+					dataType : 'json',
+					data: {"start" : start},
+					success : function(data){
+						  $('.pagination').empty();
+						  var total = Math.ceil(data/showDoubleCount);
+						  var nextFlag = false;
+						  if(total > btnCount){total = btnCount; nextFlag = true;}
+						  var prevBtn = num-1;
+						  if(prevBtn >= 0){
+							 $('.pagination').append('<li class="pagePreBtn"><a onclick="pageNextBtn('+prevBtn+')";>‹‹</a></li>');
+						  }
+						  var start = num*btnCount;
+						  for(var i = 1 ;i<=total ;i++){
+							var btnIndex = start+i;
+							$('.pagination').append('<li class="pageIndex'+btnIndex+'"><a onclick="pageIndex('+btnIndex+')";>'+btnIndex+'</a></li>');
+						  }  
+						  var nextBtn = num+1;
+						  if(nextFlag){  
+						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
+						  }
+					},error: function(jqXHR, textStatus, errorThrown) {
+						console.log(ajax.responseText);
+				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+				}); 
+			  
+		};	
+	</script>
 
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>

@@ -36,9 +36,9 @@
 					<div class="col-lg-12 isotope">
 						<ul id="filter">
 							<li data-filter="*" class="selected"><a href="#">전체</a></li>
-							<li data-filter=".responsive"><a href="#">최신</a></li>
-							<li data-filter=".mobile"><a href="#">별점</a></li>
-							<li data-filter=".branding"><a href="#">댓글</a></li>
+							<li id="RecentBtn" data-filter=".responsive"><a id="Recent" href="${pageContext.request.contextPath}/main/DateRecent.tat">최신</a></li>
+							<li id="RateCount" data-filter=".mobile"><a id="Rate" href="${pageContext.request.contextPath}/main/RateCount.tat">별점</a></li>
+							<li id="ReplyCount" data-filter=".branding"><a id="reply" href="${pageContext.request.contextPath}/main/ReplyCount.tat">댓글</a></li>
 						</ul>
 						<div class="mixed-container masonry_wrapper">
 							<c:forEach items="${edit}" var="edit">
@@ -51,7 +51,11 @@
 												<h5>${edit.proj_name}</h5>
 												<span>${edit.proj_comment}</span>
 												<a href="#" class="fa fa-search mfp-image"></a>
-												<a href="${pageContext.request.contextPath}/main/ExploreDetail.tat?e_code=${edit.e_code}&m_code=${edit.m_code}" class="fa fa-link"></a>
+												<form id="EditDetail" action="${pageContext.request.contextPath}/main/ExploreDetail.tat" method="post">
+												<input type="hidden" name="e_code" value="${edit.e_code}" />
+												<input type="hidden" name="m_code" value="${edit.m_code}" />
+												<a class="fa fa-link" onclick="EditDetail()"></a>
+												</form>
 											</div>
 										</div>
 									</figure>
@@ -151,6 +155,22 @@
 	        isotope();
 	        $(window).smartresize(isotope);
 	    }(jQuery));
+	    
+	$('#RecentBtn').on('click', function() {
+		$('#Recent').click();
+	});   
+	
+	$('#ReplyCount').on('click', function() {
+		$('#reply').click();
+	});
+	
+	$('#RateCount').on('click', function() {
+		$('#Rate').click();
+	});
+	
+	function EditDetail() {
+		$('#EditDetail').submit();
+	}
 	</script>
 </body>
 </html>

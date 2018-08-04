@@ -5,13 +5,18 @@
 <head>
 	<title>템플릿</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+	<style>
+		label{
+			position: absolute;
+			left:15px;
+		}
+	</style>
 </head>
 <body>
 	<c:import url="common/mainPage_Header.jsp"></c:import>
 	<c:import url="common/mainPage_Signin.jsp"></c:import>
 	<c:import url="common/mainPage_Signup.jsp"></c:import>
-	
-	<section class="wrapper">
+	 <section class="wrapper">
 		<section class="page_head">
 			<div class="container">
 				<div class="row">
@@ -54,7 +59,10 @@
 			                            <p>${te.t_comment}</p>
 			                        </div>
 			                        <div class="blog-button">
-			                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/main/TemplateDetail.tat?t_code=${te.t_code}">Read More</a>
+			                        	<form action="${pageContext.request.contextPath}/main/TemplateDetail.tat" method="post">
+			                        		<input type="hidden" name="t_code" value="${te.t_code}" />
+			                            	<button class="btn btn-small btn-default" type="submit">Read More</button>
+			                            </form>
 			                        </div>
 			                    </div>
 			                </div>
@@ -97,7 +105,6 @@
                </div>
            </div>
        </section>
-
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 	<script>
@@ -162,6 +169,7 @@
 	        isotope();
 	        $(window).smartresize(isotope);
 	    }(jQuery));
-	</script>
+	</script> 
+
 </body>
 </html>

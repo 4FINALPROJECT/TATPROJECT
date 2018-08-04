@@ -15,7 +15,7 @@
 			</div>
 			<div class="modal-body">
 				<form id="memberLogin" method="post" name="loginform" 
-				action="${pageContext.request.contextPath}/main/memberLogin.tat" method="post">
+				action="${pageContext.request.contextPath}/main/Main.tat" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group text-center" >
                         <button id="loginForm" type="submit" class="btn btn-default btn-lg button">로그인</button>
-                        <button type="button" class="btn btn-default btn-lg button"  data-dismiss="modal" data-toggle="modal" data-target="#signup">회원가입</button>
+                        <button id="upForm" type="button" class="btn btn-default btn-lg button"  data-dismiss="modal" data-toggle="modal" data-target="#signup">회원가입</button>
                         <button type="button" class="btn btn-default btn-lg button" data-toggle="modal" data-target="#searchTime">비밀번호 찾기</button>
                     </div>
                 </form>
@@ -75,14 +75,14 @@
 		                </div>
 		            </div>
 		            <div class="col-sm-6 mrgb-30 text-center">
-		                <a class="btn btn-sm btn-social-googleplus" onclick="GoogleLogin()">
+		                <a class="btn btn-default btn-lg button" onclick="GoogleLogin()">
 		                    <!-- <i class="fa fa-google-plus"></i><br /> -->
 		                    <div class="g-signin2" onclick="GoogleLogin()" data-onsuccess="onSignIn" data-theme="dark" data-height="30"></div>
 		                    
 		                </a>
 		            </div>
 		            <div class="col-sm-6 mrgb-30 text-center">
-		                <a class="btn btn-sm btn-social-facebook">
+		                <a class="btn btn-default btn-lg button">
 		                    <!-- <i class="fa fa-facebook" ></i> -->
 
 		                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState()">Facebook</fb:login-button>

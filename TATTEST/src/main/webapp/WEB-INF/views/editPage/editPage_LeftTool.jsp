@@ -33,7 +33,7 @@
          <table>
             <tbody>
                <tr>
-               <td><i class="fas fa-home"></i>Home</td>
+               <td><i class="fas fa-home"></i></td>
                </tr>
             </tbody>
             <footer>
@@ -371,48 +371,9 @@
       </div>
          <div id="tool_menu3-6" class="content">
          <br>버튼
-            <div class="btn_float" >
-            <input id="btn_skin1" type="button" value="CLICK">
-            </div>
             <div class="btn_float">
-          <input id="btn_skin2" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin3" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin4" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin5" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin6" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin7" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin8" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin9" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin10" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin11" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin12" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin13" type="button" value="CLICK">
-          </div>
-          <div class="btn_float">
-          <input id="btn_skin14" type="button" value="CLICK">
-          </div>
+          		<div class="btn_style">CLICK</div>
+          	</div>
          </div>
       <div id="tool_menu3-7" class="content">
          <br>
@@ -464,29 +425,30 @@
          <br>연락처
       </div>
       <div id="tool_menu3-14" class="content">
-         <br>메뉴
-         <div class="titleMenu">
-            <table style = "font-size : 15px; text-align : center;">
-               <thead>
+         <br>메뉴<br>
+         <div class="titleMenu" style="width : 90%;">
+            <table style = "font-size : 10px; text-align : center;">
+               <tbody>
                   <tr>
-                     <th>HOME</th>
-                     <th>Page-1</th>
-                     <th>Page-2</th>
-                     <th>Page-3</th>
+                     <td style="border : 1px solid black; width : 70px;">HOME</td>
+                     <td style="border : 1px solid black; width : 70px;">Page</td>
+                     <td style="border : 1px solid black; width : 70px;">Page</td>
+                     <td style="border : 1px solid black; width : 70px;">Page</td>
                   </tr>
-               </thead>
+               </tbody>
             </table>
          </div>
-         <div class="titleMenu">
-            <table style = "font-size : 15px; text-align : center; background : red;">
-               <thead>
+         <br>
+         <div class="titleMenu" style="width : 90%;">
+            <table style = "font-size : 10px; text-align : center; background : red;">
+               <tbody>
                   <tr>
-                     <th>HOME</th>
-                     <th>Page-1</th>
-                     <th>Page-2</th>
-                     <th>Page-3</th>
+                     <td style="border : 1px solid black; width : 70px;">HOME</td>
+                     <td style="border : 1px solid black; width : 70px;">Page</td>
+                     <td style="border : 1px solid black; width : 70px;">Page</td>
+                     <td style="border : 1px solid black; width : 70px;">Page</td>
                   </tr>
-               </thead>
+               </tbody>
             </table>
          </div>
       </div>

@@ -42,7 +42,7 @@
 	            </div>
 	            <div class="col-lg-12 col-md-12 col-sm-12">
 	                <div class="table-responsive">
-<<<<<<< HEAD
+
 	                    <table class="table table-striped table-hover">
 	                    <thead>
 					    <tr>
@@ -55,45 +55,31 @@
 					  </thead>
 					  <tbody>
 					  <c:forEach items="${qa}" var="qa">
-					    <tr class="" data-toggle="modal" data-target="">
+					  	
+					    <tr class="">					    
 					      <th scope="row">${qa.qa_num}</th>
 					      <td>${qa.qc_code}</td>
 					      <td>${qa.qa_title}</td>
 					      <td>${qa.m_code}</td>
 					      <td>${qa.qa_date}</td>
+					      <td>
+					      <form class="QuestionD" action="${pageContext.request.contextPath}/main/QuestionDetail.tat" method="post">
+					  		<input type="hidden" name="qa_num" value="${qa.qa_num}" />
+					  		<button type="submit" style="background: white; border-radius: 12px;">내용보기</button>
+					      </form>
+					      </td> 
 					    </tr>
+					    
 					   </c:forEach>
 					  </tbody>
-=======
-	                    <table class="table table-striped table-hover">
-	                    <thead>
-					    <tr>
-					      <th scope="col">글번호</th>
-					      <th scope="col">카테고리</th>
-					      <th scope="col">제목</th>
-					      <th scope="col">작성자</th>
-					      <th scope="col">작성일</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					  <c:forEach items="${qa}" var="qa">
-					    <tr class="" data-toggle="modal" data-target="">
-					      <th scope="row">${qa.qa_num}</th>
-					      <td>${qa.qc_code}</td>
-					      <td>${qa.qa_title}</td>
-					      <td>${qa.m_code}</td>
-					      <td>${qa.qa_date}</td>
-					    </tr>
-					   </c:forEach>
-					  </tbody>
->>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
+
 	                    </table>
 	                </div>
-	                        <div class="row">
+	                        <!-- <div class="row">
 	                            <div class="col-md-12">
 	                                <input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" value="Send Message" data-toggle="modal" data-target=".bd-example-modal-lg">
 	                            </div>
-	                        </div>
+	                        </div> -->
 	                <div class="col-sm-12 text-center">
 						<ul class="pagination">
 							<li><a href="#">&laquo;</a></li>
@@ -137,7 +123,7 @@
     </div>
   </div>
 </div>
-	            <div class="row sub_content">
+	            <!-- <div class="row sub_content">
 	                <div class="col-lg-12 col-md-12 col-sm-12">
 	                    <div class="dividerHeading">
 	                        <h4><span>Get in Touch</span></h4>
@@ -185,12 +171,16 @@
 	
 	                
 	
-	            </div>
+	            </div> -->
 	        </div>
 	    </section>
 		
 	</section>
-
+	<script>
+		function QuestionD() {
+			$('.QuestionD').submit();
+		}
+	</script>
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
 </body>
