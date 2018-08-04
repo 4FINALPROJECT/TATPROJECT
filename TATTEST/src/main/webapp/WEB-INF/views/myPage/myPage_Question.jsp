@@ -104,7 +104,7 @@
 				            
 				            <div class="col-lg-12 col-md-12 col-sm-12" >
 				                <div class="table-responsive">
-				                    <table class="table" id="listTable">
+				                    <table class="table">
 				                        <thead>
 				                        <tr>
 				                            <th>글 번호</th>
@@ -117,7 +117,7 @@
 				                        </thead>
 				                        <tbody>
 				                        	<c:forEach items="${list}" var="b">
-					                        <tr id="boardTR">
+					                        <tr>
 					                            <td>${b.qa_num}</td>
 					                            <td>${b.qc_code}</td>
 					                            <td>${b.qa_title}</td>
@@ -263,25 +263,7 @@
 			}
 			
 		});
-		
-		$(function(){
 			
-			$('#listTable td').mouseenter(function(){
-				$(this).parent().css({
-					"background" : "#dad5e6",
-					"cursor":"pointer"
-					});
-				}).mouseout(function(){
-					$(this).parent().css({
-						"background": "white"
-						});
-					}).click(function(){
-					
-					var qa_num = $(this).parent().children().eq(0).text();
-					 location.href="${pageContext.request.contextPath}/my/QuestionDetail.tat?qa_num="+qa_num;
-				});
-			});
-		
 		
 		
 		

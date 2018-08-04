@@ -7,5 +7,4 @@ public interface EditService {
 	Member memberSelectPayment(String m_code);
 
 	Edit projectSelectOne(String e_code);
-
 }

@@ -22,4 +22,14 @@
 		INSERT INTO "FINALDB"."FAQ_BOARD" (FAQ_NUM, M_CODE, QC_CODE, FAQ_QUESTION, FAQ_ANSWER, FAQ_DATE) 
 		VALUES (SEQ_FAQ.NEXTVAL, 'A001',#{qc_code},#{faq_question},#{faq_answer}, TO_DATE('2018-01-12', 'YYYY-MM-DD'))
 	</insert>
+	<select id="faqSelectUpdateList" resultType="FaqBoard" parameterType="_int" >
+		SELECT * FROM FAQ_BOARD WHERE FAQ_NUM = #{faq_num}
+	</select>
+	
+	<update id="faqUpdateList">
+		UPDATE FAQ_BOARD SET QC_CODE = #{qc_code}, FAQ_QUESTION = #{faq_question}, FAQ_ANSWER = #{faq_answer} WHERE FAQ_NUM LIKE #{faq_num}
+	</update>
+	<delete id="faqDeleteList">
+		DELETE FROM FAQ_BOARD WHERE FAQ_NUM = #{faq_num}
+	</delete>
 </mapper>
