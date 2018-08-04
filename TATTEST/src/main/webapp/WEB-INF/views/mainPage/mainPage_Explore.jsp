@@ -45,16 +45,16 @@
 							<div class="item responsive">
 								<div class="recent-item box">
 									<figure class="touching ">
-										<img src="${pageContext.request.contextPath}/resources/images/apple-devices-2.png" alt="" class="img-responsive"/>
+			                            <%-- <iframe src="${pageContext.request.contextPath}/WEB-INF/views/${edit.m_code}/${edit.e_code}/home.jsp" width="100%" height="320" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			                             --%><iframe src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${edit.m_code}" width="100%" height="320" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 										<div class="option inner">
 											<div>
 												<h5>${edit.proj_name}</h5>
-												<span>${edit.proj_comment}</span>
-												<a href="#" class="fa fa-search mfp-image"></a>
-												<form id="EditDetail" action="${pageContext.request.contextPath}/main/ExploreDetail.tat" method="post">
-												<input type="hidden" name="e_code" value="${edit.e_code}" />
-												<input type="hidden" name="m_code" value="${edit.m_code}" />
-												<a class="fa fa-link" onclick="EditDetail()"></a>
+												<span style="margin:50px;">${edit.proj_comment}</span>
+												<form id="${edit.e_code}" action="${pageContext.request.contextPath}/main/ExploreDetail.tat" method="post">
+													<input type="hidden" name="e_code" value="${edit.e_code}" />
+													<input type="hidden" name="m_code" value="${edit.m_code}" />
+													<button class="btn btn-default fa fa-search" onclick=function(){$('#${edit.e_code}').submit();};>상세 보기</button>
 												</form>
 											</div>
 										</div>
@@ -168,9 +168,6 @@
 		$('#Rate').click();
 	});
 	
-	function EditDetail() {
-		$('#EditDetail').submit();
-	}
 	</script>
 </body>
 </html>
