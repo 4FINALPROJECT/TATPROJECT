@@ -313,7 +313,7 @@ function moveRedo() {
 
 
 //undo 뒤로가기
-$('.tat-head-content-right > div:nth-child(6)').click(function(){
+$('#undo-btn').click(function(){
 	if ( tmp == null ) {
 		alert("기록이 없습니다.");
 	} else {
@@ -349,7 +349,7 @@ $('.tat-head-content-right > div:nth-child(6)').click(function(){
 
 
 // redo 앞으로가기
-$('.tat-head-content-right > div:nth-child(5)').click(function(){
+$('#redo-btn').click(function(){
 	if ( tmp == null ) {
 		alert("기록이 없습니다.");
 	} else {

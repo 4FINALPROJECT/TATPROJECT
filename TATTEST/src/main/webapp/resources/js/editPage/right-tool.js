@@ -1,6 +1,7 @@
 
 var bodysize = parseInt($(".edit-view-body-wrap").css("height"));
 var objectBottomTop;
+
 $(function(){
    
    testdrag();
@@ -250,33 +251,33 @@ function test345435(){
            if($("#type_inpo").children('select').children().attr("value") == objFontFamily){
               
            } else {
-        	   
-        	  if($("#is_usableChk").val() == "Y"){
-        		  
-        		  $("#type_inpo").children('input').eq(0).attr("value",rgb2hex(objBackColor));
-        		  if(rgb2hex(objBorder_color) == "#333333"){
-        			  $("#type_inpo").children('input').eq(1).attr("value","#000000");
-        		  } else {
-        			  $("#type_inpo").children('input').eq(1).attr("value",rgb2hex(objBorder_color));  
-        		  }
+              
+             if($("#is_usableChk").val() == "Y"){
+                
+                $("#type_inpo").children('input').eq(0).attr("value",rgb2hex(objBackColor));
+                if(rgb2hex(objBorder_color) == "#333333"){
+                   $("#type_inpo").children('input').eq(1).attr("value","#000000");
+                } else {
+                   $("#type_inpo").children('input').eq(1).attr("value",rgb2hex(objBorder_color));  
+                }
                   $("#type_inpo").children('input').eq(2).attr("value",objBorder[1]);
-                  $("#type_inpo").children('input').eq(3).attr("value",objBorder[0]);	  
-        		  $("#type_inpo").children('input').eq(4).attr("value",objFontSize);
-        		  $("#type_inpo").children('input').eq(5).attr("value",rgb2hex(objFontColor));
-        		  $("#type_inpo").children('select').children().eq(0).attr("value",objFontFamily);
-        		  
-        	  } else {
-        		  if(rgb2hex(objBackColor) == "#000000"){
-        			  $("#free_type").children('select').eq(0).children().eq(0).attr("value","");  
-        		  } else {
-        			  $("#free_type").children('select').eq(0).children().eq(0).attr("value",rgb2hex(objBackColor));  
-        		  }
-        		  $("#free_type").children('select').eq(1).children().eq(0).attr("value",objFontFamily);
-        		  $("#free_type").children('select').eq(2).children().eq(0).attr("value",rgb2hex(objFontColor));
-        		  $("#free_type").children('input').eq(0).attr("value",objFontSize);
-        		  
-        	  }
-        	  
+                  $("#type_inpo").children('input').eq(3).attr("value",objBorder[0]);     
+                $("#type_inpo").children('input').eq(4).attr("value",objFontSize);
+                $("#type_inpo").children('input').eq(5).attr("value",rgb2hex(objFontColor));
+                $("#type_inpo").children('select').children().eq(0).attr("value",objFontFamily);
+                
+             } else {
+                if(rgb2hex(objBackColor) == "#000000"){
+                   $("#free_type").children('select').eq(0).children().eq(0).attr("value","");  
+                } else {
+                   $("#free_type").children('select').eq(0).children().eq(0).attr("value",rgb2hex(objBackColor));  
+                }
+                $("#free_type").children('select').eq(1).children().eq(0).attr("value",objFontFamily);
+                $("#free_type").children('select').eq(2).children().eq(0).attr("value",rgb2hex(objFontColor));
+                $("#free_type").children('input').eq(0).attr("value",objFontSize);
+                
+             }
+             
            }
            
 //           $(".objectData_txt").eq(0).attr("value", "");
@@ -290,7 +291,7 @@ function test345435(){
            }
            $(".objectData_txt").eq(3).attr("value", x);
            $(".objectData_txt").eq(4).attr("value", y);
-         	}
+            }
          });
        });
    }
@@ -508,18 +509,18 @@ function test345435(){
              "left":$("#item_inpo").offset().left});
              });
        $("#item_type").on("click",function(){
-    	   $(".inpo_menu").css("display","none");
-    	   if($("#is_usableChk").val() == "Y"){
-    	          $("#type_inpo").css("display","inline-block");
-    	          $("#type_inpo").css({
-    	             "top":$("#item_inpo").offset().top + 40,
-    	             "left":$("#item_inpo").offset().left});
-    	   } else {
-    		   $("#free_type").css("display","inline-block")
-    		   $("#free_type").css({
-  	             "top":$("#item_inpo").offset().top + 40,
-  	             "left":$("#item_inpo").offset().left});
-    	   }
+          $(".inpo_menu").css("display","none");
+          if($("#is_usableChk").val() == "Y"){
+                 $("#type_inpo").css("display","inline-block");
+                 $("#type_inpo").css({
+                    "top":$("#item_inpo").offset().top + 40,
+                    "left":$("#item_inpo").offset().left});
+          } else {
+             $("#free_type").css("display","inline-block")
+             $("#free_type").css({
+                  "top":$("#item_inpo").offset().top + 40,
+                  "left":$("#item_inpo").offset().left});
+          }
        });
        $("#item_close").on("click",function(){close();});
     });
@@ -552,31 +553,31 @@ function test345435(){
     }
     function EnterUpDate_fSize(){
        if(event.keyCode == 13){
-    	   
-    	  if($("#type_inpo").children("input").eq(4).val() <= 100 && $("#type_inpo").children("input").eq(4).val() > 0){
-    		  
-    		  $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#type_inpo").children("input").eq(4).val() + "px");
-    		  
-    	  } else {
-    		  
-    		  alert("1~100의 숫자만 입력해주세요.");
-    		  
-    	  }
+          
+         if($("#type_inpo").children("input").eq(4).val() <= 100 && $("#type_inpo").children("input").eq(4).val() > 0){
+            
+            $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#type_inpo").children("input").eq(4).val() + "px");
+            
+         } else {
+            
+            alert("1~100의 숫자만 입력해주세요.");
+            
+         }
        }
     }
     function free_EnterUpDate_fSize(){
        if(event.keyCode == 13){
-    	   
-    	 if($("#free_type").children("input").eq(0).val() <= 100 && $("#free_type").children("input").eq(0).val() > 0){
-    		 
+          
+        if($("#free_type").children("input").eq(0).val() <= 100 && $("#free_type").children("input").eq(0).val() > 0){
+           
           $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#free_type").children("input").eq(0).val() + "px");
           
-    	 } else {
-    		 
-     		alert("1~100의 숫자만 입력해주세요.");
-     		
-   	  	 }
-    	 
+        } else {
+           
+           alert("1~100의 숫자만 입력해주세요.");
+           
+            }
+        
        }
     }
     function close(){
@@ -584,19 +585,19 @@ function test345435(){
         $(".inpo_menu").css("display","none");
     }
     if($("#is_usableChk").val() == "Y"){
-    	$("#type_inpo").children("select").click(function(){
-    	    $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-family",$(this).val());
-    	});	
+       $("#type_inpo").children("select").click(function(){
+           $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-family",$(this).val());
+       });   
     } else {
-    	$("#free_type").children("select").eq(0).click(function(){
-    		$("div[data-obj-no*="+$("#objectId").val()+"]").children().css("background",$(this).val());
-    	});
-    	$("#free_type").children("select").eq(1).click(function(){
-    		$("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-family",$(this).val());
-    	});
-    	$("#free_type").children("select").eq(2).click(function(){
-    		$("div[data-obj-no*="+$("#objectId").val()+"]").children().css("color",$(this).val());
-    	});
+       $("#free_type").children("select").eq(0).click(function(){
+          $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("background",$(this).val());
+       });
+       $("#free_type").children("select").eq(1).click(function(){
+          $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-family",$(this).val());
+       });
+       $("#free_type").children("select").eq(2).click(function(){
+          $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("color",$(this).val());
+       });
     }
     
     
