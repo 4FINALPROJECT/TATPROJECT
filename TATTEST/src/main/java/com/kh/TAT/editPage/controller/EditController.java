@@ -1,18 +1,24 @@
 package com.kh.TAT.editPage.controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -186,6 +192,10 @@ public class EditController {
 			
 			return "editPage/editPage_Main";
 			
+		} else if ( m_code == null ) {
+			// 에러페이지 처리
+			msg = "로그인 해주세요.";
+			
 		} else if ( e_code == null ){
 			// 에러페이지 처리
 			loc = "/my/Project.tat";
@@ -194,11 +204,7 @@ public class EditController {
 			model.addAttribute("msg", msg);
 			
 			return "myPage/common/msg";
-		} else if ( m_code == null ) {
-			// 에러페이지 처리
-			msg = "로그인 해주세요.";
-			
-		}
+		} 
 			model.addAttribute("loc", loc);
 			model.addAttribute("msg", msg);
 		
@@ -540,5 +546,25 @@ public class EditController {
 	      
 	      map.put("editLog", editLog);
 	      return map;
+	}
+	
+	
+	@RequestMapping("/edit/FileDownload.tat")
+	public void fileDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		
+		String m_code = (String) session.getAttribute("m_code");
+		// e_code 를 받고 
+		String e_code = request.getParameter("e_code");
+		
+		
+		if ( m_code != null && e_code != null ) {
+			Edit edit = editS.projectSelectOne(e_code);
+			
+			//파일저장 디렉토리
+			String saveDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			
+			
+		}
+		
 	}
 }

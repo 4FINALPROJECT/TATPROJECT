@@ -398,7 +398,7 @@ $('#tat-head-logo').on('click', function(){
 	var siteOut = confirm('아직 저장을 안하셨습니다. 저장 하시겠습니까?');
 	if ( siteOut ) {
 		saveEvent();
-		location.href="/TAT/edit/Main.tat";
+		location.href="/TAT/my/Project.tat";
 	} else {
 		
 	}
