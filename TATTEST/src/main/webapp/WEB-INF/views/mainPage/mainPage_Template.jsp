@@ -43,7 +43,7 @@
 			                    <div class="blog-item">
 			                        <figure class="post_video">
 			                            <div class="video">
-			                                <iframe src="http://player.vimeo.com/video/3365942?title=0&amp;byline=0&amp;portrait=0" width="100%" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			                                <iframe src="${pageContext.request.contextPath}/WEB-INF/views/template/${te.t_category}/home.jsp" width="100%" height="320" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 			                            </div>
 			                        </figure>
 			                        <div class="metaInfo">
@@ -61,7 +61,8 @@
 			                        <div class="blog-button">
 			                        	<form action="${pageContext.request.contextPath}/main/TemplateDetail.tat" method="post">
 			                        		<input type="hidden" name="t_code" value="${te.t_code}" />
-			                            	<button class="btn btn-small btn-default" type="submit">Read More</button>
+			                            	<button class="btn btn-small btn-default" type="submit">상세 정보</button>
+			                            	<button class="btn btn-small btn-default" type="">사용 하기</button>
 			                            </form>
 			                        </div>
 			                    </div>
@@ -90,15 +91,15 @@
                <div class="row">
                    <div class="col-sm-9 col-md-9 col-lg-9">
                        <div class="promo_content">
-                           <h3>Electrify is awesome responsive template, with clean design.</h3>
-                           <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. </p>
+                           <h3>도움이 필요하세요?</h3>
+                           <p>FAQ를 확인하고 문의사항을 해결하세요. </p>
                        </div>
                    </div>
                    <div class="col-sm-3 col-md-3 col-lg-3">
                        <div class="pb_action">
-                           <a class="btn btn-lg btn-default" href="#fakelink">
+                           <a class="btn btn-lg btn-default" href="${pageContext.request.contextPath}/main/Faq.tat">
                                <i class="fa fa-shopping-cart"></i>
-                               Download Now
+                               TAT FAQ로 이동하기
                            </a>
                        </div>
                    </div>
