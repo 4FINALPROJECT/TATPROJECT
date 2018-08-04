@@ -5,6 +5,7 @@
 <head>
 	<title>둘러보기</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+	
 </head>
 <body>
 	<c:import url="common/mainPage_Header.jsp"></c:import>
@@ -44,9 +45,8 @@
 							<c:forEach items="${edit}" var="edit">
 							<div class="item responsive">
 								<div class="recent-item box">
-									<figure class="touching ">
-			                            <%-- <iframe src="${pageContext.request.contextPath}/WEB-INF/views/${edit.m_code}/${edit.e_code}/home.jsp" width="100%" height="320" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-			                             --%><iframe src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${edit.m_code}" width="100%" height="320" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+									<figure class="touching">
+										<iframe class="" src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${edit.m_code}" width="100%" height="320px" scrolling="no" frameborder="0" allowfullscreen=""></iframe>
 										<div class="option inner">
 											<div>
 												<h5>${edit.proj_name}</h5>
