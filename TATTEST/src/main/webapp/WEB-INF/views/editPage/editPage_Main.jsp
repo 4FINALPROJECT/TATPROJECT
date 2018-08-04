@@ -19,16 +19,16 @@
 			
 			<div class="tat-my-page">
 				<span style="float: left;">페이지:</span>
-				<span class="mypage-viewList" style="float: left; padding-left:5px; color: coral;">HOME</span>
+				<span class="mypage-viewList" style="float: left; padding-left:5px; color: coral;">${ cururl }</span>
 				<span style="float: right;">▽</span>
 			</div>
 			<div class="tat-my-page-content">
 				<div class="tat-my-page-list">
-					<div>HOME</div>
-					<div>PAGE1</div>
-					<div>PAGE2</div>
-					<div>PAGE3</div>
-					<div>PAGE4</div>
+					<div>home</div>
+					<div>page1</div>
+					<div>page2</div>
+					<div>page3</div>
+					<div>page4</div>
 				</div>
 				<div class="tat-my-page-btn">
 					<div>페이지 관리</div>
@@ -41,15 +41,6 @@
 				사이트
 				<div class="tat-head-content-box tat-sitebox">
 					<div class="cbox-content-wrap siteB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
-					</div>
-				</div>
-			</div>
-			<div class="setWrap">
-				설정
-				<div class="tat-head-content-box tat-setbox">
-					<div class="cbox-content-wrap setB">
 						<div style="float: left;">왼쪽영역</div>
 						<div style="float: right;">오른쪽영역</div>
 					</div>
@@ -92,13 +83,11 @@
 		</div>
 		
 		<div class="tat-head-content-right">
-			<div id="commit-btn" style="background: royalblue; color: white;">게시하기</div>
+			<div id="commit-btn" style="background: royalblue; color: white;">공유하기</div>
 			<div id="save-btn">저장</div>
-			<div>미리보기</div>
-			<div>모바일</div>
-			<div>redo</div>
-			<div>undo</div>
-			<div>더보기</div>
+			<div id="view-btn">미리보기</div>
+			<div id="redo-btn">redo</div>
+			<div id="undo-btn">undo</div>
 		</div>
 	</div>
 </div>
@@ -155,7 +144,30 @@
 
 	
 <script>
+var cururl = '${ cururl }';
 var folderName = '${ fN }';
+
+var pageSelect;
+$('.tat-my-page-list').children().on({
+	"mouseenter" : function() {
+		$(this).css({
+			"background-color" : "#eaf7ff",
+			"cursor" : "pointer"
+		})
+	},
+	"mouseleave" : function() {
+		$(this).css({
+			"background-color" : "white",
+		})
+	},
+	"click" : function() {
+		pageSelect = $(this).html();
+		saveEvent();
+		location.href = "/TAT/edit/Main.tat?cururl="+pageSelect+"&e_code=${fN}";
+	}
+});
+
+
 $(function() {
 	$('.tat-head-content-right > div:nth-child(7)').click(function(){
 		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]"))[0] );

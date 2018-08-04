@@ -39,10 +39,16 @@ public class EditController {
 		
 		String m_code = (String) session.getAttribute("m_code");
 		String e_code = request.getParameter("e_code");
-		
+				
 		String loc = "/"; 
 		String msg = "";
 
+		String page = request.getParameter("cururl");
+		
+		if ( page == null ) {
+			page = "home";
+		}
+		
 		if ( m_code != null && e_code != null ) {
 			
 			
@@ -92,7 +98,7 @@ public class EditController {
 			
 			// body 파일 함수 생성
 			/////////////////////////////////
-			String bodyres = request.getSession().getServletContext().getRealPath("/WEB-INF/views/edit/home.jsp");
+			String bodyres = request.getSession().getServletContext().getRealPath("/WEB-INF/views/edit/"+ page+ ".jsp");
 			scan = new Scanner(new FileInputStream(bodyres));
 			
 			String bodyResult = "";
@@ -133,7 +139,7 @@ public class EditController {
 			
 			// 사용자 파일 저장 경로
 			File newHeadPage = new File(newPageRes+"/"+"head.jsp");
-			File newBodyPage = new File(newPageRes+"/"+"home.jsp");
+			File newBodyPage = new File(newPageRes+"/"+ page +".jsp");
 			File newFooterPage = new File(newPageRes+"/"+"footer.jsp");
 			
 			String readHeadSplit = newHeadPage.toString();
@@ -178,7 +184,7 @@ public class EditController {
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
 			request.setAttribute("fN", edit.getE_code());
-			
+			request.setAttribute("cururl", page);
 			System.out.println(newBodyPage.exists());
 			
 			return "editPage/editPage_Main";
@@ -345,6 +351,7 @@ public class EditController {
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
 			request.setAttribute("fN", edit.getE_code());
+
 			
 			System.out.println(newBodyPage.exists());
 			
@@ -552,7 +559,7 @@ public class EditController {
 			Edit edit = editS.projectSelectOne(e_code);
 			
 			// 파일저장 디렉토리
-			String saveDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String saveDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 			
 			File file = new File(saveDirectory);
 			
