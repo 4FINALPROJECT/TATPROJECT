@@ -61,16 +61,24 @@
 				<div class="tat-head-content-box tat-toolbox">
 					<div class="cbox-content-wrap toolB">
 						<div class="edit-top-left">
-                            <div id="toolChk"><input type="checkbox" checked="true"> 툴 바 </div>
-                            <div id="bodyScale"><input type="checkbox" checked="true"> 눈 금 자 </div>
-                            <div id="grideLine"><input type="checkbox" checked="true"> 그 리 드 라 인 </div>
-                            <div id="obj_array"><input type="checkbox" > 요 소 정 렬 </div>
+                            <div id="rtoolChk">
+                            	<input type="checkbox" id="rtoolLabel" checked="checked"/><label for="rtoolLabel">상세 툴바</label>
+                           	</div>
+                            <div id="ltoolChk">
+                            	<input type="checkbox" id="ltoolLabel" checked="checked"/><label for="ltoolLabel">컨텐츠툴바</label>
+                           	</div>
+                            <div id="bodyScale">
+                            	<input type="checkbox" id="bodyScaleLabel" checked="checked"/><label for="bodyScaleLabel">눈 금 자</label>
+                           	</div>
+                            <div id="grideLine">
+                            	<input type="checkbox" id="grideLineLabel" checked="checked"/><label for="grideLineLabel">그리드라인</label>
+                            </div>
                         </div>
                         <div class="edit-top-right">
-                            <div toolimg="toolChk"> 툴 바 사 진 </div>
-                            <div toolimg="bodyScale"> 눈 금 자 사 진 </div>
-                            <div toolimg="grideLine"> 그 리 드 라 인 사 진 </div>
-                            <div toolimg="obj_array"> 요 소 정 렬 사 진 </div>
+                        	<div toolimg="rtoolChk">상세 툴바</div>
+                        	<div toolimg="ltoolChk">컨텐츠툴바</div>
+                        	<div toolimg="bodyScale">눈 금 자</div>
+                        	<div toolimg="grideLine">그리드라인</div>
                         </div>
 					</div>
 				</div>
@@ -79,15 +87,22 @@
 				도움말
 				<div class="tat-head-content-box tat-contentbox">
 					<div class="cbox-content-wrap conB">
-						<div class="conB-left">
+						<div class="edit-top-left">
 							<div id="editHelp">에디터 도움말 센터</div>
 							<div id="keyEven">키보드 단축키</div>
 							<div id="domainLink">도메인 연결하기</div>
 							<div id="seo">SEO</div>
-							<div>이용약관</div>
-							<div>개인정보 취급방침</div>
+							<div id="tos">이용약관</div>
+							<div id="privacy">개인정보 취급방침</div>
 						</div>
-						<div class="conB-right">오른쪽영역</div>
+						<div class="edit-top-right">
+							<div toolimg="editHelp">에디터 도움말 센터</div>
+							<div toolimg="keyEven">키보드 단축키</div>
+							<div toolimg="domainLink">도메인 연결하기</div>
+							<div toolimg="seo">SEO</div>
+							<div toolimg="tos">이용약관</div>
+							<div toolimg="privacy">개인정보 취급방침</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -95,8 +110,8 @@
 				업그레이드
 				<div class="tat-head-content-box tat-upgradebox">
 					<div class="cbox-content-wrap upB">
-						<div class="edit-top-left"> 결 제 하 쉴 ? </div>
-                        <div class="edit-top-right"> 돈 </div>
+						<div style="float: left;"> 결 제 하 쉴 ? </div>
+                        <div style="float: right;"> 돈 </div>
 					</div>
 				</div>
 			</div>
