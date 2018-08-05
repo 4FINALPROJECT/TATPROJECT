@@ -41,17 +41,37 @@
 				사이트
 				<div class="tat-head-content-box tat-sitebox">
 					<div class="cbox-content-wrap siteB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
-					</div>
+                        <div class="edit-top-left">
+                            <div id="edit_submit"> 저 장 </div>
+                            <div id="edit_miribogi"> 미 리 보 기 </div>
+                            <div id="edit_allview"> 공 유 하 기 </div>
+                            <div id="edit_end"> 에 디 터 종 료 </div>
+                        </div>
+                        <div class="edit-top-right">
+                            <div toolimg="edit_submit"> 저 장 사 진 </div>
+                            <div toolimg="edit_miribogi"> 미 리 보 기 사 진 </div>
+                            <div toolimg="edit_allview"> 공 유 하 기 사 진 </div>
+                            <div toolimg="edit_end"> 에 디 터 종 료 사 진 </div>
+                        </div>
+                    </div>
 				</div>
 			</div>
 			<div class="toolWrap">
 				도구
 				<div class="tat-head-content-box tat-toolbox">
 					<div class="cbox-content-wrap toolB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
+						<div class="edit-top-left">
+                            <div id="toolChk"><input type="checkbox" checked="true"> 툴 바 </div>
+                            <div id="bodyScale"><input type="checkbox" checked="true"> 눈 금 자 </div>
+                            <div id="grideLine"><input type="checkbox" checked="true"> 그 리 드 라 인 </div>
+                            <div id="obj_array"><input type="checkbox" > 요 소 정 렬 </div>
+                        </div>
+                        <div class="edit-top-right">
+                            <div toolimg="toolChk"> 툴 바 사 진 </div>
+                            <div toolimg="bodyScale"> 눈 금 자 사 진 </div>
+                            <div toolimg="grideLine"> 그 리 드 라 인 사 진 </div>
+                            <div toolimg="obj_array"> 요 소 정 렬 사 진 </div>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -75,8 +95,8 @@
 				업그레이드
 				<div class="tat-head-content-box tat-upgradebox">
 					<div class="cbox-content-wrap upB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
+						<div class="edit-top-left"> 결 제 하 쉴 ? </div>
+                        <div class="edit-top-right"> 돈 </div>
 					</div>
 				</div>
 			</div>

@@ -95,6 +95,12 @@
 	top: 7%;
 }
 
+.tat-head-content-center input{
+    float: left;
+    width : 10%;
+    height: 6%;
+}
+
 .tat-my-page {
 	border-right: 1px solid #caffff;
 	height: 100%;
@@ -148,7 +154,7 @@
 	display: none;
 	top: 60px;
 	width: 450px;
-	height: 500px;
+	height: 300px;
 	box-shadow : 0 0 14px 0 rgba(22, 45, 61, 0.36);
 	background: white;
 	z-index: 7777;
@@ -300,6 +306,13 @@
 	border-right: 3px dashed red;
 }
 
+.edit-top-left {
+	float: left;
+}
+
+.edit-top-right {
+	float: right;
+}
 @media all and (max-width: 1200px) {
 	.tat-wrap {
 		width: 1200px;

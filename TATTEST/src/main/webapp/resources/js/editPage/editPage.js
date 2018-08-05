@@ -75,8 +75,6 @@ $('.tat-my-page').on({
     
 });
 
-
-
 $('.tat-head-content-center > div').on({
 	"mouseenter" : function(){
 		$(this).children().css({
@@ -108,7 +106,7 @@ $('.tat-head-content-center > div:last-child').on({
 			'transition-duration' : '5s',
 			'display' : 'inline-block'
 		})
-	},
+	}/*,
 	"mouseleave" : function(){
 		$(this).css({
 			'color' : 'black'
@@ -117,8 +115,9 @@ $('.tat-head-content-center > div:last-child').on({
 			'transition-duration' : '5s',
 			'display' : 'none'
 		})
-	}
+	}*/
 });
+
 $('.tat-head-content-right > div').on({
 	"mouseenter" : function(){
 		$(this).css({
@@ -389,9 +388,23 @@ $('#save-btn').on('click', function(){
 	//console.log(editWrap.html());
 	saveEvent();
 });
+$("#edit_submit").click(function(){
+	saveEvent();
+});
 
 $('#commit-btn').click(function(){
 	commitEvent();
+});
+$("#edit_allview").click(function(){
+	commitEvent();
+});
+
+$("#edit_end").click(function(){
+	location.href="/TAT/my/Main.tat";
+});
+
+$("#moneyplease").click(function(){
+	location.href="/TAT/main/Upgrade.tat";
 });
 
 $('#tat-head-logo').on('click', function(){
