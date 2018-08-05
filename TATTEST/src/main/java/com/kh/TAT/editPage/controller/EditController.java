@@ -547,7 +547,11 @@ public class EditController {
 	}
 	
 	
-	
+	@RequestMapping("/edit/createFile.tat")
+	public String createFile(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		
+		return "";
+	}
 	
 	/*@RequestMapping("/edit/FileDownload.tat")
 	public void fileDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
