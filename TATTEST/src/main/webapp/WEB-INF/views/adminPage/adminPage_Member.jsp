@@ -315,7 +315,7 @@
 					pageBtnCreate(total);
 					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -333,7 +333,7 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -379,7 +379,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						console.log(ajax.responseText);
+						//console.log(ajax.responseText);
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  
