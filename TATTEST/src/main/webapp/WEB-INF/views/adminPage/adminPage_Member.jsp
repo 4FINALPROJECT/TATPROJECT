@@ -34,7 +34,7 @@
 					<!--Sidebar Widget-->
 					<div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="sidebar">
-							<div class="widget widget_search">
+							<%-- <div class="widget widget_search">
 								<div class="site-search-area">
 									<form method="get" id="site-searchform" action="#">
 										<div>
@@ -167,11 +167,11 @@
 									<li><a href="#"> June 2015</a></li>
 									<li><a href="#"> May 2015</a></li>
 								</ul>
-							</div>
+							</div> --%>
 						</div>
 					</div>
 					
-					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="row sub_content">
 				            <div class="col-lg-12 col-md-12 col-sm-12">
 				                <div class="dividerHeading">
@@ -183,13 +183,13 @@
 				                    <table class="table table-striped table-hover">
 				                        <thead>
 				                        <tr>
-				                            <th>Member_Code</th>
-				                            <th>Member_EMAIL</th>
-				                            <th>Member_NAME</th>
-				                            <th>Member_Birth</th>
-				                            <th>Member_Gender</th>
-				                            <th>Member_Joindate</th>
-				                            <th>IS_USEABLE</th>
+				                            <th>코드</th>
+				                            <th>이메일</th>
+				                            <th>이름</th>
+				                            <th>생년월일</th>
+				                            <th>성별</th>
+				                            <th>가입일</th>
+				                            <th>결제 여부</th>
 				                        </tr>
 				                        </thead>
 				                        <tbody class="memberListTable">
@@ -208,7 +208,7 @@
 																
 				            </div>
 				            
-				            <div class="col-lg-12 col-md-12 col-sm-12">
+				            <!-- <div class="col-lg-12 col-md-12 col-sm-12">
 			                    <div class="dividerHeading">
 			                        <h4><span>상세정보</span></h4>
 			                    </div>
@@ -251,7 +251,7 @@
 			                            </div>
 			                        </div>
 			                    </form>
-			                </div>
+			                </div> -->
 				            
 				        </div>
 	                </div>
@@ -315,7 +315,7 @@
 					pageBtnCreate(total);
 					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -333,13 +333,13 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			console.log("ajax 리스트 이름 확인 : "+data.memberList);
-			console.log("ajax data 전체 확인 : "+data);
+			/* console.log("ajax 리스트 이름 확인 : "+data.memberList);
+			console.log("ajax data 전체 확인 : "+data); */
 			for(var idx in data){
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
@@ -379,11 +379,31 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						console.log(ajax.responseText);
+						//console.log(ajax.responseText);
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  
-		};	
+		};
+		Date.prototype.customFormat = function(formatString){
+			  var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhhh,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
+			  YY = ((YYYY=this.getFullYear())+"").slice(-2);
+			  MM = (M=this.getMonth()+1)<10?('0'+M):M;
+			  MMM = (MMMM=["January","February","March","April","May","June","July","August","September","October","November","December"][M-1]).substring(0,3);
+			  DD = (D=this.getDate())<10?('0'+D):D;
+			  DDD = (DDDD=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][this.getDay()]).substring(0,3);
+			  th=(D>=10&&D<=20)?'th':((dMod=D%10)==1)?'st':(dMod==2)?'nd':(dMod==3)?'rd':'th';
+			  formatString = formatString.replace("#YYYY#",YYYY).replace("#YY#",YY).replace("#MMMM#",MMMM).replace("#MMM#",MMM).replace("#MM#",MM).replace("#M#",M).replace("#DDDD#",DDDD).replace("#DDD#",DDD).replace("#DD#",DD).replace("#D#",D).replace("#th#",th);
+			  h=(hhh=this.getHours());
+			  if (h==0) h=24;
+			  if (h>12) h-=12;
+			  hh = h<10?('0'+h):h;
+			  hhhh = hhh<10?('0'+hhh):hhh;
+			  AMPM=(ampm=hhh<12?'am':'pm').toUpperCase();
+			  mm=(m=this.getMinutes())<10?('0'+m):m;
+			  ss=(s=this.getSeconds())<10?('0'+s):s;
+			  return formatString.replace("#hhhh#",hhhh).replace("#hhh#",hhh).replace("#hh#",hh).replace("#h#",h).replace("#mm#",mm).replace("#m#",m).replace("#ss#",ss).replace("#s#",s).replace("#ampm#",ampm).replace("#AMPM#",AMPM);
+			};
+		
 	</script>
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>

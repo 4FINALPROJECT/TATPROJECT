@@ -39,7 +39,7 @@
             </div>
             <div class="col-lg-12 col-sm-9 ">
                 <div class="panel-group accordion faqBoardList" id="accordion">
-                    <div class="panel panel-default">
+                    <!-- <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a class="faqQuestion" data-toggle="collapse" data-parent="#accordion" href="#collapse02">
@@ -54,7 +54,7 @@
                 
            					</div> 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             
@@ -115,15 +115,15 @@
 					
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					/* console.log(ajax.responseText); */
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 			
 		}
 		function updateBtn(num){
-			console.log($('.faqSelect').val());
+			/* console.log($('.faqSelect').val());
 			console.log($('.updateQuestion').val());
-			console.log($('.updateAnswer').val());
+			console.log($('.updateAnswer').val()); */
 			var qccode = $('.faqSelect').val();
 			var quest = $('.updateQuestion').val();
 			var answer = $('.updateAnswer').val();
@@ -139,7 +139,7 @@
 				},success : function(data){
 					alert("등록이 완료되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					/* console.log(jqXHR.responseText); */
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 		}
@@ -152,7 +152,7 @@
 				},success : function(data){
 					alert("삭제가 되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					/* console.log(jqXHR.responseText); */
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 		}
@@ -180,16 +180,16 @@
 
 					}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					/* console.log(ajax.responseText); */
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 			
 		}
 		function createBtn(){
 			alert("??");
-			console.log($('.faqSelect').val());
+			/* console.log($('.faqSelect').val());
 			console.log($('.insertQuestion').val());
-			console.log($('.insertAnswer').val());
+			console.log($('.insertAnswer').val()); */
 			var qccode = $('.faqSelect').val();
 			var quest = $('.insertQuestion').val();
 			var answer = $('.insertAnswer').val();
@@ -204,7 +204,7 @@
 				},success : function(data){
 					alert("등록이 완료되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					/* console.log(jqXHR.responseText); */
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			})
 		}
@@ -251,7 +251,7 @@
 					pageBtnCreate(total);
 					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					/* console.log(ajax.responseText); */
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -270,13 +270,13 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					/* console.log(ajax.responseText); */
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			console.log("ajax 리스트 이름 확인 : "+data.FaqList);
-			console.log("ajax data 전체 확인 : "+data);
+			/* console.log("ajax 리스트 이름 확인 : "+data.FaqList);
+			console.log("ajax data 전체 확인 : "+data); */
 			var count = 0;
 			for(var idx in data){
 				count++;
@@ -320,7 +320,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						console.log(ajax.responseText);
+						/* console.log(ajax.responseText); */
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  

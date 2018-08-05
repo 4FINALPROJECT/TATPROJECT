@@ -54,11 +54,11 @@
 											
 									</ul>
 								</li>
-								<li><a href="#">제휴신청</a>
+								<%-- <li><a href="#">제휴신청</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/admin/Affiliate.tat">제휴신청조회</a></li>
 									</ul>
-								</li>
+								</li> --%>
 								<li><a href="${pageContext.request.contextPath}">로그아웃</a></li>
 							</ul>
 						</div>

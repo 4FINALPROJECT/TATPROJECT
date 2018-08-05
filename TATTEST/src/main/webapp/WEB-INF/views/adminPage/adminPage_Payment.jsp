@@ -34,7 +34,7 @@
 					<!--Sidebar Widget-->
 					<div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="sidebar">
-							<div class="widget widget_search">
+							<!-- <div class="widget widget_search">
 								<div class="site-search-area">
 									<form method="get" id="site-searchform" action="#">
 										<div>
@@ -42,7 +42,7 @@
 											<input id="searchsubmit" value="Search" type="submit" />
 										</div>
 									</form>
-								</div><!-- end site search -->
+								</div>end site search
 							</div>
 							
 							<div class="widget widget_categories">
@@ -167,11 +167,11 @@
 									<li><a href="#"> June 2015</a></li>
 									<li><a href="#"> May 2015</a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					
-					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="row sub_content">
 				            <div class="col-lg-12 col-md-12 col-sm-12">
 				                <div class="dividerHeading">
@@ -203,7 +203,7 @@
 								</div>
 				            </div>
 				            
-				            <div class="col-lg-12 col-md-12 col-sm-12">
+				            <!-- <div class="col-lg-12 col-md-12 col-sm-12">
 			                    <div class="dividerHeading">
 			                        <h4><span>상세정보</span></h4>
 			                    </div>
@@ -246,7 +246,7 @@
 			                            </div>
 			                        </div>
 			                    </form>
-			                </div>
+			                </div> -->
 				            
 				        </div>
 	                </div>
@@ -310,7 +310,7 @@
 					if(count>btnCount){pageNextFirstBtn();}
 					
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					/* console.log(ajax.responseText); */
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -328,13 +328,13 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					/* console.log(ajax.responseText); */
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			console.log("ajax 리스트 이름 확인 : "+data.PaymentList);
-			console.log("ajax data 전체 확인 : "+data);
+			/* console.log("ajax 리스트 이름 확인 : "+data.PaymentList);
+			console.log("ajax data 전체 확인 : "+data); */
 			for(var idx in data){
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.paymentListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
@@ -371,7 +371,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						console.log(ajax.responseText);
+						/* console.log(ajax.responseText); */
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  

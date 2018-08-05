@@ -1,16 +1,13 @@
 package com.kh.TAT.editPage.controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,40 +33,203 @@ public class EditController {
 	EditService editS;
 	
 	// 편집 페이지 메인 이동
-	@RequestMapping("/edit/Main.tat")
-	public String edit(HttpServletRequest request){
-		HttpSession session = request.getSession(false);
+	@RequestMapping(value="/edit/Main.tat", method={RequestMethod.GET, RequestMethod.POST})
+	public String edit(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		
 		
 		String m_code = (String) session.getAttribute("m_code");
+		String e_code = request.getParameter("e_code");
+				
+		String loc = "/"; 
+		String msg = "";
+
+		String page = request.getParameter("cururl");
 		
-		Member member = editS.memberSelectPayment(m_code);
-		
-		System.out.println("member값 확인  : " + member.getIs_usable());
-		
-		request.setAttribute("member" , member);
-		
-		return "editPage/editPage_Main";
-	}
-	
-	
-	@RequestMapping("/edit/newPage.tat")
-	public String newPage(HttpSession session, HttpServletRequest request, Model model, @RequestParam String e_code) throws Exception {
-		
-		String m_code = (String) session.getAttribute("m_code");
-		
-		System.out.println("e_code 확인 : "+e_code);
-		//System.out.println("m 확인 : "+ m_code);
+		if ( page == null ) {
+			page = "home";
+		}
 		
 		if ( m_code != null && e_code != null ) {
 			
+			
+			Member member = editS.memberSelectPayment(m_code);
+			
+			System.out.println("member값 확인  : " + member.getIs_usable());
+			
+			request.setAttribute("member" , member);
+			
+			System.out.println("e_code 확인 : "+e_code);
 			Edit edit = editS.projectSelectOne(e_code);
+			
 			
 			//System.out.println("쿼리문 결과 확인 : "+ edit);
 			System.out.println("쿼리문 프로젝트 이름 : "+ edit.getProj_name());
 			//System.out.println(m_code);
 			
 			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
-			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getProj_name());
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
+
+			File userFile = new File(newPageRes);
+			
+			// 폴더 생성
+			if ( !userFile.exists() ) {
+				userFile.mkdirs();
+				//System.out.println("유저의 파일 저장 경로 확인 : "+ userFile.mkdirs());
+			}
+
+			// head 파일 함수 생성
+			/////////////////////////////////
+			String headres = request.getSession().getServletContext().getRealPath("/WEB-INF/views/edit/head.jsp");
+			scan = new Scanner(new FileInputStream(headres));
+			
+			String headResult = "";
+			
+			while ( scan.hasNext() ) {
+				headResult += scan.nextLine();
+			}
+			scan.close();
+			String[] headSplit = headResult.split(">");
+			String headSplitString = "";
+			for ( String i : headSplit ) {
+				headSplitString += i+">\n";
+			}
+			//System.out.println("headSplitString 값 확인 : "+ headSplitString);
+			/////////////////////////////////
+			
+			// body 파일 함수 생성
+			/////////////////////////////////
+			String bodyres = request.getSession().getServletContext().getRealPath("/WEB-INF/views/edit/"+ page+ ".jsp");
+			scan = new Scanner(new FileInputStream(bodyres));
+			
+			String bodyResult = "";
+			
+			while ( scan.hasNext() ) {
+				bodyResult += scan.nextLine();
+			}
+			scan.close();
+			String[] bodySplit = bodyResult.split(">");
+			String bodySplitString = "";
+			for ( String i : bodySplit ) {
+				bodySplitString += i+">\n";
+			}
+			//System.out.println("bodySplitString 값 확인 : "+ bodySplitString);
+
+			// footer 파일 함수 생성
+			/////////////////////////////////
+			String footerres = request.getSession().getServletContext().getRealPath("/WEB-INF/views/edit/footer.jsp");
+			scan = new Scanner(new FileInputStream(footerres));
+			
+			String footerResult = "";
+			
+			while ( scan.hasNext() ) {
+				footerResult += scan.nextLine();
+			}
+			scan.close();
+			String[] footerSplit = footerResult.split(">");
+			String footerSplitString = "";
+			for ( String i : footerSplit ) {
+				footerSplitString += i+">\n";
+			}
+			//System.out.println("footerSplitString 값 확인 : "+ footerSplitString);
+			/////////////////////////////////
+			
+			
+			// 파일 저장
+			FileWriter writer = null;
+			
+			// 사용자 파일 저장 경로
+			File newHeadPage = new File(newPageRes+"/"+"head.jsp");
+			File newBodyPage = new File(newPageRes+"/"+ page +".jsp");
+			File newFooterPage = new File(newPageRes+"/"+"footer.jsp");
+			
+			String readHeadSplit = newHeadPage.toString();
+			String readBodySplit = newBodyPage.toString();
+			String readFooterSplit = newFooterPage.toString();
+			
+			String readHeadTrue = readHeadSplit.substring(readHeadSplit.indexOf("webapp")+7);
+			String readBodyTrue = readBodySplit.substring(readBodySplit.indexOf("webapp")+7);
+			String readFooterTrue = readFooterSplit.substring(readFooterSplit.indexOf("webapp")+7);
+			
+			
+			String headRead = readHeadTrue.replace("\\", "/");
+			String bodyRead = readBodyTrue.replace("\\", "/");
+			String footerRead = readFooterTrue.replace("\\", "/");
+			
+			if ( !newHeadPage.exists() ) {
+				writer = new FileWriter(newHeadPage, false);
+				writer.write(headSplitString);
+				writer.flush();
+				writer.close();
+				
+			} 
+			if ( !newBodyPage.exists() ) {
+				
+				writer = new FileWriter(newBodyPage, false);
+				writer.write(bodySplitString);
+				writer.flush();
+				writer.close();
+				
+			}
+			if ( !newFooterPage.exists() ) {
+				
+				writer = new FileWriter(newFooterPage, false);
+				writer.write(footerSplitString);
+				writer.flush();
+				writer.close();
+			}
+			
+			
+			model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
+			addAttribute("editPageFooter", footerRead);
+			
+			session.setAttribute("fileCreate", newBodyPage.exists());
+			request.setAttribute("fN", edit.getE_code());
+			request.setAttribute("cururl", page);
+			System.out.println(newBodyPage.exists());
+			
+			return "editPage/editPage_Main";
+			
+		} else if ( m_code == null ) {
+			// 에러페이지 처리
+			msg = "로그인 해주세요.";
+			
+		} else if ( e_code == null ){
+			// 에러페이지 처리
+			loc = "/my/Project.tat";
+			msg = "잘못된 접근경로 입니다.";
+			model.addAttribute("loc", loc);
+			model.addAttribute("msg", msg);
+			
+			return "myPage/common/msg";
+		} 
+			model.addAttribute("loc", loc);
+			model.addAttribute("msg", msg);
+		
+		return "mainPage/common/msg";
+		
+	}
+	
+	
+	@RequestMapping("/edit/newPage.tat")
+	public String newPage(HttpSession session, HttpServletRequest request, Model model) throws Exception {
+		
+		String m_code = (String) session.getAttribute("m_code");
+		String e_code = request.getParameter("e_code");
+		
+		String loc = "/"; 
+		String msg = "";
+		
+		if ( m_code != null && e_code != null ) {
+			System.out.println("e_code 확인 : "+e_code);
+			Edit edit = editS.projectSelectOne(e_code);
+			
+			
+			//System.out.println("쿼리문 결과 확인 : "+ edit);
+			System.out.println("쿼리문 프로젝트 이름 : "+ edit.getProj_name());
+			//System.out.println(m_code);
+			
+			//String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code);
+			String newPageRes = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
 
 			File userFile = new File(newPageRes);
 			
@@ -190,23 +350,26 @@ public class EditController {
 			addAttribute("editPageFooter", footerRead);
 			
 			session.setAttribute("fileCreate", newBodyPage.exists());
-			request.setAttribute("fN", edit.getProj_name());
+			request.setAttribute("fN", edit.getE_code());
+
 			
 			System.out.println(newBodyPage.exists());
 			
 			return "editPage/editPage_Main";
 			
-		} else {
+		} else if ( m_code == null ){
 			// 에러페이지 처리
-			String loc = "/"; 
-			String msg = "로그인 해주세요.";
+			msg = "로그인 해주세요.";
 			
+		} else if ( e_code == null ) {
+			// 에러페이지 처리
+			msg = "잘못된 접근경로 입니다.";
+			
+		}
 			model.addAttribute("loc", loc);
 			model.addAttribute("msg", msg);
-			
-			return "common/msg";
-		}
 		
+		return "mainPage/common/msg";
 	}
 	
 	@RequestMapping("/edit/editCurrentPage.tat")
@@ -257,7 +420,7 @@ public class EditController {
 			model.addAttribute("loc", loc);
 			model.addAttribute("msg", msg);
 			
-			return "common/msg";
+			return "mainPage/common/msg";
 		}
 				
 	}
@@ -350,8 +513,8 @@ public class EditController {
 
 
          String bodyHead = bodySplitString.substring(0,bodySplitString.indexOf("<div class=\"edit-view-body-wrap"));
-         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
-               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
+//         String bodyReal = bodySplitString.substring(bodySplitString.indexOf("<div class=\"edit-view-body-wrap"), 
+//               bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
          String bodyFoot = bodySplitString.substring(bodySplitString.indexOf("<%@ include file=\"footer.jsp\" %>"));
          
          
@@ -382,4 +545,45 @@ public class EditController {
 	      map.put("editLog", editLog);
 	      return map;
 	}
+	
+	
+	@RequestMapping("/edit/createFile.tat")
+	public String createFile(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		
+		return "";
+	}
+	
+	/*@RequestMapping("/edit/FileDownload.tat")
+	public void fileDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String m_code = (String) session.getAttribute("m_code");
+		// e_code 를 받고 
+		String e_code = request.getParameter("e_code");
+		
+		
+		if ( m_code != null && e_code != null ) {
+			Edit edit = editS.projectSelectOne(e_code);
+			
+			// 파일저장 디렉토리
+			String saveDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/views/member/"+ m_code+ "/"+ edit.getE_code());
+			
+			File file = new File(saveDirectory);
+			
+			// 압축 파일경로 존재하는지 chk
+			if ( !file.exists() ) {
+				System.out.println("파일 존재 X");
+			}
+			
+			FileOutputStream fos = null;
+			ZipOutputStream zos = null;
+
+			fos = new FileOutputStream(new File(edit.getProj_name()+".zip"));
+			zos = new ZipOutputStream(fos);
+
+			zos.close();
+			fos.close();
+			
+		}
+		
+	}*/
 }
