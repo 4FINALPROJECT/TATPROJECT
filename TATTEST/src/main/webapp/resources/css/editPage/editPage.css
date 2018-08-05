@@ -98,7 +98,6 @@
 .tat-head-content-center input{
     float: left;
     width : 10%;
-    height: 6%;
 }
 
 .tat-my-page {
@@ -171,19 +170,7 @@
 	position: relative;
 	padding: 10px;
 }
-.conB-left {
-	top: 10%;
-	float: left;
-}
-.conB-left > div {
-	padding: 5px;
-}
-.conB-right {
-	padding-top: 5%;
-	padding-bottom: 5%;
-	float: right;
-	background-color: skyblue;
-}
+
 #keyEven {
 	border-bottom: 1.5px solid gray;
 }
@@ -306,13 +293,56 @@
 	border-right: 3px dashed red;
 }
 
+input[type=checkbox] {  
+    display: none;  
+}
+
+input[type=checkbox] + label{
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    font-size: 15px;
+    font-weight: inherit;
+}
+
+input[type=checkbox]+ label:before {     
+    content: "";  
+    display: inline-block;  
+    width: 20px;  
+    height: 20px;  
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #ccc;  
+    border-radius: 2px; 
+    box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+input[type=checkbox]:checked + label:before { 
+
+    content: "\2713";  /* 체크모양 */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 15px; 
+    font-weight:800; 
+    color: #fff;  
+    background: cornflowerblue;
+    text-align: center;  
+    line-height: 18px;  
+} 
+
 .edit-top-left {
 	float: left;
 }
-
+.edit-top-left > div {
+	padding: 5px;
+}
 .edit-top-right {
 	float: right;
+	background-color: aquamarine;
+	border-radius: 10px;
 }
+
 @media all and (max-width: 1200px) {
 	.tat-wrap {
 		width: 1200px;
