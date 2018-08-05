@@ -867,7 +867,7 @@ public class MainController {
 		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
 		addAttribute("editPageFooter", footerRead);
 		
-		return "editPage/editPage_Main";
+		return "editPage/editView_Main";
 	}
 	
 	// 템플릿 페이지 아이프레임 이동
@@ -876,6 +876,8 @@ public class MainController {
 
 		String t_category = request.getParameter("t_category");
 		
+		System.out.println("폴더 이름 확인 : "+t_category);
+		
 		String headRead = "WEB-INF/views/template/"+t_category+"/head.jsp";
 		String bodyRead = "WEB-INF/views/template/"+t_category+"/home.jsp";
 		String footerRead = "WEB-INF/views/template/"+t_category+"/footer.jsp";
@@ -883,7 +885,7 @@ public class MainController {
 		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
 		addAttribute("editPageFooter", footerRead);
 		
-		return "editPage/editPage_Main";
+		return "editPage/editView_Main";
 	}
 }
 

@@ -547,7 +547,9 @@ public class EditController {
 	}
 	
 	
-	@RequestMapping("/edit/FileDownload.tat")
+	
+	
+	/*@RequestMapping("/edit/FileDownload.tat")
 	public void fileDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String m_code = (String) session.getAttribute("m_code");
@@ -579,5 +581,5 @@ public class EditController {
 			
 		}
 		
-	}
+	}*/
 }
