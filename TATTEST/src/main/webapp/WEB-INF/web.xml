@@ -83,6 +83,6 @@
   		<error-code>403</error-code>
   		<location>/WEB-INF/views/mainPage/common/mainPage_error.jsp</location>
 	</error-page> -->
-	<!--  여기까지 -->
+	<!-- 여기까지 -->
 
 </web-app>
