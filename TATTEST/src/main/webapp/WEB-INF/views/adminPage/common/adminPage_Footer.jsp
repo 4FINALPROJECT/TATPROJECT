@@ -71,7 +71,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p class="copyright">&copy; Copyright 2015 Electrify | Powered by  <a href="http://www.bestjquery.com/">Best jQuery</a></p>
+                    <p class="copyright">&copy; Copyright 2015 TAT | Powered by  <a href="http://www.bestjquery.com/">TAT</a></p>
                 </div>
 
                 <div class="col-sm-6 ">

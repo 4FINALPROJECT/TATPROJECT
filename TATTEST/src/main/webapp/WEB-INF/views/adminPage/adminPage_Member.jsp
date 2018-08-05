@@ -272,6 +272,19 @@
 		var btnCount = 5;
 		var showDoubleCount = 5.0;
 		var pageVal;
+		
+		function msToTime(duration) {
+			  var milliseconds = parseInt((duration % 1000) / 100),
+			    seconds = parseInt((duration / 1000) % 60),
+			    minutes = parseInt((duration / (1000 * 60)) % 60),
+			    hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+
+			  hours = (hours < 10) ? "0" + hours : hours;
+			  minutes = (minutes < 10) ? "0" + minutes : minutes;
+			  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+			  return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+		}
 
 		function pageNextFirstBtn(){
 			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
@@ -338,10 +351,11 @@
 			}); 
 		};
 		function createPageList(data){
+			SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			/* console.log("ajax 리스트 이름 확인 : "+data.memberList);
 			console.log("ajax data 전체 확인 : "+data); */
-			for(var idx in data){
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
+				console.log(sdfDate.format(data[idx].m_birth));
 			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].m_email+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+
@@ -384,25 +398,8 @@
 				}); 
 			  
 		};
-		Date.prototype.customFormat = function(formatString){
-			  var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhhh,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
-			  YY = ((YYYY=this.getFullYear())+"").slice(-2);
-			  MM = (M=this.getMonth()+1)<10?('0'+M):M;
-			  MMM = (MMMM=["January","February","March","April","May","June","July","August","September","October","November","December"][M-1]).substring(0,3);
-			  DD = (D=this.getDate())<10?('0'+D):D;
-			  DDD = (DDDD=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][this.getDay()]).substring(0,3);
-			  th=(D>=10&&D<=20)?'th':((dMod=D%10)==1)?'st':(dMod==2)?'nd':(dMod==3)?'rd':'th';
-			  formatString = formatString.replace("#YYYY#",YYYY).replace("#YY#",YY).replace("#MMMM#",MMMM).replace("#MMM#",MMM).replace("#MM#",MM).replace("#M#",M).replace("#DDDD#",DDDD).replace("#DDD#",DDD).replace("#DD#",DD).replace("#D#",D).replace("#th#",th);
-			  h=(hhh=this.getHours());
-			  if (h==0) h=24;
-			  if (h>12) h-=12;
-			  hh = h<10?('0'+h):h;
-			  hhhh = hhh<10?('0'+hhh):hhh;
-			  AMPM=(ampm=hhh<12?'am':'pm').toUpperCase();
-			  mm=(m=this.getMinutes())<10?('0'+m):m;
-			  ss=(s=this.getSeconds())<10?('0'+s):s;
-			  return formatString.replace("#hhhh#",hhhh).replace("#hhh#",hhh).replace("#hh#",hh).replace("#h#",h).replace("#mm#",mm).replace("#m#",m).replace("#ss#",ss).replace("#s#",s).replace("#ampm#",ampm).replace("#AMPM#",AMPM);
-			};
+		
+			
 		
 	</script>
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
