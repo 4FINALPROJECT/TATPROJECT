@@ -175,7 +175,7 @@
 						<div class="row sub_content">
 				            <div class="col-lg-12 col-md-12 col-sm-12">
 				                <div class="dividerHeading">
-				                    <h4><span>회원 목록</span></h4>
+				                    <h4><span>결제 목록</span></h4>
 				                </div>
 				            </div>
 				            <div class="col-lg-12 col-md-12 col-sm-12">
@@ -339,8 +339,8 @@
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.paymentListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+
-					'<td>'+data[idx].p_date+'</td>'+
-					'<td>'+data[idx].v_date+'</td>');
+					'<td>'+moment(data[idx].p_date).subtract(10, 'days').calendar()+'</td>'+
+					'<td>'+moment(data[idx].v_date).subtract(10, 'days').calendar()+'</td>');
 			};
 		};
 			

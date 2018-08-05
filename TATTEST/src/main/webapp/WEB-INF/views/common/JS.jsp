@@ -16,6 +16,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-hoverdirection.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-scrolltofixed-min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/moment.js"></script>
 
     <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
     

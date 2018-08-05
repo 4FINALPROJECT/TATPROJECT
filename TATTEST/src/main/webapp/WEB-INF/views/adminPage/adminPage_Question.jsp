@@ -251,7 +251,7 @@
 					'<td>'+data[idx].m_name+'</td>'+
 					'<td>'+data[idx].qc_name+'</td>'+
 					'<td>'+data[idx].qa_title+'</td>'+
-					'<td>'+data[idx].qa_date+'</td>'+
+					'<td>'+moment(data[idx].qa_date).subtract(10, 'days').calendar()+'</td>'+
 					'<td>'+aCont+'</td></tr>');
 			};
 		};

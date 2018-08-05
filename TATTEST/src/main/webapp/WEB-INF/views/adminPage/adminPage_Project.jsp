@@ -306,7 +306,7 @@
 					'<td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].proj_name+'</td>'+
 					'<td>'+data[idx].proj_comment+'</td>'+
-					'<td>'+data[idx].save_date+'</td>'+
+					'<td>'+moment(data[idx].save_date).subtract(10, 'days').calendar()+'</td>'+
 					'<td>'+data[idx].is_share+'</td>'+
 					'<td>'+data[idx].e_use_count+'</td>');
 			

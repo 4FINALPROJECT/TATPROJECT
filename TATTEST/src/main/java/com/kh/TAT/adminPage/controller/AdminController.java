@@ -86,6 +86,7 @@ public class AdminController {
 	    List<Member> memberList = adminS.selectMemberList(paging);
 	    paging.setTotal(adminS.MemberTotalPaging());
 	    
+	    
 	    System.out.println("memberList :"+memberList);
 	    
 	    /*return "adminPage/adminPage_Member";*/

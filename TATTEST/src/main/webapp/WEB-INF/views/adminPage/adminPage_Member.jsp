@@ -10,6 +10,7 @@
 <body>
 	<c:import url="common/adminPage_Header.jsp"></c:import>
 	
+	
 	<section class="wrapper">
 		<section class="page_head">
 			<div class="container">
@@ -262,6 +263,8 @@
 		</section>
 
 	</section>
+
+	
 	
 	<script>
 	 window.onload = function(){
@@ -273,19 +276,8 @@
 		var showDoubleCount = 5.0;
 		var pageVal;
 		
-		function msToTime(duration) {
-			  var milliseconds = parseInt((duration % 1000) / 100),
-			    seconds = parseInt((duration / 1000) % 60),
-			    minutes = parseInt((duration / (1000 * 60)) % 60),
-			    hours = parseInt((duration / (1000 * 60 * 60)) % 24);
-
-			  hours = (hours < 10) ? "0" + hours : hours;
-			  minutes = (minutes < 10) ? "0" + minutes : minutes;
-			  seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-			  return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
-		}
-
+	
+		
 		function pageNextFirstBtn(){
 			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
 		}
@@ -336,13 +328,12 @@
 		
 		
 		function pageIndex(pageStartNum){
-			
 			var start = pageStartNum-1;
 			 $('.memberListTable').empty(); 
 			 $.ajax({
 				url : "${pageContext.request.contextPath}/admin/MemberAjax.tat",
 				type : "post",
-				dataType : 'json', 
+				/* dataType : 'json',  */
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
@@ -350,21 +341,25 @@
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
+		
 		function createPageList(data){
-			SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
 			/* console.log("ajax 리스트 이름 확인 : "+data.memberList);
 			console.log("ajax data 전체 확인 : "+data); */
+			for(var idx in data){
+			
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
-				console.log(sdfDate.format(data[idx].m_birth));
 			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].m_email+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+
-					'<td>'+data[idx].m_birth+'</td>'+
+					'<td>'+moment(data[idx].m_birth).subtract(10, 'days').calendar()+'</td>'+
 					'<td>'+data[idx].m_gender+'</td>'+
-					'<td>'+data[idx].enroll_date+'</td>'+
+					'<td>'+moment(data[idx].enroll_date).subtract(10, 'days').calendar()+'</td>'+
 					'<td>'+data[idx].is_usable+'</td></tr>');
 			};
 		};
+		
+		
 			
 			
 		 function pageNextBtnCreate(num){
