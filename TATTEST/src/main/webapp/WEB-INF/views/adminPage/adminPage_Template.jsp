@@ -225,7 +225,7 @@
 					pageBtnCreate(total);
 					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -243,13 +243,13 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			console.log("ajax 리스트 이름 확인 : "+data.templateList);
-			console.log("ajax data 전체 확인 : "+data);
+			//console.log("ajax 리스트 이름 확인 : "+data.templateList);
+			//console.log("ajax data 전체 확인 : "+data);
 			for(var idx in data){
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.templateList').append('<article class="post"><figure class="post_img"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/blog/blog_medium_1.png" alt="blog post"></a>'+
@@ -286,7 +286,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						console.log(ajax.responseText);
+						//console.log(ajax.responseText);
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  

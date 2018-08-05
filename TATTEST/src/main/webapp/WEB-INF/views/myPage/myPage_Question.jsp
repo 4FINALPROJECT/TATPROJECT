@@ -5,6 +5,7 @@
 <head>
 	<title>TAT 문의하기 || 마이페이지</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 	<style>
 		th,td{
 			text-align:center;
@@ -30,7 +31,7 @@
 	</style>
 </head>
 <body>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+	
 	<c:import url="common/myPage_Header.jsp"></c:import>
 	
 	<section class="wrapper">
@@ -237,7 +238,7 @@
 			
 			if(title != null && content != null){
 				
-				console.log("들어와?");
+				//console.log("들어와?");
 				
 				$('#submitBoard').submit();
 			}else
@@ -255,11 +256,11 @@
 			if($('#openYORN').is(":checked")){
 				$(this).val('Y');
 			
-				console.log($('#openYORN').val());
+				//console.log($('#openYORN').val());
 			}else{
 				$(this).val('N');
 				
-				console.log($('#openYORN').val());
+				//console.log($('#openYORN').val());
 			}
 			
 		});
