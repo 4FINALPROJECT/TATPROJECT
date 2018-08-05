@@ -209,7 +209,7 @@ function test345435(){
            $(".objectData_txt").eq(3).attr("value", x);
            $(".objectData_txt").eq(4).attr("value", y);
            
-           console.log($("#objectId").val());
+           //console.log($("#objectId").val());
            
        });
        $(this).bind("contextmenu",function(event){
@@ -358,7 +358,7 @@ function test345435(){
        clone_end();
     });
     $("#item_copycontent").hover(function(){
-        console.log("ctrl+D");
+        //console.log("ctrl+D");
     });
     function border_resize(){
       $(".upDateBorder").mousemove(function(e){
@@ -491,7 +491,7 @@ function test345435(){
        Object_Delete();
     });
     $("#item_order").hover(function(){
-        console.log("정렬");
+        //console.log("정렬");
     });
     $("#item_inpo").children().children().children().children('div').each(function(){
        $("#item_text").on("click",function(){
@@ -536,8 +536,8 @@ function test345435(){
     };
     function EnterUpDate_height(){
        if(event.keyCode == 13){
-          console.log($("#objectId").val());
-          console.log($(".objectData_txt").eq(2).val());
+          //console.log($("#objectId").val());
+          //console.log($(".objectData_txt").eq(2).val());
           $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("height",$(".objectData_txt").eq(2).val());
        }
     };

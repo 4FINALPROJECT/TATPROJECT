@@ -115,7 +115,7 @@
 					
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 			
@@ -139,7 +139,7 @@
 				},success : function(data){
 					alert("등록이 완료되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					//console.log(jqXHR.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 		}
@@ -152,7 +152,7 @@
 				},success : function(data){
 					alert("삭제가 되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					//console.log(jqXHR.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 		}
@@ -180,7 +180,7 @@
 
 					}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 			
@@ -204,7 +204,7 @@
 				},success : function(data){
 					alert("등록이 완료되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					//console.log(jqXHR.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			})
 		}
@@ -251,7 +251,7 @@
 					pageBtnCreate(total);
 					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -270,7 +270,7 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(ajax.responseText);
+					//console.log(ajax.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -320,7 +320,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						console.log(ajax.responseText);
+						//console.log(ajax.responseText);
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  

@@ -147,7 +147,7 @@
 				},success : function(data){
 					alert("등록이 완료되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					//console.log(jqXHR.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			});
 		}
@@ -176,7 +176,7 @@
 							'</div></div>');
 					}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					//console.log(jqXHR.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -223,7 +223,7 @@
 					pageBtnCreate(total);
 					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					//console.log(jqXHR.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -241,13 +241,13 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR.responseText);
+					//console.log(jqXHR.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			console.log("ajax 리스트 이름 확인 : "+data.questionList);
-			console.log("ajax data 전체 확인 : "+data);
+			//console.log("ajax 리스트 이름 확인 : "+data.questionList);
+			//console.log("ajax data 전체 확인 : "+data);
 			
 			
 			for(var idx in data){
@@ -288,7 +288,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						console.log(jqXHR.responseText);
+						//console.log(jqXHR.responseText);
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  

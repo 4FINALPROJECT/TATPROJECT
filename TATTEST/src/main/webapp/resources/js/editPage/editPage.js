@@ -261,7 +261,7 @@ function saveEvent() {
 			dataType : "json",
 			type : "POST",
 			success : function(data) {
-				console.log("파일 저장 성공 : "+data.editLog);
+				//console.log("파일 저장 성공 : "+data.editLog);
 			}, error : function(data) {
 				
 			}
@@ -353,7 +353,7 @@ function redoEvent() {
 
 
 function stackMoveEvent() {
-	console.log(stackMove);
+	//console.log(stackMove);
 	tmp = stackMove.attr("data-stack", "move");
 	
 	
