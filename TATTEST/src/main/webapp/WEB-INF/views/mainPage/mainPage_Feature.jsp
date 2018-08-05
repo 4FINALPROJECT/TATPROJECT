@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <img src="${pageContext.request.contextPath}/resources/images/phones.png" class="img-responsive center-block">
+                        <img src="images/phones.png" class="img-responsive center-block">
                     </div>
 
                     <div class="col-sm-4 mrgt-70">

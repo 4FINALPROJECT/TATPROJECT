@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <div class="edit-left-tool-wrap">
 <div class="edit-left-tool">
@@ -34,9 +33,7 @@
          <table>
             <tbody>
                <tr>
-               	<td>
-               		<i class="fas fa-home"></i>
-               	</td>
+               <td><i class="fas fa-home"></i></td>
                </tr>
             </tbody>
             <footer>

@@ -74,124 +74,51 @@ $('.tat-my-page').on({
     }
     
 });
-$('.tat-head-content-center > div').on(
-    "click",function(){
-        
-        $(".edit-top-right").children().css("display","none");
 
-        if($(this).children().css("display") == "none"){
-            $('.tat-head-content-center').children().css("color","black");
-            $('.tat-head-content-center').children().children().css("display" , "none");
-            
-            if ( $(this).html() == $('.tat-head-content-center > div:last-child').html() ) {
-                $(this).children().css({
-                    'transition-duration' : '5s',
-                    'display' : 'inline-block'
-                });
-                $(this).css(
-                    "color" , "#9a4cc6"
-                );
-            } else {
-            	$(this).children().css({
-                    'transition-duration' : '5s',
-                    'display' : 'inline-block'
-                });
-                $(this).css(
-                    "color" , "#4eb7f5"
-                );
-            }
-            
-        } else {
-            $(this).css("color","black");
-            $(this).children().css({
-                'transition-duration' : '5s',
-                'display' : 'none'
-            });
-        }
 
-        $(".edit-top-left").children().on("mouseenter",function(){
 
-            event.stopPropagation();
-
-            $(".edit-top-right").children().css("display","none");
-            
-            
-            $("div[toolimg*="+$(this).attr("id")+"]").css("display","inline");
-        });
-        
-        $(".edit-top-left").children().on("click",function(){
-
-            event.stopPropagation();
-
-            if($("#rtoolChk").children("input").is(":checked")){
-                $("#objectData").css("display","inline");
-            } else {
-                $("#objectData").css("display","none");
-            }
-            
-            if($("#ltoolChk").children("input").is(":checked")){
-            	$(".edit-left-tool-wrap").css("display", "inline");
-            } else {
-            	$(".edit-left-tool-wrap").css("display", "none");
-            }
-            
-            
-            if($("#bodyScale").children("input").is(":checked")){
-            	$(".edit-view-head").css({
-                	"border-left" : "3px dashed red",
-                	"border-right" : "3px dashed red"
-                });
-                $(".edit-view-body").css({
-                	"border-left" : "3px dashed red",
-                	"border-right" : "3px dashed red"
-                });
-                $(".edit-view-foot").css({
-                	"border-left" : "3px dashed red",
-                	"border-right" : "3px dashed red"
-                });
-            } else {
-                $(".edit-view-head").css({
-                	"border-left" : "none",
-                	"border-right" : "none"
-                });
-                $(".edit-view-body").css({
-                	"border-left" : "none",
-                	"border-right" : "none"
-                });
-                $(".edit-view-foot").css({
-                	"border-left" : "none",
-                	"border-right" : "none"
-                });
-            }
-            
-            
-            if($("#grideLine").children("input").is(":checked")){
-            	$(".edit-view-head-wrap").css({
-                	"border-bottom" : "3px dashed red"
-                });
-            	$(".edit-view-body-wrap").css({
-                	"border-bottom" : "3px dashed red"
-                });
-                $(".edit-view-foot-wrap").css({
-                	"border-bottom" : "3px dashed red"
-                });
-            } else {
-            	$(".edit-view-head-wrap").css({
-                	"border-bottom" : "none"
-                });
-            	$(".edit-view-body-wrap").css({
-                	"border-bottom" : "none"
-                });
-                $(".edit-view-foot-wrap").css({
-                	"border-bottom" : "none"
-                });
-            }
-            
-            
-            $("div[toolimg*="+$(this).attr("id")+"]").css("display","inline");
-        });
+$('.tat-head-content-center > div').on({
+	"mouseenter" : function(){
+		$(this).children().css({
+			'transition-duration' : '5s',
+			'display' : 'inline-block'
+		}),			
+		$(this).css({	
+			'color' : '#4eb7f5'
+		})
+		
+	},
+	"mouseleave" : function(){
+		$(this).css({
+			'color' : 'black'
+		}),
+		$(this).children().css({
+			'transition-duration' : '5s',
+			'display' : 'none'
+		})
+	}
 });
 
+$('.tat-head-content-center > div:last-child').on({
+	"mouseenter" : function(){
+		$(this).css({	
+			'color' : '#9a4cc6'
+		}),
+		$(this).children().css({
+			'transition-duration' : '5s',
+			'display' : 'inline-block'
+		})
+	},
+	"mouseleave" : function(){
+		$(this).css({
+			'color' : 'black'
+		}),
+		$(this).children().css({
+			'transition-duration' : '5s',
+			'display' : 'none'
+		})
+	}
+});
 $('.tat-head-content-right > div').on({
 	"mouseenter" : function(){
 		$(this).css({
@@ -261,7 +188,7 @@ function saveEvent() {
 			dataType : "json",
 			type : "POST",
 			success : function(data) {
-				//console.log("파일 저장 성공 : "+data.editLog);
+				console.log("파일 저장 성공 : "+data.editLog);
 			}, error : function(data) {
 				
 			}
@@ -353,7 +280,7 @@ function redoEvent() {
 
 
 function stackMoveEvent() {
-	//console.log(stackMove);
+	console.log(stackMove);
 	tmp = stackMove.attr("data-stack", "move");
 	
 	
@@ -386,7 +313,7 @@ function moveRedo() {
 
 
 //undo 뒤로가기
-$('#undo-btn').click(function(){
+$('.tat-head-content-right > div:nth-child(6)').click(function(){
 	if ( tmp == null ) {
 		alert("기록이 없습니다.");
 	} else {
@@ -422,7 +349,7 @@ $('#undo-btn').click(function(){
 
 
 // redo 앞으로가기
-$('#redo-btn').click(function(){
+$('.tat-head-content-right > div:nth-child(5)').click(function(){
 	if ( tmp == null ) {
 		alert("기록이 없습니다.");
 	} else {
@@ -462,30 +389,16 @@ $('#save-btn').on('click', function(){
 	//console.log(editWrap.html());
 	saveEvent();
 });
-$("#edit_submit").click(function(){
-	saveEvent();
-});
 
 $('#commit-btn').click(function(){
 	commitEvent();
-});
-$("#edit_allview").click(function(){
-	commitEvent();
-});
-
-$("#edit_end").click(function(){
-	location.href="/TAT/my/Main.tat";
-});
-
-$("#moneyplease").click(function(){
-	location.href="/TAT/main/Upgrade.tat";
 });
 
 $('#tat-head-logo').on('click', function(){
 	var siteOut = confirm('아직 저장을 안하셨습니다. 저장 하시겠습니까?');
 	if ( siteOut ) {
 		saveEvent();
-		location.href="/TAT/my/Project.tat";
+		location.href="/TAT/edit/Main.tat";
 	} else {
 		
 	}

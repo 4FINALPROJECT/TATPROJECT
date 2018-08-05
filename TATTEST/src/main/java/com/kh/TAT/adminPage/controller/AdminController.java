@@ -30,7 +30,7 @@ public class AdminController {
 	// 관리자 메인 페이지 이동
 	@RequestMapping("/admin/Main.tat")
 	public String admin(){
-		return "adminPage/adminPage_Member";
+		return "adminPage/adminPage_Main";
 	}
 	// 회원정보 페이지 이동
 	@RequestMapping(value="/admin/Member.tat")
@@ -85,6 +85,7 @@ public class AdminController {
 		
 	    List<Member> memberList = adminS.selectMemberList(paging);
 	    paging.setTotal(adminS.MemberTotalPaging());
+	    
 	    
 	    System.out.println("memberList :"+memberList);
 	    

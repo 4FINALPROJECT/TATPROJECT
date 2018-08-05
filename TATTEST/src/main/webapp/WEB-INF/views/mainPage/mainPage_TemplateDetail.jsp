@@ -38,7 +38,7 @@
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<div class="porDetCarousel">
 							<div class="carousel-content">
-			                    <iframe src="${pageContext.request.contextPath}/main/TemplateIframe.tat?t_category=${temp.t_category}" width="100%" height="700" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+								<img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_slider1.png" alt="">
 							</div>
 						</div>
 					</div>

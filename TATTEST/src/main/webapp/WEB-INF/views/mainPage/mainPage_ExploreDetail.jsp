@@ -36,7 +36,7 @@
 				<div class="row sub_content">
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<div class="col-lg-12 col-md-12 col-sm-12">
-							<iframe class="" src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${m_code}" width="100%" height="500px" scrolling="" frameborder="2" allowfullscreen=""></iframe>
+							<img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_slider1.png" alt="">
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4">
@@ -154,7 +154,8 @@
                                     <div class="option inner">
                                         <div>
                                             <h5>${editlist.proj_name}</h5>
-                                            <a href="${pageContext.request.contextPath}/main/ExploreDetail.tat?e_code=${editlist.e_code}&m_code=${editlist.m_code}" class="fa fa-search"></a>
+                                            <a href="${pageContext.request.contextPath}/resources/images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a>
+                                            <a href="${pageContext.request.contextPath}/main/ExploreDetail.tat?e_code=${editlist.e_code}&m_code=${editlist.m_code}" class="fa fa-link"></a>
                                             <span>${editlist.proj_comment}</span>
                                         </div>
                                     </div>

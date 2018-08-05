@@ -48,44 +48,41 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="${pageContext.request.contextPath}/main/Feature.tat">기능</a>
+								<li><a href="#">기능</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Feature.tat">기능소개</a></li>
 									    
 									</ul>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/main/Explore.tat">둘러보기</a>
+								<li><a href="#">둘러보기</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Explore.tat">둘러보기</a></li>
 									        
 									</ul>
 								</li>
-								<li>
-									<c:if test="${!empty m_code}">
-									<a href="${pageContext.request.contextPath}/main/Upgrade.tat" >프리미엄</a>
-										<ul class="dropdown-menu">
-										<li><a href="${pageContext.request.contextPath}/main/Upgrade.tat">프리미엄 플랜</a></li>
-										</ul>
-								    </c:if>
-								    <c:if test="${empty m_code}">
-								    <a href="#" data-toggle="modal" data-target="#signin">프리미엄</a>
-									    <ul class="dropdown-menu">
-									    <li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">프리미엄 플랜</a></li>
-									    </ul>
-								    </c:if>
-								</li>
-								<li><a href="${pageContext.request.contextPath}/main/Template.tat">템플릿</a>
+								<li><a href="#" >프리미엄</a>
 									<ul class="dropdown-menu">
-										<li><a href="${pageContext.request.contextPath}/main/Template.tat">템플릿</a></li>
+										<c:if test="${!empty m_code}">
+										<li><a href="${pageContext.request.contextPath}/main/Upgrade.tat">프리미엄 플랜</a></li>
+									    </c:if>
+									    <c:if test="${empty m_code}">
+									    <li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">프리미엄 플랜</a></li>
+									    </c:if>
 									</ul>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/main/Affiliate.tat">제휴신청</a>
+								<li><a href="#">템플릿</a>
+									<ul class="dropdown-menu">
+										<li><a href="${pageContext.request.contextPath}/main/Template.tat">템플릿</a></li>
+											
+									</ul>
+								</li>
+								<li><a href="#">제휴신청</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Affiliate.tat">제휴신청안내</a></li>
 										<li><a href="${pageContext.request.contextPath}/main/Affiliate.tat">제휴신청</a></li>
 									</ul>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/main/Question.tat">고객센터</a>
+								<li><a href="#">고객센터</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Question.tat">1:1문의하기</a></li>
 										<li><a href="${pageContext.request.contextPath}/main/Faq.tat">자주묻는질문</a></li>

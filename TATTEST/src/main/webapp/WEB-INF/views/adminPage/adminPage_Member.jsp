@@ -10,6 +10,7 @@
 <body>
 	<c:import url="common/adminPage_Header.jsp"></c:import>
 	
+	<c:if test="${m_code eq 'A001'}">
 	<section class="wrapper">
 		<section class="page_head">
 			<div class="container">
@@ -34,7 +35,7 @@
 					<!--Sidebar Widget-->
 					<div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="sidebar">
-							<div class="widget widget_search">
+							<%-- <div class="widget widget_search">
 								<div class="site-search-area">
 									<form method="get" id="site-searchform" action="#">
 										<div>
@@ -78,17 +79,17 @@
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="/resources/images/content/recent_1.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_1.png" alt="" /></a></span>
                                                     <a href="#">Publishing packag esanse web page editos</a>
                                                     <i>October 09, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="/resources/images/content/recent_2.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}resources/images/content/recent_2.png" alt="" /></a></span>
                                                     <a href="#">Sublishing packag esanse web page editos</a>
                                                     <i>October 08, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="/resources/images/content/recent_3.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_3.png" alt="" /></a></span>
                                                     <a href="#">Mublishing packag esanse web page editos</a>
                                                     <i>October 07, 2015</i>
                                                 </li>
@@ -97,17 +98,17 @@
                                         <div class="tab-pane fade" id="Recent">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="/resources/images/content/recent_4.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_4.png" alt="" /></a></span>
                                                     <a href="#">Various versions has evolved over the years</a>
                                                     <i>October 18, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="/resources/images/content/recent_5.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_5.png" alt="" /></a></span>
                                                     <a href="#">Rarious versions has evolve over the years</a>
                                                     <i>October 17, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="/resources/images/content/recent_6.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_6.png" alt="" /></a></span>
                                                     <a href="#">Marious versions has evolven over the years</a>
                                                     <i>October 16, 2015</i>
                                                 </li>
@@ -116,15 +117,15 @@
                                         <div class="tab-pane fade" id="Comment">
                                             <ul class="comments">
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_3.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/TAT/resources/images/content/recent_3.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambose</a> <i>says: </i> </strong> Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_1.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/TAT/resources/images/content/recent_1.png" alt="#"></a>
                                                     <p><strong><a href="#">Makaroni</a> <i>says: </i> </strong> Tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/resources/images/content/recent_2.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="/TAT/resources/images/content/recent_2.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambanan</a> <i>says: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
                                                 </li>
                                             </ul>
@@ -167,11 +168,11 @@
 									<li><a href="#"> June 2015</a></li>
 									<li><a href="#"> May 2015</a></li>
 								</ul>
-							</div>
+							</div> --%>
 						</div>
 					</div>
 					
-					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="row sub_content">
 				            <div class="col-lg-12 col-md-12 col-sm-12">
 				                <div class="dividerHeading">
@@ -183,13 +184,13 @@
 				                    <table class="table table-striped table-hover">
 				                        <thead>
 				                        <tr>
-				                            <th>Member_Code</th>
-				                            <th>Member_EMAIL</th>
-				                            <th>Member_NAME</th>
-				                            <th>Member_Birth</th>
-				                            <th>Member_Gender</th>
-				                            <th>Member_Joindate</th>
-				                            <th>IS_USEABLE</th>
+				                            <th>코드</th>
+				                            <th>이메일</th>
+				                            <th>이름</th>
+				                            <th>생년월일</th>
+				                            <th>성별</th>
+				                            <th>가입일</th>
+				                            <th>결제 여부</th>
 				                        </tr>
 				                        </thead>
 				                        <tbody class="memberListTable">
@@ -208,7 +209,7 @@
 																
 				            </div>
 				            
-				            <div class="col-lg-12 col-md-12 col-sm-12">
+				            <!-- <div class="col-lg-12 col-md-12 col-sm-12">
 			                    <div class="dividerHeading">
 			                        <h4><span>상세정보</span></h4>
 			                    </div>
@@ -251,7 +252,7 @@
 			                            </div>
 			                        </div>
 			                    </form>
-			                </div>
+			                </div> -->
 				            
 				        </div>
 	                </div>
@@ -262,6 +263,11 @@
 		</section>
 
 	</section>
+	</c:if>
+	<c:if test="${m_code ne 'A001' or empty m_code}">
+			<c:redirect url="/WEB-INF/views/mainPage/common/mainPage_error.jsp"/>	
+	</c:if>
+	
 	
 	<script>
 	 window.onload = function(){
@@ -272,7 +278,9 @@
 		var btnCount = 5;
 		var showDoubleCount = 5.0;
 		var pageVal;
-
+		
+	
+		
 		function pageNextFirstBtn(){
 			$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn(1)">››</a></li>')
 		}
@@ -323,13 +331,12 @@
 		
 		
 		function pageIndex(pageStartNum){
-			
 			var start = pageStartNum-1;
 			 $('.memberListTable').empty(); 
 			 $.ajax({
 				url : "${pageContext.request.contextPath}/admin/MemberAjax.tat",
 				type : "post",
-				dataType : 'json', 
+				/* dataType : 'json',  */
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
@@ -337,20 +344,25 @@
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
+		
 		function createPageList(data){
-			console.log("ajax 리스트 이름 확인 : "+data.memberList);
-			console.log("ajax data 전체 확인 : "+data);
+			
+			/* console.log("ajax 리스트 이름 확인 : "+data.memberList);
+			console.log("ajax data 전체 확인 : "+data); */
 			for(var idx in data){
+			
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.memberListTable').append('<tr><td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].m_email+'</td>'+
 					'<td>'+data[idx].m_name+'</td>'+
-					'<td>'+data[idx].m_birth+'</td>'+
+					'<td>'+moment(data[idx].m_birth).subtract(10, 'days').calendar()+'</td>'+
 					'<td>'+data[idx].m_gender+'</td>'+
-					'<td>'+data[idx].enroll_date+'</td>'+
+					'<td>'+moment(data[idx].enroll_date).subtract(10, 'days').calendar()+'</td>'+
 					'<td>'+data[idx].is_usable+'</td></tr>');
 			};
 		};
+		
+		
 			
 			
 		 function pageNextBtnCreate(num){
@@ -383,7 +395,10 @@
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  
-		};	
+		};
+		
+			
+		
 	</script>
 	<c:import url="common/adminPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>

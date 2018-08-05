@@ -5,7 +5,7 @@
 	</resultMap>
 	
 	<select id="selectTemplate" parameterType="template" resultMap="templateMap">
-		SELECT T_CODE, T_CATEGORY, T_TITLE, T_COMMENT, T_DATE, T_USE_COUNT, FILE_NAME FROM TEMPLATE
+		SELECT T_CODE, T_CATEGORY, T_TITLE, T_COMMENT, T_DATE, T_USE_COUNT FROM TEMPLATE
 	</select>
 	
 	<select id="selectDetail" parameterType="template" resultMap="templateMap">

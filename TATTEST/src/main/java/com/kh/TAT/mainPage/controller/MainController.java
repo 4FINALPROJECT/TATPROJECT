@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.messaging.MessagingException;
@@ -144,7 +145,6 @@ public class MainController {
 		String m_code = request.getParameter("m_code");
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("m_code", m_code);
 		
 		edit = mainS.editDetail(e_code);
 		newedit.setE_code(e_code);
@@ -853,39 +853,6 @@ public class MainController {
 				
 				return mv;
 			}
-	// 둘러보기 페이지 아이프레임 이동
-	@RequestMapping("/main/ExploreIframe.tat")
-	public String ExploreIframe(HttpServletRequest request, Model model){
-
-		String e_code = request.getParameter("e_code");
-		String m_code = request.getParameter("m_code");
-		
-		String headRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/head.jsp";
-		String bodyRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/home.jsp";
-		String footerRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/footer.jsp";
-		
-		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
-		addAttribute("editPageFooter", footerRead);
-		
-		return "editPage/editView_Main";
-	}
 	
-	// 템플릿 페이지 아이프레임 이동
-	@RequestMapping("/main/TemplateIframe.tat")
-	public String TemplateIframe(HttpServletRequest request, Model model){
-
-		String t_category = request.getParameter("t_category");
-		
-		System.out.println("폴더 이름 확인 : "+t_category);
-		
-		String headRead = "WEB-INF/views/template/"+t_category+"/head.jsp";
-		String bodyRead = "WEB-INF/views/template/"+t_category+"/home.jsp";
-		String footerRead = "WEB-INF/views/template/"+t_category+"/footer.jsp";
-		
-		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
-		addAttribute("editPageFooter", footerRead);
-		
-		return "editPage/editView_Main";
-	}
 }
 

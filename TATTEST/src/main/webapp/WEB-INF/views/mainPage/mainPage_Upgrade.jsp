@@ -251,10 +251,18 @@
 	            <div class="row">
 	                <div class="col-lg-12 col-sm-12 wow bounceIn ">
 	                    <div class="heading-item">
-	                        <h4> 프리미엄 플랜의 다양한 혜택을 만나보세요! </h4>
-	                        <p>안전한 온라인 서비스를 약속합니다!</p>
+	                        <h4>
+	                            Ullam Corporis Suscipit </h4>
+	                        <p>
+	                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur<br>
+	                            aut odit aut fugit, sed quia consequuntur
+	                        </p>
 	                        <a class="btn btn-default btn-lg" href="">Get a free Quote</a>
-	                        <em>VAT는 사용자의 결제 국가에 의해 결정되므로 포함하지 않습니다.</em>
+	                        <em>or give us call
+	                            <strong>
+	                                +23-4321-12323
+	                            </strong>
+	                        </em>
 	                    </div>
 	                </div>
 	            </div>
