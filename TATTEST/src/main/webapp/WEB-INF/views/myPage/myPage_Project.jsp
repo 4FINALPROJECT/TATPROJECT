@@ -58,7 +58,7 @@
 								<form style="display: inline-block;" method="post" action="${pageContext.request.contextPath}/edit/Main.tat">
 									<input type="hidden" name="e_code" value="${ p.e_code }"/>
 									<input type="submit" class="btn btn-small btn-default" value="편집 하기"/>
-								</form>               
+								</form>
 	                        </div>
 	                    </div>
 	                </div>

@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-	
-	<!-- 회원정보 관련 -->
-	<select id="selectMember" parameterType="String" resultType="member">
-		SELECT * FROM MEMBER WHERE M_CODE = #{m_code} 
-	</select>
-		
-	<update id="updateProfile" parameterType="member">
-		UPDATE MEMBER SET M_NAME= #{m_name}, M_BIRTH= #{m_birth}, M_GENDER = #{m_gender} WHERE M_CODE = #{m_code}
-	</update>	
-		
-	<select id="checkPwd" parameterType="String" resultType="String" >
-		SELECT M_PWD FROM MEMBER WHERE M_CODE = #{m_code}
-	</select>	
-		
-	<update id="updatePassword" parameterType="member">
-		UPDATE MEMBER SET M_PWD =#{m_pwd} WHERE M_CODE = #{m_code}
-	</update>
-	
-	<select id="checkIdDuplicate" parameterType="String" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER WHERE M_EMAIL = #{chk}
-	</select>
-	
-	<update id="updateEmail" parameterType="member">
-		UPDATE MEMBER SET M_EMAIL=#{m_email} WHERE M_CODE = #{m_code}
-	</update>
-	
-	
-	<!-- 지불정보 관련 -->
-	<select id="selectOnePayment" parameterType="String" resultType="myPayment">
-		SELECT * FROM(SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code})  WHERE E_DATE > 0
-	</select>
-	
-	<select id="selectListPayment" parameterType="String" resultType="myPayment">
-		SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code} ORDER BY P_DATE DESC
-	</select>
-	
-	
-	<!-- 1:1게시판 관련 -->
-	<select id="selectQuestionBoard" parameterType="String" resultType="questionAnswerBoard">
-		SELECT QA_NUM,M_CODE,(SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE=qa.qc_code) QC_CODE,QA_TITLE,QA_CONTENT,QA_DATE,IS_OPEN,ADMIN_CODE,A_CONTENT,A_DATE FROM QUESTION_ANSWER_BOARD qa WHERE M_CODE = #{m_code}
-	</select>
-	
-	<select  id="widgetComment" parameterType="String" resultType="questionAnswerBoard">
-		SELECT * FROM (SELECT QA_NUM, ADMIN_CODE, A_CONTENT FROM question_answer_board WHERE M_CODE= #{m_code} and ADMIN_CODE is not null ORDER BY 1 DESC) WHERE <![CDATA[  ROWNUM < 4 ]]>
-	</select>
-	
-	<select id="selectCategory" resultType="questionCategory">
-		SELECT * FROM question_Category
-	</select>
-	
-	<insert id="insertWriteBoard" parameterType="questionAnswerBoard" >
-		INSERT INTO QUESTION_ANSWER_BOARD VALUES (SEQ_QUESTION.NEXTVAL, #{m_code}, #{qc_code}, #{qa_title}, #{qa_content}, SYSDATE, #{is_open} ,NULL,NULL,NULL)
-	</insert>
-	
-	<select id="selectOneBoard" parameterType="_int" resultType="questionAnswerBoard"> 
-		SELECT QA_NUM, M_CODE, (SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE=QAB.QC_CODE) QC_CODE, QA_TITLE, QA_CONTENT, QA_DATE, IS_OPEN, ADMIN_CODE, A_CONTENT, A_DATE FROM question_answer_board QAB WHERE QA_NUM=#{QA_NUM}
-	</select>
-	
-	<!-- 프로젝트 관련 -->
-	<select id="selectAllProject" parameterType="String" resultType="MyProject">
-		SELECT E_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, ER.COMMENT_COUNT FROM EDIT LEFT JOIN (SELECT E_CODE, COUNT(*) AS COMMENT_COUNT FROM EDIT_REPLY_BOARD  GROUP BY E_CODE) ER  USING(E_CODE) WHERE M_CODE= #{m_code} ORDER BY SAVE_DATE ASC
-	</select>
-		
-	<select id="selectOneProjectDetail" parameterType="String" resultType="edit">
-		SELECT E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE=E.M_CODE) M_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, IS_SHARE, E_USE_COUNT FROM EDIT E WHERE E_CODE=#{E_CODE}
-	</select>
-	
-	<select id="selectListReply" parameterType="String" resultType="editReplyBoard">
-		SELECT ER_NUM, E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE=ERB.M_CODE) M_CODE, ER_REPLY, ER_DATE, ER_RATE FROM EDIT_REPLY_BOARD ERB WHERE E_CODE=#{E_CODE}
-	</select>
-	
-	<select id="countComment" parameterType="String" resultType="_int" >
-		SELECT COUNT(*) FROM EDIT_REPLY_BOARD WHERE E_CODE=#{E_CODE}
-	</select>
+   
+   <!-- 회원정보 관련 -->
+   <select id="selectMember" parameterType="String" resultType="member">
+      SELECT * FROM MEMBER WHERE M_CODE = #{m_code} 
+   </select>
+      
+   <update id="updateProfile" parameterType="member">
+      UPDATE MEMBER SET M_NAME= #{m_name}, M_BIRTH= #{m_birth}, M_GENDER = #{m_gender} WHERE M_CODE = #{m_code}
+   </update>   
+      
+   <select id="checkPwd" parameterType="String" resultType="String" >
+      SELECT M_PWD FROM MEMBER WHERE M_CODE = #{m_code}
+   </select>   
+      
+   <update id="updatePassword" parameterType="member">
+      UPDATE MEMBER SET M_PWD =#{m_pwd} WHERE M_CODE = #{m_code}
+   </update>
+   
+   <select id="checkIdDuplicate" parameterType="String" resultType="_int">
+      SELECT COUNT(*) FROM MEMBER WHERE M_EMAIL = #{chk}
+   </select>
+   
+   <update id="updateEmail" parameterType="member">
+      UPDATE MEMBER SET M_EMAIL=#{m_email} WHERE M_CODE = #{m_code}
+   </update>
+   
+   
+   <!-- 지불정보 관련 -->
+   <select id="selectOnePayment" parameterType="String" resultType="myPayment">
+      SELECT * FROM(SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code})  WHERE E_DATE > 0
+   </select>
+   
+   <select id="selectListPayment" parameterType="String" resultType="myPayment">
+      SELECT P_NAME,P_DATE,V_DATE,CEIL(TO_DATE(V_DATE)-SYSDATE)+1 E_DATE FROM PAYMENT JOIN PAYMENT_CODE USING(P_CODE) WHERE M_CODE = #{m_code} ORDER BY P_DATE DESC
+   </select>
+   
+   
+   <!-- 1:1게시판 관련 -->
+   <select id="selectQuestionBoard" parameterType="String" resultType="questionAnswerBoard">
+      SELECT QA_NUM,M_CODE,(SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE=qa.qc_code) QC_CODE,QA_TITLE,QA_CONTENT,QA_DATE,IS_OPEN,ADMIN_CODE,A_CONTENT,A_DATE FROM QUESTION_ANSWER_BOARD qa WHERE M_CODE = #{m_code}
+   </select>
+   
+   <select  id="widgetComment" parameterType="String" resultType="questionAnswerBoard">
+      SELECT * FROM (SELECT QA_NUM, ADMIN_CODE, A_CONTENT,(SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE=qa.qc_code) QC_CODE FROM question_answer_board qa WHERE M_CODE= #{m_code} and ADMIN_CODE is not null ORDER BY 1 DESC) WHERE <![CDATA[  ROWNUM < 4 ]]>
+   </select>
+   
+   <select id="selectCategory" resultType="questionCategory">
+      SELECT * FROM question_Category
+   </select>
+   
+   <insert id="insertWriteBoard" parameterType="questionAnswerBoard" >
+      INSERT INTO QUESTION_ANSWER_BOARD VALUES (SEQ_QUESTION.NEXTVAL, #{m_code}, #{qc_code}, #{qa_title}, #{qa_content}, SYSDATE, #{is_open} ,NULL,NULL,NULL)
+   </insert>
+   
+   <select id="selectOneBoard" parameterType="_int" resultType="questionAnswerBoard"> 
+      SELECT QA_NUM, M_CODE, (SELECT QC_NAME FROM QUESTION_CATEGORY WHERE QC_CODE=QAB.QC_CODE) QC_CODE, QA_TITLE, QA_CONTENT, QA_DATE, IS_OPEN, ADMIN_CODE, A_CONTENT, A_DATE FROM question_answer_board QAB WHERE QA_NUM=#{QA_NUM}
+   </select>
+   
+   <!-- 프로젝트 관련 -->
+   <select id="selectAllProject" parameterType="String" resultType="MyProject">
+      SELECT E_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, ER.COMMENT_COUNT FROM EDIT LEFT JOIN (SELECT E_CODE, COUNT(*) AS COMMENT_COUNT FROM EDIT_REPLY_BOARD  GROUP BY E_CODE) ER  USING(E_CODE) WHERE M_CODE= #{m_code} ORDER BY SAVE_DATE ASC
+   </select>
+      
+   <select id="selectOneProjectDetail" parameterType="String" resultType="edit">
+      SELECT E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE=E.M_CODE) M_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, IS_SHARE, E_USE_COUNT FROM EDIT E WHERE E_CODE=#{E_CODE}
+   </select>
+   
+   <select id="selectListReply" parameterType="String" resultType="editReplyBoard">
+      SELECT ER_NUM, E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE=ERB.M_CODE) M_CODE, ER_REPLY, ER_DATE, ER_RATE FROM EDIT_REPLY_BOARD ERB WHERE E_CODE=#{E_CODE}
+   </select>
+   
+   <select id="countComment" parameterType="String" resultType="_int" >
+      SELECT COUNT(*) FROM EDIT_REPLY_BOARD WHERE E_CODE=#{E_CODE}
+   </select>
 
-	<insert id="createProject" parameterType="edit">
-		INSERT INTO EDIT VALUES('E'||SEQ_EDIT.NEXTVAL,#{m_code},#{proj_name},#{proj_comment},DEFAULT,DEFAULT,NULL)
-	</insert>
+   <insert id="createProject" parameterType="edit">
+      INSERT INTO EDIT VALUES('E'||SEQ_EDIT.NEXTVAL,#{m_code},#{proj_name},#{proj_comment},DEFAULT,DEFAULT,NULL)
+   </insert>
 
 </mapper>
