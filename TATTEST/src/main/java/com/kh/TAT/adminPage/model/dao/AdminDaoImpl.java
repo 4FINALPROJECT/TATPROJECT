@@ -161,9 +161,9 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public int updateQuestion(int qa_num) {
+	public int updateQuestion(AdminQuestion aq) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("adminQuestion.updateQuestion", qa_num);
+		return sqlSession.update("adminQuestion.updateQuestion", aq);
 	}
 	
 	// Template

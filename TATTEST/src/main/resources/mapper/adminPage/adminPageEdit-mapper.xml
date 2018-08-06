@@ -12,6 +12,6 @@
 		SELECT count(*) FROM EDIT
 	</select>
 	<select id="totalPagingCount" resultType="_int">
-		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM EDIT) WHERE row_num >#{start}
+		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM EDIT) WHERE row_num >=#{start}
 	</select>
 </mapper>

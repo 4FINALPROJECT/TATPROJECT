@@ -295,10 +295,10 @@
 			$('.pageIndex').empty();
 			var num; 
 			if(total%showDoubleCount != 0){
-				num = Math.ceil(total/showCount);
+				num = Math.ceil(total/showDoubleCount);
 			}
 			else{
-			num = Math.ceil(total/showCount);
+			num = Math.ceil(total/showDoubleCount)+1;
 			} 
 			if(num > 5){
 				num = 5

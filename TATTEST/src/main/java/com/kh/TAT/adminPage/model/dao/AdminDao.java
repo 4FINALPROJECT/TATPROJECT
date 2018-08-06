@@ -65,7 +65,7 @@ public interface AdminDao {
 	
 	List<AdminQuestion> questionSelectUpdateList(int qa_num);
 	
-	int updateQuestion(int qa_num);
+	int updateQuestion(AdminQuestion aq);
 
 	
 	// Template

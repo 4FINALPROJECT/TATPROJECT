@@ -154,9 +154,9 @@ public class AdminServiceImpl implements AdminService {
 		return adminD.questionTotalPaging();
 	}
 	@Override
-	public int updateQuestion(int qa_num) {
+	public int updateQuestion(AdminQuestion aq) {
 		// TODO Auto-generated method stub
-		return adminD.updateQuestion(qa_num);
+		return adminD.updateQuestion(aq);
 	}
 
 	

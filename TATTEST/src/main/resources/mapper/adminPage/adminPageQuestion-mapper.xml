@@ -12,7 +12,7 @@
 		SELECT count(*) FROM QUESTION_ANSWER_BOARD
 	</select>
 	<select id="totalPagingCount" resultType="_int">
-		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM QUESTION_ANSWER_BOARD) WHERE row_num >#{start}
+		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM QUESTION_ANSWER_BOARD) WHERE row_num >=#{start}
 	</select>
 	<select id="questionSelectUpdateList" resultType="AdminQuestion" parameterType="_int" >
 		SELECT * FROM QUESTION_ANSWER_BOARD JOIN MEMBER USING(M_CODE) JOIN QUESTION_CATEGORY USING(QC_CODE) WHERE QA_NUM = #{faq_num}

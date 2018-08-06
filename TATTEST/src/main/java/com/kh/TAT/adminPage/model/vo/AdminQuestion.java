@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class AdminQuestion {
 	
-	private String qa_num;
+	private int qa_num;
 	private String m_name;
 	private String qc_name;
 	private String qa_title;
@@ -16,7 +16,7 @@ public class AdminQuestion {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AdminQuestion(String qa_num, String m_name, String qc_name, String qa_title, String qa_content, Date qa_date,
+	public AdminQuestion(int qa_num, String m_name, String qc_name, String qa_title, String qa_content, Date qa_date,
 			String a_content, Date a_date) {
 		super();
 		this.qa_num = qa_num;
@@ -28,10 +28,10 @@ public class AdminQuestion {
 		this.a_content = a_content;
 		this.a_date = a_date;
 	}
-	public String getQa_num() {
+	public int getQa_num() {
 		return qa_num;
 	}
-	public void setQa_num(String qa_num) {
+	public void setQa_num(int qa_num) {
 		this.qa_num = qa_num;
 	}
 	public String getM_name() {

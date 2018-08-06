@@ -66,6 +66,8 @@ public interface AdminService {
 	
 	List<AdminQuestion> questionSelectUpdateList(int qa_num);
 	
+	int updateQuestion(AdminQuestion aq);
+	
 	// Template
 
 	List<Template> selectTemplateList(PagingVo paging);
@@ -74,7 +76,7 @@ public interface AdminService {
 
 	int templateTotalPagingCount(int start);
 
-	int updateQuestion(int qa_num);
+	
 
 	
 	// 

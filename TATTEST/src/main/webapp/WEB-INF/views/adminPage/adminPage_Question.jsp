@@ -74,7 +74,7 @@
 	                        <h4><span>문의 내용</span></h4>
 	                    </div>
 	                    <form id="contactForm" class="questionAnswer" action="" novalidate="novalidate">
-	                        <div class="row">
+	                       <!--  <div class="row">
 	                            <div class="form-group">
 	                                <div class="col-lg-6 ">
 	                                    <input type="text" id="name" name="" class="form-control questionName" maxlength="100" data-msg-required="Please enter your name." >
@@ -111,7 +111,7 @@
 	                            <div class="col-md-12">
 	                                <input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" onclick="updateAdminComment()" value="Send Message">
 	                            </div>
-	                        </div>
+	                        </div> -->
 	                    </form>
 	                </div>
 	                
@@ -134,11 +134,15 @@
 		
 
 		function updateAdminComment(qa_num){
+			
+		
 			$.ajax({
 				url : "${pageContext.request.contextPath}/admin/updateQuestionAjax.tat",
 				type : "post",
 				dataType : 'json',
-				data : {"qa_num" : qa_num
+				data : {"qa_num" : qa_num,
+						"a_content" : $('.questionAdminContent').val()
+				
 				},success : function(data){
 					alert("등록이 완료되었습니다.");
 				},error: function(jqXHR, textStatus, errorThrown) {

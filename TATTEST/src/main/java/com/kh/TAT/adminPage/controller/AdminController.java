@@ -30,7 +30,7 @@ public class AdminController {
 	// 관리자 메인 페이지 이동
 	@RequestMapping("/admin/Main.tat")
 	public String admin(){
-		return "adminPage/adminPage_Main";
+		return "adminPage/adminPage_Member";
 	}
 	// 회원정보 페이지 이동
 	@RequestMapping(value="/admin/Member.tat")
@@ -321,10 +321,15 @@ public class AdminController {
 		
 		@ResponseBody
 		@RequestMapping(value="/admin/updateQuestionAjax.tat")
-		public int updateQuestion(@RequestParam("qa_num") int qa_num){
-
-			System.out.println("qa_num2 : "+qa_num);
-			int updateQuestion = adminS.updateQuestion(qa_num);
+		public int updateQuestion(@RequestParam("qa_num") int qa_num ,@RequestParam("a_content") String a_content){
+			AdminQuestion aq = new AdminQuestion();
+			
+			aq.setQa_num(qa_num);
+			aq.setA_content(a_content);
+			
+			System.out.println("qa_num2 : "+aq);
+			
+			int updateQuestion = adminS.updateQuestion(aq);
 			
 			return updateQuestion;
 		}
