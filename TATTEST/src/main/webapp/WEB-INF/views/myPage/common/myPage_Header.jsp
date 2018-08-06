@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header id="header">
 	<div id="top-bar">
 		<div class="container">
@@ -9,7 +10,12 @@
 				<div class="col-sm-4 top-info">
 					<ul>
 						<li><a href="${pageContext.request.contextPath}" class="my-facebook">메</a></li>
-						<li><a href="${pageContext.request.contextPath}" class="my-google">로</a></li>
+						<c:if test="${ m_code != null }">
+						<form style="display:none; visibility: hidden;" action="${pageContext.request.contextPath}/main/memberLogout.tat" method="POST">
+							<input style="display:none; visibility: hidden;" type="submit" id="MainReturn"/>
+						</form>
+						<li><a onclick="mainReturn();" href="#">로!</a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
