@@ -15,7 +15,7 @@
 			border : none;
 		}
 		.edit-view-foot-wrap {
-			boreder : none;
+			border : none;
 		}
 		.edit-view-head {
 			border : none;
@@ -24,7 +24,7 @@
 			border : none;
 		}
 		.edit-view-foot {
-			boreder : none;
+			border : none;
 		}
 	</style>
 </head>
