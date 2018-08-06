@@ -1,8 +1,8 @@
 <!-- JS -->
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/retina-1.1.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/retina-1.1.0.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.cookie.js"></script> <!-- jQuery cookie -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/styleswitch.js"></script> <!-- Style Colors Switcher -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery.fractionslider.js" type="text/javascript" charset="utf-8"></script>
