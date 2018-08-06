@@ -288,7 +288,7 @@ $("div[id*=left_main]").each(function(){
 });
 var toolmenu_chk;
 $("td[id*=category]").click(function(e){
-   
+	$("td[id*=category]").css({"background": "none"});
    if($(this).attr("id") == "category3-1"){
       $("#tooltip").text(" 텍스트는 우 클릭 폰트 사이즈 변경을 이용해 주세요 ");
       $("#tooltip").css({"top" : e.pageY , "left" : e.pageX+30 , "display" : "inline"});
