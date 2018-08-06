@@ -36,7 +36,7 @@
 							<article class="post">
 								<figure class="post_img">
 									<a href="#">
-										<img src="images/blog/blog_1.png" alt="blog post">
+										<img src="${pageContext.request.contextPath}/resources/images/blog/blog_1.png" alt="blog post">
 									</a>
 								</figure>
 								<div class="post_date">
@@ -77,7 +77,7 @@
 							</article>
 							<div class="about_author">
 								<div class="author_desc">
-									<img src="images/blog/author.png" alt="about author">
+									<img src="${pageContext.request.contextPath}/resources/images/blog/author.png" alt="about author">
 									<ul class="author_social">
 										<li><a class="fb" href="#." data-placement="top" data-toggle="tooltip" title="Facbook"><i class="fa fa-facebook"></i></a></li>
 										<li><a class="twtr" href="#." data-placement="top" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
@@ -102,7 +102,7 @@
                             <div id="comment">
                                 <ul id="comment-list">
                                     <li class="comment">
-                                        <div class="avatar"><img alt="" src="images/blog/avatar_1.png" class="avatar"></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_1.png" class="avatar"></div>
                                         <div class="comment-container">
                                             <h4 class="comment-author"><a href="#">John Smith</a></h4>
                                             <div class="comment-meta"><a href="#" class="comment-date link-style1">February 22, 2015</a><a class="comment-reply-link link-style3" href="#respond">Reply &raquo;</a></div>
@@ -112,7 +112,7 @@
                                         </div>
                                     </li>
                                     <li class="comment">
-                                        <div class="avatar"><img alt="" src="images/blog/avatar_2.png" class="avatar"></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_2.png" class="avatar"></div>
                                         <div class="comment-container">
                                             <h4 class="comment-author"><a href="#">Eva Smith</a></h4>
                                             <div class="comment-meta"><a href="#" class="comment-date link-style1">February 13, 2015</a><a class="comment-reply-link link-style3" href="#respond">Reply &raquo;</a></div>
@@ -122,7 +122,7 @@
                                         </div>
                                         <ul class="children">
                                             <li class="comment">
-                                                <div class="avatar"><img alt="" src="images/blog/avatar_3.png" class="avatar"></div>
+                                                <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_3.png" class="avatar"></div>
                                                 <div class="comment-container">
                                                     <h4 class="comment-author"><a href="#">Thomas Smith</a></h4>
                                                     <div class="comment-meta"><a href="#" class="comment-date link-style1">February 14, 2015</a><a class="comment-reply-link link-style3" href="#respond">Reply &raquo;</a></div>
@@ -132,7 +132,7 @@
                                                 </div>
                                                 <ul class="children">
                                                     <li class="comment">
-                                                        <div class="avatar"><img alt="" src="images/blog/avatar_2.png" class="avatar"></div>
+                                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_2.png" class="avatar"></div>
                                                         <div class="comment-container">
                                                             <h4 class="comment-author"><a href="#">Eva Smith</a></h4>
                                                             <div class="comment-meta"><a href="#" class="comment-date link-style1">February 14, 2015</a><a class="comment-reply-link link-style3" href="#respond">Reply &raquo;</a></div>
@@ -146,7 +146,7 @@
                                         </ul>
                                     </li>
                                     <li class="comment">
-                                        <div class="avatar"><img alt="" src="images/blog/avatar_1.png" class="avatar"></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_1.png" class="avatar"></div>
                                         <div class="comment-container">
                                             <h4 class="comment-author"><a href="#">John Smith</a></h4>
                                             <div class="comment-meta"><a href="#" class="comment-date link-style1">February 07, 2015</a><a class="comment-reply-link link-style3" href="#respond">Reply &raquo;</a></div>
@@ -156,7 +156,7 @@
                                         </div>
                                     </li>
                                     <li class="comment">
-                                        <div class="avatar"><img alt="" src="images/blog/avatar_3.png" class="avatar"></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/resources/images/blog/avatar_3.png" class="avatar"></div>
                                         <div class="comment-container">
                                             <h4 class="comment-author"><a href="#">Thomas Smith</a></h4>
                                             <div class="comment-meta"><a href="#" class="comment-date link-style1">February 02, 2015</a><a class="comment-reply-link link-style3" href="#respond">Reply &raquo;</a></div>
@@ -244,17 +244,17 @@
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_1.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_1.png" alt="" /></a></span>
                                                     <a href="#">Publishing packag esanse web page editos</a>
                                                     <i>October 09, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_2.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_2.png" alt="" /></a></span>
                                                     <a href="#">Sublishing packag esanse web page editos</a>
                                                     <i>October 08, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_3.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_3.png" alt="" /></a></span>
                                                     <a href="#">Mublishing packag esanse web page editos</a>
                                                     <i>October 07, 2015</i>
                                                 </li>
@@ -263,17 +263,17 @@
                                         <div class="tab-pane fade" id="Recent">
                                             <ul class="recent_tab_list">
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_4.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_4.png" alt="" /></a></span>
                                                     <a href="#">Various versions has evolved over the years</a>
                                                     <i>October 18, 2015</i>
                                                 </li>
                                                 <li>
-                                                    <span><a href="#"><img src="images/content/recent_5.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_5.png" alt="" /></a></span>
                                                     <a href="#">Rarious versions has evolve over the years</a>
                                                     <i>October 17, 2015</i>
                                                 </li>
                                                 <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_6.png" alt="" /></a></span>
+                                                    <span><a href="#"><img src="${pageContext.request.contextPath}/resources/images/content/recent_6.png" alt="" /></a></span>
                                                     <a href="#">Marious versions has evolven over the years</a>
                                                     <i>October 16, 2015</i>
                                                 </li>
@@ -282,15 +282,15 @@
                                         <div class="tab-pane fade">
                                             <ul class="comments">
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_3.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="${pageContext.request.contextPath}/resources/images/content/recent_3.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambose</a> <i>says: </i> </strong> Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_1.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="${pageContext.request.contextPath}/resources/images/content/recent_1.png" alt="#"></a>
                                                     <p><strong><a href="#">Makaroni</a> <i>says: </i> </strong> Tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
                                                 </li>
                                                 <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_2.png" alt="#"></a>
+                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="${pageContext.request.contextPath}/resources/images/content/recent_2.png" alt="#"></a>
                                                     <p><strong><a href="#">Prambanan</a> <i>says: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
                                                 </li>
                                             </ul>
