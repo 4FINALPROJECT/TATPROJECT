@@ -37,8 +37,11 @@
                      <article class="post">
                         <figure class="post_img">
                            <a href="#">
-                              <iframe src="${pageContext.request.contextPath}/WEB_INF/views/member/M001/home.jsp" style="width:700px; height:500px;" scrolling="no"></iframe>
+                           ${pageContext.request.contextPath}/views/member/${m_code }/${p.e_code }/home.jsp
+                           
+                              <iframe src="${pageContext.request.contextPath}/WEB-INF/views/member/${m_code}/${p.e_code}/home.jsp" style="width:700px; height:500px;" scrolling="no"></iframe>
                               <%-- <img src="${pageContext.request.contextPath}/resources/images/blog/blog_1.png" alt="blog post"> --%>
+                           
                            </a>
                         </figure>
                         <div class="post_date">

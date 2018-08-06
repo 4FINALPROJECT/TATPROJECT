@@ -145,6 +145,7 @@ function test345435(){
           $("#multiborder").remove();
           
           var rotation = $(this).css("transform");
+          console.log(rotation);
 
           if(rotation != 'none'){
              
@@ -152,10 +153,10 @@ function test345435(){
              var a = obj_rotation[0];
              var b = obj_rotation[1];
              var angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
-             
+             $(".objectData_txt").eq(0).val(angle);
           } else {
              
-             $(".objectData_txt").eq(0).attr("value", 0);
+             $(".objectData_txt").eq(0).val(0);
              
           }
           
@@ -200,7 +201,7 @@ function test345435(){
          $("#title_controller").css("display" , "none");
          $(".total_tool").css("display" , "none");
          $("#objectId").attr("value",$(this).attr("data-obj-no"));
-         $(".objectData_txt").eq(0).attr("value", angle);
+         /*$(".objectData_txt").eq(0).attr("value", angle);*/
          
          if($(this).children("span").length < 1){
               $(".objectData_txt").eq(1).attr({"value" : w , "readonly" : false});

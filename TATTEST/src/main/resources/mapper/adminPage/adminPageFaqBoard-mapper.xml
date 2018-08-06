@@ -23,7 +23,7 @@
       VALUES (SEQ_FAQ.NEXTVAL, 'A001',#{qc_code},#{faq_question},#{faq_answer}, TO_DATE('2018-01-12', 'YYYY-MM-DD'))
    </insert>
    <select id="faqSelectUpdateList" resultType="FaqBoard" parameterType="_int" >
-      SELECT * FROM FAQ_BOARD WHERE FAQ_NUM = #{faq_num}
+      SELECT * FROM FAQ_BOARD JOIN QUESTION_CATEGORY USING(QC_CODE) WHERE FAQ_NUM = #{faq_num}
    </select>
    
    <update id="faqUpdateList">

@@ -6,6 +6,7 @@ public class FaqBoard {
 	private int faq_num;
 	private String m_code;
 	private String qc_code;
+	private String qc_name;
 	private String faq_question;
 	private String faq_answer;
 	private Date faq_date;
@@ -14,11 +15,12 @@ public class FaqBoard {
 	public FaqBoard() {
 		super();
 	}
-	public FaqBoard(int faq_num, String m_code, String qc_code, String faq_question, String faq_answer, Date faq_date) {
+	public FaqBoard(int faq_num, String m_code, String qc_code,String qc_name, String faq_question, String faq_answer, Date faq_date) {
 		super();
 		this.faq_num = faq_num;
 		this.m_code = m_code;
 		this.qc_code = qc_code;
+		this.qc_name = qc_name;
 		this.faq_question = faq_question;
 		this.faq_answer = faq_answer;
 		this.faq_date = faq_date;
@@ -47,6 +49,12 @@ public class FaqBoard {
 	}
 	public void setQc_code(String qc_code) {
 		this.qc_code = qc_code;
+	}
+	public String getQc_name() {
+		return qc_name;
+	}
+	public void setQc_name(String qc_name) {
+		this.qc_name = qc_name;
 	}
 	public String getFaq_question() {
 		return faq_question;

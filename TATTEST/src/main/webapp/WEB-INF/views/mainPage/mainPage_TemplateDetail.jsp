@@ -90,7 +90,7 @@
                                             </div>
                                             <c:if test="${m_code eq tempReply.m_code}">
                                             <a data-target="#${tempReply.tr_num}" data-toggle="collapse">수정</a>                                                                                        
-                                            <form id="tempDelete" action="${pageContext.request.contextPath}/main/DeleteReply.tat" method="post">
+                                            <form class="tempDelete" action="${pageContext.request.contextPath}/main/DeleteReply.tat" method="post">
                                             <input type="hidden" name="tr_num" value="${tempReply.tr_num}"/>
                                  <input type="hidden" name="t_code" value="${temp.t_code}"/>
                                             <a onclick="tempDelete()">삭제</a>
@@ -228,7 +228,7 @@
        }(jQuery));
        
    function tempDelete() {
-      $('#tempDelete').submit();
+      $('.tempDelete').submit();
    }    
    
    function showKeyCode(event) {
@@ -236,11 +236,11 @@
       var keyID = (event.which) ? event.which : event.keyCode;
       if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) )
       {
-         document.getElementById("keyinfo").innerHTML = keyID + " = 숫자키";
+         
       }
       else
       {
-         document.getElementById("keyinfo").innerHTML = keyID + " = 숫자키 아님";
+         
       }
       /* 48~57:일반 숫자키 코드, 96~105:숫자키패드 숫자키 코드 */
    }

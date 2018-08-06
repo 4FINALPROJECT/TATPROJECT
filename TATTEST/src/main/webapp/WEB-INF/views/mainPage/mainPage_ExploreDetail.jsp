@@ -79,16 +79,17 @@
                                     
                                           <c:if test="${m_code eq editReply.m_code}">
                                             <a data-target="#${editReply.er_num}" data-toggle="collapse">수정</a>                                                                                        
-                                            <form id="editDelete" action="${pageContext.request.contextPath}/main/DeleteEditReply.tat" method="post">
+                                            <form class="editDelete" action="${pageContext.request.contextPath}/main/DeleteEditReply.tat" method="post">
                                             <input type="hidden" name="er_num" value="${editReply.er_num}"/>
-                                 <input type="hidden" name="e_code" value="${editReply.e_code}"/>
+                                 			<input type="hidden" name="e_code" value="${editReply.e_code}"/>
                                             <a onclick="editDelete()">삭제</a>
                                             </form>
                                             <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat" method="post">
                                             <div class="collapse" id="${editReply.er_num}">                                   
                                    <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>   
                                    <input type="hidden" name="er_num" value="${editReply.er_num}"/>
-                                   <input type="hidden" name="e_code" value="${editReply.e_code}"/>
+                                   <input type="hidden" name="m_code" value="${v_code}"/>
+                                   <input type="hidden" name="e_code" value="${edit.e_code}"/>
                                    <button onclick="UpdateEditReply();">수정 완료</button>                                                                                                                                           
                                  </div>
                                  </form>
@@ -173,7 +174,7 @@
    </section>
    <script>
       function editDelete() {
-         $('#editDelete').submit();
+         $('.editDelete').submit();
       }
       
       function showKeyCode(event) {
@@ -181,11 +182,11 @@
          var keyID = (event.which) ? event.which : event.keyCode;
          if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) )
          {
-            document.getElementById("keyinfo").innerHTML = keyID + " = 숫자키";
+            
          }
          else
          {
-            document.getElementById("keyinfo").innerHTML = keyID + " = 숫자키 아님";
+            
          }
          /* 48~57:일반 숫자키 코드, 96~105:숫자키패드 숫자키 코드 */
       }

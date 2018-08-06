@@ -169,10 +169,10 @@ $(".edit-wrap").mousedown(function(e){
       var CalculationLeft = 0;
 
       $("#multiborder").mousemove(function(){
-    	  $("#multiborder").mousedown(function(){
-    	      $(".edit-wrap").off("mousedown");
-    	      $(".edit-wrap").off("mousemove");
-    	  });
+         $("#multiborder").mousedown(function(){
+             $(".edit-wrap").off("mousedown");
+             $(".edit-wrap").off("mousemove");
+         });
 
          $("#multiborder").on("mousemove");
 
@@ -186,27 +186,27 @@ $(".edit-wrap").mousedown(function(e){
                $("div[data-obj-no*=data-]").each(function(){
                   if($(this).attr("data-obj-no") == true_chk[true_count]){
                   if(ui.helper.offset().top <= $(this).offset().top &&
-                		  $(this).offset().top >= ui.helper.offset().top + ui.helper.css("height") &&
-                		  ui.helper.offset().left <= $(this).offset().left &&
-                		  $(this).offset().left >= ui.helper.offset().left + ui.helper.css("width")){
+                        $(this).offset().top >= ui.helper.offset().top + ui.helper.css("height") &&
+                        ui.helper.offset().left <= $(this).offset().left &&
+                        $(this).offset().left >= ui.helper.offset().left + ui.helper.css("width")){
                       OriginerTop.push(parseInt($(this).offset().top));
                       OriginerLeft.push(parseInt($(this).offset().left));
-                	  
-                	  ui.helper.append($(this).clone().css({
+                     
+                     ui.helper.append($(this).clone().css({
                           "background" : "rgb(193,231,67,0.3)",
                           "top" : $(this).offset().top - ui.helper.offset().top,
                           "left" : $(this).offset().left - ui.helper.offset().left,
                           "width" : $(this).css("width"),
                           "height" : $(this).css("height")
                           }));
-                	  true_count = 0;
-                	  
+                     true_count = 0;
+                     
                   } else {
-                	  
-                	  ++true_count;
-                	  
+                     
+                     ++true_count;
+                     
                   }
-                	 //console.log(ui.helper.offset().top);
+                    //console.log(ui.helper.offset().top);
                      OriginerTop.push(parseInt($(this).offset().top));
                      OriginerLeft.push(parseInt($(this).offset().left));
                      
@@ -223,7 +223,7 @@ $(".edit-wrap").mousedown(function(e){
                });
             },
             stop : function(e,ui){
-            		//console.log(ui.helper.children());
+                  //console.log(ui.helper.children());
                   for(var i in OriginerTop){
                      $("."+trueParent[0]).children("div").each(function(){
                         if($(this).attr("data-obj-no") == true_chk[i]){
@@ -238,7 +238,7 @@ $(".edit-wrap").mousedown(function(e){
          });
       });
       $("#multiborder").mouseout(function(){
-    	  $(".edit-wrap").on("mousedown");
+         $(".edit-wrap").on("mousedown");
           $(".edit-wrap").on("mousemove");
       });
    });
@@ -252,9 +252,43 @@ window.onblur = function() {
    event.stopImmediatePropagation();
    return;
 }
+
+$(".pageFooter").click(function(){
+   
+   var $pageplus = $("<div>");
+   var $pageClone = $("<div>");
+   var pagetext = [];
+  /* $(".tat-my-page-list").children().each(function(){
+       pagetext.push($(this).text());
+    });*/
+   if($(".tat-my-page-list").children().length > 4){
+      alert("신규페이지는 5개 이상 생성이 불가능 합니다.");
+   } else {
+      
+      $pageplus.text("page"+$(".tat-my-page-list").children().length);
+      $(".tat-my-page-list").append($pageplus);
+      
+      $(".tat-my-page-list").children().each(function(){
+          pagetext.push($(this).text());
+       });
+      console.log(pagetext);
+      for(var i in pagetext){
+          $pageClone.text(pagetext[i]);
+      }
+      
+      $(".pageBody").append($pageClone);
+   }  
+   
+   pageEvent();
+    
+    /*
+        $(".pageBody").append($pageClone);
+    }*/
+});
+
 $("div[id*=left_main]").each(function(){
    $(this).click(function(e){
-	  $(".upDateBorder").remove();
+     $(".upDateBorder").remove();
       $("#item_inpo").css("display" , "none");
       $(".inpo_menu").css("display" , "none");
       $("#title_controller").css("display" , "none");
@@ -264,7 +298,7 @@ $("div[id*=left_main]").each(function(){
       $(".total_tool").css("display" , "none");
       
       if(mainid_chk == "folder"){
-         
+
          $("#tool_menu").css("display","inline");
          
       } else if (mainid_chk == "background") {
@@ -288,7 +322,7 @@ $("div[id*=left_main]").each(function(){
 });
 var toolmenu_chk;
 $("td[id*=category]").click(function(e){
-	$("td[id*=category]").css({"background": "none"});
+   $("td[id*=category]").css({"background": "none"});
    if($(this).attr("id") == "category3-1"){
       $("#tooltip").text(" 텍스트는 우 클릭 폰트 사이즈 변경을 이용해 주세요 ");
       $("#tooltip").css({"top" : e.pageY , "left" : e.pageX+30 , "display" : "inline"});
@@ -308,6 +342,15 @@ $("td[id*=category]").click(function(e){
       }
       
    });
+   
+   console.log(toolmenu_chk);
+   
+   $("div[id*="+toolmenu_chk+"]").last().focus();
+});
+
+/* 좌측 메뉴 요소 스크롤바 입히기 */
+$('div[id*=tool_menu3-]').each(function(idx, item){
+	$(item).css("overflow-y","scroll");
 });
 
 $("#tool_menu3-14").children("div").click(function(){
@@ -325,9 +368,9 @@ $("#tool_menu3-14").children("div").click(function(){
    var menu_td = menu_clone.children().children().children();
    
    for(var i = 0 ; i < $(".tat-my-page-list").children("div").length ; i++){
-	   if(i < 4){
-		   menu_td.children().eq(i).text($(".tat-my-page-list").children("div").eq(i).text());   
-	   }
+      if(i < 4){
+         menu_td.children().eq(i).text($(".tat-my-page-list").children("div").eq(i).text());   
+      }
    }
    
    menu_td.children().css({"width":"25%","height":"100px"});
@@ -339,7 +382,7 @@ $("#tool_menu3-14").children("div").click(function(){
    $(".edit-view-head").children($("div[class*=titleMenu]")).each(function(){
       
     $(this).click(function(){
-    	
+       
        $(".upDateBorder").remove();
        $(".total_tool").css("display" , "none");
        $("#item_inpo").css("display","none");
@@ -358,7 +401,7 @@ $("#tool_menu3-14").children("div").click(function(){
 });
 
 //$("#btn_skin1").mouseover(function(){
-//	event.stopPropagation();
+//   event.stopPropagation();
 //});
 
 // 배경화면 변경 스크립트

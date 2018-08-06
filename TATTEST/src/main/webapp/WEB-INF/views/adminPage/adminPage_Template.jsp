@@ -9,6 +9,7 @@
 <body>
    <c:import url="common/adminPage_Header.jsp"></c:import>
    
+   <c:if test="${m_code eq 'A001'}">
    <section class="wrapper">
       <section class="page_head">
          <div class="container">
@@ -173,6 +174,10 @@
       </section>
       
    </section>
+   </c:if>
+   <c:if test="${m_code ne 'A001' or empty m_code}">
+         <c:redirect url="/WEB-INF/views/mainPage/common/mainPage_error.jsp"/>   
+   </c:if>
    <script>
     window.onload = function(){
        pageIndex(1);
@@ -252,9 +257,9 @@
          console.log("ajax data 전체 확인 : "+data); */
          for(var idx in data){
             /* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
-         $('.templateList').append('<article class="post"><figure class="post_img"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/blog/blog_medium_1.png" alt="blog post"></a>'+
+         $('.templateList').append('<article class="post"><figure class="post_img"><a href="#"><iframe src="./'+data[idx].file_name+'" scrolling="no" ></iframe></a>'+
                '</figure><div class="post_content"><div class="post_meta"><h2><a href="#">'+data[idx].t_title+'</a></h2><div class="metaInfo">'+
-               '<span><i class="fa fa-user"></i> By <a href="#">Louis</a> </span><span><i class="fa fa-comments"></i> <a href="#">'+data[idx].t_use_count+'</a></span>'+
+               '<span><i class="fa fa-user"></i> By <a href="#">'+data[idx].m_name+'</a> </span><span><i class="fa fa-comments"></i> <a href="#">'+data[idx].t_use_count+'</a></span>'+
                '</div></div><p>'+data[idx].t_comment+'</p><a class="btn btn-small btn-default" href="#">자세히 보기</a></div></article>');
          };
       };

@@ -9,7 +9,7 @@
 <body>
    <c:import url="common/adminPage_Header.jsp"></c:import>
    
-   
+   <c:if test="${m_code eq 'A001'}">
    <section class="wrapper">
       <section class="page_head">
          <div class="container">
@@ -146,7 +146,10 @@
       </section>
       
    </section>
-   
+   </c:if>
+   <c:if test="${m_code ne 'A001' or empty m_code}">
+         <c:redirect url="/WEB-INF/views/mainPage/common/mainPage_error.jsp"/>   
+   </c:if>
    
 
    <c:import url="common/adminPage_Footer.jsp"></c:import>

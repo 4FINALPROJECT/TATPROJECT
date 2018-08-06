@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header id="header">
+	<c:if test="${m_code eq 'A001'}">
 	<div id="top-bar">
 		<div class="container">
 			<div class="row">
@@ -9,7 +11,12 @@
 				<div class="col-sm-4 top-info">
 					<ul>
 						<li><a href="${pageContext.request.contextPath}" class="my-facebook">메</a></li>
-						<li><a href="${pageContext.request.contextPath}" class="my-google">로</a></li>
+						<c:if test="${ m_code != null }">
+						<form style="display:none; visibility: hidden;" action="${pageContext.request.contextPath}/main/memberLogout.tat" method="POST">
+							<input style="display:none; visibility: hidden;" type="submit" name="pageSwap" id="MainReturn"/>
+						</form>
+						<li><a onclick="mainReturn();" href="#">로!</a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -54,12 +61,17 @@
 											
 									</ul>
 								</li>
-								<li><a href="#">제휴신청</a>
+								<%-- <li><a href="#">제휴신청</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/admin/Affiliate.tat">제휴신청조회</a></li>
 									</ul>
-								</li>
-								<li><a href="${pageContext.request.contextPath}">로그아웃</a></li>
+								</li> --%>
+								<c:if test="${ m_code != null }">
+								<form style="display:none; visibility: hidden;" action="${pageContext.request.contextPath}/main/memberLogout.tat" method="POST">
+									<input style="display:none; visibility: hidden;" type="submit" name="pageSwap" id="MainReturn"/>
+								</form>
+								<li><a onclick="mainReturn();" href="#">로그아웃</a></li>
+								</c:if>	
 							</ul>
 						</div>
 					</div>
@@ -67,4 +79,8 @@
 			</div>
 		</div>
 	</div>
+	</c:if>
+   <c:if test="${m_code ne 'A001' or empty m_code}">
+         <c:redirect url="/WEB-INF/views/mainPage/common/mainPage_error.jsp"/>   
+   </c:if>
 </header>

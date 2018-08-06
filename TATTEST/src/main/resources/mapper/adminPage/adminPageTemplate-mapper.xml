@@ -4,7 +4,7 @@
    <select id="selectTemplateList" resultType="Template" parameterType="pagingVo">
       SELECT * FROM(SELECT * FROM(
       SELECT ROWNUM row_num, BOARDALL.* FROM (
-      SELECT * FROM TEMPLATE ORDER BY T_DATE) BOARDALL) BOARDALLALL 
+      SELECT * FROM TEMPLATE JOIN MEMBER USING(M_CODE) ORDER BY T_DATE) BOARDALL) BOARDALLALL 
       )WHERE row_num BETWEEN #{start} AND #{last}
    </select>
    

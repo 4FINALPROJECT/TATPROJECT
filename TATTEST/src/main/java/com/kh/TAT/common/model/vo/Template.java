@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Template {
 	private String t_code;
 	private String m_code;
+	private String m_name;
 	private String t_category;
 	private String t_title;
 	private String t_comment;
@@ -16,11 +17,12 @@ public class Template {
 		super();
 	}
 
-	public Template(String t_code, String m_code, String t_category, String t_title, String t_comment, String file_name,
+	public Template(String t_code, String m_code, String m_name, String t_category, String t_title, String t_comment, String file_name,
 			Date t_date, int t_use_count) {
 		super();
 		this.t_code = t_code;
 		this.m_code = m_code;
+		this.m_name = m_name;
 		this.t_category = t_category;
 		this.t_title = t_title;
 		this.t_comment = t_comment;
@@ -43,6 +45,14 @@ public class Template {
 
 	public void setM_code(String m_code) {
 		this.m_code = m_code;
+	}
+	
+	public String getM_name() {
+		return m_name;
+	}
+
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
 	}
 
 	public String getT_category() {
@@ -93,5 +103,12 @@ public class Template {
 		this.t_use_count = t_use_count;
 	}
 
+	@Override
+	public String toString() {
+		return "Template [t_code=" + t_code + ", m_code=" + m_code + ", m_name=" + m_name + ", t_category=" + t_category
+				+ ", t_title=" + t_title + ", t_comment=" + t_comment + ", file_name=" + file_name + ", t_date="
+				+ t_date + ", t_use_count=" + t_use_count + "]";
+	}
 
+	
 }
