@@ -39,21 +39,21 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="#">정보</a>
+								<li><a href="${pageContext.request.contextPath}/my/Info.tat">정보</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/my/Info.tat">계정정보</a></li>
 										<li><a href="${pageContext.request.contextPath}/my/Payment.tat">결제정보</a></li>
 									    
 									</ul>
 								</li>
-								<li><a href="#">프로젝트</a>
+								<li><a href="${pageContext.request.contextPath}/my/Project.tat">프로젝트</a>
 									<ul class="dropdown-menu">
 										<li><a <%-- href="${pageContext.request.contextPath}/edit/newPage.tat" --%> data-toggle="modal" data-target="#exampleModal">프로젝트 생성</a></li>
 										<li><a href="${pageContext.request.contextPath}/my/Project.tat">프로젝트 편집</a></li>
 									        
 									</ul>
 								</li>
-								<li><a href="#">고객센터</a>
+								<li><a href="${pageContext.request.contextPath}/my/Question.tat">고객센터</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/my/Question.tat">1:1문의하기</a></li>
 										<li><a href="${pageContext.request.contextPath}/main/Faq.tat">자주묻는질문</a></li>
