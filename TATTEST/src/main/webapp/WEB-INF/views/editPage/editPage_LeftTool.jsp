@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <div class="edit-left-tool-wrap">
 <div class="edit-left-tool">
@@ -17,37 +18,19 @@
       <i class="fas fa-upload" style="font-size: 35px;"></i>
    </div>
 
-   <div class="total_tool" id="tool_menu">
-      <table class="category-name">
-         <tr>
-            <td id="category-1"><b>사이트 메뉴</b></td>
-         </tr>
-         
-         <tr>
-            <td id="category-2"><b>페이지 이동 효과</b></td>
-         </tr>
-      </table>
-      <div class="content" id="tool_menu-1">
-         <br> 사이트 메뉴 <br>
-         <br>
-         <table>
-            <tbody>
-               <tr>
-               <td><i class="fas fa-home"></i></td>
-               </tr>
-            </tbody>
-            <footer>
-               <tr>
-               <td><i class="fas fa-plus-circle"></i>페이지 추가</td>
-               </tr>
-            </footer>
-         </table>
-
+   <div class="total_tool" id="tool_menu" style="background : #00aaaf; color: white;">
+      <div class="category-name">
+        <div id="category-1"><b>사이트 메뉴</b></div>
+        <div id="category-2"><b>페이지 이동 효과</b></div>
+      </div>
+      <div class="content" id="tool_menu-1" style="color: black;">
+		<div class="pageHeader">사이트 메뉴</div>
+        <div class="pageBody">페이지</div>
+        <div class="pageFooter">페이지 추가</div>
       </div>
       <div class="content" id="tool_menu-2">
          <br> 페이지 이동효과 <br>
          <br>
-         
          <div>
             <td><i class="far fa-times-circle"></i>없음</td>
             <td><i class="fas fa-arrow-right"></i>가로 이동</td>
@@ -57,8 +40,8 @@
    </div>
 
 
-   <div class="total_tool" id="tool_menu2">
-      <table class="category-name">
+   <div class="total_tool" id="tool_menu2" style="background-color: #f8a239;">
+      <table class="category-name" style="color: white;">
          <tr>
             <td id="category2-1"><b>페이지 배경</b></td>
          </tr>
@@ -129,8 +112,8 @@
 
 
 
-   <div class="total_tool" id="tool_menu3">
-      <table class="category-name">
+   <div class="total_tool" id="tool_menu3" style="background-color: #3899ec;">
+      <table class="category-name" style="color: #f5f5f5;">
          <tr>
             <td id="category3-1"><b>텍스트</b></td>
          </tr>

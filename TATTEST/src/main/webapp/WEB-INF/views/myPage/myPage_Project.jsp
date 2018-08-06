@@ -36,7 +36,7 @@
 	                <div class="item">
 	                    <div class="blog-item">
 	                        <div class="ImageWrapper">
-	                            <img src="images/blog/blog_1.png" alt="" class="img-responsive">
+	                            <img src="${pageContext.request.contextPath}/resources/images/blog/blog_1.png" alt="" class="img-responsive">
 	                        </div>
 	                        <div class="metaInfo">
 	                            <span><i class="fa fa-calendar"></i> <a href="#">${p.save_date}</a></span>

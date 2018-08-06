@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.Member;
 import com.kh.TAT.common.model.vo.QuestionAnswerBoard;
 import com.kh.TAT.common.model.vo.QuestionCategory;
@@ -309,20 +310,24 @@ public class MyController {
 		}
 		
 	// 프로젝트 생성
-		@ResponseBody
-		@RequestMapping(value="/my/createProject.tat", method=RequestMethod.POST)
-		public void createProject(HttpSession session, HttpServletResponse res, @RequestParam String pro_name, @RequestParam String pro_content ) throws IOException{
-			
-			String m_code = (String) session.getAttribute("m_code");
-			
-			System.out.println("세션 확인 :  "+ m_code);
-
-			//int result = myS.createProject(m_code, pro_name, pro_content);
-			
-			int result = 1;
-			
-			res.getWriter().println(result);
-		}
+		@RequestMapping("/my/createProject.tat")
+		   public String writeBoard(HttpSession session,HttpServletRequest request, @RequestParam String proj_name, @RequestParam String proj_comment){
+		      
+		      String m_code = (String) session.getAttribute("m_code");
+		      
+		      System.out.println("proj_name : "+ proj_name);
+		      System.out.println("proj_name : "+ proj_comment);
+		      
+		      Edit newProject = new Edit();  
+		      
+		      newProject.setProj_name(proj_name);
+		      newProject.setProj_comment(proj_comment);
+		      newProject.setM_code(m_code);
+		      
+		      int result = myS.createProject(newProject);
+		      
+		       return "redirect:/my/Project.tat";
+		   }
 		
 	// 1:1 게시물 작성
 		@RequestMapping("/my/WriteBoard.tat")

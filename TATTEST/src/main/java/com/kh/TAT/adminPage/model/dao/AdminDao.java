@@ -14,69 +14,69 @@ import com.kh.TAT.common.model.vo.Template;
 
 public interface AdminDao {
 
-	// Member
-	List<Member> selectMemberList(PagingVo paging);
+   // Member
+   List<Member> selectMemberList(PagingVo paging);
 
-	int MemberTotalPaging();
+   int MemberTotalPaging();
 
-	int memberTotalPagingCount(int start);
-	
-	// Payment
+   int memberTotalPagingCount(int start);
+   
+   // Payment
 
-	int paymentTotalPagingCount(int start);
+   int paymentTotalPagingCount(int start);
 
-	int PaymentTotalPaging();
+   int PaymentTotalPaging();
 
-	List<AdminPayment> selectPaymentList(PagingVo paging);
-	
-	// Project
+   List<AdminPayment> selectPaymentList(PagingVo paging);
+   
+   // Project
 
-	int projectTotalPagingCount(int start);
+   int projectTotalPagingCount(int start);
 
-	List<Edit> selectProjectList(PagingVo paging);
+   List<Edit> selectProjectList(PagingVo paging);
 
-	int ProjectTotalPaging();
-	
-	// Faq
+   int ProjectTotalPaging();
+   
+   // Faq
 
-	int faqTotalPagingCount(int start);
+   int faqTotalPagingCount(int start);
 
-	List<FaqBoard> selectFaqList(PagingVo paging);
+   List<FaqBoard> selectFaqList(PagingVo paging);
 
-	int FaqTotalPaging();
+   int FaqTotalPaging();
 
-	int insertFaqQuestion(FaqBoard faqboard);
+   int insertFaqQuestion(FaqBoard faqboard);
 
-	List<QuestionCategory> selectFaqSelect();
-	
-	List<FaqBoard> faqSelectUpdateList(int faq_num);
+   List<QuestionCategory> selectFaqSelect();
+   
+   List<FaqBoard> faqSelectUpdateList(int faq_num);
 
-	int faqUpdateList(FaqBoard faqboard);
+   int faqUpdateList(FaqBoard faqboard);
 
-	int faqDeleteQuestion(FaqBoard faqboard);
-	
-	// Question
+   int faqDeleteQuestion(FaqBoard faqboard);
+   
+   // Question
 
-	int questionTotalPagingCount(int start);
+   int questionTotalPagingCount(int start);
 
-	List<Edit> selectQuestionList(PagingVo paging);
+   List<Edit> selectQuestionList(PagingVo paging);
 
-	int questionTotalPaging();
-	
-	List<AdminQuestion> questionSelectUpdateList(int qa_num);
-	
-	int updateQuestion(int qa_num);
+   int questionTotalPaging();
+   
+   List<AdminQuestion> questionSelectUpdateList(int qa_num);
+   
+   int updateQuestion(AdminQuestion aq);
 
-	
-	// Template
+   
+   // Template
 
-	List<Template> selectTemplateList(PagingVo paging);
+   List<Template> selectTemplateList(PagingVo paging);
 
-	int templateTotalPaging();
+   int templateTotalPaging();
 
-	int templateTotalPagingCount(int start);
+   int templateTotalPagingCount(int start);
 
-	
-	
+   
+   
 
 }

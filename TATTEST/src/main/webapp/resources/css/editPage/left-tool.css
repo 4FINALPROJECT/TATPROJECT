@@ -41,12 +41,8 @@
      top : 0;
      left : 80px;
  }
- .category-name{
-    position: absolute;
- }
- .content div {
- 	width : 50%;
- }
+
+
  
        /* 버튼 css */ 
          .box_text div{

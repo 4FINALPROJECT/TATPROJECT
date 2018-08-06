@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="template">
-	<resultMap type="template" id="templateMap">	
+	<resultMap type="template" id="templateMap">
 	</resultMap>
 	
 	<select id="selectTemplate" parameterType="template" resultMap="templateMap">
@@ -10,6 +10,7 @@
 	
 	<select id="selectDetail" parameterType="template" resultMap="templateMap">
 		SELECT T_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = TE.M_CODE) M_CODE, T_CATEGORY, T_TITLE, T_COMMENT, T_DATE, T_USE_COUNT FROM TEMPLATE TE WHERE T_CODE = #{t_code}
+
 	</select>
 	
 </mapper>

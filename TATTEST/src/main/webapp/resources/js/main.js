@@ -676,7 +676,12 @@ function statusChangeCallback(response) {
 		$('.UpdateEditReply').submit();
 	}
   
-  // 메인 리턴 함수 //
-  function mainReturn() {
-	$('#MainReturn').click();
+// 메인 리턴 함수 //
+function mainReturn() {
+	var pageSwap = window.location.href.substring(window.location.href.indexOf("/TAT/")+5);
+	$("#MainReturn").val(pageSwap);
+
+	$("#MainReturn").click();
+	//console.log(pageSwap);
+	//$('#MainReturn').click();
 }

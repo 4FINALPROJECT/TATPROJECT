@@ -17,7 +17,7 @@
                 <div class="slide">
                     <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/base.jpg" width="1920" height="auto" data-in="fade" data-out="fade" />
 
-                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/slider-boy.png" width="600" height="600" data-position="30,1100" data-in="left" data-out="right" data-delay="700"/>
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/slider-boy.jpg" width="800" height="600" data-position="30,1100" data-in="left" data-out="right" data-delay="700"/>
 
                     <p class="slide-1" data-position="50,610" data-in="fade" data-out="fade" data-delay="800">걱정 없이 시작해볼까요?</p>
                     <p class="slide-1" data-position="100,560" data-in="fade" data-out="fade" data-delay="1200">홈페이지 무료 제작의 모든 것! </p>
@@ -31,7 +31,7 @@
                 <div class="slide">
                     <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/base_2.jpg" width="1920" height="auto" data-in="fade" data-out="fade" />
 
-                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/slider-girl.png" width="600" height="545" data-position="20,400" data-in="right" data-0ut="bottom" data-delay="500"/>
+                    <img src="${pageContext.request.contextPath}/resources/images/fraction-slider/slider-girl.jpg" width="600" height="545" data-position="20,400" data-in="right" data-0ut="bottom" data-delay="500"/>
 
                     <p class="slide-2 " data-position="120,900" data-in="bottom" data-out="top" data-delay="2000">마우스 하나로 홈페이지를 완성하세요!</p>
                     <p class="slide-2a " data-position="210,900" data-in="left" data-out="right" data-delay="3000">내가 꿈꾸는 홈페이지를 직접 제작하세요.</p>

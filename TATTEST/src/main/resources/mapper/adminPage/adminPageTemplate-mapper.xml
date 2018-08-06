@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="template">
-	<select id="selectTemplateList" resultType="Template" parameterType="pagingVo">
-		SELECT * FROM(SELECT * FROM(
-		SELECT ROWNUM row_num, BOARDALL.* FROM (
-		SELECT * FROM TEMPLATE ORDER BY T_DATE) BOARDALL) BOARDALLALL 
-		)WHERE row_num BETWEEN #{start} AND #{last}
-	</select>
-	
-	<select id="templateTotalPaging" resultType="_int">
-		SELECT count(*) FROM TEMPLATE
-	</select>
-	<select id="templateTotalPagingCount" resultType="_int">
-		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM TEMPLATE) WHERE row_num >#{start}
-	</select>
+   <select id="selectTemplateList" resultType="Template" parameterType="pagingVo">
+      SELECT * FROM(SELECT * FROM(
+      SELECT ROWNUM row_num, BOARDALL.* FROM (
+      SELECT * FROM TEMPLATE ORDER BY T_DATE) BOARDALL) BOARDALLALL 
+      )WHERE row_num BETWEEN #{start} AND #{last}
+   </select>
+   
+   <select id="templateTotalPaging" resultType="_int">
+      SELECT count(*) FROM TEMPLATE
+   </select>
+   <select id="templateTotalPagingCount" resultType="_int">
+      SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM TEMPLATE) WHERE row_num >#{start}
+   </select>
 </mapper>
-

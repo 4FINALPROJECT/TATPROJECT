@@ -19,19 +19,19 @@
 			
 			<div class="tat-my-page">
 				<span style="float: left;">페이지:</span>
-				<span class="mypage-viewList" style="float: left; padding-left:5px; color: coral;">HOME</span>
+				<span class="mypage-viewList" style="float: left; padding-left:5px; color: coral;">${ cururl }</span>
 				<span style="float: right;">▽</span>
 			</div>
 			<div class="tat-my-page-content">
 				<div class="tat-my-page-list">
-					<div>HOME</div>
-					<div>PAGE1</div>
-					<div>PAGE2</div>
-					<div>PAGE3</div>
-					<div>PAGE4</div>
+					<div>home</div>
+					<div>page1</div>
+					<div>page2</div>
+					<div>page3</div>
+					<div>page4</div>
 				</div>
 				<div class="tat-my-page-btn">
-					<div>페이지 관리</div>
+					<div id="tat-my-page-btn">페이지 관리</div>
 				</div>
 			</div>
 		</div>
@@ -41,26 +41,45 @@
 				사이트
 				<div class="tat-head-content-box tat-sitebox">
 					<div class="cbox-content-wrap siteB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
-					</div>
-				</div>
-			</div>
-			<div class="setWrap">
-				설정
-				<div class="tat-head-content-box tat-setbox">
-					<div class="cbox-content-wrap setB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
-					</div>
+                        <div class="edit-top-left">
+                            <div id="edit_submit"> 저 장 </div>
+                            <div id="edit_miribogi"> 미 리 보 기 </div>
+                            <div id="edit_allview"> 공 유 하 기 </div>
+                            <div id="edit_end"> 에 디 터 종 료 </div>
+                        </div>
+                        <div class="edit-top-right">
+                            <div toolimg="edit_submit"> 저 장 사 진 </div>
+                            <div toolimg="edit_miribogi"> 미 리 보 기 사 진 </div>
+                            <div toolimg="edit_allview"> 공 유 하 기 사 진 </div>
+                            <div toolimg="edit_end"> 에 디 터 종 료 사 진 </div>
+                        </div>
+                    </div>
 				</div>
 			</div>
 			<div class="toolWrap">
 				도구
 				<div class="tat-head-content-box tat-toolbox">
 					<div class="cbox-content-wrap toolB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
+						<div class="edit-top-left">
+                            <div id="rtoolChk">
+                            	<input type="checkbox" id="rtoolLabel" checked="checked"/><label for="rtoolLabel">상세 툴바</label>
+                           	</div>
+                            <div id="ltoolChk">
+                            	<input type="checkbox" id="ltoolLabel" checked="checked"/><label for="ltoolLabel">컨텐츠툴바</label>
+                           	</div>
+                            <div id="bodyScale">
+                            	<input type="checkbox" id="bodyScaleLabel" checked="checked"/><label for="bodyScaleLabel">눈 금 자</label>
+                           	</div>
+                            <div id="grideLine">
+                            	<input type="checkbox" id="grideLineLabel" checked="checked"/><label for="grideLineLabel">그리드라인</label>
+                            </div>
+                        </div>
+                        <div class="edit-top-right">
+                        	<div toolimg="rtoolChk">상세 툴바</div>
+                        	<div toolimg="ltoolChk">컨텐츠툴바</div>
+                        	<div toolimg="bodyScale">눈 금 자</div>
+                        	<div toolimg="grideLine">그리드라인</div>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -68,15 +87,22 @@
 				도움말
 				<div class="tat-head-content-box tat-contentbox">
 					<div class="cbox-content-wrap conB">
-						<div class="conB-left">
+						<div class="edit-top-left">
 							<div id="editHelp">에디터 도움말 센터</div>
 							<div id="keyEven">키보드 단축키</div>
 							<div id="domainLink">도메인 연결하기</div>
 							<div id="seo">SEO</div>
-							<div>이용약관</div>
-							<div>개인정보 취급방침</div>
+							<div id="tos">이용약관</div>
+							<div id="privacy">개인정보 취급방침</div>
 						</div>
-						<div class="conB-right">오른쪽영역</div>
+						<div class="edit-top-right">
+							<div toolimg="editHelp">에디터 도움말 센터</div>
+							<div toolimg="keyEven">키보드 단축키</div>
+							<div toolimg="domainLink">도메인 연결하기</div>
+							<div toolimg="seo">SEO</div>
+							<div toolimg="tos">이용약관</div>
+							<div toolimg="privacy">개인정보 취급방침</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -84,21 +110,19 @@
 				업그레이드
 				<div class="tat-head-content-box tat-upgradebox">
 					<div class="cbox-content-wrap upB">
-						<div style="float: left;">왼쪽영역</div>
-						<div style="float: right;">오른쪽영역</div>
+						<div style="float: left;"> 결 제 하 쉴 ? </div>
+                        <div style="float: right;"> 돈 </div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
 		<div class="tat-head-content-right">
-			<div id="commit-btn" style="background: royalblue; color: white;">게시하기</div>
+			<div id="commit-btn" style="background: royalblue; color: white;">공유하기</div>
 			<div id="save-btn">저장</div>
-			<div>미리보기</div>
-			<div>모바일</div>
-			<div>redo</div>
-			<div>undo</div>
-			<div>더보기</div>
+			<div id="view-btn">미리보기</div>
+			<div id="redo-btn">redo</div>
+			<div id="undo-btn">undo</div>
 		</div>
 	</div>
 </div>
@@ -155,12 +179,73 @@
 
 	
 <script>
+var cururl = '${ cururl }';
 var folderName = '${ fN }';
-$(function() {
-	$('.tat-head-content-right > div:nth-child(7)').click(function(){
-		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]"))[0] );
-		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]")).html() );
-	});
+
+var pageSelect;
+$('.tat-my-page-list').children().on({
+	"mouseenter" : function() {
+		$(this).css({
+			"background-color" : "#eaf7ff",
+			"cursor" : "pointer"
+		})
+	},
+	"mouseleave" : function() {
+		$(this).css({
+			"background-color" : "white",
+		})
+	},
+	"click" : function() {
+		pageSelect = $(this).html();
+
+		var pageSave = confirm("현재 페이지를 저장 후에 페이지 이동 합니다.");
+		if ( pageSave ) {
+			alert("저장 완료!");
+			$.ajax({
+				url : "/TAT/edit/editOop.tat",
+				data : { edit : editWrap[0].outerHTML, folderName : folderName, cururl : cururl },
+				dataType : "json",
+				type : "POST",
+				success : function(data) {
+					//console.log("파일 저장 성공 : "+data.editLog);
+				}, error : function(data) {
+					
+				}
+			});
+			location.href = "/TAT/edit/Main.tat?cururl="+pageSelect+"&e_code=${fN}";
+		} else {
+			alert("페이지 이동 취소!");
+		}
+	}
+});
+
+
+function saveEvent() {
+	var save_check = confirm('저장 하시겠습니까?');
+	if ( save_check ) {
+		alert('저장 완료!');
+		$.ajax({
+			url : "/TAT/edit/editOop.tat",
+			data : { edit : editWrap[0].outerHTML, folderName : folderName, cururl : cururl },
+			dataType : "json",
+			type : "POST",
+			success : function(data) {
+				//console.log("파일 저장 성공 : "+data.editLog);
+			}, error : function(data) {
+				
+			}
+		});
+	} else {
+		alert('저장 취소!');
+	}
+}
+
+
+
+$("#tat-my-page-btn").click(function(){
+	$(".tat-my-page-content").css({"display" : "none"});
+	$("#tool_menu").css({"display" : "inline" });
+	$("#tool_menu-1").css({"display" : "inline"});
 });
 
 </script>

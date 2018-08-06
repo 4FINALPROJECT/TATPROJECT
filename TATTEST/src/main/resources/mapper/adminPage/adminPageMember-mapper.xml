@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-	<select id="selectMemberList" resultType="Member" parameterType="pagingVo">
-		SELECT * FROM (    
-		SELECT ROWNUM RNUM , M_CODE, M_EMAIL, M_NAME, TO_CHAR(M_BIRTH, 'RRRR-MM-DD') M_BIRTH, M_GENDER, TO_DATE(ENROLL_DATE, 'RRRR-MM-DD') ENROLL_DATE , IS_USABLE FROM (    
-		SELECT *  FROM MEMBER ORDER BY M_CODE ASC ) P )
-		WHERE RNUM BETWEEN #{start} AND #{last}
-	</select>
-	
-	<select id="totalPaging" resultType="_int">
-		SELECT count(*) FROM MEMBER
-	</select>
-	<select id="totalPagingCount" resultType="_int">
-		SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM MEMBER) WHERE row_num >#{start}
-	</select>
+   <select id="selectMemberList" resultType="Member" parameterType="pagingVo">
+      SELECT * FROM (    
+      SELECT ROWNUM RNUM , M_CODE, M_EMAIL, M_NAME, TO_CHAR(M_BIRTH, 'RRRR-MM-DD') M_BIRTH, M_GENDER, TO_DATE(ENROLL_DATE, 'RRRR-MM-DD') ENROLL_DATE , IS_USABLE FROM (    
+      SELECT *  FROM MEMBER ORDER BY M_CODE ASC ) P )
+      WHERE RNUM BETWEEN #{start} AND #{last}
+   </select>
+   
+   <select id="totalPaging" resultType="_int">
+      SELECT count(*) FROM MEMBER
+   </select>
+   <select id="totalPagingCount" resultType="_int">
+      SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM MEMBER) WHERE row_num >#{start}
+   </select>
 </mapper>
-

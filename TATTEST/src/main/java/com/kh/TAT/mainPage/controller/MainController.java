@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.EditReplyBoard;
@@ -144,7 +145,7 @@ public class MainController {
 		String m_code = request.getParameter("m_code");
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("m_code", m_code);
+		mv.addObject("v_code", m_code);
 		
 		edit = mainS.editDetail(e_code);
 		newedit.setE_code(e_code);
@@ -583,18 +584,42 @@ public class MainController {
 			return mv;
 		}
 		
-			// 로그아웃 부분
-			@RequestMapping("/main/memberLogout.tat")
-			public String memberLogout(SessionStatus status, HttpServletRequest request){
-				
-				// 현재 세션 상태가 끝났음을 확인
-				if (!status.isComplete()){
-					status.setComplete();
-				}
-				
-				//return "redirect:/";
-				return "mainPage/logoutPage";
+		// 로그아웃 부분
+		@RequestMapping(value="/main/memberLogout.tat", method={RequestMethod.POST,RequestMethod.GET})
+		public ModelAndView memberLogout(SessionStatus status, HttpServletRequest request){
+			
+			String pageSwap = request.getParameter("pageSwap");
+			
+			if( pageSwap == null ) {
+				pageSwap = "";
 			}
+			
+			// 현재 세션 상태가 끝났음을 확인
+			if (!status.isComplete()){
+				status.setComplete();
+			}
+			//System.out.println("받은 페이지 주소 : "+pageSwap);
+			
+			String swap = "";
+			
+			if ( pageSwap.indexOf("#") > 0 ) {
+				swap = pageSwap.replace("#", "");
+			} else {
+				swap = pageSwap;
+			}
+
+			System.out.println("swap 값 : "+swap);
+
+			RedirectView rv = new RedirectView();
+			
+			rv.setUrl("/TAT/"+swap);
+			rv.setExposeModelAttributes(false);
+			//mv.setView(rv);
+			//mv.setViewName("redirect:/"+swap);
+			
+			//return "redirect:/";
+			return new ModelAndView(rv);
+		}
 			
 			// 이메일 중복체크 부분
 			@ResponseBody
@@ -659,7 +684,7 @@ public class MainController {
 				// String USERNAME = (String) paramMap.get("m_name");
 		        String EMAIL = (String) paramMap.get("email");
 		        String PASSWORD = mainS.getPw(paramMap);
-		        String content = "<a href='http://localhost:8088/TAT/main/updatePwd.tat?email="+EMAIL+"'>TAT비밀번호 재설정<a>";
+		        String content = "http://localhost:8088/TAT/main/updatePwd.tat?email="+EMAIL;
 		        String msg = "";
 		        if(PASSWORD != null) {
 		            email.setContent("옆에 링크를 따라가시면 비밀번호 재설정을 할수 있습니다."+content); // 이메일로 보낼 메시지
@@ -867,7 +892,7 @@ public class MainController {
 		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
 		addAttribute("editPageFooter", footerRead);
 		
-		return "editPage/editPage_Main";
+		return "editPage/editView_Main";
 	}
 	
 	// 템플릿 페이지 아이프레임 이동
@@ -876,6 +901,8 @@ public class MainController {
 
 		String t_category = request.getParameter("t_category");
 		
+		System.out.println("폴더 이름 확인 : "+t_category);
+		
 		String headRead = "WEB-INF/views/template/"+t_category+"/head.jsp";
 		String bodyRead = "WEB-INF/views/template/"+t_category+"/home.jsp";
 		String footerRead = "WEB-INF/views/template/"+t_category+"/footer.jsp";
@@ -883,7 +910,7 @@ public class MainController {
 		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
 		addAttribute("editPageFooter", footerRead);
 		
-		return "editPage/editPage_Main";
+		return "editPage/editView_Main";
 	}
 }
 

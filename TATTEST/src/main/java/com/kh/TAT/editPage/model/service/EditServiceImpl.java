@@ -24,8 +24,4 @@ public class EditServiceImpl implements EditService {
 		
 		return editD.projectSelectOne(e_code);
 	}
-
-	
-
 }
-

@@ -206,7 +206,7 @@ $(".edit-wrap").mousedown(function(e){
                 	  ++true_count;
                 	  
                   }
-                	  console.log(ui.helper.offset().top);
+                	 //console.log(ui.helper.offset().top);
                      OriginerTop.push(parseInt($(this).offset().top));
                      OriginerLeft.push(parseInt($(this).offset().left));
                      
@@ -223,7 +223,7 @@ $(".edit-wrap").mousedown(function(e){
                });
             },
             stop : function(e,ui){
-            		console.log(ui.helper.children());
+            		//console.log(ui.helper.children());
                   for(var i in OriginerTop){
                      $("."+trueParent[0]).children("div").each(function(){
                         if($(this).attr("data-obj-no") == true_chk[i]){
@@ -288,7 +288,7 @@ $("div[id*=left_main]").each(function(){
 });
 var toolmenu_chk;
 $("td[id*=category]").click(function(e){
-   
+	$("td[id*=category]").css({"background": "none"});
    if($(this).attr("id") == "category3-1"){
       $("#tooltip").text(" 텍스트는 우 클릭 폰트 사이즈 변경을 이용해 주세요 ");
       $("#tooltip").css({"top" : e.pageY , "left" : e.pageX+30 , "display" : "inline"});
@@ -364,7 +364,7 @@ $("#tool_menu3-14").children("div").click(function(){
 // 배경화면 변경 스크립트
 function changeimg(cimg){
     editWrap[0].style.backgroundImage="url("+cimg+")";
-    console.log(editWrap[0].outerHTML);
+    //console.log(editWrap[0].outerHTML);
 }
 
 var edit_height = parseInt($(".edit-view-head-wrap").css("height"));
