@@ -9,7 +9,6 @@
 <body>
 	<c:import url="common/adminPage_Header.jsp"></c:import>
 	
-	
 	<section class="wrapper">
 		<section class="page_head">
 			<div class="container">

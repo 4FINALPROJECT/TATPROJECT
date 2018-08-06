@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.messaging.MessagingException;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.kh.TAT.common.model.vo.Edit;
 import com.kh.TAT.common.model.vo.EditReplyBoard;
@@ -145,6 +145,7 @@ public class MainController {
 		String m_code = request.getParameter("m_code");
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("m_code", m_code);
 		
 		edit = mainS.editDetail(e_code);
 		newedit.setE_code(e_code);
@@ -583,18 +584,42 @@ public class MainController {
 			return mv;
 		}
 		
-			// 로그아웃 부분
-			@RequestMapping("/main/memberLogout.tat")
-			public String memberLogout(SessionStatus status, HttpServletRequest request){
-				
-				// 현재 세션 상태가 끝났음을 확인
-				if (!status.isComplete()){
-					status.setComplete();
-				}
-				
-				//return "redirect:/";
-				return "mainPage/logoutPage";
+		// 로그아웃 부분
+		@RequestMapping(value="/main/memberLogout.tat", method={RequestMethod.POST})
+		public ModelAndView memberLogout(SessionStatus status, HttpServletRequest request){
+			
+			String pageSwap = request.getParameter("pageSwap");
+			
+			if( pageSwap == null ) {
+				pageSwap = "";
 			}
+			
+			// 현재 세션 상태가 끝났음을 확인
+			if (!status.isComplete()){
+				status.setComplete();
+			}
+			//System.out.println("받은 페이지 주소 : "+pageSwap);
+			
+			String swap = "";
+			
+			if ( pageSwap.indexOf("#") > 0 ) {
+				swap = pageSwap.replace("#", "");
+			} else {
+				swap = pageSwap;
+			}
+
+			System.out.println("swap 값 : "+swap);
+
+			RedirectView rv = new RedirectView();
+			
+			rv.setUrl("/TAT/"+swap);
+			rv.setExposeModelAttributes(false);
+			//mv.setView(rv);
+			//mv.setViewName("redirect:/"+swap);
+			
+			//return "redirect:/";
+			return new ModelAndView(rv);
+		}
 			
 			// 이메일 중복체크 부분
 			@ResponseBody
@@ -853,6 +878,39 @@ public class MainController {
 				
 				return mv;
 			}
+	// 둘러보기 페이지 아이프레임 이동
+	@RequestMapping("/main/ExploreIframe.tat")
+	public String ExploreIframe(HttpServletRequest request, Model model){
+
+		String e_code = request.getParameter("e_code");
+		String m_code = request.getParameter("m_code");
+		
+		String headRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/head.jsp";
+		String bodyRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/home.jsp";
+		String footerRead = "WEB-INF/views/member/"+m_code+"/"+e_code+"/footer.jsp";
+		
+		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
+		addAttribute("editPageFooter", footerRead);
+		
+		return "editPage/editView_Main";
+	}
 	
+	// 템플릿 페이지 아이프레임 이동
+	@RequestMapping("/main/TemplateIframe.tat")
+	public String TemplateIframe(HttpServletRequest request, Model model){
+
+		String t_category = request.getParameter("t_category");
+		
+		System.out.println("폴더 이름 확인 : "+t_category);
+		
+		String headRead = "WEB-INF/views/template/"+t_category+"/head.jsp";
+		String bodyRead = "WEB-INF/views/template/"+t_category+"/home.jsp";
+		String footerRead = "WEB-INF/views/template/"+t_category+"/footer.jsp";
+		
+		model.addAttribute("editPageHead", headRead).addAttribute("editPageBody", bodyRead).
+		addAttribute("editPageFooter", footerRead);
+		
+		return "editPage/editView_Main";
+	}
 }
 

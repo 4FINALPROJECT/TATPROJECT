@@ -31,9 +31,9 @@
 		<section class="content blog">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 						<div class="blog_medium templateList">
-							<%-- <article class="post">
+							<article class="post">
 								<div class="post_date">
 									<span class="day">28</span>
 									<span class="month">Nov</span>
@@ -57,7 +57,7 @@
 									<a class="btn btn-small btn-default" href="#">Read More</a>
 									
 								</div>
-							</article> --%>
+							</article>
 							
 							
 							
@@ -72,7 +72,7 @@
 					</div>
 
 					<!--Sidebar Widget-->
-					<!-- <div class="col-xs-12 col-md-4 col-lg-4 col-sm-4">
+					<div class="col-xs-12 col-md-4 col-lg-4 col-sm-4">
 						<div class="sidebar">
 							<div class="widget widget_search">
 								<div class="site-search-area">
@@ -82,7 +82,7 @@
 											<input id="searchsubmit" value="Search" type="submit" />
 										</div>
 									</form>
-								</div>end site search
+								</div><!-- end site search -->
 							</div>
 							
 							<div class="widget widget_categories">
@@ -167,7 +167,7 @@
                             </div>
 							
 						</div>
-					</div> -->
+					</div>
 				</div><!--/.row-->
 			</div> <!--/.container-->
 		</section>
@@ -225,7 +225,7 @@
 					pageBtnCreate(total);
 					if(count>btnCount){pageNextFirstBtn();}
 				},error: function(jqXHR, textStatus, errorThrown) {
-					/* console.log(ajax.responseText); */
+					//console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -243,13 +243,13 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					/* console.log(ajax.responseText); */
+					//console.log(ajax.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			/* console.log("ajax 리스트 이름 확인 : "+data.templateList);
-			console.log("ajax data 전체 확인 : "+data); */
+			//console.log("ajax 리스트 이름 확인 : "+data.templateList);
+			//console.log("ajax data 전체 확인 : "+data);
 			for(var idx in data){
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.templateList').append('<article class="post"><figure class="post_img"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/blog/blog_medium_1.png" alt="blog post"></a>'+
@@ -286,7 +286,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						/* console.log(ajax.responseText); */
+						//console.log(ajax.responseText);
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  

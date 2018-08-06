@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <header id="header">
 	<div id="top-bar">
 		<div class="container">
@@ -17,12 +16,15 @@
 						<c:if test="${m_code eq 'A001'}">
 						<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint">관</a></li>
 						</c:if>
-						<c:if test="${empty m_code}">
+						<c:if test="${ m_code == null }">
 						<li><a href="#" class="my-rss" data-toggle="modal" data-target="#signup">회</a></li>						
 						<li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">로</a></li>
 						</c:if>
-						<c:if test="${!empty m_code}">
-						<li><a onclick="mainReturn();" href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
+						<c:if test="${ m_code != null }">
+						<form style="display:none; visibility: hidden;" action="${pageContext.request.contextPath}/main/memberLogout.tat" method="POST">
+							<input style="display:none; visibility: hidden;" type="submit" name="pageSwap" id="MainReturn"/>
+						</form>
+						<li><a onclick="mainReturn();" href="#">로!</a></li>
 						</c:if>	
 
 					</ul>
@@ -34,7 +36,7 @@
 		<div class="container">
 			<div class="row">
 				<div  class="col-lg-3 col-sm-3 ">
-					<div id="logo"><h1><a id="MainReturn" href="${pageContext.request.contextPath}">TAT</a></h1></div>
+					<div id="logo"><h1><a href="${pageContext.request.contextPath}">TAT</a></h1></div>
 				</div>
 				<div class="col-lg-9 col-sm-9">
 					<div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -48,41 +50,44 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="#">기능</a>
+								<li><a href="${pageContext.request.contextPath}/main/Feature.tat">기능</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Feature.tat">기능소개</a></li>
 									    
 									</ul>
 								</li>
-								<li><a href="#">둘러보기</a>
+								<li><a href="${pageContext.request.contextPath}/main/Explore.tat">둘러보기</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Explore.tat">둘러보기</a></li>
 									        
 									</ul>
 								</li>
-								<li><a href="#" >프리미엄</a>
-									<ul class="dropdown-menu">
-										<c:if test="${!empty m_code}">
+								<li>
+									<c:if test="${!empty m_code}">
+									<a href="${pageContext.request.contextPath}/main/Upgrade.tat" >프리미엄</a>
+										<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Upgrade.tat">프리미엄 플랜</a></li>
-									    </c:if>
-									    <c:if test="${empty m_code}">
+										</ul>
+								    </c:if>
+								    <c:if test="${empty m_code}">
+								    <a href="#" data-toggle="modal" data-target="#signin">프리미엄</a>
+									    <ul class="dropdown-menu">
 									    <li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">프리미엄 플랜</a></li>
-									    </c:if>
-									</ul>
+									    </ul>
+								    </c:if>
 								</li>
-								<li><a href="#">템플릿</a>
+								<li><a href="${pageContext.request.contextPath}/main/Template.tat">템플릿</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Template.tat">템플릿</a></li>
-											
 									</ul>
 								</li>
-								<li><a href="#">제휴신청</a>
+								<li><a href="${pageContext.request.contextPath}/main/Affiliate.tat">제휴신청</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Affiliate.tat">제휴신청안내</a></li>
 										<li><a href="${pageContext.request.contextPath}/main/Affiliate.tat">제휴신청</a></li>
 									</ul>
 								</li>
-								<li><a href="#">고객센터</a>
+								<li><a href="${pageContext.request.contextPath}/main/Question.tat">고객센터</a>
 									<ul class="dropdown-menu">
 										<li><a href="${pageContext.request.contextPath}/main/Question.tat">1:1문의하기</a></li>
 										<li><a href="${pageContext.request.contextPath}/main/Faq.tat">자주묻는질문</a></li>

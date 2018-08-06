@@ -5,9 +5,9 @@
 <head>
 	<title>마이페이지</title>
 	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
 <body>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 	<c:import url="../common/JS.jsp"></c:import>
 	<c:import url="common/myPage_Header.jsp"></c:import>
 	

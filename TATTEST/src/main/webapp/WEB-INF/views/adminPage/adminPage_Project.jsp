@@ -34,7 +34,7 @@
 					<!--Sidebar Widget-->
 					<div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="sidebar">
-							<!-- <div class="widget widget_search">
+							<div class="widget widget_search">
 								<div class="site-search-area">
 									<form method="get" id="site-searchform" action="#">
 										<div>
@@ -42,10 +42,10 @@
 											<input id="searchsubmit" value="Search" type="submit" />
 										</div>
 									</form>
-								</div>end site search
-							</div> -->
+								</div><!-- end site search -->
+							</div>
 							
-							<!-- <div class="widget widget_categories">
+							<div class="widget widget_categories">
 								<div class="widget_title">
 									<h4><span>Categories</span></h4>
 									</div>
@@ -57,24 +57,24 @@
 									<li><a href="#"> Wordpress Themes(38)</a></li>
 									<li><a href="#"> Videography (33)</a></li>
 								</ul>
-							</div> -->
+							</div>
 							
-							<!-- <div class="widget widget_about">
+							<div class="widget widget_about">
 								<div class="widget_title">
 									<h4><span>Basic Text Widget</span></h4>
 									</div>
 								<p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							</div> -->
+							</div>
 
-                           <!--  <div class="widget widget_tab">
+                            <div class="widget widget_tab">
                                 <div class="velocity-tab sidebar-tab">
                                     <ul  class="nav nav-tabs">
                                         <li class="active"><a href="#Popular" data-toggle="tab">Popular</a></li>
                                         <li class=""><a href="#Recent" data-toggle="tab">Recent</a></li>
                                         <li class="last-tab"><a href="#Comment" data-toggle="tab"><i class="fa fa-comments-o"></i></a></li>
-                                    </ul> -->
+                                    </ul>
 
-                                    <!-- <div  class="tab-content clearfix">
+                                    <div  class="tab-content clearfix">
                                         <div class="tab-pane fade active in" id="Popular">
                                             <ul class="recent_tab_list">
                                                 <li>
@@ -93,8 +93,8 @@
                                                     <i>October 07, 2015</i>
                                                 </li>
                                             </ul>
-                                        </div> -->
-                                        <!-- <div class="tab-pane fade" id="Recent">
+                                        </div>
+                                        <div class="tab-pane fade" id="Recent">
                                             <ul class="recent_tab_list">
                                                 <li>
                                                     <span><a href="#"><img src="images/content/recent_4.png" alt="" /></a></span>
@@ -112,8 +112,8 @@
                                                     <i>October 16, 2015</i>
                                                 </li>
                                             </ul>
-                                        </div> -->
-                                        <!-- <div class="tab-pane fade" id="Comment">
+                                        </div>
+                                        <div class="tab-pane fade" id="Comment">
                                             <ul class="comments">
                                                 <li class="comments_list clearfix">
                                                     <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_3.png" alt="#"></a>
@@ -128,12 +128,12 @@
                                                     <p><strong><a href="#">Prambanan</a> <i>says: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
                                                 </li>
                                             </ul>
-                                        </div> -->
-                                    <!-- </div> -->
-                            <!--     </div>
-                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-							<!-- <div class="widget widget_tag">
+							<div class="widget widget_tag">
 								<div class="widget_title">
 									<h4><span>Tags Widget</span></h4>
 								</div>
@@ -152,9 +152,9 @@
 									<li><a href="#"><b>theme</b></a></li>
 									<li><a href="#"><b>Best jQuery</b></a></li>
 								</ul>
-							</div> -->
+							</div>
 							
-							<!-- <div class="widget widget_archives">
+							<div class="widget widget_archives">
 								<div class="widget_title">
 									<h4><span>Archives</span></h4>
 								</div>
@@ -167,11 +167,11 @@
 									<li><a href="#"> June 2015</a></li>
 									<li><a href="#"> May 2015</a></li>
 								</ul>
-							</div> -->
+							</div>
 						</div>
 					</div>
 					
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 						<div class="row sub_content">
 				            <div class="col-lg-12 col-md-12 col-sm-12">
 				                <div class="dividerHeading">
@@ -210,7 +210,50 @@
 								</div>
 				            </div>
 				            
-				            
+				            <div class="col-lg-12 col-md-12 col-sm-12">
+			                    <div class="dividerHeading">
+			                        <h4><span>상세정보</span></h4>
+			                    </div>
+			                    <p>Vidit nulla errem ea mea. Dolore apeirian insolens mea ut, indoctum consequuntur hasi. No aeque dictas dissenti as tusu, sumo quodsi fuisset mea in. Ea nobis populo interesset cum, ne sit quis elit officiis, min im tempor iracundia sit anet. Facer falli aliquam nec te. In eirmod utamur offendit vis, posidonium instructior sed te.</p>
+			
+			                    <div class="alert alert-success hidden alert-dismissable" id="contactSuccess">
+			                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			                        <strong>Success!</strong> Your message has been sent to us.
+			                    </div>
+			
+			                    <div class="alert alert-error hidden" id="contactError">
+			                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			                        <strong>Error!</strong> There was an error sending your message.
+			                    </div>
+			
+			                    <form id="contactForm" action="" novalidate="novalidate">
+			                        <div class="row">
+			                            <div class="form-group">
+			                                <div class="col-lg-6 ">
+			                                    <input type="text" id="name" name="name" class="form-control" maxlength="100" data-msg-required="Please enter your name." value="" placeholder="Your Name" >
+			                                </div>
+			                                <div class="col-lg-6 ">
+			                                    <input type="email" id="email" name="email" class="form-control" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="" placeholder="Your E-mail" >
+			                                </div>
+			                            </div>
+			                        </div>
+			                        <div class="row">
+			                            <div class="form-group">
+			                                <div class="col-md-12">
+			                                    <input type="text" id="subject" name="subject" class="form-control" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">
+			                                </div>
+			                            </div>
+			                        </div>
+			                        <div class="row">
+			                            <div class="form-group">
+			                                <div class="col-md-12">
+			                                    <textarea id="message" class="form-control" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>
+			
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </form>
+			                </div>
 				            
 				        </div>
 	                </div>
@@ -275,7 +318,7 @@
 					if(count>btnCount){pageNextFirstBtn();}
 					
 				},error: function(jqXHR, textStatus, errorThrown) {
-					/* console.log(ajax.responseText); */
+					//console.log(ajax.responseText);
 			        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
@@ -293,20 +336,20 @@
 				data : {"start" : start,},
 				success : function(data){createPageList(data);},
 				error: function(jqXHR, textStatus, errorThrown) {
-					/* console.log(ajax.responseText); */
+					//console.log(ajax.responseText);
 			        alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
 			}); 
 		};
 		function createPageList(data){
-			/* console.log("ajax 리스트 이름 확인 : "+data.ProjectList);
-			console.log("ajax data 전체 확인 : "+data); */
+			console.log("ajax 리스트 이름 확인 : "+data.ProjectList);
+			console.log("ajax data 전체 확인 : "+data);
 			for(var idx in data){
 				/* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
 			$('.projectListTable').append('<tr><td>'+data[idx].e_code+'</td>'+
 					'<td>'+data[idx].m_code+'</td>'+
 					'<td>'+data[idx].proj_name+'</td>'+
 					'<td>'+data[idx].proj_comment+'</td>'+
-					'<td>'+moment(data[idx].save_date).subtract(10, 'days').calendar()+'</td>'+
+					'<td>'+data[idx].save_date+'</td>'+
 					'<td>'+data[idx].is_share+'</td>'+
 					'<td>'+data[idx].e_use_count+'</td>');
 			
@@ -340,7 +383,7 @@
 						 	$('.pagination').append('<li class="pageNextBtn"><a onclick="pageNextBtn('+nextBtn+')";>››</a></li>');
 						  }
 					},error: function(jqXHR, textStatus, errorThrown) {
-						/* console.log(ajax.responseText); */
+						//console.log(ajax.responseText);
 				        alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
 				}); 
 			  

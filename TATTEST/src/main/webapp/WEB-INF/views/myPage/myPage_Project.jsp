@@ -36,7 +36,7 @@
 	                <div class="item">
 	                    <div class="blog-item">
 	                        <div class="ImageWrapper">
-	                            <img src="images/blog/blog_1.png" alt="" class="img-responsive">
+	                            <img src="${pageContext.request.contextPath}/resources/images/blog/blog_1.png" alt="" class="img-responsive">
 	                        </div>
 	                        <div class="metaInfo">
 	                            <span><i class="fa fa-calendar"></i> <a href="#">${p.save_date}</a></span>
@@ -54,7 +54,11 @@
 	
 	                        <div class="blog-button">
 	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/my/ProjectDetail.tat?e_code=${p.e_code}">상세 보기</a>
-	                            <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/edit/newPage.tat?e_code=${p.e_code}">편집 하기</a>
+	                            <%-- <a class="btn btn-small btn-default" href="${pageContext.request.contextPath}/edit/Main.tat?e_code=${p.e_code}">편집 하기</a> --%>
+								<form style="display: inline-block;" method="post" action="${pageContext.request.contextPath}/edit/Main.tat">
+									<input type="hidden" name="e_code" value="${ p.e_code }"/>
+									<input type="submit" class="btn btn-small btn-default" value="편집 하기"/>
+								</form>               
 	                        </div>
 	                    </div>
 	                </div>
@@ -68,6 +72,10 @@
 	</section>
 	<c:import url="common/myPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
+	<c:if test="${ msg != null }">
+		<c:import url="common/msg.jsp"></c:import>
+	</c:if>
+	
 	<script>
 	    (function ($) {
 	        var $container = $('.masonry_wrapper_blog'),

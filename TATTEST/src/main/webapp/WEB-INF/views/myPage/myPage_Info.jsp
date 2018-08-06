@@ -220,7 +220,7 @@
 	
 		// 성별 Selected
 		 $(function() {
-      		console.log("${m.m_gender}");
+      		//console.log("${m.m_gender}");
       		if("${m.m_gender}" == 'M')
       			$("#gender").val("M").prop("selected", true);
       		else if("${m.m_gender}" == 'F')
@@ -298,23 +298,23 @@
 				data: {password1 : password1},
 				type: "post",
 				success:function(data){
-					console.log(data.chk);
-					console.log(data);
-					console.log(password1);
+					//console.log(data.chk);
+					//console.log(data);
+					//console.log(password1);
 					if(data){
 						
 						if(change_pwd.match(regExp) != null){
 							
 							if($('#password2').val() == $('#password3').val()){
 								alert("변경할 비밀번호가 일치합니다.");
-								console.log($('#password2').val());
-								console.log($('#password3').val());
+								//console.log($('#password2').val());
+								//console.log($('#password3').val());
 								$('#changePasswordForm').submit();
 								alert("비밀번호가 변경되어 로그아웃 됩니다.");
 							}else{
 								alert("변경할 비밀번호가 일치하지 않습니다. 다시 작성해 주세요");
-								console.log($('#password2').val());
-								console.log($('#password3').val());
+								//console.log($('#password2').val());
+								//console.log($('#password3').val());
 							}
 							
 						}else{
@@ -348,7 +348,7 @@
 				success : function(data){
 			         if(data.isUsable == 0){ // 겹치는 것이 0개라면
 			        	 
-			        	 console.log(data.isUsable);
+			        	 //console.log(data.isUsable);
 			         
 			         	if(chk.match(regExp) != null){
 			         		
@@ -357,7 +357,7 @@
 			         			data :{email : chk},
 			         			type:"post",
 			         			success : function(data){
-			         					console.log("가져온 인증키 값 : "+data);
+			         					//console.log("가져온 인증키 값 : "+data);
 			         				alert("해당 이메일로 인증번호가 발송되었습니다.");
 			         				keyValue=data;
 								
@@ -375,7 +375,7 @@
 			         	} 
 			         }else { // 그밖은 중복된 것이다.
 			        	 alert("이미 등록된 Email 입니다.");
-			        	 console.log(data.isUsable);
+			        	 //console.log(data.isUsable);
 			         }
 			         
 			      }, error : function(error, msg){
