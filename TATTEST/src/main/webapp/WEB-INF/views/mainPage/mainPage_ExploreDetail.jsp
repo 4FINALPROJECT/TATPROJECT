@@ -36,7 +36,7 @@
 				<div class="row sub_content">
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<div class="col-lg-12 col-md-12 col-sm-12">
-							<iframe class="" src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${m_code}" width="100%" height="500px" scrolling="" frameborder="2" allowfullscreen=""></iframe>
+							<iframe class="" src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${v_code}" width="100%" height="500px" scrolling="" frameborder="2" allowfullscreen=""></iframe>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4">

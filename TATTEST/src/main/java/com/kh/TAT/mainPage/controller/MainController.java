@@ -145,7 +145,7 @@ public class MainController {
 		String m_code = request.getParameter("m_code");
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("m_code", m_code);
+		mv.addObject("v_code", m_code);
 		
 		edit = mainS.editDetail(e_code);
 		newedit.setE_code(e_code);
@@ -585,7 +585,7 @@ public class MainController {
 		}
 		
 		// 로그아웃 부분
-		@RequestMapping(value="/main/memberLogout.tat", method={RequestMethod.POST})
+		@RequestMapping(value="/main/memberLogout.tat", method={RequestMethod.POST,RequestMethod.GET})
 		public ModelAndView memberLogout(SessionStatus status, HttpServletRequest request){
 			
 			String pageSwap = request.getParameter("pageSwap");
@@ -684,7 +684,7 @@ public class MainController {
 				// String USERNAME = (String) paramMap.get("m_name");
 		        String EMAIL = (String) paramMap.get("email");
 		        String PASSWORD = mainS.getPw(paramMap);
-		        String content = "<a href='http://localhost:8088/TAT/main/updatePwd.tat?email="+EMAIL+"'>TAT비밀번호 재설정<a>";
+		        String content = "http://localhost:8088/TAT/main/updatePwd.tat?email="+EMAIL;
 		        String msg = "";
 		        if(PASSWORD != null) {
 		            email.setContent("옆에 링크를 따라가시면 비밀번호 재설정을 할수 있습니다."+content); // 이메일로 보낼 메시지
