@@ -491,6 +491,15 @@ $('#tat-head-logo').on('click', function(){
 		
 	}
 });
+$("div[id*=category]").click(function(){
+	var divChk = $(this).attr("id").substr($(this).attr("id").lastIndexOf("y")+1,4);
+	$("div[id*=category]").children().css({"background": "none"});
+	$(".content").css("display","none");
+	$("div[id*=tool_menu").each(function(){
+		$("#tool_menu"+divChk).css({"display":"block"});
+	});
+	$(this).children().css({"background": "mediumorchid"});
+});
 
 
 
