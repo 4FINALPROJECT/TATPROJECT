@@ -61,28 +61,4 @@
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/views/mainPage/common/mainPage_error.jsp</location>
 	</error-page>
-	
-	<!-- 사이트 직접접근 차단 (한결) -->
-	<!-- <security-constraint>
-		<display-name>JSP Protection</display-name>
-		  <web-resource-collection>
-		    <web-resource-name>SecureJSPPages</web-resource-name>
-		      <url-pattern>*.tat</url-pattern>
-		  </web-resource-collection>
-		  <auth-constraint>
-		    <role-name>nobody</role-name>
-		  </auth-constraint>
-	</security-constraint>
-	<security-role>
-		<description>
-		직접 접근 차단.
-		</description>
-		<role-name>nobody</role-name>
-	</security-role>
-	<error-page>
-  		<error-code>403</error-code>
-  		<location>/WEB-INF/views/mainPage/common/mainPage_error.jsp</location>
-	</error-page> -->
-	<!-- 여기까지 -->
-
 </web-app>

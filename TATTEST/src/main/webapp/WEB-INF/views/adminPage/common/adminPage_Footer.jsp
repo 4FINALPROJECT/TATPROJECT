@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- <footer class="footer">
+<footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-3 col-lg-3">
@@ -64,14 +64,14 @@
                 </div>
             </div>
         </div>
-    </footer> -->
+    </footer>
     <!--end footer-->
 
     <section class="footer_bottom">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p class="copyright">&copy; Copyright 2015 TAT | Powered by  <a href="http://www.bestjquery.com/">TAT</a></p>
+                    <p class="copyright">&copy; Copyright 2015 Electrify | Powered by  <a href="http://www.bestjquery.com/">Best jQuery</a></p>
                 </div>
 
                 <div class="col-sm-6 ">
