@@ -8,7 +8,6 @@ $(function(){
    test345435();
 
    // 부트 스트랩
-   //console.log($("#objectId").attr("value"));
     $("input[class*=form-control]").ColorPicker({
        onSubmit : function (hsb, hex, rgb, el) {
           $ (el) .val (hex);
@@ -142,17 +141,22 @@ function test345435(){
    function objectEvent(){
       $("div[data-obj-no*=data-]").each(function(){
        $(this).on("click",function(e){
-         
+
           $("#multiborder").remove();
           
           var rotation = $(this).css("transform");
-          if(rotation !== 'none'){
+
+          if(rotation != 'none'){
+             
              var obj_rotation = rotation.split('(')[1].split(')')[0].split(',');
              var a = obj_rotation[0];
-               var b = obj_rotation[1];
-               var angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+             var b = obj_rotation[1];
+             var angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+             
           } else {
+             
              $(".objectData_txt").eq(0).attr("value", 0);
+             
           }
           
           w = parseInt($(this).width());
@@ -190,14 +194,14 @@ function test345435(){
               border_resize();
               
            }
-           
+
          $("#item_inpo").css("display","none");
          $(".inpo_menu").css("display","none");
          $("#title_controller").css("display" , "none");
          $(".total_tool").css("display" , "none");
          $("#objectId").attr("value",$(this).attr("data-obj-no"));
-         
          $(".objectData_txt").eq(0).attr("value", angle);
+         
          if($(this).children("span").length < 1){
               $(".objectData_txt").eq(1).attr({"value" : w , "readonly" : false});
               $(".objectData_txt").eq(2).attr({"value" : h ,"readonly" : false});
@@ -208,9 +212,7 @@ function test345435(){
            }
            $(".objectData_txt").eq(3).attr("value", x);
            $(".objectData_txt").eq(4).attr("value", y);
-           
-           //console.log($("#objectId").val());
-           
+
        });
        $(this).bind("contextmenu",function(event){
          if($(this).children().eq(0).prop("tagName") != "IMG"){
@@ -279,9 +281,7 @@ function test345435(){
              }
              
            }
-           
-//           $(".objectData_txt").eq(0).attr("value", "");
-           
+
            if($(this).children("span").length < 1){
               $(".objectData_txt").eq(1).attr({"value" : w , "readonly" : false});
               $(".objectData_txt").eq(2).attr({"value" : h , "readonly" : false});
@@ -357,8 +357,13 @@ function test345435(){
     $("#item_copystart").click(function(){
        clone_end();
     });
-    $("#item_copycontent").hover(function(){
-        //console.log("ctrl+D");
+    $("#item_order-up").click(function(){
+       if($("div[data-obj-no*="+$("#objectId").val()+"]").css("z-index") > 0){
+       $("div[data-obj-no*="+$("#objectId").val()+"]").css("z-index","-=1");
+       }
+    });
+    $("#item_order-down").click(function(){
+       $("div[data-obj-no*="+$("#objectId").val()+"]").css("z-index","+=1");
     });
     function border_resize(){
       $(".upDateBorder").mousemove(function(e){
@@ -490,9 +495,6 @@ function test345435(){
     $("#item_delete").click(function(e){
        Object_Delete();
     });
-    $("#item_order").hover(function(){
-        //console.log("정렬");
-    });
     $("#item_inpo").children().children().children().children('div').each(function(){
        $("#item_text").on("click",function(){
           $(".inpo_menu").css("display","none");
@@ -536,8 +538,6 @@ function test345435(){
     };
     function EnterUpDate_height(){
        if(event.keyCode == 13){
-          //console.log($("#objectId").val());
-          //console.log($(".objectData_txt").eq(2).val());
           $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("height",$(".objectData_txt").eq(2).val());
        }
     };
@@ -554,7 +554,7 @@ function test345435(){
     function EnterUpDate_fSize(){
        if(event.keyCode == 13){
           
-         if($("#type_inpo").children("input").eq(4).val() <= 100 && $("#type_inpo").children("input").eq(4).val() > 0){
+         if($("#type_inpo").children("input").eq(4).val() <= 100 && $("#type_inpo").children("input").eq(4).val() >= 1){
             
             $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#type_inpo").children("input").eq(4).val() + "px");
             
@@ -568,7 +568,7 @@ function test345435(){
     function free_EnterUpDate_fSize(){
        if(event.keyCode == 13){
           
-        if($("#free_type").children("input").eq(0).val() <= 100 && $("#free_type").children("input").eq(0).val() > 0){
+        if($("#free_type").children("input").eq(0).val() <= 100 && $("#free_type").children("input").eq(0).val() >= 1){
            
           $("div[data-obj-no*="+$("#objectId").val()+"]").children().css("font-size",$("#free_type").children("input").eq(0).val() + "px");
           

@@ -221,7 +221,7 @@ $('.tat-head-content-right > div:first-child').on({
 
 
 function commitEvent() {
-   var commit_check = confirm('게시 하시겠습니까?');
+   var commit_check = confirm('공유 하시겠습니까?');
    
    if ( commit_check ) {
       
@@ -246,10 +246,9 @@ function commitEvent() {
       }); 
       
    } else {
-      alert('게시 취소');
+      alert('공유 취소');
    }
 }
-
 
 
 function stackEvent() {

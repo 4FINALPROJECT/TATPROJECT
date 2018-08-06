@@ -75,10 +75,18 @@
                             </div>
                         </div>
                         <div class="edit-top-right">
-                        	<div toolimg="rtoolChk">상세 툴바</div>
-                        	<div toolimg="ltoolChk">컨텐츠툴바</div>
-                        	<div toolimg="bodyScale">눈 금 자</div>
-                        	<div toolimg="grideLine">그리드라인</div>
+                           <div toolimg="rtoolChk">상세 툴바 <br>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/right.png" style="height : 90%;">
+                           </div>
+                           <div toolimg="ltoolChk">컨텐츠툴바<br>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/right.png" style="height : 90%;">
+                           </div>
+                           <div toolimg="bodyScale">눈 금 자<br>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/noon.png" style="height : 90%;">
+                           </div>
+                           <div toolimg="grideLine">그리드라인<br>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/grideLine.png" style="height : 90%;">
+                           </div>
                         </div>
 					</div>
 				</div>
@@ -203,7 +211,6 @@ $('.tat-my-page-list').children().on({
 			alert("저장 완료!");
 			$.ajax({
 				url : "/TAT/edit/editOop.tat",
-<<<<<<< HEAD
 				data : { edit : editWrap[0].outerHTML, folderName : folderName, cururl : cururl },
 				dataType : "json",
 				type : "POST",
@@ -241,24 +248,6 @@ function saveEvent() {
 	}
 }
 
-
-=======
-				data : { edit : editWrap[0].outerHTML, folderName : folderName },
-				dataType : "json",
-				type : "POST",
-				success : function(data) {
-					//console.log("파일 저장 성공 : "+data.editLog);
-				}, error : function(data) {
-					
-				}
-			});
-			location.href = "/TAT/edit/Main.tat?cururl="+pageSelect+"&e_code=${fN}";
-		} else {
-			alert("페이지 이동 취소!");
-		}
-	}
-});
->>>>>>> branch 'master' of https://github.com/4FINALPROJECT/TATPROJECT.git
 
 $("#tat-my-page-btn").click(function(){
 	$(".tat-my-page-content").css({"display" : "none"});

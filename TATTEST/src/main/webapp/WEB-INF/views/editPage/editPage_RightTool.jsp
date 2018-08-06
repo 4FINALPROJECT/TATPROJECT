@@ -6,8 +6,8 @@
 <div id="objectData">
     <img id="item_copy" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/copy.png">
     <img id="item_copystart" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/copystart.png"><br><br>
-    <img id="item_copycontent" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/order(top).png">
-    <img id="item_order" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/order.png"><br><br>
+    <img id="item_order-down" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/order(top).png">
+    <img id="item_order-up" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/order.png"><br><br>
     <img id="item_delete" src="${pageContext.request.contextPath}/resources/images/editPage/RightTool-img/delete.png"><br><br>
     <label>회전</label><br>
     <label class="objectData_name_txt">cº</label><input class="objectData_txt" type="number" min="0" max="359" value="0" step="0" onkeyup="EnterUpDate_rotate();"><br>
@@ -82,7 +82,7 @@
     <div class="inpo_menu" id="free_type" oncontextmenu="return false">
        <label class="free_source_name"> 색상 </label><br>
        <select class="free_source">
-       	  <option value=""> 기본값 </option>
+            <option value=""> 기본값 </option>
           <option value="red"> 빨간색 </option>
           <option value="orange"> 주황색 </option>
           <option value="yellow"> 노란색 </option>
@@ -126,5 +126,4 @@
     <div id = "tooltip">
     </div>
 </div>
-
 
