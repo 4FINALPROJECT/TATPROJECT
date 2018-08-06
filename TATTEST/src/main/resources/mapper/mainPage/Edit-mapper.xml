@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edit">
-	<resultMap type="edit" id="editMap">	
-	</resultMap>
-	
-	<select id="selectEdit" parameterType="edit" resultMap="editMap">
-		SELECT * FROM EDIT WHERE IS_SHARE = 'Y'
-	</select>
-	
-	<select id="selectDetailEdit" parameterType="edit" resultMap="editMap">
-		SELECT E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = E.M_CODE) M_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, IS_SHARE, E_USE_COUNT FROM EDIT E WHERE E_CODE = #{e_code}
-	</select>
-	
-	<select id="selectEditOne" parameterType="edit" resultMap="editMap">
-		SELECT * FROM EDIT WHERE IS_SHARE = 'Y' AND M_CODE = #{m_code} AND NOT E_CODE IN #{e_code}
-	</select>
-	
-	<select id="selectRecent" parameterType="edit" resultMap="editMap">
-		SELECT * FROM EDIT WHERE IS_SHARE = 'Y' ORDER BY SAVE_DATE DESC
-	</select>
-	
-	<select id="selectReplyCount" parameterType="edit" resultMap="editMap">
-		SELECT E_CODE,PROJ_NAME,PROJ_COMMENT,(SELECT COUNT(*) FROM EDIT_REPLY_BOARD E2 WHERE E1.E_CODE = E2.E_CODE) E_USE_COUNT FROM EDIT E1 WHERE IS_SHARE = 'Y' GROUP BY E_CODE,PROJ_NAME,PROJ_COMMENT,E_USE_COUNT ORDER BY 4 DESC
-	</select>
-	
-	<select id="selectRateCount" parameterType="edit" resultMap="editMap">
-		SELECT E_CODE,PROJ_NAME,PROJ_COMMENT,(SELECT NVL(AVG(ER_RATE),0) FROM EDIT_REPLY_BOARD E2 WHERE E1.E_CODE = E2.E_CODE AND E_USE_COUNT IS NOT NULL) E_USE_COUNT 
-		FROM EDIT E1 WHERE IS_SHARE = 'Y' GROUP BY E_CODE,PROJ_NAME,PROJ_COMMENT,E_USE_COUNT ORDER BY 4 DESC
-	</select>
+   <resultMap type="edit" id="editMap">   
+   </resultMap>
+   
+   <select id="selectEdit" parameterType="edit" resultMap="editMap">
+      SELECT * FROM EDIT WHERE IS_SHARE = 'Y'
+   </select>
+   
+   <select id="selectDetailEdit" parameterType="edit" resultMap="editMap">
+      SELECT E_CODE, (SELECT M_NAME FROM MEMBER WHERE M_CODE = E.M_CODE) M_CODE, PROJ_NAME, PROJ_COMMENT, SAVE_DATE, IS_SHARE, E_USE_COUNT FROM EDIT E WHERE E_CODE = #{e_code}
+   </select>
+   
+   <select id="selectEditOne" parameterType="edit" resultMap="editMap">
+      SELECT * FROM EDIT WHERE IS_SHARE = 'Y' AND M_CODE = #{m_code} AND NOT E_CODE IN #{e_code}
+   </select>
+   
+   <select id="selectRecent" parameterType="edit" resultMap="editMap">
+      SELECT * FROM EDIT WHERE IS_SHARE = 'Y' ORDER BY SAVE_DATE DESC
+   </select>
+   
+   <select id="selectReplyCount" parameterType="edit" resultMap="editMap">
+      SELECT E_CODE,M_CODE,PROJ_NAME,PROJ_COMMENT,(SELECT COUNT(*) FROM EDIT_REPLY_BOARD E2 WHERE E1.E_CODE = E2.E_CODE) E_USE_COUNT FROM EDIT E1 WHERE IS_SHARE = 'Y' GROUP BY E_CODE,M_CODE,PROJ_NAME,PROJ_COMMENT,E_USE_COUNT ORDER BY 4 DESC
+   </select>
+   
+   <select id="selectRateCount" parameterType="edit" resultMap="editMap">
+      SELECT E_CODE,M_CODE,PROJ_NAME,PROJ_COMMENT,(SELECT NVL(AVG(ER_RATE),0) FROM EDIT_REPLY_BOARD E2 WHERE E1.E_CODE = E2.E_CODE AND E_USE_COUNT IS NOT NULL) E_USE_COUNT 
+      FROM EDIT E1 WHERE IS_SHARE = 'Y' GROUP BY E_CODE,M_CODE,PROJ_NAME,PROJ_COMMENT,E_USE_COUNT ORDER BY 4 DESC
+   </select>
 </mapper>

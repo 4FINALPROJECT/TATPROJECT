@@ -3,64 +3,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>자세히보기 | 둘러보기</title>
-	<c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+   <title>자세히보기 | 둘러보기</title>
+   <c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
 </head>
 <body>
-	<c:import url="common/mainPage_Header.jsp"></c:import>
-	<c:import url="common/mainPage_Signin.jsp"></c:import>
-	<c:import url="common/mainPage_Signup.jsp"></c:import>
-	
-	<section class="wrapper">
-		<section class="page_head">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						<div class="page_title">
-							<h2>Explore Detail</h2>
-						</div>
-						<nav id="breadcrumbs">
-							<ul>
-								<li><a href="${pageContext.request.contextPath}">Main </a>/</li>
-								<li><a href="${pageContext.request.contextPath}/main/Explore.tat">Explore</a>/</li>
-								<li>Detail</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section class="content portfolio_single">
-			<div class="container">
-				<div class="row sub_content">
-					<div class="col-lg-8 col-md-8 col-sm-8">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<iframe class="" src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${v_code}" width="100%" height="500px" scrolling="" frameborder="2" allowfullscreen=""></iframe>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-4">
-						<div class="project_description">
-							<div class="widget_title">
-								<h4><span>${edit.proj_comment}</span></h4>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut aut reiciendise voluptat maiores alias aut et perferendis doloribus asperiores ut labore.</p>
-							<p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						</div>
-						<div class="project_details">
-							<div class="widget_title">
-								<h4><span>프로젝트 정보</span></h4>
-							</div>
-							<ul class="details">
-								<li><span>Client :</span>${edit.m_code}</li>
-								<li><span>Company :</span> Rain Technologies inc.</li>
-								<li><span>Category :</span> Web Design, Photography</li>
-								<li><span>Date :</span> ${edit.save_date}</li>
-								<li><span>Project URL :</span> <a href="#">www.bestjquery.com</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+   <c:import url="common/mainPage_Header.jsp"></c:import>
+   <c:import url="common/mainPage_Signin.jsp"></c:import>
+   <c:import url="common/mainPage_Signup.jsp"></c:import>
+   
+   <section class="wrapper">
+      <section class="page_head">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="page_title">
+                     <h2>Explore Detail</h2>
+                  </div>
+                  <nav id="breadcrumbs">
+                     <ul>
+                        <li><a href="${pageContext.request.contextPath}">Main </a>/</li>
+                        <li><a href="${pageContext.request.contextPath}/main/Explore.tat">Explore</a>/</li>
+                        <li>Detail</li>
+                     </ul>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </section>
+      
+      <section class="content portfolio_single">
+         <div class="container">
+            <div class="row sub_content">
+               <div class="col-lg-8 col-md-8 col-sm-8">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                     <iframe class="" src="${pageContext.request.contextPath}/main/ExploreIframe.tat?e_code=${edit.e_code}&m_code=${v_code}" width="100%" height="500px" scrolling="" frameborder="2" allowfullscreen=""></iframe>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="project_description">
+                     <div class="widget_title">
+                        <h4><span>${edit.proj_comment}</span></h4>
+                     </div>
+                     <p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut aut reiciendise voluptat maiores alias aut et perferendis doloribus asperiores ut labore.</p>
+                     <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                  <div class="project_details">
+                     <div class="widget_title">
+                        <h4><span>프로젝트 정보</span></h4>
+                     </div>
+                     <ul class="details">
+                        <li><span>Client :</span>${edit.m_code}</li>
+                        <li><span>Company :</span> Rain Technologies inc.</li>
+                        <li><span>Category :</span> Web Design, Photography</li>
+                        <li><span>Date :</span> ${edit.save_date}</li>
+                        <li><span>Project URL :</span> <a href="#">www.bestjquery.com</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
                 <div class="news_comments">
                     <div class="dividerHeading">
                         <h4><span>댓글</span></h4>
@@ -77,21 +77,21 @@
                                         <p>${editReply.er_reply}</p>
                                     </div>
                                     
-                            		        <c:if test="${m_code eq editReply.m_code}">
+                                          <c:if test="${m_code eq editReply.m_code}">
                                             <a data-target="#${editReply.er_num}" data-toggle="collapse">수정</a>                                                                                        
                                             <form id="editDelete" action="${pageContext.request.contextPath}/main/DeleteEditReply.tat" method="post">
                                             <input type="hidden" name="er_num" value="${editReply.er_num}"/>
-											<input type="hidden" name="e_code" value="${editReply.e_code}"/>
+                                 <input type="hidden" name="e_code" value="${editReply.e_code}"/>
                                             <a onclick="editDelete()">삭제</a>
                                             </form>
                                             <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat" method="post">
-                                            <div class="collapse" id="${editReply.er_num}">											  
-											  <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>	
-											  <input type="hidden" name="er_num" value="${editReply.er_num}"/>
-											  <input type="hidden" name="e_code" value="${editReply.e_code}"/>
-											  <button onclick="UpdateEditReply();">수정 완료</button>											  										    											  											  
-											</div>
-											</form>
+                                            <div class="collapse" id="${editReply.er_num}">                                   
+                                   <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>   
+                                   <input type="hidden" name="er_num" value="${editReply.er_num}"/>
+                                   <input type="hidden" name="e_code" value="${editReply.e_code}"/>
+                                   <button onclick="UpdateEditReply();">수정 완료</button>                                                                                                                                           
+                                 </div>
+                                 </form>
                                             </c:if>
                                     
                                 </div>
@@ -105,12 +105,12 @@
                     <div class="dividerHeading">
                                 <h4><span>Leave a comment</span></h4>
                                 </div>
-							<c:if test="${!empty m_code}">
-							<c:url value="/main/insertEditReply.tat" var="insertEditReply">
-								<%-- <c:param name="t_code" value="${temp.t_code}"/>
-								<c:param name="m_code" value=""/> --%>
-							</c:url>
-					<form id="insertEditReplyForm" action="${insertEditReply}" method="post">
+                     <c:if test="${!empty m_code}">
+                     <c:url value="/main/insertEditReply.tat" var="insertEditReply">
+                        <%-- <c:param name="t_code" value="${temp.t_code}"/>
+                        <c:param name="m_code" value=""/> --%>
+                     </c:url>
+               <form id="insertEditReplyForm" action="${insertEditReply}" method="post">
                     
                     <div class="comment_form">
                        <div class="row">
@@ -118,7 +118,9 @@
                           <input type="hidden" value="${m_code}" name="m_code"/> 
                           
                           <div class="col-sm-4">
-                             <input class="col-lg-4 col-md-4 form-control" max="5" min="1" name="er_rate" type="number" id="er_rate" size="30" onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" placeholder="점수입력란(1 ~ 5)">
+                             <input class="col-lg-4 col-md-4 form-control" 
+                             max="5" min="1" name="er_rate" type="number" id="er_rate" size="30" onkeydown="showKeyCode(event)"
+                             onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" placeholder="점수입력란(1 ~ 5)">
                           </div>
                           
                        </div>
@@ -130,7 +132,7 @@
                             </p>
                         </div>
                     </div>
-                    		<c:if test="${!empty m_code}">
+                          <c:if test="${!empty m_code}">
                             <button id="insertEditReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
                             </c:if>
                             <c:if test="${empty m_code}">
@@ -166,15 +168,29 @@
                         </div>
                     </div>
                 </div>
-			</div>
-		</section>
-	</section>
-	<script>
-		function editDelete() {
-			$('#editDelete').submit();
-		}
-	</script>
-	<c:import url="common/mainPage_Footer.jsp"></c:import>
-	<c:import url="../common/JS.jsp"></c:import>
+         </div>
+      </section>
+   </section>
+   <script>
+      function editDelete() {
+         $('#editDelete').submit();
+      }
+      
+      function showKeyCode(event) {
+         event = event || window.event;
+         var keyID = (event.which) ? event.which : event.keyCode;
+         if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) )
+         {
+            document.getElementById("keyinfo").innerHTML = keyID + " = 숫자키";
+         }
+         else
+         {
+            document.getElementById("keyinfo").innerHTML = keyID + " = 숫자키 아님";
+         }
+         /* 48~57:일반 숫자키 코드, 96~105:숫자키패드 숫자키 코드 */
+      }
+   </script>
+   <c:import url="common/mainPage_Footer.jsp"></c:import>
+   <c:import url="../common/JS.jsp"></c:import>
 </body>
 </html>
