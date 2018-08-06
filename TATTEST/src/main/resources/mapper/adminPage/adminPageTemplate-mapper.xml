@@ -12,6 +12,6 @@
       SELECT count(*) FROM TEMPLATE
    </select>
    <select id="templateTotalPagingCount" resultType="_int">
-      SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM TEMPLATE) WHERE row_num >#{start}
+      SELECT COUNT(*) FROM (SELECT ROWNUM row_num FROM TEMPLATE) WHERE row_num >=#{start}
    </select>
 </mapper>
