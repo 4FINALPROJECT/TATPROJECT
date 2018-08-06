@@ -271,6 +271,7 @@ function saveEvent() {
 	}
 }
 
+
 function stackEvent() {
 	stackT = editWrap.find( $("div[data-obj-no=data-"+ id_count+"]") );
 	stackRedo = [];
@@ -490,5 +491,6 @@ $('#tat-head-logo').on('click', function(){
 		
 	}
 });
+
 
 

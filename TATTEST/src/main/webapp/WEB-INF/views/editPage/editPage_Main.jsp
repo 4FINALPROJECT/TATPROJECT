@@ -31,7 +31,7 @@
 					<div>page4</div>
 				</div>
 				<div class="tat-my-page-btn">
-					<div>페이지 관리</div>
+					<div id="tat-my-page-btn">페이지 관리</div>
 				</div>
 			</div>
 		</div>
@@ -197,18 +197,33 @@ $('.tat-my-page-list').children().on({
 	},
 	"click" : function() {
 		pageSelect = $(this).html();
-		saveEvent();
-		location.href = "/TAT/edit/Main.tat?cururl="+pageSelect+"&e_code=${fN}";
+
+		var pageSave = confirm("현재 페이지를 저장 후에 페이지 이동 합니다.");
+		if ( pageSave ) {
+			alert("저장 완료!");
+			$.ajax({
+				url : "/TAT/edit/editOop.tat",
+				data : { edit : editWrap[0].outerHTML, folderName : folderName },
+				dataType : "json",
+				type : "POST",
+				success : function(data) {
+					//console.log("파일 저장 성공 : "+data.editLog);
+				}, error : function(data) {
+					
+				}
+			});
+			location.href = "/TAT/edit/Main.tat?cururl="+pageSelect+"&e_code=${fN}";
+		} else {
+			alert("페이지 이동 취소!");
+		}
 	}
 });
 
-
-/* $(function() {
-	$('.tat-head-content-right > div:nth-child(7)').click(function(){
-		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]"))[0] );
-		console.log( $(document).find($("div[data-obj-no=data-"+ id_count+"]")).html() );
-	});
-}); */
+$("#tat-my-page-btn").click(function(){
+	$(".tat-my-page-content").css({"display" : "none"});
+	$("#tool_menu").css({"display" : "inline" });
+	$("#tool_menu-1").css({"display" : "inline"});
+});
 
 </script>
 </html>
