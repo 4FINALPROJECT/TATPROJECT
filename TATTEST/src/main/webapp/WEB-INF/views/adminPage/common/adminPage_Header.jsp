@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header id="header">
-
-
+	<c:if test="${m_code eq 'A001'}">
 	<div id="top-bar">
 		<div class="container">
 			<div class="row">
@@ -11,19 +10,13 @@
 				</div>
 				<div class="col-sm-4 top-info">
 					<ul>
-						<c:if test="${m_code ne 'A001' and !empty m_code}">
-						<li><a href="${pageContext.request.contextPath}/my/Main.tat" class="my-skype">마</a></li>
+						<li><a href="${pageContext.request.contextPath}" class="my-facebook">메</a></li>
+						<c:if test="${ m_code != null }">
+						<form style="display:none; visibility: hidden;" action="${pageContext.request.contextPath}/main/memberLogout.tat" method="POST">
+							<input style="display:none; visibility: hidden;" type="submit" name="pageSwap" id="MainReturn"/>
+						</form>
+						<li><a onclick="mainReturn();" href="#">로!</a></li>
 						</c:if>
-						<c:if test="${m_code eq 'A001'}">
-						<li><a href="${pageContext.request.contextPath}/admin/Main.tat" class="my-pint">관</a></li>
-						</c:if>
-						<c:if test="${empty m_code}">
-						<li><a href="#" class="my-rss" data-toggle="modal" data-target="#signup">회</a></li>						
-						<li><a href="#" class="my-tweet" data-toggle="modal" data-target="#signin">로</a></li>
-						</c:if>
-						<c:if test="${!empty m_code}">
-						<li><a onclick="mainReturn();" href="${pageContext.request.contextPath}/main/memberLogout.tat">로!</a></li>
-						</c:if>	
 					</ul>
 				</div>
 			</div>
@@ -73,7 +66,12 @@
 										<li><a href="${pageContext.request.contextPath}/admin/Affiliate.tat">제휴신청조회</a></li>
 									</ul>
 								</li> --%>
-								<li><a href="${pageContext.request.contextPath}/main/memberLogout.tat">로그아웃</a></li>
+								<c:if test="${ m_code != null }">
+								<form style="display:none; visibility: hidden;" action="${pageContext.request.contextPath}/main/memberLogout.tat" method="POST">
+									<input style="display:none; visibility: hidden;" type="submit" name="pageSwap" id="MainReturn"/>
+								</form>
+								<li><a onclick="mainReturn();" href="#">로그아웃</a></li>
+								</c:if>	
 							</ul>
 						</div>
 					</div>
@@ -81,4 +79,8 @@
 			</div>
 		</div>
 	</div>
+	</c:if>
+   <c:if test="${m_code ne 'A001' or empty m_code}">
+         <c:redirect url="/WEB-INF/views/mainPage/common/mainPage_error.jsp"/>   
+   </c:if>
 </header>
