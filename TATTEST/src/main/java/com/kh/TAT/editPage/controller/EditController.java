@@ -546,11 +546,13 @@ public class EditController {
 	      return map;
 	}
 	
-	
-	@RequestMapping("/edit/createFile.tat")
-	public String createFile(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	@ResponseBody
+	@RequestMapping(value="/edit/createFile.tat", method=RequestMethod.POST)
+	public Map<String, Object> createFile(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> map = new HashMap<>();
 		
-		return "";
+		
+		return map;
 	}
 	
 	/*@RequestMapping("/edit/FileDownload.tat")
