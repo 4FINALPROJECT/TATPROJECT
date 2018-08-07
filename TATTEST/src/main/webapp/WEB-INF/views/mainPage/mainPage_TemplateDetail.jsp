@@ -142,11 +142,11 @@
                             <div class="comment-box row">
                                 <div class="col-sm-12">
                                     <p>
-                                        <textarea name="tr_reply" class="form-control" rows="6" cols="40" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="내용 입력란">Message</textarea>
+                                        <textarea name="tr_reply" id="tr_reply" class="form-control" rows="6" cols="40" placeholder="내용 입력란"></textarea>
                                     </p>
                                 </div>
                             </div>
-                     <c:if test="${!empty m_code}">
+                           <c:if test="${!empty m_code}">
                             <button id="insertReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
                             </c:if>
                             <c:if test="${empty m_code}">
@@ -229,7 +229,20 @@
        
    function tempDelete() {
       $('.tempDelete').submit();
-   }    
+   }
+   
+   $( '#insertReply' ).click(function( event ) {
+      var p1 = $('#tr_rate').val();
+      var p2 = $('#tr_reply').val();
+      
+     if(p1 == "" || p2 == ""){
+        alert("빈 값이 존재합니다");
+     } else {
+        $('#insertReplyForm').submit();
+     }
+       event.preventDefault();
+
+   });
    
    function showKeyCode(event) {
       event = event || window.event;
@@ -244,6 +257,7 @@
       }
       /* 48~57:일반 숫자키 코드, 96~105:숫자키패드 숫자키 코드 */
    }
+   
    </script>
 </body>
 </html>

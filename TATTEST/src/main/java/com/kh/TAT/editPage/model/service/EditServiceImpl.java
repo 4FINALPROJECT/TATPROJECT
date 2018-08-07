@@ -24,4 +24,16 @@ public class EditServiceImpl implements EditService {
 		
 		return editD.projectSelectOne(e_code);
 	}
+
+	@Override
+	public int shareFile(Edit shareProject) {
+		// TODO Auto-generated method stub
+		return editD.shareFile(shareProject);
+	}
+
+	@Override
+	public int cancleShareFile(Edit shareProject) {
+		// TODO Auto-generated method stub
+		return editD.cancleShareFile(shareProject);
+	}
 }

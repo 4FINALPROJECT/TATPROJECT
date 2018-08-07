@@ -131,8 +131,8 @@ function test345435(){
                        $("#item_inpo").css("display","none");
                        $(".inpo_menu").css("display","none");
                        
-                       $(".objectData_txt").eq(3).attr("value", parseInt($(moveEle).offset().left));
-                       $(".objectData_txt").eq(4).attr("value", parseInt($(moveEle).offset().top));
+                       $(".objectData_txt").eq(3).val(parseInt($(moveEle).offset().left));
+                       $(".objectData_txt").eq(4).val(parseInt($(moveEle).offset().top));
                        
                       }
             }
@@ -200,7 +200,7 @@ function test345435(){
          $(".inpo_menu").css("display","none");
          $("#title_controller").css("display" , "none");
          $(".total_tool").css("display" , "none");
-         $("#objectId").attr("value",$(this).attr("data-obj-no"));
+         $("#objectId").val($(this).attr("data-obj-no"));
          /*$(".objectData_txt").eq(0).attr("value", angle);*/
          
          if($(this).children("span").length < 1){
@@ -211,8 +211,8 @@ function test345435(){
               $(".objectData_txt").eq(2).attr({"value" : h , "readonly" : true});
               
            }
-           $(".objectData_txt").eq(3).attr("value", x);
-           $(".objectData_txt").eq(4).attr("value", y);
+           $(".objectData_txt").eq(3).val(x);
+           $(".objectData_txt").eq(4).val(y);
 
        });
        $(this).bind("contextmenu",function(event){
@@ -235,12 +235,12 @@ function test345435(){
          var objFontColor = $(this).children().css('color');
          
          $(".upDateBorder").remove();
-         $("#objectId").attr("value",$(this).attr("data-obj-no"));
+         $("#objectId").val($(this).attr("data-obj-no"));
          $("#title_controller").css("display","none");
          $("#item_inpo").css("display","inline-block");
          $(".inpo_menu").css("display","none");
          $("#item_inpo").css({"top" : parseInt($(this).offset().top)-80,"left" : $(this).offset().left});
-           $("#text_inpo").children('input').attr("value",objText);
+           $("#text_inpo").children('input').val(objText);
 
            if($(this).children().eq(0).attr("class") != "btn_style"){
               $("#item_rink").css("display","none");
@@ -248,7 +248,7 @@ function test345435(){
               $("#item_rink").css("display","inline-block");
            }
            
-           $("#rink_inpo").children('input').attr("value",rinksource);
+           $("#rink_inpo").children('input').val(rinksource);
            
            
            if($("#type_inpo").children('select').children().attr("value") == objFontFamily){
@@ -257,27 +257,27 @@ function test345435(){
               
              if($("#is_usableChk").val() == "Y"){
                 
-                $("#type_inpo").children('input').eq(0).attr("value",rgb2hex(objBackColor));
+                $("#type_inpo").children('input').eq(0).val(rgb2hex(objBackColor));
                 if(rgb2hex(objBorder_color) == "#333333"){
-                   $("#type_inpo").children('input').eq(1).attr("value","#000000");
+                   $("#type_inpo").children('input').eq(1).val("#000000");
                 } else {
-                   $("#type_inpo").children('input').eq(1).attr("value",rgb2hex(objBorder_color));  
+                   $("#type_inpo").children('input').eq(1).val(rgb2hex(objBorder_color));  
                 }
-                  $("#type_inpo").children('input').eq(2).attr("value",objBorder[1]);
-                  $("#type_inpo").children('input').eq(3).attr("value",objBorder[0]);     
-                $("#type_inpo").children('input').eq(4).attr("value",objFontSize);
-                $("#type_inpo").children('input').eq(5).attr("value",rgb2hex(objFontColor));
-                $("#type_inpo").children('select').children().eq(0).attr("value",objFontFamily);
+                  $("#type_inpo").children('input').eq(2).val(objBorder[1]);
+                  $("#type_inpo").children('input').eq(3).val(objBorder[0]);     
+                $("#type_inpo").children('input').eq(4).val(objFontSize);
+                $("#type_inpo").children('input').eq(5).val(rgb2hex(objFontColor));
+                $("#type_inpo").children('select').children().eq(0).val(objFontFamily);
                 
              } else {
                 if(rgb2hex(objBackColor) == "#000000"){
-                   $("#free_type").children('select').eq(0).children().eq(0).attr("value","");  
+                   $("#free_type").children('select').eq(0).children().eq(0).val(" ");  
                 } else {
-                   $("#free_type").children('select').eq(0).children().eq(0).attr("value",rgb2hex(objBackColor));  
+                   $("#free_type").children('select').eq(0).children().eq(0).val(rgb2hex(objBackColor));  
                 }
-                $("#free_type").children('select').eq(1).children().eq(0).attr("value",objFontFamily);
-                $("#free_type").children('select').eq(2).children().eq(0).attr("value",rgb2hex(objFontColor));
-                $("#free_type").children('input').eq(0).attr("value",objFontSize);
+                $("#free_type").children('select').eq(1).children().eq(0).val(objFontFamily);
+                $("#free_type").children('select').eq(2).children().eq(0).val(rgb2hex(objFontColor));
+                $("#free_type").children('input').eq(0).val(objFontSize);
                 
              }
              
@@ -290,8 +290,8 @@ function test345435(){
               $(".objectData_txt").eq(1).attr({"value" : w , "readonly" : true});
               $(".objectData_txt").eq(2).attr({"value" : h , "readonly" : true});
            }
-           $(".objectData_txt").eq(3).attr("value", x);
-           $(".objectData_txt").eq(4).attr("value", y);
+           $(".objectData_txt").eq(3).val(x);
+           $(".objectData_txt").eq(4).val(y);
             }
          });
        });
@@ -319,7 +319,7 @@ function test345435(){
       
       id_count++;
       
-      $("#objectId").attr("value",clone_id.attr("data-obj-no"));
+      $("#objectId").val(clone_id.attr("data-obj-no"));
       
       clone_id = clone_id.css({"top":"+=10","left":"+=10"}).attr("data-obj-no","data-"+id_count);
       

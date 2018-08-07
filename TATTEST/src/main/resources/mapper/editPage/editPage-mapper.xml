@@ -7,4 +7,10 @@
 		JOIN MEMBER M ON (E.M_CODE = M.M_CODE)
 		WHERE E_CODE = #{e_code}
 	</select>
+	<update id="shareFile" parameterType="edit">
+		UPDATE "FINALDB"."EDIT" SET IS_SHARE = 'Y' WHERE E_CODE= #{e_code} AND M_CODE= #{m_code}
+	</update>
+	<update id="cancleShareFile" parameterType="edit">
+		UPDATE "FINALDB"."EDIT" SET IS_SHARE = 'N' WHERE E_CODE= #{e_code} AND M_CODE= #{m_code}
+	</update>
 </mapper>

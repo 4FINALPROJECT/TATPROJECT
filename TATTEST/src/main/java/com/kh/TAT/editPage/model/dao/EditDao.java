@@ -9,6 +9,10 @@ public interface EditDao {
 
 	Edit projectSelectOne(String e_code);
 
+	int shareFile(Edit shareProject);
+
+	int cancleShareFile(Edit shareProject);
+
 
 
 }

@@ -7,4 +7,8 @@ public interface EditService {
 	Member memberSelectPayment(String m_code);
 
 	Edit projectSelectOne(String e_code);
+
+	int shareFile(Edit shareProject);
+
+	int cancleShareFile(Edit shareProject);
 }

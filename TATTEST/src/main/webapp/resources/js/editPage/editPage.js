@@ -220,36 +220,6 @@ $('.tat-head-content-right > div:first-child').on({
 });
 
 
-function commitEvent() {
-   var commit_check = confirm('공유 하시겠습니까?');
-   
-   if ( commit_check ) {
-      
-      $('#myModal').modal({
-          backdrop: 'static',
-          keyboard: false  // to prevent closing with Esc button (if you want this too)
-      })
-      
-      // 모달창 열기
-      $('#myModal').modal("show");
-      // 반대로 모달상태를 전환함
-      // $('#myModal').modal("toggle");
-      
-      $('html').click(function(e) { 
-         if($(e.target).hasClass('modal')) { 
-            var modalOut = confirm('저장을 취소 하시겠습니까?');
-            if ( modalOut ) {
-               // 모달창 닫기
-               $('#myModal').modal("hide");
-            } 
-         }
-      }); 
-      
-   } else {
-      alert('공유 취소');
-   }
-}
-
 
 function stackEvent() {
    stackT = editWrap.find( $("div[data-obj-no=data-"+ id_count+"]") );
@@ -448,6 +418,9 @@ $("#edit_submit").click(function(){
 
 $('#commit-btn').click(function(){
    commitEvent();
+});
+$('#cancle-btn').click(function(){
+	cancleEvent();
 });
 $("#edit_allview").click(function(){
    commitEvent();

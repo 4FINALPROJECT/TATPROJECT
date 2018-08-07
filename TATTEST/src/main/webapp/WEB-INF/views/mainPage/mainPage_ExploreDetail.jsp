@@ -81,16 +81,16 @@
                                             <a data-target="#${editReply.er_num}" data-toggle="collapse">수정</a>                                                                                        
                                             <form class="editDelete" action="${pageContext.request.contextPath}/main/DeleteEditReply.tat" method="post">
                                             <input type="hidden" name="er_num" value="${editReply.er_num}"/>
-                                 			<input type="hidden" name="e_code" value="${editReply.e_code}"/>
+                                          <input type="hidden" name="e_code" value="${editReply.e_code}"/>
                                             <a onclick="editDelete()">삭제</a>
                                             </form>
                                             <form class="UpdateEditReply" action="${pageContext.request.contextPath}/main/UpdateEditReply.tat" method="post">
                                             <div class="collapse" id="${editReply.er_num}">                                   
-                                   <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>   
-                                   <input type="hidden" name="er_num" value="${editReply.er_num}"/>
-                                   <input type="hidden" name="m_code" value="${v_code}"/>
-                                   <input type="hidden" name="e_code" value="${edit.e_code}"/>
-                                   <button onclick="UpdateEditReply();">수정 완료</button>                                                                                                                                           
+                                            <input type="text" name="er_reply" placeholder="${editReply.er_reply}" value=""/>   
+                                            <input type="hidden" name="er_num" value="${editReply.er_num}"/>
+                                            <input type="hidden" name="m_code" value="${v_code}"/>
+                                            <input type="hidden" name="e_code" value="${edit.e_code}"/>
+                                         <button onclick="UpdateEditReply();">수정 완료</button>                                                                                                                                           
                                  </div>
                                  </form>
                                             </c:if>
@@ -117,11 +117,11 @@
                        <div class="row">
                           <input type="hidden" value="${edit.e_code}" name="e_code"/>
                           <input type="hidden" value="${m_code}" name="m_code"/> 
-                          
+                          <input type="hidden" value="${v_code}" name="m_code2"/>
                           <div class="col-sm-4">
                              <input class="col-lg-4 col-md-4 form-control" 
-                             max="5" min="1" name="er_rate" type="number" id="er_rate" size="30" onkeydown="showKeyCode(event)"
-                             onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" placeholder="점수입력란(1 ~ 5)">
+                             name="er_rate" type="number" id="er_rate" size="30" onkeydown="showKeyCode(event)" max="5" min="1" 
+                             placeholder="점수입력란(1 ~ 5)">
                           </div>
                           
                        </div>
@@ -129,12 +129,12 @@
                     <div class="comment-box row">
                         <div class="col-sm-12">
                             <p>
-                                <textarea name="er_reply" class="form-control" rows="6" cols="40" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="내용 입력란">Message</textarea>
+                                <textarea name="er_reply" id="er_reply" class="form-control" rows="6" cols="40" placeholder="내용 입력란"></textarea>
                             </p>
                         </div>
                     </div>
                           <c:if test="${!empty m_code}">
-                            <button id="insertEditReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
+                            <button id="insertEditReply" type="button" class="btn btn-lg btn-default">댓글 작성</button>
                             </c:if>
                             <c:if test="${empty m_code}">
                             <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>
@@ -172,10 +172,28 @@
          </div>
       </section>
    </section>
+   
+   <c:import url="common/mainPage_Footer.jsp"></c:import>
+   <c:import url="../common/JS.jsp"></c:import>
+   
    <script>
       function editDelete() {
          $('.editDelete').submit();
       }
+        
+      $( '#insertEditReply' ).click(function( event ) {
+        var p1 = $('#er_rate').val();
+        var p2 = $('#er_reply').val();
+        
+       if(p1 == "" || p2 == ""){
+          alert("빈값이 존재합니다");
+       } else {
+          $('#insertEditReplyForm').submit();
+       }
+         event.preventDefault();
+
+     });
+      
       
       function showKeyCode(event) {
          event = event || window.event;
@@ -191,7 +209,5 @@
          /* 48~57:일반 숫자키 코드, 96~105:숫자키패드 숫자키 코드 */
       }
    </script>
-   <c:import url="common/mainPage_Footer.jsp"></c:import>
-   <c:import url="../common/JS.jsp"></c:import>
 </body>
 </html>

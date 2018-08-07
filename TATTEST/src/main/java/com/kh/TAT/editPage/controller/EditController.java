@@ -185,6 +185,7 @@ public class EditController {
          session.setAttribute("fileCreate", newBodyPage.exists());
          request.setAttribute("fN", edit.getE_code());
          request.setAttribute("cururl", page);
+         request.setAttribute("edit", edit);
          System.out.println(newBodyPage.exists());
          
          return "editPage/editPage_Main";
@@ -590,4 +591,31 @@ public class EditController {
       }
       
    }*/
+   
+   // 편집 페이지 공유하기
+   @ResponseBody
+   @RequestMapping(value="/edit/shareFile.tat", method=RequestMethod.POST)
+   public int shareFile(HttpSession session, @RequestParam String e_code) {
+	   String m_code = (String) session.getAttribute("m_code");
+	   Edit shareProject = new Edit();
+	   shareProject.setM_code(m_code);
+	   shareProject.setE_code(e_code);
+	   int result = editS.shareFile(shareProject);
+	   
+		return result;
+   }
+
+
+// 편집 페이지 공유 취소하기
+	@ResponseBody
+	@RequestMapping(value="/edit/cancleShareFile.tat", method=RequestMethod.POST)
+	public int cancleShareFile(HttpSession session, @RequestParam String e_code) {
+		   String m_code = (String) session.getAttribute("m_code");
+		   Edit shareProject = new Edit();
+		   shareProject.setM_code(m_code);
+		   shareProject.setE_code(e_code);
+		   int result = editS.cancleShareFile(shareProject);
+		   
+			return result;
+	}
 }

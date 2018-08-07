@@ -2,39 +2,39 @@
     $(document).ready(function(){
 
         /*----------------------------------------------------*/
-        /*	Sticky Header
+        /*   Sticky Header
         /*----------------------------------------------------*/
         (function() {
             $('#logo-bar').scrollToFixed(); // Fixed Navigation Bar
          })();
 
         /*----------------------------------------------------*/
-        /*	Same Height Div's
+        /*   Same Height Div's
         /*----------------------------------------------------*/
         if(jQuery.isFunction(jQuery.fn.matchHeight)){
             $('.same-height').matchHeight();
         }
 
         /*----------------------------------------------------*/
-        /*	Fraction Slider
+        /*   Fraction Slider
         /*----------------------------------------------------*/
         if(jQuery.isFunction(jQuery.fn.fractionSlider)){
             $(window).load(function(){
                 $('.slider').fractionSlider({
-                    'fullWidth': 			true,
-                    'controls': 			true,
-                    'responsive': 			true,
-                    'dimensions': 			"1920,450",
+                    'fullWidth':          true,
+                    'controls':          true,
+                    'responsive':          true,
+                    'dimensions':          "1920,450",
                     'timeout' :             5000,
-                    'increase': 			true,
-                    'pauseOnHover': 		true,
-                    'slideEndAnimation': 	false,
+                    'increase':          true,
+                    'pauseOnHover':       true,
+                    'slideEndAnimation':    false,
                     'autoChange':           true
                 });
             });
         }
         /*----------------------------------------------------*/
-        /*	EasyPie Chart Effects
+        /*   EasyPie Chart Effects
          /*----------------------------------------------------*/
         if(jQuery.isFunction(jQuery.fn.easyPieChart)){
 
@@ -67,7 +67,7 @@
         }
 
         /*----------------------------------------------------*/
-        /*	Owl Carousel
+        /*   Owl Carousel
         /*----------------------------------------------------*/
         if(jQuery.isFunction(jQuery.fn.owlCarousel)){
 
@@ -125,7 +125,7 @@
         });
 
         /*===========================================================*/
-        /*	Flickr Gallery
+        /*   Flickr Gallery
         /*===========================================================*/
         $('#flickrFeed').jflickrfeed({
             limit: 9,
@@ -137,7 +137,7 @@
         });
 
         /*===========================================================*/
-        /*	Isotope Portfolio
+        /*   Isotope Portfolio
         /*===========================================================*/
         if(jQuery.isFunction(jQuery.fn.isotope)){
             jQuery('.portfolio_list').isotope({
@@ -162,7 +162,7 @@
         }
 
         /*===========================================================*/
-        /*	Image Hover Effect - HoverDirection.js
+        /*   Image Hover Effect - HoverDirection.js
         /*===========================================================*/
         if(jQuery.isFunction(jQuery.fn.hoverDirection)){
             $('.box').hoverDirection();
@@ -175,7 +175,7 @@
         }
 
         /*----------------------------------------------------*/
-        /*	Magnific Popup
+        /*   Magnific Popup
         /*----------------------------------------------------*/
         $('body').magnificPopup({
             type: 'image',
@@ -214,7 +214,7 @@
         });
 
         /*----------------------------------------------------*/
-        /*	Swipe Slider
+        /*   Swipe Slider
          /*----------------------------------------------------*/
         window.mySwipe = new Swipe(document.getElementById('slider'), {
             startSlide: 2,
@@ -228,7 +228,7 @@
         });
 
         /*----------------------------------------------------*/
-        /*	Accordians & Toggles
+        /*   Accordians & Toggles
          /*----------------------------------------------------*/
 
         $('.panel-group').on('shown.bs.collapse', function (e) {
@@ -239,7 +239,7 @@
         });
 
         /*----------------------------------------------------*/
-        /*	Popover
+        /*   Popover
         /*----------------------------------------------------*/
         $('[data-toggle="popover"]').popover()
         /* ------------------ End Document ------------------ */
@@ -253,7 +253,7 @@
 $(document).ready(function() {
 
     /*=================
-     *	Contact Form
+     *   Contact Form
      * #contact
      ===================*/
 
@@ -334,211 +334,211 @@ $(document).ready(function() {
 //////////////////////////결제 스트립트 시작 //////////////////////////////
 
 function premiumService(e, a){
-	var IMP = window.IMP; // 생략가능
-	IMP.init("imp86249353"); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-	
-	IMP.request_pay({
-	    pg : 'inicis', // version 1.1.0부터 지원.
-	    pay_method : 'card',
-	    merchant_uid : 'ORD20180131-0000011',
-	    name : '프리미엄 서비스 결제',
-	    /* amount : 1000, */
-	    amount : a,
-	    buyer_email : 'iamport@siot.do',
-	    buyer_name : '홍길동',
-	    buyer_tel : '010-1234-5678',
-	    buyer_addr : '서울특별시 강남구',
-	    buyer_postcode : '123-456'
-	   
-	}, function(rsp) {
-	    if ( rsp.success ) {
-	        var msg = '결제가 완료되었습니다.';
-	        msg += '고유ID : ' + rsp.imp_uid;
-	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-	        msg += '결제 금액 : ' + rsp.paid_amount;
-	        msg += '카드 승인번호 : ' + rsp.apply_num;
-	        
-	        if(a == 30000){
-	        	p_code = "PC1";
-	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;	
-	        } else if(a == 80000){
-	        	p_code = "PC3";
-	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
-	        } else if(a == 150000){
-	        	p_code = "PC6";
-	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
-	        } else if(a == 290000){
-	        	p_code = "PC12";
-	        	document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
-	        } 
-	        
-	        changePage();
-	        
-	        /*document.location.href = "paymentInsert.tat?m_code="+e;*/
-	        
-	    } else {
-	        var msg = '결제에 실패하였습니다.';
-	        var p_code;
-	        msg += '내용 : ' + rsp.error_msg;	        
-	    }
-	    alert(msg);
-	});
+   var IMP = window.IMP; // 생략가능
+   IMP.init("imp86249353"); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+   
+   IMP.request_pay({
+       pg : 'inicis', // version 1.1.0부터 지원.
+       pay_method : 'card',
+       merchant_uid : 'ORD20180131-0000011',
+       name : '프리미엄 서비스 결제',
+       /* amount : 1000, */
+       amount : a,
+       buyer_email : 'iamport@siot.do',
+       buyer_name : '홍길동',
+       buyer_tel : '010-1234-5678',
+       buyer_addr : '서울특별시 강남구',
+       buyer_postcode : '123-456'
+      
+   }, function(rsp) {
+       if ( rsp.success ) {
+           var msg = '결제가 완료되었습니다.';
+           msg += '고유ID : ' + rsp.imp_uid;
+           msg += '상점 거래ID : ' + rsp.merchant_uid;
+           msg += '결제 금액 : ' + rsp.paid_amount;
+           msg += '카드 승인번호 : ' + rsp.apply_num;
+           
+           if(a == 30000){
+              p_code = "PC1";
+              document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;   
+           } else if(a == 80000){
+              p_code = "PC3";
+              document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
+           } else if(a == 150000){
+              p_code = "PC6";
+              document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
+           } else if(a == 290000){
+              p_code = "PC12";
+              document.location.href = "paymentInsert.tat?m_code="+e+"&"+"p_code="+p_code;
+           } 
+           
+           changePage();
+           
+           /*document.location.href = "paymentInsert.tat?m_code="+e;*/
+           
+       } else {
+           var msg = '결제에 실패하였습니다.';
+           var p_code;
+           msg += '내용 : ' + rsp.error_msg;           
+       }
+       alert(msg);
+   });
 
-	} 
+   } 
 //////////////////////////결제 스트립트 끝 //////////////////////////////
 
 /* Sign up test */
 
 // 회원가입 함수
 /*$('#insertBtn').on('click',function(){
-	$('#memberInsert').submit();
+   $('#memberInsert').submit();
 });*/
 
 // 로그인 함수
 $('#loginForm').on('click',function(){
-	$('#memberLogin').submit();
+   $('#memberLogin').submit();
 });
 
 $('#searchPW').on('click',function(){
-	$('#search1').submit();
+   $('#search1').submit();
 });
 
 
 
 $( "#insertBtn" ).click(function( event ) {
-	var p1 = $('#m_email').val();
-	var p2 = $('#m_pwd').val();
-	var p3 = $('#m_pwd2').val();
-	var p4 = $('#m_name').val();
-	var p5 = $('#m_birth').val();
-	var p6 = $('#m_gender').val();
-	
+   var p1 = $('#m_email').val();
+   var p2 = $('#m_pwd').val();
+   var p3 = $('#m_pwd2').val();
+   var p4 = $('#m_name').val();
+   var p5 = $('#m_birth').val();
+   var p6 = $('#m_gender').val();
+   
   if(p1 == "" || p2 == "" || p3 == "" || p4 == "" || p5 == "" || p6 == ""){
-  	alert("값을 입력해주세요.");
-  	$('#upForm').click();
+     alert("값을 입력해주세요.");
+     $('#upForm').click();
   } else {
-	  $('#memberInsert').submit();
+     $('#memberInsert').submit();
   }
-	 event.preventDefault();
+    event.preventDefault();
 
 });
 
 // 비밀번호(정규식) 유효성 검사
-$(function(){	
-	$('#m_pwd').blur(function(){
-		var regexp =/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,}$/;
-		v = $(this).val();
-		
-		if(regexp.test(v)) {
-			$('#chkMsg2').text("정확한 입력방식입니다!!");
-			$('#chkMsg2').css("color", "green");
-			$('#insertBtn').attr("disabled", false);	
-		} else {
-			$('#chkMsg2').text("영문+숫자(기호)조합으로 8자 이상 입력해야합니다. Ex) test12345");
-			$('#chkMsg2').css("color", "red");
-			$('#insertBtn').attr("disabled", true);
-			//$('#user_name').focus();
-		}
-			
-	});
+$(function(){   
+   $('#m_pwd').blur(function(){
+      var regexp =/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,}$/;
+      v = $(this).val();
+      
+      if(regexp.test(v)) {
+         $('#chkMsg2').text("정확한 입력방식입니다!!");
+         $('#chkMsg2').css("color", "green");
+         $('#insertBtn').attr("disabled", false);   
+      } else {
+         $('#chkMsg2').text("영문+숫자(기호)조합으로 8자 이상 입력해야합니다. Ex) test12345");
+         $('#chkMsg2').css("color", "red");
+         $('#insertBtn').attr("disabled", true);
+         //$('#user_name').focus();
+      }
+         
+   });
 });
 
 // 비밀번호 확인 유효성 검사
 $(function(){
-	$("#m_pwd2").blur(function(){
-		var p1=$("#m_pwd").val(), p2=$("#m_pwd2").val();
-		if(p1!=p2){
-			$('#chkMsg3').text("비밀번호가 일치하지 않습니다.")
-			$('#chkMsg3').css("color", "red");
-			$('#insertBtn').attr("disabled", true);
-			$('#changePwd').attr("disabled", true);
-			//$("#password").focus();
-		} else {
-			$('#chkMsg3').text("비밀번호가 일치합니다.")
-			$('#chkMsg3').css("color", "green");
-			$('#insertBtn').attr("disabled", false);
-			$('#changePwd').attr("disabled", false);
-		}
-	});
+   $("#m_pwd2").blur(function(){
+      var p1=$("#m_pwd").val(), p2=$("#m_pwd2").val();
+      if((p1!=p2 && p1 == "") || p2 == ""){
+         $('#chkMsg3').text("비밀번호가 일치하지 않습니다.")
+         $('#chkMsg3').css("color", "red");
+         $('#insertBtn').attr("disabled", true);
+         $('#changePwd').attr("disabled", true);
+         //$("#password").focus();
+      } else {
+         $('#chkMsg3').text("비밀번호가 일치합니다.")
+         $('#chkMsg3').css("color", "green");
+         $('#insertBtn').attr("disabled", false);
+         $('#changePwd').attr("disabled", false);
+      }
+   });
 
 });
 
 // 회원 이름 유효성 검사
 $(function(){
-	$('#m_name').blur(function(){
-		var regexp =/^[가-힣]{2,4}|[a-zA-Z]{5,20}\s[a-zA-Z]{5,20}$/;
-		v = $(this).val();
-		
-		if(regexp.test(v)) {
-			$('#chkMsg4').text("정확한 입력방식입니다!!")
-			$('#chkMsg4').css("color", "green");
-			$('#insertBtn').attr("disabled", false);
-		} else {
-			$('#chkMsg4').text("실명을 입력해주세요!! Ex) 홍길동")
-			$('#chkMsg4').css("color", "red");
-			$('#insertBtn').attr("disabled", true);
-			//$('#user_name').focus();
-		}
-		
-	});
+   $('#m_name').blur(function(){
+      var regexp =/^[가-힣]{2,4}|[a-zA-Z]{5,20}\s[a-zA-Z]{5,20}$/;
+      v = $(this).val();
+      
+      if(regexp.test(v)) {
+         $('#chkMsg4').text("정확한 입력방식입니다!!")
+         $('#chkMsg4').css("color", "green");
+         $('#insertBtn').attr("disabled", false);
+      } else {
+         $('#chkMsg4').text("실명을 입력해주세요!! Ex) 홍길동")
+         $('#chkMsg4').css("color", "red");
+         $('#insertBtn').attr("disabled", true);
+         //$('#user_name').focus();
+      }
+      
+   });
 });
 
 //회원 이메일 유효성 검사
 $(function(){
-	$('#m_email').blur(function(){
-		var regexp = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-		v = $(this).val();
-		
-		if(regexp.test(v)) {
-			$('#chkMsg1-1').text("정확한 입력방식입니다!!")
-			$('#chkMsg1-1').css("color", "green");
-			$('#insertBtn').attr("disabled", false);
-		} else {
-			$('#chkMsg1-1').text("빈칸이거나 형식에 맞지 않습니다!! Ex) test@test.com")
-			$('#chkMsg1-1').css("color", "red");
-			$('#insertBtn').attr("disabled", true);
-			//$('#user_name').focus();
-		}
-		
-	});
+   $('#m_email').blur(function(){
+      var regexp = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+      v = $(this).val();
+      
+      if(regexp.test(v)) {
+         $('#chkMsg1-1').text("정확한 입력방식입니다!!")
+         $('#chkMsg1-1').css("color", "green");
+         $('#insertBtn').attr("disabled", false);
+      } else {
+         $('#chkMsg1-1').text("빈칸이거나 형식에 맞지 않습니다!! Ex) test@test.com")
+         $('#chkMsg1-1').css("color", "red");
+         $('#insertBtn').attr("disabled", true);
+         //$('#user_name').focus();
+      }
+      
+   });
 });
 
 $(function() {
-	if($('#tcheck').is(":checked") == false){
-		$('#insertBtn').attr("disabled", true);
-	} else {
-		$('#insertBtn').attr("disabled", false);
-	}
+   if($('#tcheck').is(":checked") == false){
+      $('#insertBtn').attr("disabled", true);
+   } else {
+      $('#insertBtn').attr("disabled", false);
+   }
 });
 
 //이메일 중복체크 스트립트 //
 $("#m_email").on("keyup",function(){
-	$.ajax({
-	      url:"main/checkemailDup.tat",
-	      data : {m_email : $("#m_email").val()},
-	      dataType: "json",
-	      success:function(data){
-	    	  if(data.isUsable == true){ // viewName을 활용한 방식
-					$('#chkMsg1').text("사용가능한 이메일입니다.");
-					$('#chkMsg1').css("color", "green");
-				} else {					
-					$('#chkMsg1').text("중복된 이메일입니다.");
-					$('#chkMsg1').css("color", "red");
-					$('#insertBtn').attr("disabled", true);
-				}
-				
-			}, error : function(error, msg){
-				console.log(error+"\n"+msg);
-			}
-			
-		});
-		
-	});
+   $.ajax({
+         url:"main/checkemailDup.tat",
+         data : {m_email : $("#m_email").val()},
+         dataType: "json",
+         success:function(data){
+            if(data.isUsable == true){ // viewName을 활용한 방식
+               $('#chkMsg1').text("사용가능한 이메일입니다.");
+               $('#chkMsg1').css("color", "green");
+            } else {               
+               $('#chkMsg1').text("중복된 이메일입니다.");
+               $('#chkMsg1').css("color", "red");
+               $('#insertBtn').attr("disabled", true);
+            }
+            
+         }, error : function(error, msg){
+            console.log(error+"\n"+msg);
+         }
+         
+      });
+      
+   });
 
 // 페이스북 로그인 연동 스크립트
 
 function fbLogoutUser() {
-	FB.logout(function(response) {
+   FB.logout(function(response) {
         alert("로그아웃 되었습니다!");   
     });
 }
@@ -553,7 +553,7 @@ function statusChangeCallback(response) {
       testAPI();
       // $('#fb_logout').show();
     } else {
-    	
+       
       // The person is not logged into your app or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
@@ -614,28 +614,28 @@ function statusChangeCallback(response) {
         'Thanks for logging in, ' + response.name + '!';
     });
     FB.api(
-  		  '/me',
-  		  'post',
-  		  {"fields":"id,name,address,birthday,email,age_range,gender"},
-  		  function(response) {
-  			console.log("확인!"+response.password);
-  			
-  			document.location.href = "Flogin.tat?m_email="+response.email+"&"+
-  			"m_name="+response.name;
-  			
-  		  }
-  		  );
+          '/me',
+          'post',
+          {"fields":"id,name,address,birthday,email,age_range,gender"},
+          function(response) {
+           console.log("확인!"+response.password);
+           
+           document.location.href = "Flogin.tat?m_email="+response.email+"&"+
+           "m_name="+response.name;
+           
+          }
+          );
   }
   
 /////// 구글 로그인 부분 연동 시작 /////////
   var googleClicked=false;
   function GoogleLogin()
   {
-  	googleClicked=true;
+     googleClicked=true;
   }
   function onSignIn(googleUser) {
-	  if (googleClicked) {    
-	  // Useful data for your client-side scripts:
+     if (googleClicked) {    
+     // Useful data for your client-side scripts:
           var profile = googleUser.getBasicProfile();
           
           console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -654,34 +654,34 @@ function statusChangeCallback(response) {
           // 
           
           // $('#glogout').show();
-	  
+     
         };
-  	}  
+     }  
         /*function glogout() {
-      	    document.location.href = "https://www.google.com/accounts/Logout?" +
-      	    		"continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8088/TAT";
-      		}*/
+             document.location.href = "https://www.google.com/accounts/Logout?" +
+                   "continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8088/TAT";
+            }*/
   /////// 구글 로그인 부분 연동 끝 /////////
   function useableBtn(e) {
-	  document.location.href = "daybyday.tat?m_code="+e;
-	  console.log("기간 메소드!");
+     document.location.href = "daybyday.tat?m_code="+e;
+     console.log("기간 메소드!");
   }
   // 템플릿 댓글 수정 함수 //
   function UpdateReply() {
-	$('.UpdateReply').submit();
+   $('.UpdateReply').submit();
 }
   
   // 둘러보기 댓글 수정 함수 //
   function UpdateEditReply() {
-		$('.UpdateEditReply').submit();
-	}
+      $('.UpdateEditReply').submit();
+   }
   
 // 메인 리턴 함수 //
 function mainReturn() {
-	var pageSwap = window.location.href.substring(window.location.href.indexOf("/TAT/")+5);
-	$("#MainReturn").val(pageSwap);
+   var pageSwap = window.location.href.substring(window.location.href.indexOf("/TAT/")+5);
+   $("#MainReturn").val(pageSwap);
 
-	$("#MainReturn").click();
-	//console.log(pageSwap);
-	//$('#MainReturn').click();
+   $("#MainReturn").click();
+   //console.log(pageSwap);
+   //$('#MainReturn').click();
 }

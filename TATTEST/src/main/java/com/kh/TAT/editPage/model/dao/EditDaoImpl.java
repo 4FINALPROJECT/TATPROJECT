@@ -25,5 +25,17 @@ public class EditDaoImpl implements EditDao {
 		return sqlSession.selectOne("edit.SelectProject", e_code);
 	}
 
+	@Override
+	public int shareFile(Edit shareProject) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("edit.shareFile", shareProject);
+	}
+
+	@Override
+	public int cancleShareFile(Edit shareProject) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("edit.cancleShareFile", shareProject);
+	}
+
 	
 }

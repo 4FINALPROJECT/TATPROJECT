@@ -123,7 +123,12 @@
       </div>
       
       <div class="tat-head-content-right">
+      	<c:if test="${edit.is_share == 'N'}">
          <div id="commit-btn" style="background: royalblue; color: white;">공유하기</div>
+      	</c:if>
+      	<c:if test="${edit.is_share == 'Y'}">
+         <div id="cancle-btn" style="background: pink; color: white;">공유취소</div>
+      	</c:if>
          <div id="save-btn">저장</div>
          <div id="view-btn">미리보기</div>
          <div id="redo-btn">redo</div>
@@ -255,6 +260,52 @@ $("#tat-my-page-btn").click(function(){
    $("#tool_menu").css({"display" : "inline" });
    $("#tool_menu-1").css({"display" : "inline"});
 });
+
+
+function commitEvent() {
+   var commit_check = confirm('공유 하시겠습니까?');
+   folderName = '${ fN }';
+   console.log(folderName);
+   if ( commit_check ) {
+      $.ajax({
+    	 url: "${pageContext.request.contextPath}/edit/shareFile.tat",
+         type : "post",
+         data : {"e_code": folderName},
+    	 success: function(data){
+    		 if(data>0) alert("정상 처리");
+    		 else alert("공유 실패")
+    	 },
+    	 error: function(){
+    		 alert("공유가 되지 않았습니다.");
+    	 }
+      });
+      
+   } else {
+      alert('공유 취소');
+   }
+}
+function cancleEvent() {
+	   var commit_check = confirm('공유 취소 하시겠습니까?');
+	   folderName = '${ fN }';
+	   console.log(folderName);
+	   if ( commit_check ) {
+	      $.ajax({
+	    	 url: "${pageContext.request.contextPath}/edit/cancleShareFile.tat",
+	         type : "post",
+	         data : {"e_code": folderName},
+	    	 success: function(data){
+	    		 if(data>0) alert("정상 처리");
+	    		 else alert("취소 실패")
+	    	 },
+	    	 error: function(){
+	    		 alert("취소가 되지 않았습니다.");
+	    	 }
+	      });
+	      
+	   } else {
+	      alert('취소함');
+	   }
+	}
 
 </script>
 </html>
