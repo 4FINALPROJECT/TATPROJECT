@@ -85,7 +85,7 @@
                                  <div class="row">
                                      <div class="form-group">
                                          <div class="col-lg-12 ">
-                                             <label><i class="fas fa-angle-double-right"></i> 성명</label><input type="text" id="name" name="m_name" class="form-control profile" value="${m.m_name}" placeholder="Your Name" >
+                                             <label><i class="fas fa-angle-double-right"></i> 성명</label><input type="text" id="name" name="m_name" class="form-control profile" value="${m.m_name}" placeholder="Your Name" maxlength="100" >
                                          </div>
                                      </div>
                                  </div>
@@ -121,7 +121,7 @@
                              <div class="dividerHeading">
                                  <h4><span>이메일 정보 변경</span></h4>
                              </div>
-                             <p>회원님의 이메일을 변경할 수 있습니다. <b><u>인증 가능한</u></b> 이메일로 변경하시기 바랍니다.</p>
+                             <p>회원님의 이메일을 변경할 수 있는 공간입니다. <br>이메일은 로그인 시도 또는 비밀번호를 찾을 때 중요한 정보입니다.<br> 꼭! <b><u>인증 가능한</u></b> 이메일로 변경하시기 바랍니다.</p>
                              <form id="changeEmailForm" action="${pageContext.request.contextPath}/my/updateEmail.tat" method="post">
                                  <div class="row">
                                      <div class="form-group">
@@ -159,18 +159,18 @@
                              <div class="dividerHeading">
                                  <h4><span>비밀번호 변경 </span></h4>
                              </div>
-                             <p>회원님의 비밀번호를 변경 할 수 있습니다.</p>
+                             <p>회원님의 비밀번호를 변경 할 수 있습니다.<br> 비밀번호 설정은 <b>영문 숫자 조합으로 <u>8자리에서 20자리</u></b>까지 가능합니다.</p>
                              <form id="changePasswordForm" action="${pageContext.request.contextPath}/my/updatePassword.tat" method="post">
                                  <div class="row">
                                      <div class="form-group">
                                          <div class="col-lg-12 ">
-                                             <label><i class="fas fa-angle-double-right"></i> 현재 비밀번호</label><input type="password" id="password1" name="password1" class="form-control" placeholder="현재 비밀번호" >      
+                                             <label><i class="fas fa-angle-double-right"></i> 현재 비밀번호</label><input type="password" id="password1" name="password1" class="form-control" placeholder="현재 비밀번호" maxlength="20">      
                                          </div>
                                          <div class="col-lg-12 ">
-                                             <label><i class="fas fa-angle-double-right"></i> 변경할 비밀번호</label><input type="password" id="password2" name="password2" class="form-control" placeholder="변경할 비밀번호 (영문+숫자(기호)조합으로 8자 이상)" >
+                                             <label><i class="fas fa-angle-double-right"></i> 변경할 비밀번호</label><input type="password" id="password2" name="password2" class="form-control" placeholder="변경할 비밀번호 (영문+숫자(기호)조합으로 8~20자리)" maxlength="20">
                                          </div>
                                          <div class="col-lg-12 ">
-                                             <label><i class="fas fa-angle-double-right"></i> 변경할  비밀번호 확인</label><input type="password" id="password3" name="password3" class="form-control" placeholder="변경할 비밀번호 확인 (영문+숫자(기호)조합으로 8자 이상)" >
+                                             <label><i class="fas fa-angle-double-right"></i> 변경할  비밀번호 확인</label><input type="password" id="password3" name="password3" class="form-control" placeholder="변경할 비밀번호 확인 (영문+숫자(기호)조합으로 8~20자리)" maxlength="20">
                                          </div>
                                      </div>
                                  </div>

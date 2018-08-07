@@ -268,12 +268,12 @@ $(".tat-my-page-btn").click(function(){
       "click" : function() {
          pageSelect = $(this).html();
         //console.log(pageSelect);
-         pageEvent();
+         /* pageEvent(); */
       }
    });
 });
 function pageFoot() {
-    event.stopImmediatePropagation(); 
+    /* event.stopImmediatePropagation(); */ 
       var $pageplus = $("<div>");
       var $pageClone = $("<div>");
       

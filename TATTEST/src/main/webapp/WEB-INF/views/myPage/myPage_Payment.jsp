@@ -125,7 +125,7 @@
                                         <c:forEach items="${pl}" var="pl" varStatus="status">
                                           <c:if test="${pl.e_date <= 0}">
                                              <tr>
-                                                 <th>${status.index}</th>
+                                                 <th>${status.index+1}</th>
                                                  <th>${pl.p_name}</th>
                                                  <th>${pl.p_date}</th>
                                                  <th>${pl.v_date}</th>

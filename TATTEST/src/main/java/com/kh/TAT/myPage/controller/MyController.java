@@ -375,12 +375,72 @@ public class MyController {
       
       int result = myS.createProject(newProject);
       
-      
-      
-      
-
       return "redirect:/my/Project.tat";
    }
    
+   // 프로젝트 댓글 작성
+   @RequestMapping(value="/my/insertProjectReply.tat",method={RequestMethod.GET, RequestMethod.POST})
+   public String insertProjectReply(HttpServletRequest request,  @RequestParam String er_reply,@RequestParam String e_code, @RequestParam String img){
+      
+           HttpSession session = request.getSession(false);
+         String m_code = (String)session.getAttribute("m_code");
+        
+         
+         System.out.println("m_code : "+m_code);
+         System.out.println("er_reply : "+er_reply);
+         System.out.println("e_code : "+e_code);
+         
+         EditReplyBoard ERB = new EditReplyBoard();
+         
+         ERB.setE_code(e_code);
+         ERB.setM_code(m_code);
+         ERB.setEr_reply(er_reply);
+         
+         myS.insertProjectReply(ERB);
+         
+   
+      
+      return "redirect:/my/ProjectDetail.tat?e_code="+e_code+"&img="+img;
+   }
+   
+   
+  //프로젝트 명 변경
+   @RequestMapping(value="/my/updateProjectName.tat",method={RequestMethod.GET, RequestMethod.POST})
+   public String updateProjectName(@RequestParam String e_code,  @RequestParam String proj_name, @RequestParam String img){
+      
+           
+         System.out.println("e_code : "+e_code);
+         
+         Edit edit = new Edit();
+         
+         edit.setE_code(e_code);
+         edit.setProj_name(proj_name);
+         
+         
+         int result =myS.updateProjectName(edit);
+         
+   
+      
+      return "redirect:/my/ProjectDetail.tat?e_code="+e_code+"&img="+img;
+   }
+   
+   //프로젝트 설명 변경
+   @RequestMapping(value="/my/updateProjectComment.tat",method={RequestMethod.GET, RequestMethod.POST})
+   public String updateProjectComment(@RequestParam String e_code, @RequestParam String proj_comment, @RequestParam String img){
+      
+           
+         System.out.println("e_code : "+e_code);
+         
+         Edit edit = new Edit();
+         
+         edit.setE_code(e_code);
+         edit.setProj_comment(proj_comment);
+         
+         int result =myS.updateProjectComment(edit);
+         
+   
+      
+      return "redirect:/my/ProjectDetail.tat?e_code="+e_code+"&img="+img;
+   }
    
 }

@@ -5,6 +5,42 @@
 <head>
    <title>마이페이지</title>
    <c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+   <style>
+     .block{
+              width : 150px;
+              height : 150px;
+              border:0;
+              color: white;
+              text-align: center;
+              font-size:20px;
+     }
+     .area1{
+         border-style: groove;
+         border-top-left-radius: 50px;
+         background: rgb(209,213,231);
+     }
+     .area2{
+         background: rgb(185,190,219);
+     }
+     .area3{
+         background: rgb(162,168,206);
+     }
+     .area4{
+         background: rgb(131,139,190);
+     }
+
+     .area5{
+         background: rgb(106,117,179);
+     }
+     .area6{
+         border-style : inset; 
+         border-bottom-right-radius: 50px;
+         background: rgb(84,96,163);
+     }
+     .block-test2{
+         display:inline-block;
+     }  
+   </style>
 </head>
 <body>
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
@@ -84,27 +120,18 @@
                        <div class="sidebar">
                            <div class="widget_info">
                                <div class="dividerHeading">
-                                   <h4><span>Contact Info</span></h4>
+                                   <h4><span>ShortCut</span></h4>
                                </div>
-                               <p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                               <ul class="widget_info_contact">
-                                   <li><i class="fa fa-user"></i> <p><strong>Phone</strong>:(+91) 9000-12345</p></li>
-                                   <li><i class="fa fa-envelope"></i> <p><strong>Email</strong>: <a href="#">mail@example.com</a></p></li>
-                               </ul>
+                               <p>메뉴 창을 바로 갈 수 있는 바로가기 기능 입니다.</p>
+                                 <a href="${pageContext.request.contextPath}/my/Info.tat"><div class="block block-test2 area1" ><br><br><br>내 정보 수정</div></a>&nbsp;
+                           <a href="${pageContext.request.contextPath}/my/Payment.tat"><div class="block block-test2 area2" ><br><br><br>결제 정보</div></a>&nbsp;
+                           <a data-toggle="modal" data-target="#exampleModal"><div class="block block-test2 area3" ><br><br><br>프로젝트 생성</div></a>&nbsp;
+                           <a href="${pageContext.request.contextPath}/my/Project.tat"><div class="block block-test2 area4" ><br><br><br>프로젝트 리스트</div></a>&nbsp;                           
+                           <a href="${pageContext.request.contextPath}/my/Question.tat"><div class="block block-test2 area5" ><br><br><br>1:1문의 게시판</div></a>&nbsp;
+                                 <a href="${pageContext.request.contextPath}/main/Upgrade.tat"><div class="block block-test2 area6" ><br><br><br>프리미엄 (결제)</div></a>&nbsp;
+                             
                            </div>
-                           <div class="widget_social">
-                               <div class="dividerHeading">
-                                   <h4><span>소셜 네트워크</span></h4>
-                               </div>
-                               <ul class="widget_social">
-                                   <li><a class="fb" href="#." data-placement="bottom" data-toggle="tooltip" title="Facbook"><i class="fa fa-facebook"></i></a></li>
-                                   <li><a class="twtr" href="#." data-placement="bottom" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                   <li><a class="gmail" href="#." data-placement="bottom" data-toggle="tooltip" title="Google"><i class="fa fa-google-plus"></i></a></li>
-                                   <li><a class="skype" href="#." data-placement="bottom" data-toggle="tooltip" title="Skype"><i class="fa fa-skype"></i></a></li>
-                                   <li><a class="instagram" href="#." data-placement="bottom" data-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                   <li><a class="youtube" href="#." data-placement="bottom" data-toggle="tooltip" title="Youtube"><i class="fa fa-youtube"></i></a></li>
-                               </ul>
-                           </div>
+                          
                        </div>
                    </div>
                </div>
@@ -121,15 +148,17 @@
                         </div>
                         <div id="recent-work-slider" class="owl-carousel">
                             
-                            <c:forEach items="${list}" var="list">
+                            <c:forEach items="${list}" var="list" varStatus="status">
                             <div class="recent-item box">
                                 <figure class="touching ">
-                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/portfolio_1.png"/>
+                                    <img src="${pageContext.request.contextPath}/resources/images/portfolio/project${status.index+1}.jpg"/>
                                     <div class="option inner">
                                         <div>
                                             <h5>${list.proj_name}</h5>
-                                            <a href="images/portfolio/full/portfolio_1.png" class="fa fa-search mfp-image"></a><span style="display:inline">미리보기</span><br>
-                                            <a href="portfolio_single.html" class="fa fa-link"></a><span style="display:inline"> 편집하기</span>
+                                            <form style="display: inline-block;" method="post" action="${pageContext.request.contextPath}/edit/Main.tat">
+                                    <input type="hidden" name="e_code" value="${list.e_code }"/>
+                                    <input type="submit" class="btn btn-outline-info" value="편집 하기"/>
+                                 </form>
                                         </div>
                                     </div>
                                 </figure>

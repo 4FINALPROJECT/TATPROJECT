@@ -79,5 +79,17 @@
    <insert id="createProject" parameterType="edit">
       INSERT INTO EDIT VALUES('E'||SEQ_EDIT.NEXTVAL,#{m_code},#{proj_name},#{proj_comment},DEFAULT,DEFAULT,NULL)
    </insert>
+   
+   <insert id="insertProjectReply" parameterType="editReplyBoard">
+        INSERT INTO EDIT_REPLY_BOARD VALUES(SEQ_EDIT_REPLY.NEXTVAL,#{e_code},#{m_code},#{er_reply},SYSDATE,NULL)
+   </insert>
+   
+   <update id="updateProjectName" parameterType="edit">
+         UPDATE EDIT SET PROJ_NAME =#{proj_name} WHERE E_CODE=#{e_code}
+   </update>
+   
+   <update id="updateProjectComment" parameterType="edit">
+         UPDATE EDIT SET PROJ_COMMENT = #{proj_comment} WHERE E_CODE = #{e_code}
+   </update>
 
 </mapper>

@@ -187,14 +187,14 @@
                                  <div class="row">
                                      <div class="form-group">
                                          <div class="col-lg-12 ">
-                                             <label><i class="fas fa-angle-double-right"></i> 제목</label><input class="form-control" type="text" name="title" id="title" >
+                                             <label><i class="fas fa-angle-double-right"></i> 제목</label><input class="form-control" type="text" name="title" id="title" maxlength="100">
                                          </div>
                                      </div>
                                  </div>
                                  <div class="row">
                                      <div class="form-group">
                                          <div class="col-md-12">
-                                             <label><i class="fas fa-angle-double-right"></i> 내용</label><textarea class="form-control" name="content" id="content" rows="10" cols="50" style="resize:none;"></textarea>
+                                             <label><i class="fas fa-angle-double-right"></i> 내용</label><textarea class="form-control" name="content" id="content" rows="10" cols="50" style="resize:none;" maxlength="2500"></textarea>
                                          </div>
                                      </div>
                                  </div>

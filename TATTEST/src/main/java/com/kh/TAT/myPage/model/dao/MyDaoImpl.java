@@ -134,4 +134,22 @@ public class MyDaoImpl implements MyDao {
       
       return sqlSession.insert("member.createProject", newProject);
    }
+
+   @Override
+   public int insertProjectReply(EditReplyBoard ERB) {
+     
+     return sqlSession.insert("member.insertProjectReply", ERB);
+   }
+   
+   @Override
+   public int updateProjectName(Edit edit) {
+      
+      return sqlSession.update("member.updateProjectName", edit);
+   }
+   
+   @Override
+   public int updateProjectComment(Edit edit) {
+      
+      return sqlSession.update("member.updateProjectComment", edit);
+   }
 }

@@ -5,6 +5,19 @@
 <head>
    <title>프로젝트 || 마이페이지</title>
    <c:import url="../common/ICON_CSS_FONT.jsp"></c:import>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+   <style>
+         a{
+            cursor:pointer;
+         }
+         #ProjectName{
+            display:none;
+         }
+         #ProjectComment{
+            display:none;
+         }
+         
+   </style>
 </head>
 <body>
    <c:import url="common/myPage_Header.jsp"></c:import>
@@ -37,34 +50,30 @@
                      <article class="post">
                         <figure class="post_img">
                            <a href="#">
-                           ${pageContext.request.contextPath}/views/member/${m_code }/${p.e_code }/home.jsp
-                           
-                              <iframe src="${pageContext.request.contextPath}/WEB-INF/views/member/${m_code}/${p.e_code}/home.jsp" style="width:700px; height:500px;" scrolling="no"></iframe>
-                              <%-- <img src="${pageContext.request.contextPath}/resources/images/blog/blog_1.png" alt="blog post"> --%>
-                           
+                              <img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/portfolio/project${param.img}.jpg" style="width:700px; height:500px;" >
                            </a>
                         </figure>
-                        <div class="post_date">
-                           <span class="day">28</span>
-                           <span class="month">Nov</span>
-                        </div>
-                        <div class="post_content">
+                      
+                        
                            <div class="post_meta">
+                              <label><i class="fas fa-angle-double-right"></i> 프로젝트 명</label>
                               <h2>
-                                 <a href="#">${p.proj_name }</a>
+                                 <a>${p.proj_name }</a>
                               </h2>
+                              <hr>
                               <div class="metaInfo">
-                                 <span><i class="fa fa-calendar"></i> <a href="#">${p.save_date}</a> </span>
-                                 <span><i class="fa fa-user"></i> By <a href="#">${p.m_code}</a> </span>
-                                 <span><i class="fa fa-comments"></i> <a href="#">${count} Comments</a></span>
+                                 <span><i class="fa fa-calendar"></i> <a >${p.save_date}</a> </span>
+                                 <span><i class="fa fa-user"></i> By <a >${p.m_code}</a> </span>
+                                 <span><i class="fa fa-comments"></i> <a >${count} Comments</a></span>
                               </div>
+                              <hr>
                            </div>
                            
-                           
+                           <label><i class="fas fa-angle-double-right"></i> 프로젝트 코멘트</label>
                            <blockquote class="default">
-                              ${p.proj_comment }
+                             ${p.proj_comment }
                            </blockquote>   
-                        </div>
+                    
                      </article>
                      
                   </div>
@@ -72,7 +81,7 @@
                   <!--News Comments-->
                         <div class="news_comments">
                             <div class="dividerHeading">
-                                <h4><span>Comments (${count})</span></h4>
+                                <h4><span>나의 프로젝트에 남긴 댓글 (${count})</span></h4>
                             </div>
                             <div id="comment">
                                 <ul id="comment-list">
@@ -90,33 +99,43 @@
                                     </c:forEach>
                                 </ul>
                             </div>
+                            
+                            
                             <!-- /#comments -->
                             <div class="dividerHeading">
-                                <h4><span>Leave a comment</span></h4>
-                                </div>
-
-                            <div class="comment_form">
-                               <div class="row">
-                                   <div class="col-sm-4">
-                                       <input class="col-lg-4 col-md-4 form-control" name="name" type="text" id="name" size="30"  onfocus="if(this.value == 'Name') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Name'; }" value="Name" placeholder="Name" >
-                                   </div>
-                                   <div class="col-sm-4">
-                                       <input class="col-lg-4 col-md-4 form-control" name="email" type="text" id="email" size="30" onfocus="if(this.value == 'E-mail') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'E-mail'; }" value="E-mail" placeholder="E-mail">
-                                   </div>
-                                   <div class="col-sm-4">
-                                       <input class="col-lg-4 col-md-4 form-control" name="url" type="text" id="url" size="30" onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" value="Url" placeholder="Url">
-                                   </div>
-                               </div>
+                                <h4><span>답글 달기</span></h4>
                             </div>
-                            <div class="comment-box row">
-                                <div class="col-sm-12">
-                                    <p>
-                                        <textarea name="comments" class="form-control" rows="6" cols="40" id="comments" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="Message">Message</textarea>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <a class="btn btn-lg btn-default" href="#">Post Comment</a>
+               <c:if test="${!empty m_code}">
+                     <c:url value="/my/insertProjectReply.tat" var="insertProjectReply">
+                        <%-- <c:param name="t_code" value="${temp.t_code}"/>
+                        <c:param name="m_code" value=""/> --%>
+                     </c:url>
+                    <form id="insertProjectReplyForm" action="${insertProjectReply}" method="post">
+                    
+                    <input type="hidden" value="${param.img}" name="img"/>
+                    <div class="comment_form">
+                       <div class="row">
+                          <input type="hidden" value="${p.e_code}" name="e_code"/>
+                          <input type="hidden" value="${m_code}" name="m_code"/> 
+                       </div>
+                    </div>
+                    
+                    <div class="comment-box row">
+                        <div class="col-sm-12">
+                            <p>
+                                <textarea name="er_reply" class="form-control" rows="6" cols="40" onfocus="if(this.value == 'Message') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Message'; }" placeholder="댓글은 여기에 작성해 주시기 바랍니다."></textarea>
+                            </p>
+                        </div>
+                    </div>
+                          <c:if test="${!empty m_code}">
+                            <button id="insertProjectReply" type="submit" class="btn btn-lg btn-default">댓글 작성</button>
+                            </c:if>
+                            <c:if test="${empty m_code}">
+                            <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#signin">로그인이 필요합니다.</button>
+                            </c:if>
+                    </form>
+               </c:if>
+                           
                         </div>
                 </div>
 
@@ -130,89 +149,38 @@
                            <h4><span>Categories</span></h4>
                            </div>
                         <ul class="arrows_list list_style">
-                           <li><a href="#"> Grapic Design (10)</a></li>
-                           <li><a href="#"> Web Design & Development (25)</a></li>
-                           <li><a href="#"> Photography (29)</a></li>
-                           <li><a href="#"> Custom Illustrations (19)</a></li>
-                           <li><a href="#"> Wordpress Themes(38)</a></li>
-                           <li><a href="#"> Videography (33)</a></li>
+                           <li><a onclick="updateProjectName();"> 프로젝트명 수정</a></li>
+                           <li><a onclick="updateProjectComment();"> 프로젝트설명 수정</a></li>
                         </ul>
                      </div>
                      
-                     <div class="widget widget_about">
-                        <div class="widget_title">
-                           <h4><span>Basic Text Widget</span></h4>
-                           </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                     <div class="widget widget_about" id="ProjectName">
+                        <div class="widget_title" >
+                           <h4><span>프로젝트 명 수정</span></h4>
+                        </div>
+                        <label><i class="fas fa-angle-double-right"></i> 현재 프로젝트 명</label>
+                        <input type="text" class="form-control" value="${p.proj_name }" readonly >
+                        <label><i class="fas fa-angle-double-right"></i> 변경할 프로젝트 명</label>
+                        <form action="${pageContext.request.contextPath}/my/updateProjectName.tat" method="POST">
+                           <input type="text" class="form-control" name="proj_name">
+                           <input type="hidden" value="${p.e_code}" name="e_code"/>
+                           <input type="hidden" value="${param.img}" name="img"/>
+                        <button type="submit" class="form-control">변경 완료</button> 
+                        </form>                   
                      </div>
-
-                            <div class="widget widget_tab">
-                                <div class="velocity-tab sidebar-tab">
-                                    <ul  class="nav nav-tabs">
-                                        <li class="active"><a href="#Popular" data-toggle="tab">Popular</a></li>
-                                        <li class=""><a href="#Recent" data-toggle="tab">Recent</a></li>
-                                        <li class="last-tab"><a href="#Comment" data-toggle="tab"><i class="fa fa-comments-o"></i></a></li>
-                                    </ul>
-
-                                    <div  class="tab-content clearfix">
-                                        <div class="tab-pane fade active in" id="Popular">
-                                            <ul class="recent_tab_list">
-                                                <li>
-                                                    <span><a href="#"><img src="images/content/recent_1.png" alt="" /></a></span>
-                                                    <a href="#">Publishing packag esanse web page editos</a>
-                                                    <i>October 09, 2015</i>
-                                                </li>
-                                                <li>
-                                                    <span><a href="#"><img src="images/content/recent_2.png" alt="" /></a></span>
-                                                    <a href="#">Sublishing packag esanse web page editos</a>
-                                                    <i>October 08, 2015</i>
-                                                </li>
-                                                <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_3.png" alt="" /></a></span>
-                                                    <a href="#">Mublishing packag esanse web page editos</a>
-                                                    <i>October 07, 2015</i>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane fade" id="Recent">
-                                            <ul class="recent_tab_list">
-                                                <li>
-                                                    <span><a href="#"><img src="images/content/recent_4.png" alt="" /></a></span>
-                                                    <a href="#">Various versions has evolved over the years</a>
-                                                    <i>October 18, 2015</i>
-                                                </li>
-                                                <li>
-                                                    <span><a href="#"><img src="images/content/recent_5.png" alt="" /></a></span>
-                                                    <a href="#">Rarious versions has evolve over the years</a>
-                                                    <i>October 17, 2015</i>
-                                                </li>
-                                                <li class="last-tab">
-                                                    <span><a href="#"><img src="images/content/recent_6.png" alt="" /></a></span>
-                                                    <a href="#">Marious versions has evolven over the years</a>
-                                                    <i>October 16, 2015</i>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane fade">
-                                            <ul class="comments">
-                                                <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_3.png" alt="#"></a>
-                                                    <p><strong><a href="#">Prambose</a> <i>says: </i> </strong> Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
-                                                </li>
-                                                <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_1.png" alt="#"></a>
-                                                    <p><strong><a href="#">Makaroni</a> <i>says: </i> </strong> Tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada.</p>
-                                                </li>
-                                                <li class="comments_list clearfix">
-                                                    <a class="post-thumbnail" href="#"><img width="60" height="60" src="images/content/recent_2.png" alt="#"></a>
-                                                    <p><strong><a href="#">Prambanan</a> <i>says: </i> </strong> Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor.</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                     
+                     <div class="widget widget_about" id="ProjectComment">
+                        <div class="widget_title">
+                           <h4><span>프로젝트 설명 수정</span></h4>
+                        </div>
+                         <form action="${pageContext.request.contextPath}/my/updateProjectComment.tat" method="post">   
+                         <textarea class="form-control" rows="6" cols="40" name="proj_comment" ></textarea>
+                          <input type="hidden" value="${p.e_code}" name="e_code"/>
+                          <input type="hidden" value="${param.img}" name="img"/>
+                         <button type="submit" class="form-control">변경 완료</button> 
+                         </form>
+                     </div>
+                     
                   </div>
                </div>
             </div><!--/.row-->
@@ -285,6 +253,22 @@
            isotope();
            $(window).smartresize(isotope);
        }(jQuery));
+       
+       function updateProjectName(){
+          
+         $('#ProjectName').css('display','block');
+         $('#ProjectComment').css('display','none');
+         
+       }
+       
+       function updateProjectComment(){
+          
+          $('#ProjectName').css('display','none');
+          $('#ProjectComment').css('display','block');
+          
+        }
+       
+       
    </script>
 </body>
 </html>

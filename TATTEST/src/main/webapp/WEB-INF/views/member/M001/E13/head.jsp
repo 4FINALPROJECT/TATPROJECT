@@ -7,10 +7,11 @@
 Insert title here</title>
 </head>
 <body>
-<div class="edit-wrap" oncontextmenu="return false" onselectstart="return false" style="background-image: url(&quot;../resources/images/editPage/LeftTool-img/Background/flower1.PNG&quot;);">
-	<div class="edit-view-head-wrap">
-		<div class="edit-view-head">
+<div class="edit-wrap ui-droppable" oncontextmenu="return false" onselectstart="return false" style="background-image: url(&quot;../resources/images/editPage/LeftTool-img/Background/flower1.PNG&quot;);">
+	<div class="edit-view-head-wrap" style="border-bottom: 3px dashed red;">
+		<div class="edit-view-head" style="border-left: 3px dashed red; border-right: 3px dashed red;">
 		</div>
     </div>
 
+	
 	

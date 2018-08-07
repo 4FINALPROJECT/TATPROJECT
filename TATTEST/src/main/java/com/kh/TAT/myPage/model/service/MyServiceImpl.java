@@ -109,6 +109,7 @@ public class MyServiceImpl implements MyService {
       return  myD.selectOneBoard(qa_num);
    }
 
+   //프로젝트 관련
    @Override
    public Edit selectOneProjectDetail(String e_code) {
       
@@ -131,5 +132,25 @@ public class MyServiceImpl implements MyService {
    public int createProject(Edit newProject) {
       
       return myD.createProject(newProject);
+   }
+
+   @Override
+   public int insertProjectReply(EditReplyBoard ERB) {
+      
+      return myD.insertProjectReply(ERB);
+   }
+   
+   @Override
+   public int updateProjectName(Edit edit) {
+      
+      return myD.updateProjectName(edit);
+      
+   }
+   
+   @Override
+   public int updateProjectComment(Edit edit) {
+      
+      return myD.updateProjectComment(edit);
+      
    }
 }

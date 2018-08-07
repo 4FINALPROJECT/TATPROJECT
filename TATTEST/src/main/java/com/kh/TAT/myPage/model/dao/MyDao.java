@@ -52,4 +52,10 @@ public interface MyDao {
 
    int createProject(Edit newProject);
 
+   int insertProjectReply(EditReplyBoard ERB);
+
+   int updateProjectName(Edit edit);
+
+   int updateProjectComment(Edit edit);
+
 }
