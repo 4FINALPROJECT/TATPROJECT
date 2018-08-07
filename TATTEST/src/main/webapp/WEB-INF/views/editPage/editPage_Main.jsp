@@ -27,7 +27,7 @@
                <div>home</div>
             </div>
             <div class="tat-my-page-btn">
-               <div id="tat-my-page-btn">페이지 추가</div>
+               <div id="tat-my-page-btn">페이지 관리</div>
             </div>
          </div>
       </div>
@@ -252,35 +252,14 @@ $(".pageFooter").click(function(){
    pageFoot();
 });
 
-$(".tat-my-page-btn").click(function(){
-   $('.pageBody').children().on({
-      "mouseenter" : function() {
-         $(this).css({
-            "background-color" : "#eaf7ff",
-            "cursor" : "pointer"
-         })
-      },
-      "mouseleave" : function() {
-         $(this).css({
-            "background-color" : "whitesmoke",
-         })
-      },
-      "click" : function() {
-         pageSelect = $(this).html();
-        //console.log(pageSelect);
-         /* pageEvent(); */
-      }
-   });
-});
+
 function pageFoot() {
-    /* event.stopImmediatePropagation(); */ 
+
       var $pageplus = $("<div>");
       var $pageClone = $("<div>");
       
       var pagetext = [];
-        /* $(".tat-my-page-list").children().each(function(){
-          pagetext.push($(this).text());
-       });*/
+
       if($(".tat-my-page-list").children().length > 4){
          alert("신규페이지는 5개 이상 생성이 불가능 합니다.");
       } else {
@@ -298,43 +277,6 @@ function pageFoot() {
          
          $(".pageBody").append($pageClone);
       }  
-      
-    $('.pageBody').children().on({
-      "mouseenter" : function() {
-         $(this).css({
-            "background-color" : "#eaf7ff",
-            "cursor" : "pointer"
-         })
-      },
-      "mouseleave" : function() {
-         $(this).css({
-            "background-color" : "whitesmoke",
-         })
-      },
-      "click" : function() {
-         pageSelect = $(this).html();
-        //console.log(pageSelect);
-         pageEvent();
-      }
-   });
-    
-    $('.tat-my-page-list').children().on({
-      "mouseenter" : function() {
-         $(this).css({
-            "background-color" : "#eaf7ff",
-            "cursor" : "pointer"
-         })
-      },
-      "mouseleave" : function() {
-         $(this).css({
-            "background-color" : "white",
-         })
-      },
-      "click" : function() {
-         pageSelect = $(this).html();
-         pageEvent();
-      }
-   });
 }
 
 
@@ -353,8 +295,6 @@ $("#left_main_folder").on("click", function() {
       },
       "click" : function() {
          pageSelect = $(this).html();
-        //console.log(pageSelect);
-         pageEvent();
       }
    });
 });

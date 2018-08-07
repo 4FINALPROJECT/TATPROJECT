@@ -99,6 +99,28 @@
 
       <div id="tool_menu2-2" class="content">
          <br>추천 배경
+         <div>
+       	  <img class="LeftImg" src="../resources/images/portfolio/project1.jpg"
+               onclick="changeimg('../resources/images/portfolio/project1.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project2.jpg"
+               onclick="changeimg('../resources/images/portfolio/project2.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project3.jpg"
+               onclick="changeimg('../resources/images/portfolio/project3.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project4.jpg"
+               onclick="changeimg('../resources/images/portfolio/project4.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project5.jpg"
+               onclick="changeimg('../resources/images/portfolio/project5.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project6.jpg"
+               onclick="changeimg('../resources/images/portfolio/project6.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project7.jpg"
+               onclick="changeimg('../resources/images/portfolio/project7.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project8.jpg"
+               onclick="changeimg('../resources/images/portfolio/project8.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project9.jpg"
+               onclick="changeimg('../resources/images/portfolio/project9.jpg')">
+       	  <img class="LeftImg" src="../resources/images/portfolio/project10.jpg"
+               onclick="changeimg('../resources/images/portfolio/project10.jpg')">
+         </div>
       </div>
    </div>
 

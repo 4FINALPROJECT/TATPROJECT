@@ -7,8 +7,10 @@
 Insert title here</title>
 </head>
 <body>
-<div class="edit-wrap" oncontextmenu="return false" onselectstart="return false">
+<div class="edit-wrap" oncontextmenu="return false" onselectstart="return false" style="background-image: url(&quot;../resources/images/editPage/LeftTool-img/Background/city1.PNG&quot;);">
 	<div class="edit-view-head-wrap">
 		<div class="edit-view-head">
 		</div>
     </div>
+
+	

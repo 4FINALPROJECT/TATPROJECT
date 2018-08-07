@@ -321,11 +321,11 @@ public class AdminController {
       
       @ResponseBody
       @RequestMapping(value="/admin/updateQuestionAjax.tat")
-      public int updateQuestion(@RequestParam("qa_num") int qa_num ,@RequestParam("qa_content") String qa_content){
+      public int updateQuestion(@RequestParam("qa_num") int qa_num ,@RequestParam("a_content") String a_content){
          AdminQuestion aq = new AdminQuestion();
          
          aq.setQa_num(qa_num);
-         aq.setQa_content(qa_content);
+         aq.setA_content(a_content);
          
          System.out.println("qa_num2 : "+aq);
          

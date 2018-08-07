@@ -56,7 +56,7 @@
                         <li><a href="${pageContext.request.contextPath}/my/Question.tat">고객센터</a>
                            <ul class="dropdown-menu">
                               <li><a href="${pageContext.request.contextPath}/my/Question.tat">1:1문의하기</a></li>
-                              <li><a href="${pageContext.request.contextPath}/main/Faq.tat">자주묻는질문</a></li>
+                              <li><a href="${pageContext.request.contextPath}/main/Faq.tat" target="_blank">자주묻는질문</a></li>
                                  
                            </ul>
                         </li>
