@@ -252,16 +252,24 @@
                  alert("에러발생 :  \n" + textStatus + " : " + errorThrown);}
          }); 
       };
+      function templateDetail(num){
+       };
       function createPageList(data){
          /* console.log("ajax 리스트 이름 확인 : "+data.templateList);
          console.log("ajax data 전체 확인 : "+data); */
          for(var idx in data){
+            var t_code = data[idx].t_code;
             /* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
-         $('.templateList').append('<article class="post"><figure class="post_img"><a href="#"><iframe src="./'+data[idx].file_name+'" scrolling="no" ></iframe></a>'+
+         $('.templateList').append('<article class="post"><figure class="post_img"><a href="#"><iframe src="${pageContext.request.contextPath}/main/TemplateIframe.tat?t_category='+data[idx].t_category+'" scrolling="no" ></iframe></a>'+
                '</figure><div class="post_content"><div class="post_meta"><h2><a href="#">'+data[idx].t_title+'</a></h2><div class="metaInfo">'+
                '<span><i class="fa fa-user"></i> By <a href="#">'+data[idx].m_name+'</a> </span><span><i class="fa fa-comments"></i> <a href="#">'+data[idx].t_use_count+'</a></span>'+
-               '</div></div><p>'+data[idx].t_comment+'</p><a class="btn btn-small btn-default" href="#">자세히 보기</a></div></article>');
+               '</div></div><p>'+data[idx].t_comment+'</p><form action="${pageContext.request.contextPath}/main/TemplateDetail.tat" method="post">'+
+               '<input type="hidden" name="t_code" value="'+data[idx].t_code+'" /><button class="btn btn-small btn-default" type="submit">자세히 보기</button>'+
+               '</form></div></article>');
          };
+      };
+      function templateDetail(t_code){
+        console.log("dsds"+t_code);
       };
          
          

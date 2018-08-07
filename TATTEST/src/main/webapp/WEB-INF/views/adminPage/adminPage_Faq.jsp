@@ -107,7 +107,7 @@
             data : {"faq_num" : faq_num,},
             success : function(data){
                for(var idx in data){
-            	   
+                  
                $('.FaqFormPage').append('<div class="dividerHeading"><h4><span>FAQ 수정</span></h4></div><form id="contactForm" action="" novalidate="novalidate">'+
                        '<div class="row"><div class="form-group"><div class="col-md-2"><select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">'+
                         '</select></div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
@@ -143,7 +143,7 @@
                   "answer" : $('.updateAnswer').val(),
                   "faq_num" : num
             },success : function(data){
-               alert("등록이 완료되었습니다.");
+               alert("수정이 완료되었습니다.");
             },error: function(jqXHR, textStatus, errorThrown) {
                /* console.log(jqXHR.responseText); */
                  alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
@@ -157,6 +157,7 @@
             data : {"faq_num" : num
             },success : function(data){
                alert("삭제가 되었습니다.");
+               location.reload(); 
             },error: function(jqXHR, textStatus, errorThrown) {
                /* console.log(jqXHR.responseText); */
                  alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
@@ -195,7 +196,6 @@
          
       }
       function createBtn(){
-         alert("??");
          /* console.log($('.faqSelect').val());
          console.log($('.insertQuestion').val());
          console.log($('.insertAnswer').val()); */

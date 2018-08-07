@@ -24,8 +24,7 @@
          </div>
          <div class="tat-my-page-content">
             <div class="tat-my-page-list">
-               <div>HOME</div>
-               <div>page1</div>
+               <div>home</div>
             </div>
             <div class="tat-my-page-btn">
                <div id="tat-my-page-btn">페이지 추가</div>
@@ -142,7 +141,6 @@
    <c:import url="editPage_LeftTool.jsp"/>
 <!-- 오른쪽 툴바 -->
    <c:import url="editPage_RightTool.jsp"/>
-   
 <!-- 회원 편집 공간 -->
    <%-- <c:if test="${ editPageHead == null }">
       에러발생
@@ -169,6 +167,11 @@
    
 </div>
 
+<form id="saveForm" style="visibility: hidden; display: none;" method="POST" action="/TAT/edit/Main.tat">
+   <input type="hidden" name="cururl" id="cururl"/>
+   <input type="hidden" name="e_code" id="e_code"/>
+   <input type="submit" id="saveBtn" style="visibility: hidden; display:none;"/>
+</form>
 
 <div class="modal fade" id="myModal" style="z-index: 10000;">
   <div class="modal-dialog" style="top:150px;">
@@ -194,44 +197,7 @@ var folderName = '${ fN }';
 
 var pageSelect;
 
-function pageEvent(){
-	$('.tat-my-page-list').children().on({
 
-	   "mouseenter" : function() {
-	      $(this).css({
-	         "background-color" : "#eaf7ff",
-	         "cursor" : "pointer"
-	      })
-	   },
-	   "mouseleave" : function() {
-	      $(this).css({
-	         "background-color" : "white",
-	      })
-	   },
-	   "click" : function() {
-	      pageSelect = $(this).html();
-	
-	      var pageSave = confirm("현재 페이지를 저장 후에 페이지 이동 합니다.");
-	      if ( pageSave ) {
-	         alert("저장 완료!");
-	         $.ajax({
-	            url : "/TAT/edit/editOop.tat",
-	            data : { edit : editWrap[0].outerHTML, folderName : folderName, cururl : cururl },
-	            dataType : "json",
-	            type : "POST",
-	            success : function(data) {
-	               //console.log("파일 저장 성공 : "+data.editLog);
-	            }, error : function(data) {
-	               
-	            }
-	         });
-	         location.href = "/TAT/edit/Main.tat?cururl="+pageSelect+"&e_code=${fN}";
-	      } else {
-	         alert("페이지 이동 취소!");
-	      }
-	   }
-	});
-}
 
 function saveEvent() {
    var save_check = confirm('저장 하시겠습니까?');
@@ -253,7 +219,173 @@ function saveEvent() {
    }
 }
 
-pageEvent();
+var pli = '${ pageList }';
+
+$(function(){
+   if ( pli.length > 0 ) {
+      var plib = pli.split(",");
+      for ( var i in plib ) {
+         //console.log(plib[i]);
+         $(".tat-my-page-list").append("<div>"+plib[i]+"</div>");
+         $(".pageBody").append("<div>"+plib[i]+"</div>");
+      }
+   }
+})
+
+$(".pageFooter").click(function(){
+   pageFoot();
+});
+
+$(".tat-my-page-btn").click(function(){
+   $('.pageBody').children().on({
+      "mouseenter" : function() {
+         $(this).css({
+            "background-color" : "#eaf7ff",
+            "cursor" : "pointer"
+         })
+      },
+      "mouseleave" : function() {
+         $(this).css({
+            "background-color" : "whitesmoke",
+         })
+      },
+      "click" : function() {
+         pageSelect = $(this).html();
+        //console.log(pageSelect);
+         pageEvent();
+      }
+   });
+});
+function pageFoot() {
+   /* event.stopImmediatePropagation(); */
+      var $pageplus = $("<div>");
+      var $pageClone = $("<div>");
+      
+      var pagetext = [];
+        /* $(".tat-my-page-list").children().each(function(){
+          pagetext.push($(this).text());
+       });*/
+      if($(".tat-my-page-list").children().length > 4){
+         alert("신규페이지는 5개 이상 생성이 불가능 합니다.");
+      } else {
+         
+         $pageplus.text("page"+$(".tat-my-page-list").children().length);
+         $(".tat-my-page-list").append($pageplus);
+         
+         $(".tat-my-page-list").children().each(function(){
+             pagetext.push($(this).text());
+         });
+         //console.log(pagetext);
+         for(var i in pagetext){
+             $pageClone.text(pagetext[i]);
+         }
+         
+         $(".pageBody").append($pageClone);
+      }  
+      
+    $('.pageBody').children().on({
+      "mouseenter" : function() {
+         $(this).css({
+            "background-color" : "#eaf7ff",
+            "cursor" : "pointer"
+         })
+      },
+      "mouseleave" : function() {
+         $(this).css({
+            "background-color" : "whitesmoke",
+         })
+      },
+      "click" : function() {
+         pageSelect = $(this).html();
+        //console.log(pageSelect);
+         pageEvent();
+      }
+   });
+    
+    $('.tat-my-page-list').children().on({
+      "mouseenter" : function() {
+         $(this).css({
+            "background-color" : "#eaf7ff",
+            "cursor" : "pointer"
+         })
+      },
+      "mouseleave" : function() {
+         $(this).css({
+            "background-color" : "white",
+         })
+      },
+      "click" : function() {
+         pageSelect = $(this).html();
+         pageEvent();
+      }
+   });
+}
+
+
+$("#left_main_folder").on("click", function() {
+   $('.pageBody').children().on({
+      "mouseenter" : function() {
+         $(this).css({
+            "background-color" : "#eaf7ff",
+            "cursor" : "pointer"
+         })
+      },
+      "mouseleave" : function() {
+         $(this).css({
+            "background-color" : "whitesmoke",
+         })
+      },
+      "click" : function() {
+         pageSelect = $(this).html();
+        //console.log(pageSelect);
+         pageEvent();
+      }
+   });
+});
+
+$(".tat-my-page").on("click", function(){
+   $('.tat-my-page-list').children().on({
+      "mouseenter" : function() {
+         $(this).css({
+            "background-color" : "#eaf7ff",
+            "cursor" : "pointer"
+         })
+      },
+      "mouseleave" : function() {
+         $(this).css({
+            "background-color" : "white",
+         })
+      },
+      "click" : function() {
+         pageSelect = $(this).html();
+         pageEvent();
+      }
+   });
+});
+
+function pageEvent() {
+   var pageSave = confirm("현재 페이지를 저장 후에 페이지 이동 합니다.");
+    if ( pageSave ) {
+       alert("저장 완료!");
+       $.ajax({
+          url : "/TAT/edit/editOop.tat",
+          data : { edit : editWrap[0].outerHTML, folderName : folderName, cururl : cururl },
+          dataType : "json",
+          type : "POST",
+          success : function(data) {
+             $('#cururl').val(pageSelect);
+            $('#e_code').val(folderName);
+             $('#saveBtn').click();
+             
+          }, error : function(data) {
+             
+          }
+       });
+       
+    } else {
+       alert("페이지 이동 취소!");
+    }
+}
 
 $("#tat-my-page-btn").click(function(){
    $(".tat-my-page-content").css({"display" : "none"});
@@ -261,51 +393,48 @@ $("#tat-my-page-btn").click(function(){
    $("#tool_menu-1").css({"display" : "inline"});
 });
 
-
 function commitEvent() {
-   var commit_check = confirm('공유 하시겠습니까?');
-   folderName = '${ fN }';
-   console.log(folderName);
-   if ( commit_check ) {
-      $.ajax({
-    	 url: "${pageContext.request.contextPath}/edit/shareFile.tat",
-         type : "post",
-         data : {"e_code": folderName},
-    	 success: function(data){
-    		 if(data>0) alert("정상 처리");
-    		 else alert("공유 실패")
-    	 },
-    	 error: function(){
-    		 alert("공유가 되지 않았습니다.");
-    	 }
-      });
-      
-   } else {
-      alert('공유 취소');
-   }
-}
-function cancleEvent() {
-	   var commit_check = confirm('공유 취소 하시겠습니까?');
-	   folderName = '${ fN }';
+	   var commit_check = confirm('공유 하시겠습니까?');
 	   console.log(folderName);
 	   if ( commit_check ) {
 	      $.ajax({
-	    	 url: "${pageContext.request.contextPath}/edit/cancleShareFile.tat",
+	    	 url: "${pageContext.request.contextPath}/edit/shareFile.tat",
 	         type : "post",
 	         data : {"e_code": folderName},
 	    	 success: function(data){
 	    		 if(data>0) alert("정상 처리");
-	    		 else alert("취소 실패")
+	    		 else alert("공유 실패")
 	    	 },
 	    	 error: function(){
-	    		 alert("취소가 되지 않았습니다.");
+	    		 alert("공유가 되지 않았습니다.");
 	    	 }
 	      });
 	      
 	   } else {
-	      alert('취소함');
+	      alert('공유 취소');
 	   }
 	}
+	function cancleEvent() {
+		   var commit_check = confirm('공유 취소 하시겠습니까?');
+		   console.log(folderName);
+		   if ( commit_check ) {
+		      $.ajax({
+		    	 url: "${pageContext.request.contextPath}/edit/cancleShareFile.tat",
+		         type : "post",
+		         data : {"e_code": folderName},
+		    	 success: function(data){
+		    		 if(data>0) alert("정상 처리");
+		    		 else alert("취소 실패")
+		    	 },
+		    	 error: function(){
+		    		 alert("취소가 되지 않았습니다.");
+		    	 }
+		      });
+		      
+		   } else {
+		      alert('취소함');
+		   }
+		}
 
 </script>
 </html>

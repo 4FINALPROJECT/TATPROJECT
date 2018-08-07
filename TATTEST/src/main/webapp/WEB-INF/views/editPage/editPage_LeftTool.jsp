@@ -26,7 +26,7 @@
       <div class="content" id="tool_menu-1" style="color: black;">
 		<div class="pageHeader">사이트 메뉴</div>
         <div class="pageBody">페이지
-        <div>HOME</div>
+        <div>home</div>
         </div>
         
         <div class="pageFooter">페이지 추가</div>
