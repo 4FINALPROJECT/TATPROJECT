@@ -378,9 +378,6 @@ input[type=checkbox]:checked + label:before {
 .category-name > div {
    border-bottom: 2px solid white;
 }
-.content > div {
-    width : 100%;
-}
 @media all and (max-width: 1200px) {
    .tat-wrap {
       width: 1200px;

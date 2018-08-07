@@ -247,44 +247,33 @@ $(".edit-wrap").mousedown(function(e){
 }
 
 window.onblur = function() {
-//   $("#objectId").attr("value",null);
    $("#multiselect").remove();
    event.stopImmediatePropagation();
    return;
 }
 
-$(".pageFooter").click(function(){
+/*$(".pageFooter").click(function(){
    
    var $pageplus = $("<div>");
    var $pageClone = $("<div>");
    var pagetext = [];
-  /* $(".tat-my-page-list").children().each(function(){
+   $(".tat-my-page-list").children().each(function(){
        pagetext.push($(this).text());
-    });*/
+    });
    if($(".tat-my-page-list").children().length > 4){
       alert("신규페이지는 5개 이상 생성이 불가능 합니다.");
    } else {
       
       $pageplus.text("page"+$(".tat-my-page-list").children().length);
-      $(".tat-my-page-list").append($pageplus);
       
-      $(".tat-my-page-list").children().each(function(){
-          pagetext.push($(this).text());
-       });
-      console.log(pagetext);
       for(var i in pagetext){
           $pageClone.text(pagetext[i]);
       }
       
+      $(".tat-my-page-list").append($pageplus);
       $(".pageBody").append($pageClone);
-   }  
-   
-   pageEvent();
-    
-    /*
-        $(".pageBody").append($pageClone);
-    }*/
-});
+   }
+});*/
 
 $("div[id*=left_main]").each(function(){
    $(this).click(function(e){
@@ -335,25 +324,21 @@ $("td[id*=category]").click(function(e){
       
       $("#tool_menu"+toolmenu_chk).css({"display":"block"});
       
-      if(toolmenu_chk == "3-14"){
+      if(toolmenu_chk == "3-6"){
          
-         $("#tool_menu3-14").children("div").off("mousedown");
+         $("#tool_menu3-6").children("div").off("mousedown");
          
       }
       
    });
-   
-   console.log(toolmenu_chk);
-   
    $("div[id*="+toolmenu_chk+"]").last().focus();
 });
 
-/* 좌측 메뉴 요소 스크롤바 입히기 */
 $('div[id*=tool_menu3-]').each(function(idx, item){
-	$(item).css("overflow-y","scroll");
+   $(item).css("overflow-y","scroll");
 });
 
-$("#tool_menu3-14").children("div").click(function(){
+$("#tool_menu3-6").children("div").click(function(){
 
    var menu_clone = $(this).clone();
    
@@ -400,14 +385,19 @@ $("#tool_menu3-14").children("div").click(function(){
    
 });
 
-//$("#btn_skin1").mouseover(function(){
-//   event.stopPropagation();
-//});
+var content_scroll;
+var window_scroll;
+
+$(".content").scroll(function () {
+   content_scroll = $(this).scrollTop();
+});
+$(window).scroll(function () {
+   window_scroll = $(document).scrollTop();
+});
 
 // 배경화면 변경 스크립트
 function changeimg(cimg){
     editWrap[0].style.backgroundImage="url("+cimg+")";
-    //console.log(editWrap[0].outerHTML);
 }
 
 var edit_height = parseInt($(".edit-view-head-wrap").css("height"));
@@ -434,23 +424,28 @@ $("#tool_menu3").children().children('div').draggable({
                   ui.draggable.hasClass("btn_float") ||
                   ui.draggable.hasClass("item-Img") ||
                   ui.draggable.hasClass("Gallery-Img") ||
-                  ui.draggable.hasClass("box_text") ||
-                  ui.draggable.hasClass("interactive")) {
+                  ui.draggable.hasClass("box_text")) {
            id_count++;
            stackData = "add";
+           
+         if(content_scroll == null){
+            content_scroll = 0;
+         }
+         if(window_scroll == null){
+            window_scroll = 0;
+         }
+         
          if((edit_height + edit_top) > e.pageY){
-            $(".edit-view-head").append(ui.helper.clone(true).css({"top":e.pageY-80,"left":e.pageX-40}).attr({"data-obj-no":"data-"+id_count , "data-kind" : "head" , "data-stack" : stackData}));
+            $(".edit-view-head").append(ui.helper.clone(true).css({"top":(e.pageY-80-content_scroll)+window_scroll,"left":e.pageX-40}).attr({"data-obj-no":"data-"+id_count , "data-kind" : "head" , "data-stack" : stackData}));
          } else {
-            $(".edit-view-body").append(ui.helper.clone(true).css({"top":parseInt(ui.helper.css("top"))-85,"left":e.pageX-180}).attr({"data-obj-no":"data-"+id_count , "data-kind" : "body" , "data-stack" : stackData}));
+            $(".edit-view-body").append(ui.helper.clone(true).css({"top":(parseInt(ui.helper.css("top"))-85-content_scroll)+window_scroll,"left":e.pageX-220}).attr({"data-obj-no":"data-"+id_count , "data-kind" : "body" , "data-stack" : stackData}));
          }
 
         $(".edit-wrap .dragTEXT").addClass("item-"+counts[0]);
         $(".edit-wrap .btn_float").addClass("item-"+counts[0]);
         $(".edit-wrap .item-Img").addClass("item-"+counts[0]);
         $(".edit-wrap .Gallery-Img").addClass("item-"+counts[0]);
-        $(".edit-wrap .interactive").addClass("item-"+counts[0]);
         $(".edit-wrap .box_text").addClass("item-"+counts[0]);
-     
         
      stackEvent();
      objectEvent();
@@ -466,7 +461,6 @@ $("#tool_menu3").children().children('div').draggable({
      $(".edit-wrap .item-"+counts[0]).removeClass("btn_float ui-draggable ui-draggable-dragging");
      $(".edit-wrap .item-"+counts[0]).removeClass("item-Img ui-draggable ui-draggable-dragging");
      $(".edit-wrap .item-"+counts[0]).removeClass("Gallery-Img ui-draggable ui-draggable-dragging");
-     $(".edit-wrap .item-"+counts[0]).removeClass("interactive ui-draggable ui-draggable-dragging");
      $(".edit-wrap .item-"+counts[0]).removeClass("box_text ui-draggable ui-draggable-dragging");
      
     make_draggable($(".item-"+counts[0]));
@@ -481,8 +475,8 @@ $("#tool_menu3").children().children('div').draggable({
               containment:'parent',
               start:function(e,ui){ui.helper.css('z-index',++zIndex); },
               drag:function(e,ui){
-                 $(".objectData_txt").eq(3).attr("value", ui.helper.offset().left);
-                  $(".objectData_txt").eq(4).attr("value", ui.helper.offset().top);
+                 $(".objectData_txt").eq(3).val(ui.helper.offset().left);
+                  $(".objectData_txt").eq(4).val(ui.helper.offset().top);
                  },
               stop:function(e,ui){
                  testdrag();

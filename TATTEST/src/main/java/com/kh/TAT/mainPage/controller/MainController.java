@@ -540,7 +540,7 @@ public class MainController {
       }
       
       // 로그인 부분
-      @RequestMapping(value="/main/Main.tat", method=RequestMethod.POST)
+      @RequestMapping(value="/main/Main.tat", method={RequestMethod.POST,RequestMethod.GET})
       public ModelAndView memberLogin(@RequestParam String m_email,
             @RequestParam String m_pwd, HttpServletRequest request, Payment p){
          HttpSession session = request.getSession();
@@ -614,7 +614,7 @@ public class MainController {
 
          RedirectView rv = new RedirectView();
          
-         rv.setUrl("/TAT/"+swap);
+         rv.setUrl("/TAT/");
          rv.setExposeModelAttributes(false);
          //mv.setView(rv);
          //mv.setViewName("redirect:/"+swap);

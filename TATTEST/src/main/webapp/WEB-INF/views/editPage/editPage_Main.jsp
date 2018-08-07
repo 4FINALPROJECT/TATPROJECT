@@ -39,15 +39,23 @@
                <div class="cbox-content-wrap siteB">
                         <div class="edit-top-left">
                             <div id="edit_submit"> 저 장 </div>
-                            <div id="edit_miribogi"> 미 리 보 기 </div>
+                            <!-- <div id="edit_miribogi"> 미 리 보 기 </div> -->
                             <div id="edit_allview"> 공 유 하 기 </div>
                             <div id="edit_end"> 에 디 터 종 료 </div>
                         </div>
                         <div class="edit-top-right">
-                            <div toolimg="edit_submit"> 저 장 사 진 </div>
-                            <div toolimg="edit_miribogi"> 미 리 보 기 사 진 </div>
-                            <div toolimg="edit_allview"> 공 유 하 기 사 진 </div>
-                            <div toolimg="edit_end"> 에 디 터 종 료 사 진 </div>
+                            <div toolimg="edit_submit"> 저 장  <hr>
+                             <img src="${pageContext.request.contextPath}/resources/images/editPage/save.png" style="width : 90%; height : 70%;">  
+                            </div>
+                            <%-- <div toolimg="edit_miribogi"> 미 리 보 기  <hr>
+                            <img src="${pageContext.request.contextPath}/resources/images/editPage/miribogi.png" style="width : 90%; height : 70%;">
+                            </div> --%>
+                            <div toolimg="edit_allview"> 공 유 하 기  <hr>
+                            <img src="${pageContext.request.contextPath}/resources/images/editPage/goyou.png" style="width : 90%; height : 70%;">
+                            </div>
+                            <div toolimg="edit_end"> 에 디 터 종 료  <hr>
+                            <img src="${pageContext.request.contextPath}/resources/images/editPage/edit_end.png" style="width : 90%; height : 70%;">
+                            </div>
                         </div>
                     </div>
             </div>
@@ -71,17 +79,17 @@
                             </div>
                         </div>
                         <div class="edit-top-right">
-                           <div toolimg="rtoolChk">상세 툴바 <br>
-                           <img src="${pageContext.request.contextPath}/resources/images/editPage/right.png" style="height : 90%;">
+                           <div toolimg="rtoolChk">상세 툴바 <hr>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/right.png" style="height : 70%;">
                            </div>
-                           <div toolimg="ltoolChk">컨텐츠툴바<br>
-                           <img src="${pageContext.request.contextPath}/resources/images/editPage/right.png" style="height : 90%;">
+                           <div toolimg="ltoolChk">컨텐츠툴바<hr>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/left.png" style="height : 70%;">
                            </div>
-                           <div toolimg="bodyScale">눈 금 자<br>
-                           <img src="${pageContext.request.contextPath}/resources/images/editPage/noon.png" style="height : 90%;">
+                           <div toolimg="bodyScale">눈 금 자<hr>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/noon.png" style="height : 70%;">
                            </div>
-                           <div toolimg="grideLine">그리드라인<br>
-                           <img src="${pageContext.request.contextPath}/resources/images/editPage/grideLine.png" style="height : 90%;">
+                           <div toolimg="grideLine">그리드라인<hr>
+                           <img src="${pageContext.request.contextPath}/resources/images/editPage/grideLine.png" style="height : 70%;">
                            </div>
                         </div>
                </div>
@@ -114,8 +122,16 @@
             업그레이드
             <div class="tat-head-content-box tat-upgradebox">
                <div class="cbox-content-wrap upB">
-                  <div style="float: left;"> 결 제 하 쉴 ? </div>
-                        <div style="float: right;"> 돈 </div>
+                    <div class="edit-top-left">
+                     <div id="Money-upgrade"> 결 제 하 쉴 ? </div>
+                  </div>
+                  <div class="edit-top-right">
+                     <div toolimg="Money-upgrade"> 
+                     Up Up Up
+                     <hr>
+                     <img src="${pageContext.request.contextPath}/resources/images/editPage/upgrade_img.png" style="width:90%; height : 70%;">
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -257,7 +273,7 @@ $(".tat-my-page-btn").click(function(){
    });
 });
 function pageFoot() {
-   /* event.stopImmediatePropagation(); */
+    event.stopImmediatePropagation(); 
       var $pageplus = $("<div>");
       var $pageClone = $("<div>");
       

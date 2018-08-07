@@ -76,7 +76,9 @@ $('.tat-my-page').on({
 });
 $('.tat-head-content-center > div').on(
     "click",function(){
-        
+    	$("#Money-upgrade").click(function(){
+            window.open("/TAT/main/Upgrade.tat");
+         });
         $(".edit-top-right").children().css("display","none");
 
         if($(this).children().css("display") == "none"){
@@ -457,10 +459,6 @@ $("#edit_allview").click(function(){
 
 $("#edit_end").click(function(){
    location.href="/TAT/my/Project.tat";
-});
-
-$("#moneyplease").click(function(){
-   location.href="/TAT/main/Upgrade.tat";
 });
 
 $('#tat-head-logo').on('click', function(){

@@ -1,6 +1,7 @@
 
 var bodysize = parseInt($(".edit-view-body-wrap").css("height"));
 var objectBottomTop;
+var rinkdata;
 
 $(function(){
    
@@ -69,6 +70,52 @@ function test345435(){
                 clone_end();
              } else if(event.keyCode == 46) {
                 Object_Delete();
+             } else if(event.ctrlKey && event.keyCode == 90) {
+                if ( tmp == null ) {
+                     alert("기록이 없습니다.");
+                  } else {
+                     if ( tmp[0].dataset.stack == "add" ) {
+                        
+                        if ( stackCount == -1 ) {
+                           alert("기록이 없습니다.");
+                        } else {
+                           undoEvent();
+                        }
+                        
+                     } else {
+                     
+                        if ( redoCount == -1 ) {
+                           alert("기록이 없습니다.");
+                        } else {
+                           redoEvent();
+                        }
+                     }
+                  }
+             } else if(event.ctrlKey && event.keyCode == 89){
+                if ( tmp == null ) {
+                     alert("기록이 없습니다.");
+                  } else {
+                     if ( stackCount > -2 && stackCount < 5 ) {
+
+                        if ( tmp[0].dataset.stack == "add" ) {
+                           
+                           if ( redoCount == -1 ) {
+                              alert("기록이 없습니다.");
+                           } else {
+                              redoEvent();
+                           }
+                           
+                        } else {
+                           
+                           if ( redoCount == -1 ) {
+                              undoEvent();
+                           } else {
+                              alert("기록이 없습니다.");
+                           }
+
+                        }
+                     }
+                  }
              } else if($('#item_inpo').css("display") == "none") {
                 if ( event.keyCode == 18 ) {
                    keys[e.keyCode] = false;
@@ -145,7 +192,6 @@ function test345435(){
           $("#multiborder").remove();
           
           var rotation = $(this).css("transform");
-          console.log(rotation);
 
           if(rotation != 'none'){
              
@@ -226,7 +272,23 @@ function test345435(){
           y = Math.floor($(this).offset().top);
           
          var objText = $(this).children().text().trim();
-         var rinksource = $(this).children().attr('onclick');
+         var rinksource = $(this).children().attr('rink-data');
+         
+         $("#rink_inpo").children().children().prop('checked', false);
+         if($(this).children().attr('rink-data') != null){
+            rinksource = $(this).children().attr("rink-data").split("'");
+            
+            if(rinksource[1] == "https://www.google.co.kr/" || rinksource[1] == "https://www.naver.com/"){
+               $("input[name*=select_chk]").each(function(){
+                 if($(this).val() == rinksource[1]){
+                    $(this).prop("checked",true);
+                 }
+               });
+            } else {
+               $("#directly_select").val(rinksource);
+            }
+         }
+         
          var objBackColor = $(this).children().css('background').substr(0,$(this).children().css('background').lastIndexOf(")")+1);
          var objBorder = $(this).children().css("border").split(" ");
          var objBorder_color = objBorder[2]+objBorder[3]+objBorder[4];
@@ -247,9 +309,6 @@ function test345435(){
            } else {
               $("#item_rink").css("display","inline-block");
            }
-           
-           $("#rink_inpo").children('input').val(rinksource);
-           
            
            if($("#type_inpo").children('select').children().attr("value") == objFontFamily){
               
@@ -510,7 +569,7 @@ function test345435(){
           $("#rink_inpo").css({
              "top":$("#item_inpo").offset().top + 40,
              "left":$("#item_inpo").offset().left});
-             });
+          });
        $("#item_type").on("click",function(){
           $(".inpo_menu").css("display","none");
           if($("#is_usableChk").val() == "Y"){
@@ -549,7 +608,10 @@ function test345435(){
     }
     function EnterUpDate_URL(){
        if(event.keyCode == 13){
-          $("div[data-obj-no*="+$("#objectId").val()+"]").children().attr("onclick",$("#rink_inpo").children("input").eq(0).val());
+          $("div[data-obj-no*="+$("#objectId").val()+"]").children().attr("rink-data",$("#directly_select").val());
+          rinkdata = $("#directly_select").val();
+          $(".rink_select").css("display","none");
+          $(".rink_page").css("display","block");
        }
     }
     function EnterUpDate_fSize(){
@@ -601,11 +663,8 @@ function test345435(){
        });
     }
     
-    
-    var rinkdata;
-    
     $(".rink_select").children().click(function(){
-       
+        
        rinkdata = $("input[name*=select_chk]:checked").val();
        
        if(rinkdata == "https://www.naver.com/" || rinkdata == "https://www.google.co.kr/"){
@@ -613,7 +672,7 @@ function test345435(){
           rinkdata = $("input[name*=select_chk]:checked").val();
           
           $("#directly_select").attr("disabled","disabled");
-          $("#directly_select").attr("value","직접 입력");
+          $("#directly_select").val("직접 입력");
           
           $(".rink_select").css("display","none");
           $(".rink_page").css("display","block");
@@ -626,23 +685,21 @@ function test345435(){
        }
        
     });
-    
     $(".rink_page").children().click(function(){
-       if($(this).val() == "새창"){
-          
-          rinkdata = "window.open('"+rinkdata+"')";
-          
-       } else {
-          
-          rinkdata = "location.href='"+rinkdata+"'";
-          
-       }
-       $(".rink_select").css("display","none");
-       $(".rink_page").css("display","none");
-       $(".rink_submit").css("display","inline");
-       
+          if($(this).val() == "새창"){
+             rinkdata = "window.open('"+rinkdata+"')";
+          } else {
+             rinkdata = "location.href='"+rinkdata+"'";
+          }
+          $(".rink_select").css("display","none");
+           $(".rink_page").css("display","none");
+           $(".rink_submit").css("display","inline");
     });
-    
     $(".rink_submit").click(function(){
-       $("div[data-obj-no*="+$("#objectId").val()+"]").children().attr("onclick",rinkdata);
+       
+       $("div[data-obj-no*="+$("#objectId").val()+"]").children().attr("rink-data",rinkdata);
+       $(".rink_select").css("display","inline");
+       $(".rink_page").css("display","none");
+       $(".rink_submit").css("display","none");
+       
     });

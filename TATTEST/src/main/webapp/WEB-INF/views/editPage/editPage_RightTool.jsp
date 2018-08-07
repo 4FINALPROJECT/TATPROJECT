@@ -54,7 +54,7 @@
            <input type="radio" name="rink_chk" value="현재"> 현재페이지로 열기<br>
         </div>
         <div class="rink_submit">
-           <input style="width : 60px;" type="button" value="적용">
+           <input style="float : right; width : 60px;" type="button" value="적용">
         </div>
     </div>
     <div class="inpo_menu" id="type_inpo" oncontextmenu="return false">
@@ -126,4 +126,3 @@
     <div id = "tooltip">
     </div>
 </div>
-

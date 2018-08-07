@@ -15,30 +15,19 @@
       <i class="fas fa-plus-circle" style="font-size: 35px;"></i>
    </div>
    <div id="left_main_upload">
-      <i class="fas fa-upload" style="font-size: 35px;"></i>
+      <i class="fas fa-question" style="width:35px; height:35px; font-size: 35px;"></i>
    </div>
 
    <div class="total_tool" id="tool_menu" style="background : #00aaaf; color: white;">
       <div class="category-name">
         <div id="category-1"><b>사이트 메뉴</b></div>
-        <div id="category-2"><b>페이지 이동 효과</b></div>
       </div>
       <div class="content" id="tool_menu-1" style="color: black;">
-		<div class="pageHeader">사이트 메뉴</div>
+      <div class="pageHeader">사이트 메뉴</div>
         <div class="pageBody">페이지
-        <div>home</div>
+                <div>HOME</div>
         </div>
-        
         <div class="pageFooter">페이지 추가</div>
-      </div>
-      <div class="content" id="tool_menu-2">
-         <br> 페이지 이동효과 <br>
-         <br>
-         <div>
-            <td><i class="far fa-times-circle"></i>없음</td>
-            <td><i class="fas fa-arrow-right"></i>가로 이동</td>
-            <td><i class="fas fa-long-arrow-alt-down"></i>세로 이동</td>
-         </div>
       </div>
    </div>
 
@@ -127,37 +116,13 @@
             <td id="category3-3"><b>갤러리</b></td>
          </tr>
          <tr>
-            <td id="category3-4"><b>모양</b></td>
+            <td id="category3-4"><b>버튼</b></td>
          </tr>
          <tr>
-            <td id="category3-5"><b>인터랙티브</b></td>
+            <td id="category3-5"><b>상자</b></td>
          </tr>
          <tr>
-            <td id="category3-6"><b>버튼</b></td>
-         </tr>
-         <tr>
-            <td id="category3-7"><b>상자</b></td>
-         </tr>
-         <tr>
-            <td id="category3-8"><b>스트립</b></td>
-         </tr>
-         <tr>
-            <td id="category3-9"><b>목록/그리드</b></td>
-         </tr>
-         <tr>
-            <td id="category3-10"><b>동영상</b></td>
-         </tr>
-         <tr>
-            <td id="category3-11"><b>음악</b></td>
-         </tr>
-         <tr>
-            <td id="category3-12"><b>SNS</b></td>
-         </tr>
-         <tr>
-            <td id="category3-13"><b>연락처</b></td>
-         </tr>
-         <tr>
-            <td id="category3-14"><b>메뉴</b></td>
+            <td id="category3-6"><b>메뉴</b></td>
          </tr>
       </table>
 
@@ -345,29 +310,18 @@
          </div>
       </div>
       <div id="tool_menu3-4" class="content">
-         <br>모양
-         <div class="Shape_Img">
-         </div>
-      </div>
-      <div id="tool_menu3-5" class="content">
-         <br>인터랙티브
-         <div class="interactive">
-            <img class="interactive" src="../resources/images/editPage/LeftTool-img/InterActive/interactive1.png" alt="">
-         </div>
-      </div>
-         <div id="tool_menu3-6" class="content">
          <br>버튼
             <div class="btn_float">
-          		<div class="btn_style">CLICK</div>
-          	</div>
+                <div class="btn_style">CLICK</div>
+             </div>
          </div>
-      <div id="tool_menu3-7" class="content">
+      <div id="tool_menu3-5" class="content">
          <br>
-            <h4 style="text-align: center; margin-left: 25px;">상자</h4>
-            <div class="box_text">
-            <div id="box_skin1"> BOX </div>
-            </div>
-            <div class="box_text">
+          <h4 style="text-align: center; margin-left: 25px;">상자</h4>
+          <div class="box_text">
+          <div id="box_skin1"> BOX </div>
+          </div>
+          <div class="box_text">
           <div id="box_skin2"> BOX </div>
           </div>
           <div class="box_text">
@@ -392,25 +346,7 @@
           <div id="box_skin9"> BOX </div>
           </div>
       </div>
-      <div id="tool_menu3-8" class="content">
-         <br>스트립
-      </div>
-      <div id="tool_menu3-9" class="content">
-         <br>목록/그리드
-      </div>
-      <div id="tool_menu3-10" class="content">
-         <br>동영상
-      </div>
-      <div id="tool_menu3-11" class="content">
-         <br>음악
-      </div>
-      <div id="tool_menu3-12" class="content">
-         <br>SNS
-      </div>
-      <div id="tool_menu3-13" class="content">
-         <br>연락처
-      </div>
-      <div id="tool_menu3-14" class="content">
+      <div id="tool_menu3-6" class="content">
          <br>메뉴<br>
          <div class="titleMenu" style="width : 90%;">
             <table style = "font-size : 10px; text-align : center;">
@@ -443,23 +379,33 @@
 
 
    <div class="total_tool" id="tool_menu4">
-      <table>
+      <table class="category-name">
          <tr>
-            <td><b>내 업로드</b><br>
+            <td id="category4-1"><b> 키보드 </b><br>
             <br></td>
          </tr>
          <tr>
-            <td><b>문서</b><br>
+            <td id="category4-2"><b> 마우스 </b><br>
             <br></td>
          </tr>
          <tr>
-            <td><b>동영상</b><br>
+            <td id="category4-3"><b> 단축키 </b><br>
             <br></td>
-         </tr>
-         <tr>
-            <td><b>이미지</b></td>
          </tr>
       </table>
+      <div id="tool_menu4-1" class="content">
+            키보드
+            <div> 방향키로 아이템을 컨트롤 해보세요. </div>
+      </div>
+      <div id="tool_menu4-2" class="content">
+            마우스
+            <div> 마우스로 아이템의 위치를 컨트롤 해보세요. </div>
+            <div> 멀티 컨트롤도 가능합니다. </div>
+      </div>
+      <div id="tool_menu4-3" class="content">
+            단축키
+            <div> 다향한 단축키로 복사,붙여넣기,삭제등을 컨트롤 해보세요. </div>
+      </div>
    </div>
 </div>
 </div>
