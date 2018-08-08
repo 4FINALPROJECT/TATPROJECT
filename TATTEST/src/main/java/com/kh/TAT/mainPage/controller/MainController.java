@@ -143,7 +143,7 @@ public class MainController {
    public ModelAndView ExploreDetail(HttpServletRequest request, Edit edit, Edit newedit){
       String e_code = request.getParameter("e_code");
       String m_code = request.getParameter("m_code");
-      String msg = "둘러보기 상세페이지 접속";
+      String msg = null;
       
       System.out.println("m_code : "+ m_code);
       
