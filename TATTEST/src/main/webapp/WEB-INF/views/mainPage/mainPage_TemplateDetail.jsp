@@ -134,8 +134,9 @@
                                        <input class="col-lg-4 col-md-4 form-control" name="email" type="text" id="email" size="30" onfocus="if(this.value == 'E-mail') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'E-mail'; }" value="E-mail" placeholder="E-mail">
                                    </div> -->
                                    <div class="col-sm-4">
-                                       <input class="col-lg-4 col-md-4 form-control" max="5" min="1" name="tr_rate" onkeydown="showKeyCode(event)"
-                                       type="number" id="tr_rate" size="30" onfocus="if(this.value == 'Url') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Url'; }" placeholder="점수입력란(1 ~ 5)">
+                                       <input class="col-lg-4 col-md-4 form-control" max="5" min="1" name="tr_rate" onkeydown="showKeyCode(event)" maxlength="1"
+                                       type="number" id="tr_rate" size="30" oninput="maxLengthCheck(this)" 
+                                       placeholder="점수입력란(1 ~ 5)">
                                    </div>
                                </div>
                             </div>
@@ -244,6 +245,20 @@
 
    });
    
+   function maxLengthCheck(object){
+      if (object.value.length > object.maxLength){
+       object.value = object.value.slice(0, object.maxLength);
+      }    
+     }
+   
+   $('#tr_rate').on('keyup', function() {
+
+       this.value = this.value.replace(/\D/g, '');
+
+       if (this.value > 5) this.value = 5;
+
+   });
+   
    function showKeyCode(event) {
       event = event || window.event;
       var keyID = (event.which) ? event.which : event.keyCode;
@@ -257,7 +272,7 @@
       }
       /* 48~57:일반 숫자키 코드, 96~105:숫자키패드 숫자키 코드 */
    }
-   
+   alert("${msg}");
    </script>
 </body>
 </html>

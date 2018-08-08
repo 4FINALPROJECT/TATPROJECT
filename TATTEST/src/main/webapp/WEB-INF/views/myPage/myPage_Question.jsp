@@ -178,7 +178,7 @@
                                              <label><i class="fas fa-angle-double-right"></i> 공개 여부</label>
                                              <div class="col-lg-12">
                                                 <input class="form-control col-lg-2" type="checkbox" id="openYORN" name="openYN" style="width:40px; height:40px;">
-                                                <span class="form-control col-lg-6" id="shareBoard">공개</span><span class="form-control" id="unshareBoard">비공개</span><br>   
+                                                <br>   
                                              </div>
                                              
                                          </div>

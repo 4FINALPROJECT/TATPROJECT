@@ -143,6 +143,7 @@ public class MainController {
    public ModelAndView ExploreDetail(HttpServletRequest request, Edit edit, Edit newedit){
       String e_code = request.getParameter("e_code");
       String m_code = request.getParameter("m_code");
+      String msg = "둘러보기 상세페이지 접속";
       
       System.out.println("m_code : "+ m_code);
       
@@ -159,7 +160,7 @@ public class MainController {
       List<Map<String, String>> editlist = mainS.selectEdit(newedit);
       
       mv.addObject("editlist", editlist);
-      
+      mv.addObject("msg", msg);
       mv.addObject("edit", edit);
       
       mv.addObject("editReply", EditReplylist);
@@ -218,7 +219,7 @@ public class MainController {
          pageRemember = "mainPage/common/mainPage_error";
          
          mv.setViewName(pageRemember);
-         System.out.println("실패!!");
+         System.out.println("등록 실패!!");
       }
       
       return mv;
@@ -232,17 +233,19 @@ public class MainController {
       String m_code = request.getParameter("m_code");
       int er_num = Integer.parseInt(request.getParameter("er_num"));
       String e_code = request.getParameter("e_code");
-      
+      String msg = "";
       
       er.setM_code(m_code);
       er.setEr_num(er_num);
       er.setE_code(e_code);
       
       mainS.DeleteEditReply(er);
+      msg = "삭제 성공";
       
       List<Map<String, String>> editReplylist = mainS.EditreplyBoard(e_code);
       mv.addObject("er", er);
       mv.addObject("editReply", editReplylist);
+      mv.addObject("msg", msg);
       
       pageRemember = "mainPage/mainPage_ExploreDetail";
       
@@ -259,15 +262,17 @@ public class MainController {
       String er_reply = request.getParameter("er_reply");
       String e_code = request.getParameter("e_code");      
       int er_num = Integer.parseInt(request.getParameter("er_num"));
+      String msg = "";
       
       er.setEr_reply(er_reply);
       er.setE_code(e_code);
       er.setEr_num(er_num);
-   
-      mainS.UpdateEditReply(er);
       
+      mainS.UpdateEditReply(er);
+      msg = "수정 완료";
       List<Map<String, String>> EditReplylist = mainS.EditreplyBoard(e_code);
       mv.addObject("editReply", EditReplylist);
+      mv.addObject("msg", msg);
       
       pageRemember = "mainPage/mainPage_ExploreDetail";
       
@@ -320,6 +325,7 @@ public class MainController {
       HttpSession session = request.getSession(false);
       
       String t_code = request.getParameter("t_code");
+      String msg = "템플릿 상세보기 접속";
       
       ModelAndView mv = new ModelAndView();
       
@@ -327,7 +333,7 @@ public class MainController {
       List<Map<String, String>> tempReplylist = mainS.replyBoard(t_code);
       
       mv.addObject("temp", temp);
-      
+      mv.addObject("msg", msg);
       mv.addObject("tempReply", tempReplylist);
       /*String m_code = (String) session.getAttribute("m_code");
       Member m = mainS.selectOneMCode(m_code);
@@ -376,7 +382,7 @@ public class MainController {
          pageRemember = "mainPage/common/mainPage_error";
          
          mv.setViewName(pageRemember);
-         System.out.println("실패!!");
+         System.out.println("등록 실패!!");
       }
       
       return mv;
@@ -390,7 +396,7 @@ public class MainController {
       String m_code = request.getParameter("m_code");
       int tr_num = Integer.parseInt(request.getParameter("tr_num"));
       String t_code = request.getParameter("t_code");
-      
+      String msg = "";
       
       ter.setM_code(m_code);
       ter.setTr_num(tr_num);
@@ -399,11 +405,12 @@ public class MainController {
       System.out.println("삭제할 아이디값: "+m_code);
       System.out.println("삭제할 댓글번호 값: "+tr_num);
       
-      
       mainS.DeleteReply(ter);
+      msg = "삭제 성공";
       
       List<Map<String, String>> tempReplylist = mainS.replyBoard(t_code);
       mv.addObject("tempReply", tempReplylist);
+      mv.addObject("msg", msg);
       
       pageRemember = "mainPage/mainPage_TemplateDetail";
       
@@ -420,15 +427,18 @@ public class MainController {
       String tr_reply = request.getParameter("tr_reply");
       String t_code = request.getParameter("t_code");      
       int tr_num = Integer.parseInt(request.getParameter("tr_num"));
+      String msg = "";
       
       ter.setTr_reply(tr_reply);
       ter.setT_code(t_code);
       ter.setTr_num(tr_num);
-   
+      
       mainS.UpdateReply(ter);
+      msg = "수정 성공";
       
       List<Map<String, String>> tempReplylist = mainS.replyBoard(t_code);
       mv.addObject("tempReply", tempReplylist);
+      mv.addObject("msg", msg);
       
       pageRemember = "mainPage/mainPage_TemplateDetail";
       
@@ -616,6 +626,7 @@ public class MainController {
          
          rv.setUrl("/TAT/");
          rv.setExposeModelAttributes(false);
+         
          //mv.setView(rv);
          //mv.setViewName("redirect:/"+swap);
          

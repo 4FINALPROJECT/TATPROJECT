@@ -76,7 +76,7 @@ $('.tat-my-page').on({
 });
 $('.tat-head-content-center > div').on(
     "click",function(){
-    	$("#Money-upgrade").click(function(){
+       $("#Money-upgrade").click(function(){
             window.open("/TAT/main/Upgrade.tat");
          });
         $(".edit-top-right").children().css("display","none");
@@ -174,9 +174,7 @@ $('.tat-head-content-center > div').on(
                $(".edit-view-body-wrap").css({
                    "border-bottom" : "3px dashed red"
                 });
-                $(".edit-view-foot-wrap").css({
-                   "border-bottom" : "3px dashed red"
-                });
+                
             } else {
                $(".edit-view-head-wrap").css({
                    "border-bottom" : "none"
@@ -184,9 +182,7 @@ $('.tat-head-content-center > div').on(
                $(".edit-view-body-wrap").css({
                    "border-bottom" : "none"
                 });
-                $(".edit-view-foot-wrap").css({
-                   "border-bottom" : "none"
-                });
+                
             }
             
             
@@ -206,20 +202,40 @@ $('.tat-head-content-right > div').on({
       })
    }
 });
-$('.tat-head-content-right > div:first-child').on({
-   "mouseenter" : function(){
-      $(this).css({
-         'background' : '#4eb7f5',
-         'color' : 'white'
-      })
-   },
-   "mouseleave" : function(){
-      $(this).css({
-         'background' : 'royalblue',
-         'color' : 'white'
-      })
-   }
-});
+
+
+if ( $('.tat-head-content-right > div:first-child').text() != "공유취소" ) {
+   $('.tat-head-content-right > div:first-child').on({
+      "mouseenter" : function(){
+         $(this).css({
+            'background' : '#4eb7f5',
+            'color' : 'white'
+         })
+      },
+      "mouseleave" : function(){
+         $(this).css({
+            'background' : 'royalblue',
+            'color' : 'white'
+         })
+      }
+   });
+} else {
+   $('.tat-head-content-right > div:first-child').on({
+      "mouseenter" : function(){
+         $(this).css({
+            'background' : 'hotpink',
+            'color' : 'white'
+         })
+      },
+      "mouseleave" : function(){
+         $(this).css({
+            'background' : 'pink',
+            'color' : 'white'
+         })
+      }
+   });
+}
+
 
 
 function commitEvent() {
@@ -448,10 +464,10 @@ $("#edit_submit").click(function(){
    saveEvent();
 });
 $('#commit-btn').click(function(){
-	   commitEvent();
-	});
+   commitEvent();
+});
 $('#cancle-btn').click(function(){
-	cancleEvent();
+   cancleEvent();
 });
 $("#edit_allview").click(function(){
    commitEvent();
@@ -479,4 +495,3 @@ $("div[id*=category]").click(function(){
    });
    $(this).children().css({"background": "mediumorchid"});
 });
-

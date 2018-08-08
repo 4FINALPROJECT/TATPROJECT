@@ -902,5 +902,8 @@
 	
 	<c:import url="common/mainPage_Footer.jsp"></c:import>
 	<c:import url="../common/JS.jsp"></c:import>
+	<script>
+   alert("${msg}");
+   </script>
 </body>
 </html>

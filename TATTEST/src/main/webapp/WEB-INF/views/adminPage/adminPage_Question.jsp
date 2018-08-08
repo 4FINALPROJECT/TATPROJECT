@@ -48,11 +48,11 @@
                            <thead>
                            <tr>
                                <th>문의번호</th>
-                               <th>질문자</th>
+                               <th>문의자</th>
                                <th>분류</th>
-                               <th>질문제목</th>
-                               <th>질문날짜</th>
-                               <th>답변여부</th>
+                               <th>문의명</th>
+                               <th>문의날짜</th>
+                               <th>답변</th>
                            </tr>
                            </thead>
                            <tbody class="questionListTable">
@@ -72,7 +72,7 @@
                    
                    <div class="col-lg-12 col-md-12 col-sm-12">
                        <div class="dividerHeading">
-                           <h4><span>문의 내용</span></h4>
+                           <h4><span>문의 상세보기</span></h4>
                        </div>
                        <form id="contactForm" class="questionAnswer" action="" novalidate="novalidate">
                           <!--  <div class="row">
@@ -139,21 +139,27 @@
       
 
       function updateAdminComment(qa_num){
-         
-      
-         $.ajax({
-            url : "${pageContext.request.contextPath}/admin/updateQuestionAjax.tat",
-            type : "post",
-            dataType : 'json',
-            data : {"qa_num" : qa_num,
-                  "a_content" : $('.questionAdminContent').val()
-            
-            },success : function(data){
-               alert("등록이 완료되었습니다.");
-            },error: function(jqXHR, textStatus, errorThrown) {
-               /* console.log(jqXHR.responseText); */
-                 alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
-         });
+    	  var content = $('.questionAdminContent').val();
+          
+  
+          if(!content){
+        	  alert("내용을 작성해주세요.");
+          }else{
+	         $.ajax({
+	            url : "${pageContext.request.contextPath}/admin/updateQuestionAjax.tat",
+	            type : "post",
+	            dataType : 'json',
+	            data : {"qa_num" : qa_num,
+	                  "a_content" : $('.questionAdminContent').val()
+	            
+	            },success : function(data){
+	               alert("등록이 완료되었습니다.");
+	               location.reload();
+	            },error: function(jqXHR, textStatus, errorThrown) {
+	               /* console.log(jqXHR.responseText); */
+	                 alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+	         });
+          }
       }
       
       function questionListTable(qNum){
@@ -167,16 +173,16 @@
                for(var idx in data){
                   if(data[idx].a_content == null){data[idx].a_content = ""};
                $('.questionAnswer').append('<div class="row"><div class="form-group"><div class="col-lg-6 ">'+
-                     '<input type="text" id="name" name="" class="form-control questionName" maxlength="100" data-msg-required="Please enter your name." value="'+data[idx].m_name+'" readonly>'+
-                     '</div><div class="col-lg-6 "><input type="email" id="email" name="email" class="form-control questionCategory" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="'+data[idx].qc_name+'" readonly>'+
+                     '<p>작성자</p><input type="text" id="name" name="" class="form-control questionName" maxlength="100" data-msg-required="Please enter your name." value="'+data[idx].m_name+'" readonly>'+
+                     '</div><div class="col-lg-6 "><p>분류</p><input type="email" id="email" name="email" class="form-control questionCategory" maxlength="100" data-msg-email="Please enter a valid email address." data-msg-required="Please enter your email address." value="'+data[idx].qc_name+'" readonly>'+
                      '</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
-                     '<input type="text" id="subject questionTitle" name="subject" class="form-control questionTitle" maxlength="100" data-msg-required="Please enter the subject." value="'+data[idx].qa_title+'" readonly></div></div>'+
+                     '<p>문의명</p><input type="text" id="subject questionTitle" name="subject" class="form-control questionTitle" maxlength="100" data-msg-required="Please enter the subject." value="'+data[idx].qa_title+'" readonly></div></div>'+
                      '</div><div class="row"><div class="form-group"><div class="col-md-12">'+
-                     '<textarea id="message" class="form-control questionContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" value="" readonly>'+data[idx].qa_content+'</textarea>'+
+                     '<p>문의내용</p><textarea id="message" class="form-control questionContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" value="" readonly>'+data[idx].qa_content+'</textarea>'+
                      '</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
-                     '<textarea id="text" class="form-control questionAdminContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" value="">'+data[idx].a_content+'</textarea>'+
+                     '<p>답변</p><textarea id="text" class="form-control questionAdminContent" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" value="">'+data[idx].a_content+'</textarea>'+
                      '</div></div></div><div class="row"><div class="col-md-12">'+
-                     '<input type="submit" data-loading-text="Loading..." class="btn btn-default btn-lg" onclick="updateAdminComment('+data[idx].qa_num+')" value="수정 및 등록">'+
+                     '<input type="button" data-loading-text="Loading..." class="btn btn-default btn-lg" onclick="updateAdminComment('+data[idx].qa_num+')" value="수정 및 등록" onsubmit="return false">'+
                      '</div></div>');
                }
             },error: function(jqXHR, textStatus, errorThrown) {

@@ -259,8 +259,14 @@
          console.log("ajax data 전체 확인 : "+data); */
          for(var idx in data){
             var t_code = data[idx].t_code;
+            var random_color = 0;
+            var random_color_total = [];
+            for(var i = 0; i < 3 ; i++){
+               random_color = Math.floor(Math.random()*255)+1;
+               random_color_total.push(random_color);
+            }
             /* console.log("데이터 확인 :"+  dateFormat((data[idx].enroll_date), 'mm/dd/yy')); */
-         $('.templateList').append('<article class="post"><figure class="post_img"><a href="#"><iframe src="${pageContext.request.contextPath}/main/TemplateIframe.tat?t_category='+data[idx].t_category+'" scrolling="no" ></iframe></a>'+
+         $('.templateList').append('<article class="post" style="background : rgba('+random_color_total[0]+','+random_color_total[1]+','+random_color_total[2]+',0.05); border-bottom : 1px solid #BDBDBD;"><figure class="post_img"><div style="width : 400px; height : 300px;"><iframe src="${pageContext.request.contextPath}/main/TemplateIframe.tat?t_category='+data[idx].t_category+'" width="100%" height="100%" scrolling="no" align="center" frameborder="0" ></iframe></div>'+
                '</figure><div class="post_content"><div class="post_meta"><h2><a href="#">'+data[idx].t_title+'</a></h2><div class="metaInfo">'+
                '<span><i class="fa fa-user"></i> By <a href="#">'+data[idx].m_name+'</a> </span><span><i class="fa fa-comments"></i> <a href="#">'+data[idx].t_use_count+'</a></span>'+
                '</div></div><p>'+data[idx].t_comment+'</p><form action="${pageContext.request.contextPath}/main/TemplateDetail.tat" method="post">'+

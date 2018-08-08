@@ -120,7 +120,8 @@
                           <input type="hidden" value="${v_code}" name="m_code2"/>
                           <div class="col-sm-4">
                              <input class="col-lg-4 col-md-4 form-control" 
-                             name="er_rate" type="number" id="er_rate" size="30" onkeydown="showKeyCode(event)" max="5" min="1" 
+                             name="er_rate" type="number" id="er_rate" size="30" onkeydown="showKeyCode(event)" max="5" min="1"  maxlength="1"
+                             oninput="maxLengthCheck(this)"
                              placeholder="점수입력란(1 ~ 5)">
                           </div>
                           
@@ -194,6 +195,19 @@
 
      });
       
+      function maxLengthCheck(object){
+          if (object.value.length > object.maxLength){
+           object.value = object.value.slice(0, object.maxLength);
+          }    
+         }
+
+      $('#er_rate').on('keyup', function() {
+
+          this.value = this.value.replace(/\D/g, '');
+
+          if (this.value > 5) this.value = 5;
+
+      });
       
       function showKeyCode(event) {
          event = event || window.event;
@@ -208,6 +222,7 @@
          }
          /* 48~57:일반 숫자키 코드, 96~105:숫자키패드 숫자키 코드 */
       }
+      alert("${msg}");
    </script>
 </body>
 </html>

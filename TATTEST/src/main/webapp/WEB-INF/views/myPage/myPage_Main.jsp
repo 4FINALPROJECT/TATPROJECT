@@ -120,7 +120,7 @@
                        <div class="sidebar">
                            <div class="widget_info">
                                <div class="dividerHeading">
-                                   <h4><span>ShortCut</span></h4>
+                                   <h4><span>바로가기</span></h4>
                                </div>
                                <p>메뉴 창을 바로 갈 수 있는 바로가기 기능 입니다.</p>
                                  <a href="${pageContext.request.contextPath}/my/Info.tat"><div class="block block-test2 area1" ><br><br><br>내 정보 수정</div></a>&nbsp;

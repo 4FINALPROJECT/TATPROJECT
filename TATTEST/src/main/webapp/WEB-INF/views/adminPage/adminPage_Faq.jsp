@@ -109,12 +109,12 @@
                for(var idx in data){
                   
                $('.FaqFormPage').append('<div class="dividerHeading"><h4><span>FAQ 수정</span></h4></div><form id="contactForm" action="" novalidate="novalidate">'+
-                       '<div class="row"><div class="form-group"><div class="col-md-2"><select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">'+
+                       '<div class="row"><div class="form-group"><div class="col-md-2"><p>분류</p><select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">'+
                         '</select></div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
-                        '<input type="text" id="subject" name="subject" class="form-control updateQuestion" maxlength="100" data-msg-required="Please enter the subject." value="'+data[idx].faq_question+'" placeholder="Subject">'+
+                        '<p>질문</p><input type="text" id="subject" name="subject" class="form-control updateQuestion" maxlength="100" data-msg-required="Please enter the subject." value="'+data[idx].faq_question+'" placeholder="Subject">'+
                         '</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
-                        '<textarea id="message" class="form-control updateAnswer" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000">'+data[idx].faq_answer+'</textarea>'+
-                        '</div></div></div><div class="row"><div class="col-md-12"><input type="submit" class="btn btn-default btn-lg" onclick="updateBtn('+data[idx].faq_num+')"  value="수정하기"></div></div></form>');
+                        '<p>답변</p><textarea id="message" class="form-control updateAnswer" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000">'+data[idx].faq_answer+'</textarea>'+
+                        '</div></div></div><div class="row"><div class="col-md-12"><input type="button" class="btn btn-default btn-lg" onclick="updateBtn('+data[idx].faq_num+')"  value="수정하기"></div></div></form>');
                /* $('.faqSelect').val(data[idx].qc_name).attr("selected","selected"); */
                }
                pageSelect(data[idx].qc_code);
@@ -133,21 +133,24 @@
          var qccode = $('.faqSelect').val();
          var quest = $('.updateQuestion').val();
          var answer = $('.updateAnswer').val();
-         
-         $.ajax({
-            url : "${pageContext.request.contextPath}/admin/updateFaqQuestionAjax.tat",
-            type : "post",
-            dataType : 'json',
-            data : {"qccode" : $('.faqSelect').val(),
-                  "quest" : $('.updateQuestion').val(),
-                  "answer" : $('.updateAnswer').val(),
-                  "faq_num" : num
-            },success : function(data){
-               alert("수정이 완료되었습니다.");
-            },error: function(jqXHR, textStatus, errorThrown) {
-               /* console.log(jqXHR.responseText); */
-                 alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
-         });
+         if(!qccode || !quest || !answer){alert("내용을 입력해주세요")}
+         else{
+	         $.ajax({
+	            url : "${pageContext.request.contextPath}/admin/updateFaqQuestionAjax.tat",
+	            type : "post",
+	            dataType : 'json',
+	            data : {"qccode" : $('.faqSelect').val(),
+	                  "quest" : $('.updateQuestion').val(),
+	                  "answer" : $('.updateAnswer').val(),
+	                  "faq_num" : num
+	            },success : function(data){
+	               alert("수정이 완료되었습니다.");
+	               location.reload();
+	            },error: function(jqXHR, textStatus, errorThrown) {
+	               /* console.log(jqXHR.responseText); */
+	                 alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+	         });
+         }
       }
       function deleteBtn(num){
          $.ajax({
@@ -165,13 +168,13 @@
       }
       function createFaq(){
          $('.FaqFormPage').empty();
-         $('.FaqFormPage').append('<div class="dividerHeading"><h4><span>FAQ 수정</span></h4></div><form id="contactForm" action="" novalidate="novalidate">'+
-           '<div class="row"><div class="form-group"><div class="col-md-2"><select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">'+
+         $('.FaqFormPage').append('<div class="dividerHeading"><h4><span>FAQ 등록</span></h4></div><form id="contactForm" action="" novalidate="novalidate">'+
+           '<div class="row"><div class="form-group"><div class="col-md-2"><p>분류</p><select id="subject" name="subject" class="form-control faqSelect" data-msg-required="Please enter the subject.">'+
             '</select></div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
-            '<input type="text" id="subject" name="subject" class="form-control insertQuestion" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">'+
+            '<p>질문</p><input type="text" id="subject" name="subject" class="form-control insertQuestion" maxlength="100" data-msg-required="Please enter the subject." value="" placeholder="Subject">'+
             '</div></div></div><div class="row"><div class="form-group"><div class="col-md-12">'+
-            '<textarea id="message" class="form-control insertAnswer" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>'+
-            '</div></div></div><div class="row"><div class="col-md-12"><input type="submit" class="btn btn-default btn-lg" onclick="createBtn()"  value="등록하기"></div></div></form>');
+            '<p>답변</p><textarea id="message" class="form-control insertAnswer" name="message" rows="10" cols="50" data-msg-required="Please enter your message." maxlength="5000" placeholder="Message"></textarea>'+
+            '</div></div></div><div class="row"><div class="col-md-12"><input type="button" class="btn btn-default btn-lg" onclick="createBtn()"  value="등록하기"></div></div></form>');
          
          pageSelect();
       }
@@ -202,20 +205,23 @@
          var qccode = $('.faqSelect').val();
          var quest = $('.insertQuestion').val();
          var answer = $('.insertAnswer').val();
-         
-         $.ajax({
-            url : "${pageContext.request.contextPath}/admin/insertFaqQuestionAjax.tat",
-            type : "post",
-            dataType : 'json',
-            data : {"qccode" : $('.faqSelect').val(),
-                  "quest" : $('.insertQuestion').val(),
-                  "answer" : $('.insertAnswer').val()   
-            },success : function(data){
-               alert("등록이 완료되었습니다.");
-            },error: function(jqXHR, textStatus, errorThrown) {
-               /* console.log(jqXHR.responseText); */
-                 alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
-         })
+         if(!qccode && !quest && !answer){alert("내용을 입력해주세요")}
+         else{
+	         $.ajax({
+	            url : "${pageContext.request.contextPath}/admin/insertFaqQuestionAjax.tat",
+	            type : "post",
+	            dataType : 'json',
+	            data : {"qccode" : $('.faqSelect').val(),
+	                  "quest" : $('.insertQuestion').val(),
+	                  "answer" : $('.insertAnswer').val()   
+	            },success : function(data){
+	               alert("등록이 완료되었습니다.");
+	               location.reload();
+	            },error: function(jqXHR, textStatus, errorThrown) {
+	               /* console.log(jqXHR.responseText); */
+	                 alert("삐용삐용 에러발생 :  \n" + textStatus + " : " + errorThrown);}
+	         });
+         }
       }
 
       function pageNextFirstBtn(){

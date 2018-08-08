@@ -138,12 +138,12 @@
       </div>
       
       <div class="tat-head-content-right">
-      	<c:if test="${edit.is_share == 'N'}">
+         <c:if test="${edit.is_share == 'N'}">
          <div id="commit-btn" style="background: royalblue; color: white;">공유하기</div>
-      	</c:if>
-      	<c:if test="${edit.is_share == 'Y'}">
+         </c:if>
+         <c:if test="${edit.is_share == 'Y'}">
          <div id="cancle-btn" style="background: pink; color: white;">공유취소</div>
-      	</c:if>
+         </c:if>
          <div id="save-btn">저장</div>
          <div id="view-btn">미리보기</div>
          <div id="redo-btn">redo</div>
@@ -194,8 +194,9 @@
     <div class="modal-content">
       <div class="modal-header"></div>
       <div class="modal-body" style="text-align: center;">
+            <div>현재 페이지 저장해주세요.</div>
             <input class="modal-cc" type="text" placeholder="프로젝트 이름을 입력해주세요." size="30"/>
-             <div class="modal-cc" style="background: royalblue; color: white; float:right; width: 60px; height:30px; padding:5px;">게시</div>
+            <div class="modal-cc" style="background: royalblue; color: white; float:right; width: 60px; height:30px; padding:5px;">게시</div>
       </div>
       <div class="modal-footer"></div>
     </div>
@@ -212,8 +213,11 @@ var cururl = '${ cururl }';
 var folderName = '${ fN }';
 
 var pageSelect;
-
-
+var pli = '${ pageList }';
+var pageCount = 0;
+var pliHead;
+var checkUnload = true;
+var closeCount = 0;
 
 function saveEvent() {
    var save_check = confirm('저장 하시겠습니까?');
@@ -235,18 +239,57 @@ function saveEvent() {
    }
 }
 
-var pli = '${ pageList }';
-
-$(function(){
+$(function() {
+   pliHead = pli.split(",");
+   var pliAdd = 0;
+   
    if ( pli.length > 0 ) {
-      var plib = pli.split(",");
-      for ( var i in plib ) {
-         //console.log(plib[i]);
-         $(".tat-my-page-list").append("<div>"+plib[i]+"</div>");
-         $(".pageBody").append("<div>"+plib[i]+"</div>");
+      
+      for ( var i = 0; i < pliHead.length; i++ ) {
+        pliAdd++;
+         $(".tat-my-page-list").append("<div>"+pliHead[i]+"</div>");
+         $(".pageBody").append("<div>"+pliHead[i]+"</div>");
+         $(".tat-my-page-list").children().eq(pliAdd).on({
+              "mouseenter" : function() {
+                   $(this).css({
+                      "background-color" : "#eaf7ff",
+                      "cursor" : "pointer"
+                   })
+                },
+                "mouseleave" : function() {
+                   $(this).css({
+                      "background-color" : "white",
+                   })
+                },
+                "click" : function() {
+                   pageSelect = $(this).html();
+                   pageEvent();
+                } 
+         });
+         $(".pageBody").children().eq(pliAdd).on({
+              "mouseenter" : function() {
+                   $(this).css({
+                      "background-color" : "#eaf7ff",
+                      "cursor" : "pointer"
+                   })
+                },
+                "mouseleave" : function() {
+                   $(this).css({
+                      "background-color" : "whitesmoke",
+                   })
+                },
+                "click" : function() {
+                   pageSelect = $(this).html();
+                   pageEvent();
+                } 
+         });
+         //console.log($(".tat-my-page-list").children().eq(pliAdd).text());
       }
+      
    }
-})
+});
+
+
 
 $(".pageFooter").click(function(){
    pageFoot();
@@ -259,65 +302,113 @@ function pageFoot() {
       var $pageClone = $("<div>");
       
       var pagetext = [];
-
+     
       if($(".tat-my-page-list").children().length > 4){
          alert("신규페이지는 5개 이상 생성이 불가능 합니다.");
       } else {
-         
-         $pageplus.text("page"+$(".tat-my-page-list").children().length);
-         $(".tat-my-page-list").append($pageplus);
-         
-         $(".tat-my-page-list").children().each(function(){
-             pagetext.push($(this).text());
-         });
-         //console.log(pagetext);
-         for(var i in pagetext){
-             $pageClone.text(pagetext[i]);
+         if ( pageCount == 0 ) {
+           $pageplus.text("page"+$(".tat-my-page-list").children().length);
+           $pageClone.text("page"+$(".tat-my-page-list").children().length);
+            
+            $(".pageBody").append($pageplus);
+            $(".tat-my-page-list").append($pageClone);
+            
+            
+            $pageplus.on({
+               "mouseenter" : function() {
+                    $(this).css({
+                       "background-color" : "#eaf7ff",
+                       "cursor" : "pointer"
+                    })
+                 },
+                 "mouseleave" : function() {
+                    $(this).css({
+                       "background-color" : "whitesmoke",
+                    })
+                 },
+                 "click" : function() {
+                    pageSelect = $(this).html();
+                    pageEvent();
+                 }
+            });
+            
+            
+            $pageClone.on({
+               "mouseenter" : function() {
+                    $(this).css({
+                       "background-color" : "#eaf7ff",
+                       "cursor" : "pointer"
+                    })
+                 },
+                 "mouseleave" : function() {
+                    $(this).css({
+                       "background-color" : "white",
+                    })
+                 },
+                 "click" : function() {
+                    pageSelect = $(this).html();
+                    pageEvent();
+                 }
+            });
+            
+            pageCount++;
+            /* 
+            $(".tat-my-page-list").children().each(function(){
+                pagetext.push($(this).text());
+            });
+            //console.log(pagetext);
+            for(var i in pagetext){
+                $pageClone.text(pagetext[i]);
+            } */
+            
+            
+         } else {
+            alert("다중 페이지 추가는 준비중입니다. 다음 페이지를 추가 하고싶으시면 새로 추가 된 페이지 작업으로 넘어가주세요.");
          }
          
-         $(".pageBody").append($pageClone);
-      }  
+     }  
 }
 
 
-$("#left_main_folder").on("click", function() {
-   $('.pageBody').children().on({
-      "mouseenter" : function() {
-         $(this).css({
-            "background-color" : "#eaf7ff",
-            "cursor" : "pointer"
-         })
-      },
-      "mouseleave" : function() {
-         $(this).css({
-            "background-color" : "whitesmoke",
-         })
-      },
-      "click" : function() {
-         pageSelect = $(this).html();
-      }
-   });
+
+$('.pageBody').children().on({
+   "mouseenter" : function() {
+      $(this).css({
+         "background-color" : "#eaf7ff",
+         "cursor" : "pointer"
+      })
+   },
+   "mouseleave" : function() {
+      $(this).css({
+         "background-color" : "whitesmoke",
+      })
+   },
+   "click" : function() {
+      pageSelect = $(this).html();
+      pageEvent();
+   }
 });
 
-$(".tat-my-page").on("click", function(){
-   $('.tat-my-page-list').children().on({
-      "mouseenter" : function() {
-         $(this).css({
-            "background-color" : "#eaf7ff",
-            "cursor" : "pointer"
-         })
-      },
-      "mouseleave" : function() {
-         $(this).css({
-            "background-color" : "white",
-         })
-      },
-      "click" : function() {
-         pageSelect = $(this).html();
-         pageEvent();
-      }
-   });
+
+
+$('.tat-my-page-list').children().on({
+   "mouseenter" : function() {
+      $(this).css({
+         "background-color" : "#eaf7ff",
+         "cursor" : "pointer"
+      })
+   },
+   "mouseleave" : function() {
+      $(this).css({
+         "background-color" : "white",
+      })
+   },
+   "click" : function() {
+      pageSelect = $(this).html();
+      pageEvent();
+   }
 });
+
 
 function pageEvent() {
    var pageSave = confirm("현재 페이지를 저장 후에 페이지 이동 합니다.");
@@ -329,10 +420,11 @@ function pageEvent() {
           dataType : "json",
           type : "POST",
           success : function(data) {
-             $('#cururl').val(pageSelect);
+             checkUnload = false;
+             console.log(checkUnload);
+            $('#cururl').val(pageSelect);
             $('#e_code').val(folderName);
-             $('#saveBtn').click();
-             
+            $('#saveBtn').click();
           }, error : function(data) {
              
           }
@@ -350,47 +442,65 @@ $("#tat-my-page-btn").click(function(){
 });
 
 function commitEvent() {
-	   var commit_check = confirm('공유 하시겠습니까?');
-	   console.log(folderName);
-	   if ( commit_check ) {
-	      $.ajax({
-	    	 url: "${pageContext.request.contextPath}/edit/shareFile.tat",
-	         type : "post",
-	         data : {"e_code": folderName},
-	    	 success: function(data){
-	    		 if(data>0) alert("정상 처리");
-	    		 else alert("공유 실패")
-	    	 },
-	    	 error: function(){
-	    		 alert("공유가 되지 않았습니다.");
-	    	 }
-	      });
-	      
-	   } else {
-	      alert('공유 취소');
-	   }
-	}
-	function cancleEvent() {
-		   var commit_check = confirm('공유 취소 하시겠습니까?');
-		   console.log(folderName);
-		   if ( commit_check ) {
-		      $.ajax({
-		    	 url: "${pageContext.request.contextPath}/edit/cancleShareFile.tat",
-		         type : "post",
-		         data : {"e_code": folderName},
-		    	 success: function(data){
-		    		 if(data>0) alert("정상 처리");
-		    		 else alert("취소 실패")
-		    	 },
-		    	 error: function(){
-		    		 alert("취소가 되지 않았습니다.");
-		    	 }
-		      });
-		      
-		   } else {
-		      alert('취소함');
-		   }
-		}
+   var commit_check = confirm('공유 하시겠습니까?');
+   //console.log(folderName);
+   if ( commit_check ) {
+      $.ajax({
+        url: "${pageContext.request.contextPath}/edit/shareFile.tat",
+         type : "post",
+         data : {"e_code": folderName},
+        success: function(data){
+           if(data>0) alert("정상 처리");
+           else alert("공유 실패")
+        },
+        error: function(){
+           alert("공유가 되지 않았습니다.");
+        }
+      });
+      
+   } else {
+      alert('공유 취소');
+   }
+}
+function cancleEvent() {
+   var commit_check = confirm('공유 취소 하시겠습니까?');
+   //console.log(folderName);
+   if ( commit_check ) {
+      $.ajax({
+        url: "${pageContext.request.contextPath}/edit/cancleShareFile.tat",
+         type : "post",
+         data : {"e_code": folderName},
+        success: function(data){
+           if(data>0) alert("정상 처리");
+           else alert("취소 실패")
+        },
+        error: function(){
+           alert("취소가 되지 않았습니다.");
+        }
+      });
+      
+   } else {
+      alert('취소함');
+   }
+}
+
+window.onbeforeunload = function(){
+   if( checkUnload == true ) {
+      return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
+   }
+};
+window.reload = function() {
+   checkUnload = false;
+};
+window.onkeydown = function(){
+   if ( window.onkeydown = 116) {
+      checkUnload = false;
+   }
+};
+
+$(document).on("mouseleave", function() {
+   checkUnload = true;
+});
 
 </script>
 </html>
